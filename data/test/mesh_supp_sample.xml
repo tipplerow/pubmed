@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!DOCTYPE SupplementalRecordSet SYSTEM "https://www.nlm.nih.gov/databases/dtd/nlmsupplementalrecordset_20200101.dtd">
+<SupplementalRecordSet LanguageCode = "eng">
+<SupplementalRecord SCRClass = "1">
+  <SupplementalRecordUI>C117343</SupplementalRecordUI>
+  <SupplementalRecordName>
+   <String>red yeast rice</String>
+  </SupplementalRecordName>
+  <DateCreated>
+   <Year>1999</Year>
+   <Month>02</Month>
+   <Day>25</Day>
+  </DateCreated>
+  <DateRevised>
+   <Year>2007</Year>
+   <Month>02</Month>
+   <Day>15</Day>
+  </DateRevised>
+  <Note>An extract prepared from red yeast (Monascus species) fermented on pulverized rice, that produces monacolins which are HYDROXYMETHYLGLUTARYL-COA REDUCTASE INHIBITORS that are used in place of statins such as LOVASTATIN.
+  </Note>
+  <Frequency>209</Frequency>
+  <PreviousIndexingList>
+   <PreviousIndexing>*FATTY ACIDS (1999-2002)</PreviousIndexing>
+   <PreviousIndexing>*NAPHTHALENES (1999-2002)</PreviousIndexing>
+   <PreviousIndexing>*PHOSPHORUS (1999-2002)</PreviousIndexing>
+   <PreviousIndexing>*PROTEINS (1999-2002)</PreviousIndexing>
+   <PreviousIndexing>*STARCH (1999-2002)</PreviousIndexing>
+  </PreviousIndexingList>
+  <HeadingMappedToList>
+   <HeadingMappedTo>
+    <DescriptorReferredTo>
+     <DescriptorUI>*D001688</DescriptorUI>
+     <DescriptorName>
+      <String>Biological Products</String>
+     </DescriptorName>
+    </DescriptorReferredTo>
+   </HeadingMappedTo>
+  </HeadingMappedToList>
+  <IndexingInformationList>
+   <IndexingInformation>
+     <DescriptorReferredTo>
+    <DescriptorUI>D001203</DescriptorUI>
+     <DescriptorName>
+      <String>Ascomycota</String>
+      </DescriptorName>
+     </DescriptorReferredTo>
+   </IndexingInformation>
+   <IndexingInformation>
+     <DescriptorReferredTo>
+    <DescriptorUI>D019587</DescriptorUI>
+     <DescriptorName>
+      <String>Dietary Supplements</String>
+      </DescriptorName>
+     </DescriptorReferredTo>
+   </IndexingInformation>
+  </IndexingInformationList>
+    <PharmacologicalActionList>
+     <PharmacologicalAction>
+      <DescriptorReferredTo>
+       <DescriptorUI>D019161</DescriptorUI>
+        <DescriptorName>
+         <String>Hydroxymethylglutaryl-CoA Reductase Inhibitors</String>
+        </DescriptorName>
+      </DescriptorReferredTo>
+     </PharmacologicalAction>
+    </PharmacologicalActionList>
+  <SourceList>
+   <Source>Am J Clin Nutr 1999 Feb;69(2):231-6</Source>
+  </SourceList>
+  <ConceptList>
+   <Concept PreferredConceptYN="Y">
+    <ConceptUI>M0301244</ConceptUI>
+    <ConceptName>
+     <String>red yeast rice</String>
+    </ConceptName>
+    <RegistryNumber>0</RegistryNumber>
+    <ConceptRelationList>
+     <ConceptRelation RelationName="NRW">
+     <Concept1UI>M0301244</Concept1UI>
+     <Concept2UI>M0444543</Concept2UI>
+     </ConceptRelation>
+    </ConceptRelationList>
+    <TermList>
+     <Term  ConceptPreferredTermYN="Y"  IsPermutedTermYN="N"  LexicalTag="NON"  RecordPreferredTermYN="Y">
+      <TermUI>T331249</TermUI>
+      <String>red yeast rice</String>
+      <ThesaurusIDlist>
+       <ThesaurusID>NLM (1999)</ThesaurusID>
+      </ThesaurusIDlist>
+     </Term>
+     <Term  ConceptPreferredTermYN="N"  IsPermutedTermYN="N"  LexicalTag="NON"  RecordPreferredTermYN="N">
+      <TermUI>T331247</TermUI>
+      <String>Chinese red-yeast-rice dietary supplement</String>
+      <ThesaurusIDlist>
+       <ThesaurusID>NLM (1999)</ThesaurusID>
+      </ThesaurusIDlist>
+     </Term>
+    </TermList>
+   </Concept>
+   <Concept PreferredConceptYN="N">
+    <ConceptUI>M0444543</ConceptUI>
+    <ConceptName>
+     <String>Cholestin</String>
+    </ConceptName>
+    <RegistryNumber>0</RegistryNumber>
+    <ConceptRelationList>
+     <ConceptRelation RelationName="NRW">
+     <Concept1UI>M0301244</Concept1UI>
+     <Concept2UI>M0444543</Concept2UI>
+     </ConceptRelation>
+    </ConceptRelationList>
+    <TermList>
+     <Term  ConceptPreferredTermYN="Y"  IsPermutedTermYN="N"  LexicalTag="TRD"  RecordPreferredTermYN="N">
+      <TermUI>T331248</TermUI>
+      <String>Cholestin</String>
+      <ThesaurusIDlist>
+       <ThesaurusID>NLM (1999)</ThesaurusID>
+      </ThesaurusIDlist>
+     </Term>
+    </TermList>
+   </Concept>
+  </ConceptList>
+ </SupplementalRecord>
+</SupplementalRecordSet>
