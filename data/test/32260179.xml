@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2019//EN" "https://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_190101.dtd">
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="PubMed-not-MEDLINE" Owner="NLM">
+      <PMID Version="1">32260179</PMID>
+      <DateRevised>
+        <Year>2020</Year>
+        <Month>04</Month>
+        <Day>08</Day>
+      </DateRevised>
+      <Article PubModel="Electronic">
+        <Journal>
+          <ISSN IssnType="Print">2072-6694</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>12</Volume>
+            <Issue>4</Issue>
+            <PubDate>
+              <Year>2020</Year>
+              <Month>Apr</Month>
+              <Day>03</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>Cancers</Title>
+          <ISOAbbreviation>Cancers (Basel)</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Statin Use Decreases the Incidence of Hepatocellular Carcinoma: An Updated Meta-Analysis.</ArticleTitle>
+        <ELocationID EIdType="pii" ValidYN="Y">E874</ELocationID>
+        <ELocationID EIdType="doi" ValidYN="Y">10.3390/cancers12040874</ELocationID>
+        <Abstract>
+          <AbstractText>Statins can decrease hepatocellular carcinoma (HCC) occurrence, but the magnitude and the predictors of these effects remain unclear. This meta-analysis provides a pooled estimate of the impact of statin use on HCC occurrence. Pooled effects were calculated using a random-effects model by means of the DerSimonian and Laird test. Primary endpoint was the time-dependent correlation between statin use and HCC incidence expressed as hazard ratio (HR), both crude and adjusted. The crude and adjusted odds ratios (OR) for HCC occurrence between statin users and non-users were analyzed. Twenty-five studies with 1,925,964 patients were included. Crude OR for HCC incidence was 0.59 (95% CI: 0.47-0.74), confirmed in adjusted analysis (OR: 0.74, 95% CI: 0.70-0.78). Adjusted HR was 0.73 (95% CI: 0.69-0.76). This effect was more pronounced in HBV patients (HR: 0.46, 95% CI: 0.36-0.60) and with a cumulative daily dose beyond 365 (HR: 0.27, 95% CI: 0.11-0.67). Lipophilic statins were associated with reduced HCC incidence (HR: 0.49, 95% CI: 0.39-0.62). Atorvastatin determined the greater magnitude of effect (HR: 0.43, 95% CI: 0.28-0.65). This meta-analysis demonstrates the beneficial chemopreventive effect of statins against HCC occurrence. This effect is dose-dependent and more pronounced with lipophilic statins.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Facciorusso</LastName>
+            <ForeName>Antonio</ForeName>
+            <Initials>A</Initials>
+            <AffiliationInfo>
+              <Affiliation>Section of Gastroenterology, Department of Medical Sciences, University of Foggia, 71122 Foggia, Italy.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Abd El Aziz</LastName>
+            <ForeName>Mohamed A</ForeName>
+            <Initials>MA</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Surgery, Mayo Clinic, Rochester, MN 55905, USA.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Singh</LastName>
+            <ForeName>Siddharth</ForeName>
+            <Initials>S</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Gastroenterology, University of California, San Diego, CA 92093, USA.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Pusceddu</LastName>
+            <ForeName>Sara</ForeName>
+            <Initials>S</Initials>
+            <AffiliationInfo>
+              <Affiliation>Fondazione IRCCS-Istituto Nazionale dei Tumori Via G. Venezian 1 IT, 20133 Milan, Italy.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Milione</LastName>
+            <ForeName>Massimo</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Fondazione IRCCS-Istituto Nazionale dei Tumori Via G. Venezian 1 IT, 20133 Milan, Italy.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Giacomelli</LastName>
+            <ForeName>Luca</ForeName>
+            <Initials>L</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Surgical Sciences and Integrated Diagnostics, University of Genoa, 16126 Genoa, Italy.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Polistudium SRL, 20124 Milan, Italy.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Sacco</LastName>
+            <ForeName>Rodolfo</ForeName>
+            <Initials>R</Initials>
+            <Identifier Source="ORCID">0000-0002-9887-7315</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Section of Gastroenterology, Department of Medical Sciences, University of Foggia, 71122 Foggia, Italy.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2020</Year>
+          <Month>04</Month>
+          <Day>03</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Switzerland</Country>
+        <MedlineTA>Cancers (Basel)</MedlineTA>
+        <NlmUniqueID>101526829</NlmUniqueID>
+        <ISSNLinking>2072-6694</ISSNLinking>
+      </MedlineJournalInfo>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">HCC</Keyword>
+        <Keyword MajorTopicYN="N">cancer</Keyword>
+        <Keyword MajorTopicYN="N">cirrhosis</Keyword>
+        <Keyword MajorTopicYN="N">hazard ratio</Keyword>
+        <Keyword MajorTopicYN="N">survival</Keyword>
+      </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="received">
+          <Year>2020</Year>
+          <Month>03</Month>
+          <Day>12</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="revised">
+          <Year>2020</Year>
+          <Month>03</Month>
+          <Day>26</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="accepted">
+          <Year>2020</Year>
+          <Month>04</Month>
+          <Day>01</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2020</Year>
+          <Month>4</Month>
+          <Day>9</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>epublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">32260179</ArticleId>
+        <ArticleId IdType="pii">cancers12040874</ArticleId>
+        <ArticleId IdType="doi">10.3390/cancers12040874</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

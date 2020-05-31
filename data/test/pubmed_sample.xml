@@ -1,0 +1,1537 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2019//EN" "http://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_190101.dtd">
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+      <PMID Version="1">24451147</PMID>
+      <DateCompleted>
+        <Year>2014</Year>
+        <Month>09</Month>
+        <Day>25</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2018</Year>
+        <Month>12</Month>
+        <Day>02</Day>
+      </DateRevised>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISSN IssnType="Electronic">1460-2180</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>35</Volume>
+            <Issue>7</Issue>
+            <PubDate>
+              <Year>2014</Year>
+              <Month>Jul</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Carcinogenesis</Title>
+          <ISOAbbreviation>Carcinogenesis</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Atorvastatin prevents ATP|driven invasiveness via P2X7 and EHBP1 signaling in PTEN-expressing prostate cancer cells.</ArticleTitle>
+        <Pagination>
+          <MedlinePgn>1547-55</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1093/carcin/bgu019</ELocationID>
+        <Abstract>
+          <AbstractText>Epidemiological|studies indicate that statins, cholesterol-lowering drugs, prevent aggressive prostate cancer and other types of cancer. Employing essentially non-prostate cell lines, we previously showed that statins rapidly downregulate nuclear levels of phosphorylated Akt via P2X7, a purinergic receptor recently implicated in invasive growth. Here, we present studies on phosphatase and tensin homolog deleted on chromosome 10 (PTEN)-positive prostatic cells. We document an involvement of EH domain-binding protein 1 (EHBP1), previously associated with aggressive prostate cancer and insulin-stimulated trafficking and cell migration, in P2X7 signaling. We also show that EHBP1 is essential for an anti-invasive effect of atorvastatin. Furthermore, EHBP1 interacted with P-Rex1, a guanine nucleotide exchange factor previously implicated in invasive growth. Mevalonate did not prevent this anti-invasive effect of atorvastatin. These data indicate that atorvastatin modulates invasiveness via P2X7, EHBP1 and P-Rex1. Interestingly, the interaction between EHBP1 and P-Rex1 was not induced by extracellular adenosine triphosphate (ATP), the endogenous P2X7 ligand, and statins counteracted invasiveness stimulated by extracellular ATP. In support of these experimental data, a population-based genetic analysis showed that a loss of function allele in the P2X7 gene (rs3751143) associated with non-aggressive cancer, and the common allele with aggressive cancer. Our data indicate a novel signaling pathway that inhibits invasiveness and that is druggable. Statins may reduce the risk of aggressive prostate cancer via P2X7 and by counteracting invasive effects of extracellular ATP.</AbstractText>
+          <CopyrightInformation>© The Author 2014. Published by Oxford University Press. All rights reserved. For Permissions, please email: journals.permissions@oup.com.</CopyrightInformation>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Ghalali</LastName>
+            <ForeName>Aram</ForeName>
+            <Initials>A</Initials>
+            <Identifier Source="ORCID">http://orcid.org/0000-0001-5534-7202</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Institute of Environment Medicine and Department of Medical Epidemiology and Biostatistics, Karolinska Institutet, Stockholm SE-171 77, Sweden.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Wiklund</LastName>
+            <ForeName>Fredrik</ForeName>
+            <Initials>F</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Medical Epidemiology and Biostatistics, Karolinska Institutet, Stockholm SE-171 77, Sweden.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Zheng</LastName>
+            <ForeName>Huiyuan</ForeName>
+            <Initials>H</Initials>
+            <AffiliationInfo>
+              <Affiliation>Institute of Environment Medicine and Department of Medical Epidemiology and Biostatistics, Karolinska Institutet, Stockholm SE-171 77, Sweden.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Stenius</LastName>
+            <ForeName>Ulla</ForeName>
+            <Initials>U</Initials>
+            <AffiliationInfo>
+              <Affiliation>Institute of Environment Medicine and Department of Medical Epidemiology and Biostatistics, Karolinska Institutet, Stockholm SE-171 77, Sweden.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Högberg</LastName>
+            <ForeName>Johan</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>Institute of Environment Medicine and Department of Medical Epidemiology and Biostatistics, Karolinska Institutet, Stockholm SE-171 77, Sweden johan.hogberg@ki.se.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2014</Year>
+          <Month>01</Month>
+          <Day>22</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>England</Country>
+        <MedlineTA>Carcinogenesis</MedlineTA>
+        <NlmUniqueID>8008055</NlmUniqueID>
+        <ISSNLinking>0143-3334</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D002352">Carrier|Proteins</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="C485118">EHBP1 protein, human</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D006538">Heptanoic Acids</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D019161">Hydroxymethylglutaryl-CoA Reductase Inhibitors</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D011758">Pyrroles</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D034741">RNA, Small Interfering</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D058486">Receptors, Purinergic P2X7</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>8L70Q75FXE</RegistryNumber>
+          <NameOfSubstance UI="D000255">Adenosine Triphosphate</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>A0JWA85V8F</RegistryNumber>
+          <NameOfSubstance UI="D000069059">Atorvastatin</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>EC 2.7.11.1</RegistryNumber>
+          <NameOfSubstance UI="D051057">Proto-Oncogene Proteins c-akt</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>EC 3.1.3.67</RegistryNumber>
+          <NameOfSubstance UI="D051059">PTEN Phosphohydrolase</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>EC 3.1.3.67</RegistryNumber>
+          <NameOfSubstance UI="C494929">PTEN protein, human</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000255" MajorTopicYN="N">Adenosine Triphosphate</DescriptorName>
+          <QualifierName UI="Q000009" MajorTopicYN="Y">adverse effects</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000069059" MajorTopicYN="N">Atorvastatin</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015153" MajorTopicYN="N">Blotting, Western</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002352" MajorTopicYN="N">Carrier Proteins</DescriptorName>
+          <QualifierName UI="Q000037" MajorTopicYN="N">antagonists &amp; inhibitors</QualifierName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="Y">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002465" MajorTopicYN="N">Cell Movement</DescriptorName>
+          <QualifierName UI="Q000187" MajorTopicYN="N">drug effects</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002467" MajorTopicYN="N">Cell Nucleus</DescriptorName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D049109" MajorTopicYN="N">Cell Proliferation</DescriptorName>
+          <QualifierName UI="Q000187" MajorTopicYN="N">drug effects</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006538" MajorTopicYN="N">Heptanoic Acids</DescriptorName>
+          <QualifierName UI="Q000494" MajorTopicYN="Y">pharmacology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D019161" MajorTopicYN="N">Hydroxymethylglutaryl-CoA Reductase Inhibitors</DescriptorName>
+          <QualifierName UI="Q000494" MajorTopicYN="Y">pharmacology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D007124" MajorTopicYN="N">Immunoenzyme Techniques</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009361" MajorTopicYN="N">Neoplasm Invasiveness</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D051059" MajorTopicYN="N">PTEN Phosphohydrolase</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="Y">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D010766" MajorTopicYN="N">Phosphorylation</DescriptorName>
+          <QualifierName UI="Q000187" MajorTopicYN="N">drug effects</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011471" MajorTopicYN="N">Prostatic Neoplasms</DescriptorName>
+          <QualifierName UI="Q000188" MajorTopicYN="Y">drug therapy</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+          <QualifierName UI="Q000473" MajorTopicYN="N">pathology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D051057" MajorTopicYN="N">Proto-Oncogene Proteins c-akt</DescriptorName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011758" MajorTopicYN="N">Pyrroles</DescriptorName>
+          <QualifierName UI="Q000494" MajorTopicYN="Y">pharmacology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D034741" MajorTopicYN="N">RNA, Small Interfering</DescriptorName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D058486" MajorTopicYN="N">Receptors, Purinergic P2X7</DescriptorName>
+          <QualifierName UI="Q000737" MajorTopicYN="N">chemistry</QualifierName>
+          <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+          <QualifierName UI="Q000378" MajorTopicYN="Y">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015398" MajorTopicYN="N">Signal Transduction</DescriptorName>
+          <QualifierName UI="Q000187" MajorTopicYN="N">drug effects</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D014407" MajorTopicYN="N">Tumor Cells, Cultured</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2014</Year>
+          <Month>1</Month>
+          <Day>24</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2014</Year>
+          <Month>1</Month>
+          <Day>24</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2014</Year>
+          <Month>9</Month>
+          <Day>26</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">24451147</ArticleId>
+        <ArticleId IdType="pii">bgu019</ArticleId>
+        <ArticleId IdType="doi">10.1093/carcin/bgu019</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+  <PubmedArticle>
+    <MedlineCitation Status="In-Process" Owner="NLM">
+      <PMID Version="1">31383287</PMID>
+      <DateRevised>
+        <Year>2019</Year>
+        <Month>08</Month>
+        <Day>06</Day>
+      </DateRevised>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISSN IssnType="Electronic">1532-3072</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>59</Volume>
+            <PubDate>
+              <Year>2019</Year>
+              <Month>Aug</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Tissue &amp; cell</Title>
+          <ISOAbbreviation>Tissue Cell</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>A 3D tumor spheroid model for the T98G Glioblastoma cell line phenotypic characterization.</ArticleTitle>
+        <Pagination>
+          <MedlinePgn>39-43</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="pii" ValidYN="Y">S0040-8166(18)30416-6</ELocationID>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1016/j.tice.2019.05.007</ELocationID>
+        <Abstract>
+          <AbstractText>Major Glioblastoma's hallmarks include proliferation, invasion and heterogeneity. Biological 3D tumor spheroid models can serve as intermediate systems between traditional 2D cell culture and complex in vivo models. Tumor spheroids have been shown to more accurately reproduce the spatial organization and microenvironmental factors of in vivo micro-tumors, such as relevant gradients of nutrients and other molecular agents, while they maintain cell-to-cell and cell-to-matrix interactions. In vitro 3D assays are useful to monitor these properties. Here, we test the suitability of the well-known T98 G Glioblastoma cell line in such a 3D assay. The doubling time and death rate parameters of T98 G are estimated, as well as their spheroidal growth-expansion curves with and without the presence of basement membrane substrate. The T98 G invasive profile is characterized by collective morphology and proliferation-associated invasion. We show that the T98 G secondary GB cell line exhibits both invasive and proliferative capabilities in 3D and thus, can serve as control cell line for the 3D in vitro study of primary GB cell cultures.</AbstractText>
+          <CopyrightInformation>Copyright © 2019. Published by Elsevier Ltd.</CopyrightInformation>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Oraiopoulou</LastName>
+            <ForeName>Mariam-Eleni</ForeName>
+            <Initials>ME</Initials>
+            <AffiliationInfo>
+              <Affiliation>School of Medicine, University of Crete, Heraklion, Crete, Greece; Institute of Computer Science, Foundation for Research and Technology-Hellas, Heraklion, Crete, Greece.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Tampakaki</LastName>
+            <ForeName>Maria</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>School of Medicine, University of Crete, Heraklion, Crete, Greece; Institute of Computer Science, Foundation for Research and Technology-Hellas, Heraklion, Crete, Greece.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Tzamali</LastName>
+            <ForeName>Eleftheria</ForeName>
+            <Initials>E</Initials>
+            <AffiliationInfo>
+              <Affiliation>Institute of Computer Science, Foundation for Research and Technology-Hellas, Heraklion, Crete, Greece.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Tamiolakis</LastName>
+            <ForeName>Theodoros</ForeName>
+            <Initials>T</Initials>
+            <AffiliationInfo>
+              <Affiliation>School of Medicine, University of Crete, Heraklion, Crete, Greece; Institute of Computer Science, Foundation for Research and Technology-Hellas, Heraklion, Crete, Greece.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Makatounakis</LastName>
+            <ForeName>Venediktos</ForeName>
+            <Initials>V</Initials>
+            <AffiliationInfo>
+              <Affiliation>Institute of Molecular Biology and Biotechnology, Foundation for Research and Technology-Hellas, Heraklion, Crete, Greece.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Vakis</LastName>
+            <ForeName>Antonios F</ForeName>
+            <Initials>AF</Initials>
+            <AffiliationInfo>
+              <Affiliation>School of Medicine, University of Crete, Heraklion, Crete, Greece; Neurosurgery Clinic, University General Hospital of Heraklion, Heraklion, Greece.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Zacharakis</LastName>
+            <ForeName>Giannis</ForeName>
+            <Initials>G</Initials>
+            <AffiliationInfo>
+              <Affiliation>Institute of Electronic Structure and Laser, Foundation for Research and Technology-Hellas, Heraklion, Crete, Greece.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Sakkalis</LastName>
+            <ForeName>Vangelis</ForeName>
+            <Initials>V</Initials>
+            <AffiliationInfo>
+              <Affiliation>Institute of Computer Science, Foundation for Research and Technology-Hellas, Heraklion, Crete, Greece.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Papamatheakis</LastName>
+            <ForeName>Joseph</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>Institute of Molecular Biology and Biotechnology, Foundation for Research and Technology-Hellas, Heraklion, Crete, Greece; Department of Biology, University of Crete, Heraklion, Crete, Greece. Electronic address: papamath@imbb.forth.gr.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2019</Year>
+          <Month>06</Month>
+          <Day>15</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Scotland</Country>
+        <MedlineTA>Tissue Cell</MedlineTA>
+        <NlmUniqueID>0214745</NlmUniqueID>
+        <ISSNLinking>0040-8166</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">Glioblastoma</Keyword>
+        <Keyword MajorTopicYN="N">Glioblastoma|cell|lines</Keyword>
+        <Keyword MajorTopicYN="N">Invasion</Keyword>
+        <Keyword MajorTopicYN="N">Multicellular spheroids</Keyword>
+        <Keyword MajorTopicYN="N">T98G</Keyword>
+      </KeywordList>
+      <CoiStatement>No competing interests declared.</CoiStatement>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="received">
+          <Year>2018</Year>
+          <Month>11</Month>
+          <Day>21</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="revised">
+          <Year>2019</Year>
+          <Month>05</Month>
+          <Day>23</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="accepted">
+          <Year>2019</Year>
+          <Month>05</Month>
+          <Day>23</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2019</Year>
+          <Month>8</Month>
+          <Day>7</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2019</Year>
+          <Month>8</Month>
+          <Day>7</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2019</Year>
+          <Month>8</Month>
+          <Day>7</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">31383287</ArticleId>
+        <ArticleId IdType="pii">S0040-8166(18)30416-6</ArticleId>
+        <ArticleId IdType="doi">10.1016/j.tice.2019.05.007</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+  <PubmedArticle>
+    <MedlineCitation Status="Publisher" Owner="NLM">
+      <PMID Version="3">31383387</PMID>
+      <DateRevised>
+        <Year>2019</Year>
+        <Month>08</Month>
+        <Day>06</Day>
+      </DateRevised>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISSN IssnType="Electronic">1436-2023</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <PubDate>
+              <Year>2019</Year>
+              <Month>Aug</Month>
+              <Day>02</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>Journal of orthopaedic science : official journal of the Japanese Orthopaedic Association</Title>
+          <ISOAbbreviation>J Orthop Sci</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Prediction models considering psychological factors to identify pain relief in conservative treatment of people with knee osteoarthritis: A multicenter, prospective cohort study.</ArticleTitle>
+        <ELocationID EIdType="pii" ValidYN="Y">S0949-2658(19)30200-3</ELocationID>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1016/j.jos.2019.06.016</ELocationID>
+        <Abstract>
+          <AbstractText Label="BACKGROUND" NlmCategory="BACKGROUND">Pain-related affective and/or cognitive characteristics such as depressive symptoms, pain catastrophizing, and self-efficacy are known to exacerbate pain in people with knee osteoarthritis. However, no studies have investigated whether these psychological factors can interfere with pain relief during conservative treatment. The object of this study was to assess the prediction models considering psychological factors to predict pain relief in people with knee osteoarthritis receiving conservative treatment.</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">Study design was a multicenter, and prospective cohort study. Data were collected in the department of physical therapy in 1 hospital and 7 orthopedic clinics. Eighty-eight people with knee osteoarthritis participated in this study and were followed for 3 months. The numeric rating scale and the Knee Injury and Osteoarthritis Outcome Score scale were used to evaluate pain relief. Potential predictors for pain relief were depressive symptoms, self-efficacy, and pain catastrophizing. The classification and regression trees methodology was used to develop the model for predicting the presence of pain relief at 1 and 3 months after the start of observation. The prediction accuracy was evaluated using the area under the receiver operating characteristic curves (AUCs).</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">The model at 1 month after the start of observation included pain intensity at baseline, positive affect, and disease duration. The AUC of this model was 0.793 (95% confidential interval, 0.687-0.898). The model at 3 months after the start of observation included pain catastrophizing and self-efficacy. The AUC of this model was 0.808 (95% confidential interval, 0.682-0.934).</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">The accuracy of prediction model considering pain-related affective and/or cognitive characteristics is moderate for pain relief in people with knee osteoarthritis receiving conservative treatment.</AbstractText>
+          <CopyrightInformation>Copyright © 2019 The Japanese Orthopaedic Association. Published by Elsevier B.V. All rights reserved.</CopyrightInformation>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Tanaka</LastName>
+            <ForeName>Ryo</ForeName>
+            <Initials>R</Initials>
+            <AffiliationInfo>
+              <Affiliation>Graduate School of Integrated Arts and Sciences, Hiroshima University, Hiroshima, Japan; Department of Rehabilitation, Hiroshima International University, Hiroshima, Japan. Electronic address: ryotana@hiroshima-u.ac.jp.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Hirohama</LastName>
+            <ForeName>Kenta</ForeName>
+            <Initials>K</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Rehabilitation, Sakamidorii Hospital, Hiroshima, Japan.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Kurashige</LastName>
+            <ForeName>Yuki</ForeName>
+            <Initials>Y</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Rehabilitation, Hatano Rehabilitation Orthopaedic Clinic, Hiroshima, Japan.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Mito</LastName>
+            <ForeName>Kenichiro</ForeName>
+            <Initials>K</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Rehabilitation, Okamoto Orthopaedics and Sports Clinic, Hiroshima, Japan.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Miyamoto</LastName>
+            <ForeName>Shintaro</ForeName>
+            <Initials>S</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Rehabilitation, Ota Orthopaedics and Onari Respiratory Clinic, Hiroshima, Japan.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Masuda</LastName>
+            <ForeName>Ryosuke</ForeName>
+            <Initials>R</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Rehabilitation, Hiramatsu Orthopedic Clinic, Hiroshima, Japan.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Morita</LastName>
+            <ForeName>Tetsushi</ForeName>
+            <Initials>T</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Rehabilitation, Asahi Orthopedic Clinic, Hiroshima, Japan.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Yokota</LastName>
+            <ForeName>Shinichi</ForeName>
+            <Initials>S</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Rehabilitation, Yasumoto Clinic, Hiroshima, Japan.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Sato</LastName>
+            <ForeName>Seisuke</ForeName>
+            <Initials>S</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Rehabilitation, Wako Orthopedic and Sports Clinic, Hiroshima, Japan.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2019</Year>
+          <Month>08</Month>
+          <Day>02</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Japan</Country>
+        <MedlineTA>J Orthop Sci</MedlineTA>
+        <NlmUniqueID>9604934</NlmUniqueID>
+        <ISSNLinking>0949-2658</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="received">
+          <Year>2018</Year>
+          <Month>09</Month>
+          <Day>26</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="revised">
+          <Year>2019</Year>
+          <Month>03</Month>
+          <Day>11</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="accepted">
+          <Year>2019</Year>
+          <Month>06</Month>
+          <Day>19</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2019</Year>
+          <Month>8</Month>
+          <Day>7</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2019</Year>
+          <Month>8</Month>
+          <Day>7</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2019</Year>
+          <Month>8</Month>
+          <Day>7</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>aheadofprint</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">31383387</ArticleId>
+        <ArticleId IdType="pii">S0949-2658(19)30200-3</ArticleId>
+        <ArticleId IdType="doi">10.1016/j.jos.2019.06.016</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+      <PMID Version="1">1</PMID>
+      <DateCompleted>
+        <Year>1976</Year>
+        <Month>01</Month>
+        <Day>16</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2019</Year>
+        <Month>02</Month>
+        <Day>08</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0006-2944</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>13</Volume>
+            <Issue>2</Issue>
+            <PubDate>
+              <Year>1975</Year>
+              <Month>Jun</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Biochemical medicine</Title>
+          <ISOAbbreviation>Biochem Med</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Formate assay in body fluids: application in methanol poisoning.\</ArticleTitle>
+        <Pagination>
+          <MedlinePgn>117-26</MedlinePgn>
+        </Pagination>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Makar</LastName>
+            <ForeName>A B</ForeName>
+            <Initials>AB</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>McMartin</LastName>
+            <ForeName>K E</ForeName>
+            <Initials>KE</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Palese</LastName>
+            <ForeName>M</ForeName>
+            <Initials>M</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Tephly</LastName>
+            <ForeName>T R</ForeName>
+            <Initials>TR</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <GrantList CompleteYN="Y">
+          <Grant>
+            <GrantID>MC_UU_12013/5</GrantID>
+            <Agency>MRC</Agency>
+            <Country>United Kingdom</Country>
+          </Grant>
+        </GrantList>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D013487">Research Support, U.S. Gov't, P.H.S.</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>Biochem Med</MedlineTA>
+        <NlmUniqueID>0151424</NlmUniqueID>
+        <ISSNLinking>0006-2944</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D005561">Formates</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>142M471B3J</RegistryNumber>
+          <NameOfSubstance UI="D002245">Carbon Dioxide</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>EC 1.2.-</RegistryNumber>
+          <NameOfSubstance UI="D000445">Aldehyde Oxidoreductases</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>Y4S76JWI15</RegistryNumber>
+          <NameOfSubstance UI="D000432">Methanol</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000445" MajorTopicYN="N">Aldehyde Oxidoreductases</DescriptorName>
+          <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000818" MajorTopicYN="N">Animals</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D001826" MajorTopicYN="N">Body Fluids</DescriptorName>
+          <QualifierName UI="Q000032" MajorTopicYN="Y">analysis</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002245" MajorTopicYN="N">Carbon Dioxide</DescriptorName>
+          <QualifierName UI="Q000097" MajorTopicYN="N">blood</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005561" MajorTopicYN="N">Formates</DescriptorName>
+          <QualifierName UI="Q000097" MajorTopicYN="N">blood</QualifierName>
+          <QualifierName UI="Q000506" MajorTopicYN="Y">poisoning</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000882" MajorTopicYN="N">Haplorhini</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006863" MajorTopicYN="N">Hydrogen-Ion Concentration</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D007700" MajorTopicYN="N">Kinetics</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000432" MajorTopicYN="N">Methanol</DescriptorName>
+          <QualifierName UI="Q000097" MajorTopicYN="N">blood</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008722" MajorTopicYN="N">Methods</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011549" MajorTopicYN="N">Pseudomonas</DescriptorName>
+          <QualifierName UI="Q000201" MajorTopicYN="N">enzymology</QualifierName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>1975</Year>
+          <Month>6</Month>
+          <Day>1</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>1975</Year>
+          <Month>6</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>1975</Year>
+          <Month>6</Month>
+          <Day>1</Day>
+          <Hour>0</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">1</ArticleId>
+        <ArticleId IdType="doi">10.1016/0006-2944(75)90147-7</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+  <PubmedArticle>
+    <MedlineCitation Status="In-Data-Review" Owner="NLM">
+      <PMID Version="1">31687927</PMID>
+      <DateRevised>
+        <Year>2019</Year>
+        <Month>12</Month>
+        <Day>13</Day>
+      </DateRevised>
+      <Article PubModel="Electronic">
+        <Journal>
+          <ISSN IssnType="Electronic">2050-084X</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>8</Volume>
+            <PubDate>
+              <Year>2019</Year>
+              <Month>Nov</Month>
+              <Day>05</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>eLife</Title>
+          <ISOAbbreviation>Elife</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Loss of adaptive capacity in asthmatic patients revealed by biomarker fluctuation dynamics after \rhinovirus challenge.</ArticleTitle>
+        <ELocationID EIdType="doi" ValidYN="Y">10.7554/eLife.47969</ELocationID>
+        <ELocationID EIdType="pii" ValidYN="Y">e47969</ELocationID>
+        <Abstract>
+          <AbstractText>Asthma is a dynamic disease, in which lung mechanical and inflammatory processes interact in a complex manner, often resulting in exaggerated physiological, in particular, inflammatory responses to exogenous triggers. We hypothesize that this may be explained by respiratory disease-related systems instability and loss of adaptability to changing environmental conditions, manifested in highly fluctuating biomarkers and symptoms. Using time series of inflammatory (eosinophils, neutrophils, FeNO), clinical and lung function biomarkers (PEF, FVC,FEV<sub>1</sub>), we estimated this loss of adaptive capacity (AC) during an experimental rhinovirus infection in 24 healthy and asthmatic human volunteers. Loss of AC was estimated by comparing similarities between pre- and post-challenge time series. Unlike healthy participants, the asthmatic's post-viral-challenge state resembled more other rhinovirus-infected asthmatics than their own pre-viral-challenge state (hypergeometric-test: p=0.029). This reveals loss of AC and supports the concept that in asthma, biological processes underlying inflammatory and physiological responses are unstable, contributing to loss of control.</AbstractText>
+          <CopyrightInformation>© 2019, Sinha et al.</CopyrightInformation>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Sinha</LastName>
+            <ForeName>Anirban</ForeName>
+            <Initials>A</Initials>
+            <Identifier Source="ORCID">https://orcid.org/0000-0002-4146-9687</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Department of Respiratory Medicine, Amsterdam UMC, University of Amsterdam, Amsterdam, Netherlands.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Department of Experimental Immunology, Amsterdam UMC, University of Amsterdam, Amsterdam, Netherlands.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Department of Biomedical Engineering and University Children's Hospital, University of Basel, Basel, Switzerland.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Lutter</LastName>
+            <ForeName>René</ForeName>
+            <Initials>R</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Respiratory Medicine, Amsterdam UMC, University of Amsterdam, Amsterdam, Netherlands.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Department of Experimental Immunology, Amsterdam UMC, University of Amsterdam, Amsterdam, Netherlands.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Xu</LastName>
+            <ForeName>Binbin</ForeName>
+            <Initials>B</Initials>
+            <AffiliationInfo>
+              <Affiliation>University of Bordeaux, Inserm, Bordeaux Population Health Research Center, UMR 1219, Bordeaux, France.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Dekker</LastName>
+            <ForeName>Tamara</ForeName>
+            <Initials>T</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Experimental Immunology, Amsterdam UMC, University of Amsterdam, Amsterdam, Netherlands.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Dierdorp</LastName>
+            <ForeName>Barbara</ForeName>
+            <Initials>B</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Experimental Immunology, Amsterdam UMC, University of Amsterdam, Amsterdam, Netherlands.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Sterk</LastName>
+            <ForeName>Peter J</ForeName>
+            <Initials>PJ</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Respiratory Medicine, Amsterdam UMC, University of Amsterdam, Amsterdam, Netherlands.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Frey</LastName>
+            <ForeName>Urs</ForeName>
+            <Initials>U</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Biomedical Engineering and University Children's Hospital, University of Basel, Basel, Switzerland.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Eckert</LastName>
+            <ForeName>Edgar Delgado</ForeName>
+            <Initials>ED</Initials>
+            <Identifier Source="ORCID">https://orcid.org/0000-0001-6415-4971</Identifier>
+            <AffiliationInfo>
+              <Affiliation>Department of Biomedical Engineering and University Children's Hospital, University of Basel, Basel, Switzerland.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <GrantList CompleteYN="Y">
+          <Grant>
+            <GrantID>Respire 2 (MCF-7077-2014)</GrantID>
+            <Agency>European Respiratory Society</Agency>
+            <Country/>
+          </Grant>
+          <Grant>
+            <GrantID>Respire 2 (MCF-7077-2014)</GrantID>
+            <Agency>H2020 Marie Skłodowska-Curie Actions</Agency>
+            <Country/>
+          </Grant>
+          <Grant>
+            <GrantID>MCF-7077-2014</GrantID>
+            <Agency>European Respiratory Society-Maria Sklodowska Curie actions Cofund Respire 2</Agency>
+            <Country/>
+          </Grant>
+        </GrantList>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2019</Year>
+          <Month>11</Month>
+          <Day>05</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>England</Country>
+        <MedlineTA>Elife</MedlineTA>
+        <NlmUniqueID>101579614</NlmUniqueID>
+        <ISSNLinking>2050-084X</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">adaptive capacity</Keyword>
+        <Keyword MajorTopicYN="N">asthma</Keyword>
+        <Keyword MajorTopicYN="N">biomarker fluctuation</Keyword>
+        <Keyword MajorTopicYN="N">homeokinesis</Keyword>
+        <Keyword MajorTopicYN="N">human</Keyword>
+        <Keyword MajorTopicYN="N">human biology</Keyword>
+        <Keyword MajorTopicYN="N">medicine</Keyword>
+        <Keyword MajorTopicYN="N">rhinovirus</Keyword>
+      </KeywordList>
+      <CoiStatement>AS, RL, BX, TD, BD, PS, UF, EE No competing interests declared</CoiStatement>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="received">
+          <Year>2019</Year>
+          <Month>04</Month>
+          <Day>26</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="accepted">
+          <Year>2019</Year>
+          <Month>11</Month>
+          <Day>04</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2019</Year>
+          <Month>11</Month>
+          <Day>7</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2019</Year>
+          <Month>11</Month>
+          <Day>7</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2019</Year>
+          <Month>11</Month>
+          <Day>6</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>epublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">31687927</ArticleId>
+        <ArticleId IdType="doi">10.7554/eLife.47969</ArticleId>
+        <ArticleId IdType="pii">47969</ArticleId>
+        <ArticleId IdType="pmc">PMC6877087</ArticleId>
+      </ArticleIdList>
+      <ReferenceList>
+        <Reference>
+          <Citation>BMJ. 1993 Oct 16;307(6910):982-6</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">8241910</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>BMJ. 1995 May 13;310(6989):1225-9</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">7767192</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Respir Physiol Neurobiol. 2014 Feb 1;192:39-47</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">24334010</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>J Appl Physiol (1985). 2008 Jun;104(6):1844-6</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">18202170</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Circulation. 2000 Jun 13;101(23):E215-20</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">10851218</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Am J Respir Crit Care Med. 2001 Nov 15;164(10 Pt 1):1816-22</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">11734429</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Physiol Meas. 2006 Jan;27(1):13-22</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">16365507</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Rapid Commun Mass Spectrom. 2006;20(1):61-8</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">16312013</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Physiol Meas. 2002 Feb;23(1):R1-38</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">11876246</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Perspect Biol Med. 2010 Summer;53(3):330-40</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">20639603</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Am J Respir Crit Care Med. 2001 Nov 1;164(9):1618-23</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">11719299</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>World J Surg. 2001 Apr;25(4):461-7</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">11344399</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Lancet. 2010 Sep 4;376(9743):826-34</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">20816549</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Am J Respir Crit Care Med. 1999 Oct;160(4):1375-80</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">10508832</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Math Biosci. 2007 Aug;208(2):538-51</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">17300818</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Am J Respir Crit Care Med. 2011 Nov 1;184(9):1007-14</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">21816938</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Eur Respir J. 1993 Mar;6 Suppl 16:53-83</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">24576917</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Proc Natl Acad Sci U S A. 2002 Feb 19;99 Suppl 1:2466-72</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">11875196</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Nat Immunol. 2009 Mar;10(3):281-8</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">19198593</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Thorax. 2018 Feb;73(2):107-115</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">28866644</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Eur Respir J. 2005 Aug;26(2):319-38</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">16055882</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Lancet. 2008 Sep 20;372(9643):1088-99</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">18805337</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>J Appl Physiol (1985). 2001 Sep;91(3):1131-41</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">11509508</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Am J Respir Crit Care Med. 2011 Sep 1;184(5):602-15</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">21885636</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>J Gerontol A Biol Sci Med Sci. 2009 Oct;64(10):1049-57</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">19567825</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Nature. 2005 Dec 1;438(7068):667-70</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">16319891</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Lancet. 1996 May 11;347(9011):1312-4</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">8622511</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>J Appl Physiol (1985). 2014 Apr 15;116(8):980-97</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">24481961</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>J Appl Physiol (1985). 2000 Aug;89(2):749-59</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">10926662</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Bioinformatics. 2015 Nov 15;31(22):3718-20</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">26209431</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Am J Respir Crit Care Med. 2016 Nov 1;194(9):1053-1061</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">27556336</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Respir Res. 2006 Sep 06;7:116</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">16956406</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Allergy. 1993;48(14 Suppl):48-82</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">8342740</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Med Prog Technol. 1993;19(3):115-28</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">8127277</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Am J Physiol. 1983 Oct;245(4):R455-66</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">6624944</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Eur Respir J Suppl. 1993 Mar;16:5-40</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">8499054</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Adv Physiol Educ. 2016 Dec;40(4):480-490</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">27756725</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Am J Respir Crit Care Med. 2007 Jul 15;176(2):121-8</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">17379851</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>J Allergy (Cairo). 2012;2012:157047</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">23118774</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Eur Respir J. 2019 Aug 15;54(2):null</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">31109984</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Bioinformatics. 2004 Jan 22;20(2):289-90</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">14734327</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Philos Trans A Math Phys Eng Sci. 2017 Jun 28;375(2096):</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">28507240</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Physiol Meas. 2018 Aug 31;39(8):084007</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">30088478</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Auton Neurosci. 2017 Dec;208:15-28</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">28918243</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Can J Physiol Pharmacol. 1982 Mar;60(3):217-48</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">7074418</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Nature. 2001 Mar 8;410(6825):277-84</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">11258383</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+      <ReferenceList>
+        <Reference>
+          <Citation>J Appl Physiol (1985). 2011 Jun;110(6):1723-31</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">21292846</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+    </PubmedData>
+  </PubmedArticle>
+  <PubmedArticle>
+    <MedlineCitation Status="In-Process" Owner="NLM">
+      <PMID Version="2">31383287</PMID>
+      <DateRevised>
+        <Year>2019</Year>
+        <Month>08</Month>
+        <Day>06</Day>
+      </DateRevised>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISSN IssnType="Electronic">1532-3072</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>59</Volume>
+            <PubDate>
+              <Year>2019</Year>
+              <Month>Aug</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Tissue &amp; cell</Title>
+          <ISOAbbreviation>Tissue Cell</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>A 3D tumor spheroid model for the T98G Glioblastoma cell line phenotypic characterization.</ArticleTitle>
+        <Pagination>
+          <MedlinePgn>39-43</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="pii" ValidYN="Y">S0040-8166(18)30416-6</ELocationID>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1016/j.tice.2019.05.007</ELocationID>
+        <Abstract>
+          <AbstractText>Major Glioblastoma's hallmarks include proliferation, invasion and heterogeneity. Biological 3D tumor spheroid models can serve as intermediate systems between traditional 2D cell culture and complex in vivo models. Tumor spheroids have been shown to more accurately reproduce the spatial organization and microenvironmental factors of in vivo micro-tumors, such as relevant gradients of nutrients and other molecular agents, while they maintain cell-to-cell and cell-to-matrix interactions. In vitro 3D assays are useful to monitor these properties. Here, we test the suitability of the well-known T98 G Glioblastoma cell line in such a 3D assay. The doubling time and death rate parameters of T98 G are estimated, as well as their spheroidal growth-expansion curves with and without the presence of basement membrane substrate. The T98 G invasive profile is characterized by collective morphology and proliferation-associated invasion. We show that the T98 G secondary GB cell line exhibits both invasive and proliferative capabilities in 3D and thus, can serve as control cell line for the 3D in vitro study of primary GB cell cultures.</AbstractText>
+          <CopyrightInformation>Copyright © 2019. Published by Elsevier Ltd.</CopyrightInformation>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Oraiopoulou</LastName>
+            <ForeName>Mariam-Eleni</ForeName>
+            <Initials>ME</Initials>
+            <AffiliationInfo>
+              <Affiliation>School of Medicine, University of Crete, Heraklion, Crete, Greece; Institute of Computer Science, Foundation for Research and Technology-Hellas, Heraklion, Crete, Greece.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Tampakaki</LastName>
+            <ForeName>Maria</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>School of Medicine, University of Crete, Heraklion, Crete, Greece; Institute of Computer Science, Foundation for Research and Technology-Hellas, Heraklion, Crete, Greece.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Tzamali</LastName>
+            <ForeName>Eleftheria</ForeName>
+            <Initials>E</Initials>
+            <AffiliationInfo>
+              <Affiliation>Institute of Computer Science, Foundation for Research and Technology-Hellas, Heraklion, Crete, Greece.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Tamiolakis</LastName>
+            <ForeName>Theodoros</ForeName>
+            <Initials>T</Initials>
+            <AffiliationInfo>
+              <Affiliation>School of Medicine, University of Crete, Heraklion, Crete, Greece; Institute of Computer Science, Foundation for Research and Technology-Hellas, Heraklion, Crete, Greece.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Makatounakis</LastName>
+            <ForeName>Venediktos</ForeName>
+            <Initials>V</Initials>
+            <AffiliationInfo>
+              <Affiliation>Institute of Molecular Biology and Biotechnology, Foundation for Research and Technology-Hellas, Heraklion, Crete, Greece.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Vakis</LastName>
+            <ForeName>Antonios F</ForeName>
+            <Initials>AF</Initials>
+            <AffiliationInfo>
+              <Affiliation>School of Medicine, University of Crete, Heraklion, Crete, Greece; Neurosurgery Clinic, University General Hospital of Heraklion, Heraklion, Greece.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Zacharakis</LastName>
+            <ForeName>Giannis</ForeName>
+            <Initials>G</Initials>
+            <AffiliationInfo>
+              <Affiliation>Institute of Electronic Structure and Laser, Foundation for Research and Technology-Hellas, Heraklion, Crete, Greece.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Sakkalis</LastName>
+            <ForeName>Vangelis</ForeName>
+            <Initials>V</Initials>
+            <AffiliationInfo>
+              <Affiliation>Institute of Computer Science, Foundation for Research and Technology-Hellas, Heraklion, Crete, Greece.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Papamatheakis</LastName>
+            <ForeName>Joseph</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>Institute of Molecular Biology and Biotechnology, Foundation for Research and Technology-Hellas, Heraklion, Crete, Greece; Department of Biology, University of Crete, Heraklion, Crete, Greece. Electronic address: papamath@imbb.forth.gr.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2019</Year>
+          <Month>06</Month>
+          <Day>15</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Scotland</Country>
+        <MedlineTA>Tissue Cell</MedlineTA>
+        <NlmUniqueID>0214745</NlmUniqueID>
+        <ISSNLinking>0040-8166</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">Glioblastoma</Keyword>
+        <Keyword MajorTopicYN="N">Glioblastoma|cell|lines</Keyword>
+        <Keyword MajorTopicYN="N">Invasion</Keyword>
+        <Keyword MajorTopicYN="N">Multicellular spheroids</Keyword>
+        <Keyword MajorTopicYN="N">T98G</Keyword>
+      </KeywordList>
+      <CoiStatement>No competing interests declared.</CoiStatement>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="received">
+          <Year>2018</Year>
+          <Month>11</Month>
+          <Day>21</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="revised">
+          <Year>2019</Year>
+          <Month>05</Month>
+          <Day>23</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="accepted">
+          <Year>2019</Year>
+          <Month>05</Month>
+          <Day>23</Day>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2019</Year>
+          <Month>8</Month>
+          <Day>7</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2019</Year>
+          <Month>8</Month>
+          <Day>7</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2019</Year>
+          <Month>8</Month>
+          <Day>7</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">31383287</ArticleId>
+        <ArticleId IdType="pii">S0040-8166(18)30416-6</ArticleId>
+        <ArticleId IdType="doi">10.1016/j.tice.2019.05.007</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>
