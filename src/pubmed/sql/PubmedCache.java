@@ -12,7 +12,7 @@ import jam.sql.SQLKeyTable;
 
 /**
  * Maintains an in-memory cache and persistent database table of
- * {@code pubmed records}. Objects may be added to the cache and
+ * {@code pubmed} records. Objects may be added to the cache and
  * the underlying table, but they may not be removed.
  *
  * @param <K> the runtime type of the record keys.

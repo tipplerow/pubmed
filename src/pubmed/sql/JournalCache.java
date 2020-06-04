@@ -8,7 +8,7 @@ import pubmed.medline.MedlineTA;
 
 /**
  * Provides in-memory caching of {@code MedlineJournal} objects and
- * persistent storage in the {@code pubmed.journals} database table.
+ * persistent storage in the {@code journals} database table.
  */
 public final class JournalCache extends PubmedCache<MedlineTA, MedlineJournal> {
     private static JournalCache instance = null;

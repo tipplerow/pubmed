@@ -16,7 +16,7 @@ import pubmed.medline.MedlineTA;
 import pubmed.medline.NlmUniqueID;
 
 /**
- * Maintains the {@code pubmed.journals} table.
+ * Maintains the {@code journals} table.
  */
 public final class JournalTable extends SQLKeyTable<MedlineTA, MedlineJournal> implements PubmedResource {
     private static JournalTable instance = null;
@@ -26,7 +26,7 @@ public final class JournalTable extends SQLKeyTable<MedlineTA, MedlineJournal> i
     }
 
     /**
-     * The name of the {@code pubmed.journals} table.
+     * The name of the {@code journals} table.
      */
     public static final String TABLE_NAME = "journals";
 
