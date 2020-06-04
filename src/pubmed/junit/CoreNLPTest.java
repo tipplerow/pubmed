@@ -22,6 +22,7 @@ public class CoreNLPTest {
                                   "Cancer-related Atorvastatin an statins.",
                                   "Atorvastatin foo bar, the quite quite.",
                                   "Kidney Cancer Carcinoma, and Melanoma",
+                                  "Formate assay in body fluids: application in methanol poisoning.",
                                   "Evaluating properties; fooling banshees (not so much).");
 
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
