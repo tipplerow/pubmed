@@ -24,7 +24,7 @@ public abstract class ArticleJoinTable<K2, V extends ArticleJoinRecord<K2>>
      * Creates a new joining table with the default database manager.
      */
     protected ArticleJoinTable() {
-        super(DbManager.instance());
+        super(DbEnv.activeDb());
     }
 
     /**

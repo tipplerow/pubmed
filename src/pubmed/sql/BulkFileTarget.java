@@ -76,7 +76,7 @@ public interface BulkFileTarget<V extends BulkRecord> extends PubmedResource {
             String.format("DELETE FROM %s WHERE %s = ?",
                           getTableName(), PMID_NAME);
 
-        try (Connection connection = DbManager.instance().openConnection(false)) {
+        try (Connection connection = DbEnv.activeDb().openConnection(false)) {
             PreparedStatement statement =
                 connection.prepareStatement(deleteCommand);
 
@@ -104,7 +104,7 @@ public interface BulkFileTarget<V extends BulkRecord> extends PubmedResource {
 	String queryString =
 	    String.format("SELECT MAX(%s) FROM %s", PMID_NAME, getTableName());
 
-	try (QueryResult queryResult = DbManager.instance().executeQuery(queryString)) {
+	try (QueryResult queryResult = DbEnv.activeDb().executeQuery(queryString)) {
 	    return getSinglePMID(queryResult.getResultSet(), 1);
 	}
     }
@@ -160,7 +160,7 @@ public interface BulkFileTarget<V extends BulkRecord> extends PubmedResource {
         JamLogger.info("Inserting [%d] records into [%s]...",
                        records.size(), getTableName());
 
-        return DbManager.instance().bulkCopy(getTableName(), records);
+        return DbEnv.activeDb().bulkCopy(getTableName(), records);
     }
 
     /**

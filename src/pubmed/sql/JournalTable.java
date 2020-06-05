@@ -22,7 +22,7 @@ public final class JournalTable extends SQLKeyTable<MedlineTA, MedlineJournal> i
     private static JournalTable instance = null;
 
     private JournalTable() {
-        super(DbManager.instance());
+        super(DbEnv.activeDb());
     }
 
     /**
@@ -101,14 +101,14 @@ public final class JournalTable extends SQLKeyTable<MedlineTA, MedlineJournal> i
      * Creates the physical database table (unless it already exists).
      */
     public static synchronized void createTable() {
-        DbManager.instance().createTable(TABLE_NAME, COLUMN_LIST);
+        DbEnv.activeDb().createTable(TABLE_NAME, COLUMN_LIST);
     }
 
     /**
      * Drops the physical database table.
      */
     public static synchronized void dropTable() {
-        DbManager.instance().dropTable(TABLE_NAME);
+        DbEnv.activeDb().dropTable(TABLE_NAME);
     }
 
     /**

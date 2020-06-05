@@ -46,7 +46,7 @@ public final class ChemicalTable extends ArticleTextJoinTable<ChemicalRecord> {
      * Drops the physical database table.
      */
     public static synchronized void dropTable() {
-        DbManager.instance().dropTable(TABLE_NAME);
+        DbEnv.activeDb().dropTable(TABLE_NAME);
     }
 
     @Override public Collection<ChemicalRecord> getBulkRecords(PubmedArticle article) {

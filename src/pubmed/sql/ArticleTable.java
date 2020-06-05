@@ -189,7 +189,7 @@ public final class ArticleTable extends ArticleAttrTable<ArticleRecord> {
      * Drops the physical database table.
      */
     public static synchronized void dropTable() {
-        DbManager.instance().dropTable(TABLE_NAME);
+        DbEnv.activeDb().dropTable(TABLE_NAME);
     }
 
     @Override public ArticleRecord getBulkRecord(PubmedArticle article) {

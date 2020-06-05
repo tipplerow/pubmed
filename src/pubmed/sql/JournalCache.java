@@ -42,6 +42,6 @@ public final class JournalCache extends PubmedCache<MedlineTA, MedlineJournal> {
     }
 
     @Override protected void insert(Collection<MedlineJournal> journals) {
-        DbManager.instance().bulkCopy(JournalTable.TABLE_NAME, journals);
+        DbEnv.activeDb().bulkCopy(JournalTable.TABLE_NAME, journals);
     }
 }

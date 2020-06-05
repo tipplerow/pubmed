@@ -6,9 +6,9 @@ import java.util.List;
 import pubmed.article.PMID;
 import pubmed.article.PubmedArticle;
 import pubmed.article.PubmedXmlDocument;
-import pubmed.sql.DbManager;
 import pubmed.sql.ChemicalRecord;
 import pubmed.sql.ChemicalTable;
+import pubmed.sql.DbEnv;
 
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -32,7 +32,7 @@ public class ChemicalTableTest {
     private static final PMID pmid5 = article5.getPMID();
 
     static {
-        DbManager.useTest();
+        DbEnv.TEST.use();
     }
 
     @Test public void testInsertAdd() {

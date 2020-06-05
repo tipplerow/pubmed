@@ -46,8 +46,7 @@ public final class TitleTable extends ArticleTextAttrTable<TitleRecord> {
      * Drops the physical database table.
      */
     public static synchronized void dropTable() {
-
-        DbManager.instance().dropTable(TABLE_NAME);
+        DbEnv.activeDb().dropTable(TABLE_NAME);
     }
 
     @Override public TitleRecord getBulkRecord(PubmedArticle article) {

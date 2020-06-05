@@ -6,7 +6,7 @@ import java.util.List;
 import pubmed.article.PMID;
 import pubmed.article.PubmedArticle;
 import pubmed.article.PubmedXmlDocument;
-import pubmed.sql.DbManager;
+import pubmed.sql.DbEnv;
 import pubmed.sql.TitleRecord;
 import pubmed.sql.TitleTable;
 
@@ -38,7 +38,7 @@ public class TitleTableTest {
     private static final PMID key5 = record5.getPMID();
 
     static {
-        DbManager.useTest();
+        DbEnv.TEST.use();
     }
 
     @Test public void testInsertAdd() {

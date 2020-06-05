@@ -7,7 +7,7 @@ import pubmed.article.PubmedArticle;
 import pubmed.article.PubmedXmlDocument;
 import pubmed.medline.MedlineJournal;
 import pubmed.medline.MedlineTA;
-import pubmed.sql.DbManager;
+import pubmed.sql.DbEnv;
 import pubmed.sql.JournalCache;
 import pubmed.sql.JournalTable;
 
@@ -33,7 +33,7 @@ public class JournalCache2Test {
     private static final MedlineTA key5 = journal5.getMedlineTA();
 
     static {
-        DbManager.useTest();
+        DbEnv.TEST.use();
     }
 
     @Test public void testInsert() {

@@ -24,7 +24,7 @@ public abstract class ArticleAttrTable<V extends ArticleAttrRecord>
      * Creates a new table with the default database manager.
      */
     protected ArticleAttrTable() {
-        super(DbManager.instance());
+        super(DbEnv.activeDb());
     }
 
     /**

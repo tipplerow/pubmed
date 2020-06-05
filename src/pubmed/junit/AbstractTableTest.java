@@ -8,7 +8,7 @@ import pubmed.article.PubmedArticle;
 import pubmed.article.PubmedXmlDocument;
 import pubmed.sql.AbstractRecord;
 import pubmed.sql.AbstractTable;
-import pubmed.sql.DbManager;
+import pubmed.sql.DbEnv;
 
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -38,7 +38,7 @@ public class AbstractTableTest {
     private static final PMID key5 = record5.getPMID();
 
     static {
-        DbManager.useTest();
+        DbEnv.TEST.use();
     }
 
     @Test public void testInsertAdd() {

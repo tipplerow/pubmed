@@ -19,7 +19,7 @@ public final class HeadingTable extends SQLTable implements BulkFileTarget<Headi
     private static HeadingTable instance = null;
 
     private HeadingTable() {
-        super(DbManager.instance());
+        super(DbEnv.activeDb());
     }
 
     /**
@@ -75,7 +75,7 @@ public final class HeadingTable extends SQLTable implements BulkFileTarget<Headi
      * Drops the physical database table.
      */
     public static synchronized void dropTable() {
-        DbManager.instance().dropTable(TABLE_NAME);
+        DbEnv.activeDb().dropTable(TABLE_NAME);
     }
 
     @Override public Collection<HeadingRecord> bulkRecords(Collection<PubmedArticle> articles) {
