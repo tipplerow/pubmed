@@ -10,10 +10,10 @@ import pubmed.article.PubmedArticle;
 import pubmed.mesh.MeshTreeNumber;
 
 /**
- * Represents a row in the {@code mesh_tree_numbers} table.
+ * Represents a row in the {@code article_tree_numbers} table.
  */
-public final class MeshTreeNumberRecord extends ArticleTextJoinRecord {
-    private MeshTreeNumberRecord(PMID pmid, String number) {
+public final class ArticleTreeNumberRecord extends ArticleTextJoinRecord {
+    private ArticleTreeNumberRecord(PMID pmid, String number) {
         super(pmid, number);
     }
 
@@ -24,11 +24,11 @@ public final class MeshTreeNumberRecord extends ArticleTextJoinRecord {
      *
      * @param number the string representation of the tree number.
      *
-     * @return the {@code mesh_tree_numbers} record with the specified
+     * @return the {@code article_tree_numbers} record with the specified
      * fields.
      */
-    public static MeshTreeNumberRecord create(PMID pmid, String number) {
-        return new MeshTreeNumberRecord(pmid, number);
+    public static ArticleTreeNumberRecord create(PMID pmid, String number) {
+        return new ArticleTreeNumberRecord(pmid, number);
     }
 
     /**
@@ -39,11 +39,11 @@ public final class MeshTreeNumberRecord extends ArticleTextJoinRecord {
      * @param number a {@code MeSH} tree number corresponding to a
      * descriptor or qualifier contained in the article.
      *
-     * @return the {@code mesh_tree_numbers} record with the specified
+     * @return the {@code article_tree_numbers} record with the specified
      * fields.
      */
-    public static MeshTreeNumberRecord create(PMID pmid, MeshTreeNumber number) {
-        return new MeshTreeNumberRecord(pmid, number.getKey());
+    public static ArticleTreeNumberRecord create(PMID pmid, MeshTreeNumber number) {
+        return new ArticleTreeNumberRecord(pmid, number.getKey());
     }
 
     /**
@@ -51,10 +51,10 @@ public final class MeshTreeNumberRecord extends ArticleTextJoinRecord {
      *
      * @param article the article to index.
      *
-     * @return a list of {@code mesh_tree_numbers} records for the
+     * @return a list of {@code article_tree_numbers} records for the
      * specified article.
      */
-    public static List<MeshTreeNumberRecord> list(PubmedArticle article) {
+    public static List<ArticleTreeNumberRecord> list(PubmedArticle article) {
         return ListUtil.apply(article.getTreeNumbers(), number -> create(article.getPMID(), number));
     }
 

@@ -6,14 +6,14 @@ import java.util.List;
 import pubmed.article.PMID;
 import pubmed.article.PubmedArticle;
 import pubmed.article.PubmedXmlDocument;
+import pubmed.sql.ArticleTreeNumberRecord;
+import pubmed.sql.ArticleTreeNumberTable;
 import pubmed.sql.DbEnv;
-import pubmed.sql.MeshTreeNumberRecord;
-import pubmed.sql.MeshTreeNumberTable;
 
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class MeshTreeNumberTableTest {
+public class ArticleTreeNumberTableTest {
     private static final String SAMPLE_XML = "data/test/pubmed_sample.xml";
 
     private static final PubmedXmlDocument document = PubmedXmlDocument.parse(SAMPLE_XML);
@@ -36,8 +36,8 @@ public class MeshTreeNumberTableTest {
     }
 
     @Test public void testInsertAdd() {
-        MeshTreeNumberTable.dropTable();
-        MeshTreeNumberTable table = MeshTreeNumberTable.instance();
+        ArticleTreeNumberTable.dropTable();
+        ArticleTreeNumberTable table = ArticleTreeNumberTable.instance();
 
         table.insertArticles(List.of(article1, article2, article3, article5));
 
@@ -53,6 +53,8 @@ public class MeshTreeNumberTableTest {
         assertFalse(table.containsKey1(pmid4));
         assertFalse(table.containsKey1(pmid5));
 
+        assertEquals(1, table.fetchKey2("B01.050.150.900.649.313.988.400.112.400.400").size());
+
         table.insertArticle(article4);
 
         assertEquals(52, table.fetchKey1(pmid1).size());
@@ -60,8 +62,6 @@ public class MeshTreeNumberTableTest {
         assertEquals(0, table.fetchKey1(pmid3).size());
         assertEquals(16, table.fetchKey1(pmid4).size());
         assertEquals(0, table.fetchKey1(pmid5).size());
-
-        assertEquals(1, table.fetchKey2("B01.050.150.900.649.313.988.400.112.400.400").size());
 
         assertTrue(table.containsKey1(pmid1));
         assertFalse(table.containsKey1(pmid2));
@@ -73,6 +73,6 @@ public class MeshTreeNumberTableTest {
     }
 
     public static void main(String[] args) {
-        org.junit.runner.JUnitCore.main("pubmed.junit.MeshTreeNumberTableTest");
+        org.junit.runner.JUnitCore.main("pubmed.junit.ArticleTreeNumberTableTest");
     }
 }

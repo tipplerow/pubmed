@@ -9,21 +9,21 @@ import pubmed.article.PMID;
 import pubmed.article.PubmedArticle;
 
 /**
- * Maintains the {@code mesh_tree_numbers} table: a many-to-many
- * mapping between articles and the {@code MeSH} tree numbers of
+ * Maintains the {@code article_tree_numbers} table: a many-to-many
+ * mapping between articles and the {@code MeSH} tree numbers of the
  * descriptors in their {@code MeSH} headings.
  */
-public final class MeshTreeNumberTable extends ArticleTextJoinTable<MeshTreeNumberRecord> {
-    private static MeshTreeNumberTable instance = null;
+public final class ArticleTreeNumberTable extends ArticleTextJoinTable<ArticleTreeNumberRecord> {
+    private static ArticleTreeNumberTable instance = null;
 
-    private MeshTreeNumberTable() {
+    private ArticleTreeNumberTable() {
         super();
     }
 
     /**
      * The name of the {@code chemicals} table.
      */
-    public static final String TABLE_NAME = "mesh_tree_numbers";
+    public static final String TABLE_NAME = "article_tree_numbers";
 
     /**
      * The name of the {@code tree_number} column.
@@ -35,9 +35,9 @@ public final class MeshTreeNumberTable extends ArticleTextJoinTable<MeshTreeNumb
      *
      * @return the single instance.
      */
-    public static synchronized MeshTreeNumberTable instance() {
+    public static synchronized ArticleTreeNumberTable instance() {
         if (instance == null)
-            instance = new MeshTreeNumberTable();
+            instance = new ArticleTreeNumberTable();
 
         instance.require();
         return instance;
@@ -50,19 +50,19 @@ public final class MeshTreeNumberTable extends ArticleTextJoinTable<MeshTreeNumb
         DbEnv.activeDb().dropTable(TABLE_NAME);
     }
 
-    @Override public Collection<MeshTreeNumberRecord> getBulkRecords(PubmedArticle article) {
-        return MeshTreeNumberRecord.list(article);
+    @Override public Collection<ArticleTreeNumberRecord> getBulkRecords(PubmedArticle article) {
+        return ArticleTreeNumberRecord.list(article);
     }
 
     @Override public String getKey2Name() {
         return TREE_NUMBER_NAME;
     }
 
-    @Override public MeshTreeNumberRecord getRecord(ResultSet resultSet) throws SQLException {
+    @Override public ArticleTreeNumberRecord getRecord(ResultSet resultSet) throws SQLException {
         PMID pmid = getPMID(resultSet, PMID_NAME);
         String mkey = getString(resultSet, TREE_NUMBER_NAME);
 
-        return MeshTreeNumberRecord.create(pmid, mkey);
+        return ArticleTreeNumberRecord.create(pmid, mkey);
     }
 
     @Override public String getTableName() {
