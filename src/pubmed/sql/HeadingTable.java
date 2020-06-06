@@ -12,7 +12,7 @@ import pubmed.article.PMID;
 import pubmed.article.PubmedArticle;
 
 /**
- * Maintains the {@code pubmed.headings} table: a many-to-many mapping
+ * Maintains the {@code headings} table: a many-to-many mapping
  * between articles, descriptors, and qualifiers in their heading lists.
  */
 public final class HeadingTable extends SQLTable implements BulkFileTarget<HeadingRecord>, PubmedResource {
@@ -23,7 +23,7 @@ public final class HeadingTable extends SQLTable implements BulkFileTarget<Headi
     }
 
     /**
-     * The name of the {@code pubmed.headings} table.
+     * The name of the {@code headings} table.
      */
     public static final String TABLE_NAME = "headings";
 

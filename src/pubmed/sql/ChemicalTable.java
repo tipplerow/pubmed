@@ -9,7 +9,7 @@ import pubmed.article.PMID;
 import pubmed.article.PubmedArticle;
 
 /**
- * Maintains the {@code pubmed.chemicals} table: a many-to-many mapping
+ * Maintains the {@code chemicals} table: a many-to-many mapping
  * between articles and substances in their chemical lists.
  */
 public final class ChemicalTable extends ArticleTextJoinTable<ChemicalRecord> {
@@ -20,7 +20,7 @@ public final class ChemicalTable extends ArticleTextJoinTable<ChemicalRecord> {
     }
 
     /**
-     * The name of the {@code pubmed.chemicals} table.
+     * The name of the {@code chemicals} table.
      */
     public static final String TABLE_NAME = "chemicals";
 

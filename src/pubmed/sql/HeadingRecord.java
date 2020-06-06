@@ -11,7 +11,7 @@ import pubmed.mesh.MeshHeading;
 import pubmed.mesh.MeshQualifierKey;
 
 /**
- * Represents a row in the {@code pubmed.headings} table.
+ * Represents a row in the {@code headings} table.
  */
 public final class HeadingRecord implements PubmedBulkRecord {
     private final PMID pmid;
@@ -48,8 +48,7 @@ public final class HeadingRecord implements PubmedBulkRecord {
      * @param qualKey the qualifier key in the {@code MeSH} heading
      * (may be {@code null} for headings that lack qualifiers).
      *
-     * @return the {@code pubmed.headings} record with the specified
-     * fields.
+     * @return the {@code headings} record with the specified fields.
      */
     public static HeadingRecord create(PMID pmid, String descKey, String qualKey) {
         return create(pmid, MeshDescriptorKey.instance(descKey), qualifierKey(qualKey));
@@ -66,21 +65,20 @@ public final class HeadingRecord implements PubmedBulkRecord {
      * @param qualKey the qualifier key in the {@code MeSH} heading
      * (may be {@code null} for headings that lack qualifiers).
      *
-     * @return the {@code pubmed.headings} record with the specified
-     * fields.
+     * @return the {@code headings} record with the specified fields.
      */
     public static HeadingRecord create(PMID pmid, MeshDescriptorKey descKey, MeshQualifierKey qualKey) {
         return new HeadingRecord(pmid, descKey, qualKey);
     }
 
     /**
-     * Creates {@code pubmed.headings} records for all headings
-     * contained in an article.
+     * Creates {@code headings} records for all headings contained in
+     * an article.
      *
      * @param article the article to index.
      *
-     * @return a list of {@code pubmed.headings} records for the
-     * specified article.
+     * @return a list of {@code headings} records for the specified
+     * article.
      */
     public static List<HeadingRecord> list(PubmedArticle article) {
         if (!article.hasHeadingList())

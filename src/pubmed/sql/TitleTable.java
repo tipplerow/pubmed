@@ -11,7 +11,7 @@ import pubmed.article.PMID;
 import pubmed.article.PubmedArticle;
 
 /**
- * Maintains the {@code pubmed.titles} table.
+ * Maintains the {@code titles} table.
  */
 public final class TitleTable extends ArticleTextAttrTable<TitleRecord> {
     private static TitleTable instance = null;
@@ -20,7 +20,7 @@ public final class TitleTable extends ArticleTextAttrTable<TitleRecord> {
     }
 
     /**
-     * The name of the {@code pubmed.titles} table.
+     * The name of the {@code titles} table.
      */
     public static final String TABLE_NAME = "titles";
 

@@ -5,7 +5,7 @@ import pubmed.article.PMID;
 import pubmed.article.PubmedArticle;
 
 /**
- * Represents a row in the {@code pubmed.abstracts} table.
+ * Represents a row in the {@code abstracts} table.
  */
 public final class AbstractRecord extends ArticleTextAttrRecord {
     private AbstractRecord(PMID pmid, String abstract_) {
@@ -13,12 +13,11 @@ public final class AbstractRecord extends ArticleTextAttrRecord {
     }
 
     /**
-     * Creates the {@code pubmed.abstracts} record for an article.
+     * Creates the {@code abstracts} record for an article.
      *
      * @param article the article to store.
      *
-     * @return the {@code pubmed.abstracts} record for the specified
-     * article.
+     * @return the {@code abstracts} record for the specified article.
      */
     public static AbstractRecord create(PubmedArticle article) {
         return create(article.getPMID(), article.getAbstract());
@@ -31,8 +30,7 @@ public final class AbstractRecord extends ArticleTextAttrRecord {
      *
      * @param abstract_ the abstract of the article.
      *
-     * @return the {@code pubmed.abstracts} record with the specified
-     * fields.
+     * @return the {@code abstracts} record with the specified fields.
      */
     public static AbstractRecord create(PMID pmid, String abstract_) {
         return new AbstractRecord(pmid, abstract_);

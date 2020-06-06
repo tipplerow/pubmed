@@ -9,7 +9,7 @@ import pubmed.article.PMID;
 import pubmed.article.PubmedArticle;
 
 /**
- * Maintains the {@code pubmed.keywords} table: a many-to-many mapping
+ * Maintains the {@code keywords} table: a many-to-many mapping
  * between articles and keywords.
  */
 public final class KeywordTable extends ArticleTextJoinTable<KeywordRecord> {
@@ -20,7 +20,7 @@ public final class KeywordTable extends ArticleTextJoinTable<KeywordRecord> {
     }
 
     /**
-     * The name of the {@code pubmed.keywords} table.
+     * The name of the {@code keywords} table.
      */
     public static final String TABLE_NAME = "keywords";
 

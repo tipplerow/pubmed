@@ -5,7 +5,7 @@ import pubmed.article.PMID;
 import pubmed.article.PubmedArticle;
 
 /**
- * Represents a row in the {@code pubmed.titles} table.
+ * Represents a row in the {@code titles} table.
  */
 public final class TitleRecord extends ArticleTextAttrRecord {
     private TitleRecord(PMID pmid, String title) {
@@ -13,12 +13,11 @@ public final class TitleRecord extends ArticleTextAttrRecord {
     }
 
     /**
-     * Creates the {@code pubmed.titles} record for an article.
+     * Creates the {@code titles} record for an article.
      *
      * @param article the article to store.
      *
-     * @return the {@code pubmed.titles} record for the specified
-     * article.
+     * @return the {@code titles} record for the specified article.
      */
     public static TitleRecord create(PubmedArticle article) {
         return create(article.getPMID(), article.getTitle());
@@ -31,8 +30,7 @@ public final class TitleRecord extends ArticleTextAttrRecord {
      *
      * @param title the title of the article.
      *
-     * @return the {@code pubmed.titles} record with the specified
-     * fields.
+     * @return the {@code titles} record with the specified fields.
      */
     public static TitleRecord create(PMID pmid, String title) {
         return new TitleRecord(pmid, title);

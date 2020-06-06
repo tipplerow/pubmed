@@ -9,7 +9,7 @@ import pubmed.article.PMID;
 import pubmed.article.PubmedArticle;
 
 /**
- * Represents a row in the {@code pubmed.keywords} table.
+ * Represents a row in the {@code keywords} table.
  */
 public final class KeywordRecord extends ArticleTextJoinRecord {
     private KeywordRecord(PMID pmid, String keyword) {
@@ -23,7 +23,7 @@ public final class KeywordRecord extends ArticleTextJoinRecord {
      *
      * @param keyword a keyword contained in the indexed article.
      *
-     * @return the {@code pubmed.keywords} record with the specified
+     * @return the {@code keywords} record with the specified
      * fields.
      */
     public static KeywordRecord create(PMID pmid, String keyword) {
@@ -31,13 +31,13 @@ public final class KeywordRecord extends ArticleTextJoinRecord {
     }
 
     /**
-     * Creates {@code pubmed.keywords} records for all keywords
-     * contained in an article.
+     * Creates {@code keywords} records for all keywords contained in
+     * an article.
      *
      * @param article the article to index.
      *
-     * @return a list of {@code pubmed.keywords} records for the
-     * specified article.
+     * @return a list of {@code keywords} records for the specified
+     * article.
      */
     public static List<KeywordRecord> list(PubmedArticle article) {
         if (article.hasKeywordList()) {

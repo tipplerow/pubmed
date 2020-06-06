@@ -10,7 +10,7 @@ import pubmed.article.PubmedArticle;
 import pubmed.mesh.MeshRecordKey;
 
 /**
- * Represents a row in the {@code pubmed.chemicals} table.
+ * Represents a row in the {@code chemicals} table.
  */
 public final class ChemicalRecord extends ArticleTextJoinRecord {
     private ChemicalRecord(PMID pmid, String meshKey) {
@@ -25,8 +25,7 @@ public final class ChemicalRecord extends ArticleTextJoinRecord {
      * @param meshKey the record key of a {@code MeSH} chemical
      * substance contained in the article.
      *
-     * @return the {@code pubmed.chemicals} record with the specified
-     * fields.
+     * @return the {@code chemicals} record with the specified fields.
      */
     public static ChemicalRecord create(PMID pmid, String meshKey) {
         return new ChemicalRecord(pmid, meshKey);
@@ -40,21 +39,20 @@ public final class ChemicalRecord extends ArticleTextJoinRecord {
      * @param meshKey the record key of a {@code MeSH} chemical
      * substsance contained in the article.
      *
-     * @return the {@code pubmed.chemicals} record with the specified
-     * fields.
+     * @return the {@code chemicals} record with the specified fields.
      */
     public static ChemicalRecord create(PMID pmid, MeshRecordKey meshKey) {
         return new ChemicalRecord(pmid, meshKey.getKey());
     }
 
     /**
-     * Creates {@code pubmed.chemicals} records for all chemicals
-     * contained in an article.
+     * Creates {@code chemicals} records for all chemicals contained
+     * in an article.
      *
      * @param article the article to index.
      *
-     * @return a list of {@code pubmed.chemicals} records for the
-     * specified article.
+     * @return a list of {@code chemicals} records for the specified
+     * article.
      */
     public static List<ChemicalRecord> list(PubmedArticle article) {
         return ListUtil.apply(article.viewChemicalList(), key -> create(article.getPMID(), key));

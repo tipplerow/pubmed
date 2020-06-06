@@ -163,6 +163,29 @@ public interface PubmedResource {
      *
      * @param resultSet an open result set.
      *
+     * @param columnIndex the index of the column containing the
+     * identifier.
+     *
+     * @return the {@code PMID} stored in the specified column (or
+     * {@code null} if the column entry is SQL {@code NULL}).
+     *
+     * @throws SQLException unless the result set is open and contains
+     * a valid identifier in the specified column.
+     */
+    public default PMID getPMID(ResultSet resultSet, int columnIndex) throws SQLException {
+        int id = resultSet.getInt(columnIndex);
+
+        if (id > 0)
+            return PMID.instance(id);
+        else
+            return null;
+    }
+
+    /**
+     * Extracts a {@code PubMed} identifier from a result set.
+     *
+     * @param resultSet an open result set.
+     *
      * @param columnName the name of the column containing the
      * identifier.
      *
