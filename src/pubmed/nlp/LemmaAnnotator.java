@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.CoreDocument;
 import edu.stanford.nlp.pipeline.CoreSentence;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
@@ -40,7 +41,38 @@ public final class LemmaAnnotator {
     }
 
     /**
-     * Extracts the lemmatized nouns from bare text.
+     * Extracts the lemmatized nouns and adjectives from raw text.
+     *
+     * @param text the text to annotate.
+     *
+     * @return the lemmatized nouns and adjectives in the specified
+     * text.
+     */
+    public static List<String> keywords(String text) {
+        return keywords(annotate(text));
+    }
+
+    /**
+     * Extracts the lemmatized nouns and adjectives from an annotated
+     * document.
+     *
+     * @param document an annotated document.
+     *
+     * @return the lemmatized nouns and adjectives in the specified
+     * document.
+     */
+    public static List<String> keywords(CoreDocument document) {
+        List<String> keywords = new ArrayList<String>();
+
+        for (CoreLabel token : document.tokens())
+            if (Token.isKeyword(token))
+                keywords.add(Token.lemma(token));
+
+        return keywords;
+    }
+
+    /**
+     * Extracts the lemmatized nouns from raw text.
      *
      * @param text the text to annotate.
      *
@@ -60,21 +92,23 @@ public final class LemmaAnnotator {
     public static List<String> nouns(CoreDocument document) {
         List<String> nouns = new ArrayList<String>();
 
-        for (CoreSentence sentence : document.sentences()) {
-            List<String> lemmas = sentence.lemmas();
-            List<String> posTags = sentence.posTags();
-
-            assert lemmas.size() == posTags.size();
-
-            for (int index = 0; index < lemmas.size(); ++index)
-                if (POS.isNoun(posTags.get(index)))
-                    nouns.add(lemmas.get(index).toLowerCase());
-        }
+        for (CoreLabel token : document.tokens())
+            if (Token.isNoun(token))
+                nouns.add(Token.lemma(token));
 
         return nouns;
     }
 
-    public static void main(String[] args) {
-        org.junit.runner.JUnitCore.main("pubmed.junit.CoreNLPTest");
+    /**
+     * Writes to standard output the lemmas and parts of speech
+     * contained in raw text.
+     *
+     * @param text the raw text to annotate.
+     */
+    public static void display(String text) {
+        CoreDocument document = annotate(text);
+
+        for (CoreLabel label : document.tokens())
+            System.out.println(String.format("[%s] (%s)", label.lemma(), label.tag()));
     }
 }
