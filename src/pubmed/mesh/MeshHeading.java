@@ -4,6 +4,7 @@ package pubmed.mesh;
 import java.util.Collection;
 import java.util.List;
 
+import jam.app.JamLogger;
 import jam.util.FixedList;
 
 /**
@@ -13,6 +14,11 @@ import jam.util.FixedList;
 public final class MeshHeading {
     private final MeshDescriptorKey descriptorKey;
     private final List<MeshQualifierKey> qualifierKeys;
+
+    static {
+        JamLogger.info("MeshHeading: Loading MeSH descriptors...");
+        MeshDescriptor.load();
+    }
 
     private MeshHeading(MeshDescriptorKey descriptorKey, List<MeshQualifierKey> qualifierKeys) {
         this.descriptorKey = descriptorKey;

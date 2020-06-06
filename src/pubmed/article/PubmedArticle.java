@@ -21,6 +21,7 @@ import pubmed.mesh.MeshDescriptorKey;
 import pubmed.mesh.MeshHeading;
 import pubmed.mesh.MeshQualifierKey;
 import pubmed.mesh.MeshRecordKey;
+import pubmed.mesh.MeshTreeNumber;
 
 /**
  * Represents one article from the {@code PubMed} database.
@@ -398,6 +399,23 @@ public final class PubmedArticle {
      */
     public PubmedDate getPubDate() {
         return pubDate;
+    }
+
+    /**
+     * Returns the {@code MeSH} tree numbers for the descriptors
+     * contained in the heading list for this article.
+     *
+     * @return the {@code MeSH} tree numbers for all descriptors
+     * contained in the heading list for this article.
+     */
+    public Set<MeshTreeNumber> getTreeNumbers() {
+        Set<MeshTreeNumber> numbers =
+            new TreeSet<MeshTreeNumber>();
+
+	for (MeshHeading heading : headingList)
+            numbers.addAll(heading.getNumberList());
+
+        return numbers;
     }
 
     /**
