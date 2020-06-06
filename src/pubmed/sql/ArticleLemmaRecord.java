@@ -2,6 +2,8 @@
 package pubmed.sql;
 
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import jam.util.ListUtil;
 
@@ -42,7 +44,13 @@ public final class ArticleLemmaRecord extends ArticleTextJoinRecord {
      * @return a list of records for each noun in the text.
      */
     public static List<ArticleLemmaRecord> nouns(PMID pmid, String text) {
-        return ListUtil.apply(LemmaAnnotator.nouns(text), lemma -> create(pmid, lemma));
+        //
+        // Must eliminate duplicates...
+        //
+        List<String> lemmaList = LemmaAnnotator.nouns(text);
+        Set<String>  lemmaSet  = new TreeSet<String>(lemmaList);
+
+        return ListUtil.apply(lemmaSet, lemma -> create(pmid, lemma));
     }
 
     /**
