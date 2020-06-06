@@ -4,8 +4,6 @@ package pubmed.filter;
 import java.util.Collection;
 import java.util.List;
 
-import jam.app.JamLogger;
-
 import pubmed.article.PubmedArticle;
 import pubmed.mesh.MeshDescriptor;
 import pubmed.mesh.MeshHeading;
@@ -21,11 +19,6 @@ public final class MeshTreeFilter extends ArticleFilter {
 
     private MeshTreeFilter(Collection<MeshTreeNumber> targets) {
         this.targets = targets;
-    }
-
-    static {
-        JamLogger.info("MeshTreeFilter: Loading MeSH descriptors...");
-        MeshDescriptor.load();
     }
 
     /**
