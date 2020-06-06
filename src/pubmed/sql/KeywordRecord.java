@@ -1,12 +1,14 @@
 
 package pubmed.sql;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jam.util.ListUtil;
 
 import pubmed.article.PMID;
 import pubmed.article.PubmedArticle;
+import pubmed.nlp.LemmaAnnotator;
 
 /**
  * Represents a row in the {@code keywords} table.
@@ -40,16 +42,21 @@ public final class KeywordRecord extends ArticleTextJoinRecord {
      * article.
      */
     public static List<KeywordRecord> list(PubmedArticle article) {
-        if (article.hasKeywordList()) {
-            //
-            // An occasional article has duplicate keywords...
-            //
-            List<String> keywords = ListUtil.unique(article.viewKeywordList());
-            return ListUtil.apply(keywords, keyword -> create(article.getPMID(), keyword.toLowerCase()));
-        }
-        else {
+        if (!article.hasKeywordList())
             return List.of();
+
+        // An occasional article has duplicate keywords...
+        List<String> keywords = ListUtil.unique(article.viewKeywordList());
+
+        List<KeywordRecord> records =
+            new ArrayList<KeywordRecord>(keywords.size());
+
+        for (String keyword : keywords) {
+            String canonical = String.join(" ", LemmaAnnotator.keywords(keyword));
+            records.add(create(article.getPMID(), canonical));
         }
+
+        return records;
     }
 
     /**

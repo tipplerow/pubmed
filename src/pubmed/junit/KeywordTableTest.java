@@ -40,11 +40,15 @@ public class KeywordTableTest {
 
         table.insertArticles(List.of(article1, article2, article3, article4));
 
-        assertTrue(table.containsKey1(pmid2));
         assertFalse(table.containsKey1(pmid1));
+        assertTrue(table.containsKey1(pmid2));
         assertFalse(table.containsKey1(pmid3));
         assertFalse(table.containsKey1(pmid4));
         assertFalse(table.containsKey1(pmid5));
+
+        // Assure "lemmatization"...
+        assertTrue(table.containsKey2("glioblastoma cell line"));
+        assertTrue(table.containsKey2("multicellular spheroid"));
 
         assertEquals(0, table.fetchKey1(pmid1).size());
         assertEquals(5, table.fetchKey1(pmid2).size());
@@ -54,11 +58,11 @@ public class KeywordTableTest {
 
         table.insertArticle(article5);
 
-        assertTrue(table.containsKey1(pmid2));
-        assertTrue(table.containsKey1(pmid5));
         assertFalse(table.containsKey1(pmid1));
+        assertTrue(table.containsKey1(pmid2));
         assertFalse(table.containsKey1(pmid3));
         assertFalse(table.containsKey1(pmid4));
+        assertTrue(table.containsKey1(pmid5));
 
         assertEquals(0, table.fetchKey1(pmid1).size());
         assertEquals(5, table.fetchKey1(pmid2).size());
