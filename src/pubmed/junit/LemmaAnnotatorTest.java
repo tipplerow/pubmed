@@ -23,6 +23,21 @@ public class LemmaAnnotatorTest {
         assertEquals(List.of(keywords), LemmaAnnotator.keywords(text));
     }
 
+    @Test public void testLemmatize() {
+        assertEquals("lens have interesting property",
+                     LemmaAnnotator.lemmatize("Lenses have interesting properties."));
+
+        assertEquals("lens have interesting property",
+                     LemmaAnnotator.lemmatize("A lens has an interesting property."));
+
+        assertEquals("p53 kras apc be important oncogene",
+                     LemmaAnnotator.lemmatize("P53, KRAS, and APC are important oncogenes."));
+
+        assertEquals("mtor signaling orchestrate stress induce mutagenesis facilitate adaptive evolution cancer",
+                     LemmaAnnotator.lemmatize("MTOR signaling orchestrates stress-induced mutagenesis,"
+                                              + " facilitating adaptive evolution in cancer."));
+    }
+
     @Test public void testNouns() {
         assertNouns("Lenses have many interesting properties.", "lens", "property");
         assertNouns("P53, KRAS, and APC are important oncogenes.", "p53", "kras", "apc", "oncogene");

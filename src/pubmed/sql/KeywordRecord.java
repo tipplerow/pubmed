@@ -51,10 +51,8 @@ public final class KeywordRecord extends ArticleTextJoinRecord {
         List<KeywordRecord> records =
             new ArrayList<KeywordRecord>(keywords.size());
 
-        for (String keyword : keywords) {
-            String canonical = String.join(" ", LemmaAnnotator.keywords(keyword));
-            records.add(create(article.getPMID(), canonical));
-        }
+        for (String keyword : keywords)
+            records.add(create(article.getPMID(), LemmaAnnotator.lemmatize(keyword)));
 
         return records;
     }

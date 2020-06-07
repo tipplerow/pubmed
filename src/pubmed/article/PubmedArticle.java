@@ -3,6 +3,7 @@ package pubmed.article;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -22,6 +23,7 @@ import pubmed.mesh.MeshHeading;
 import pubmed.mesh.MeshQualifierKey;
 import pubmed.mesh.MeshRecordKey;
 import pubmed.mesh.MeshTreeNumber;
+import pubmed.nlp.LemmaAnnotator;
 
 /**
  * Represents one article from the {@code PubMed} database.
@@ -45,6 +47,11 @@ public final class PubmedArticle {
     private final List<CommentCorrection> commCorrList;
 
     private final ArticleType articleType;
+
+    // Lemmatized title, abstract, and keywords...
+    private String titleContent = null;
+    private String abstractContent = null;
+    private List<String> keywordLemmas = null;
 
     private PubmedArticle(PMID pmid,
                           int version,
@@ -591,6 +598,20 @@ public final class PubmedArticle {
      */
     public List<MeshHeading> viewHeadingList() {
         return headingList;
+    }
+
+    /**
+     * Returns the <em>lemmatized</em> key words associated with this
+     * article.
+     *
+     * @return the <em>lemmatized</em> key words associated with this
+     * article.
+     */
+    public List<String> viewKeywordLemmas() {
+        if (keywordLemmas == null)
+            keywordLemmas = Collections.unmodifiableList(LemmaAnnotator.lemmatize(keywordList));
+
+        return keywordLemmas;
     }
 
     /**

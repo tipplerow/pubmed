@@ -2,8 +2,11 @@
 package pubmed.nlp;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
+
+import jam.util.ListUtil;
 
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.CoreDocument;
@@ -69,6 +72,52 @@ public final class LemmaAnnotator {
                 keywords.add(Token.lemma(token));
 
         return keywords;
+    }
+
+    /**
+     * Retains only lemmatized nouns, verbs and adjectives from raw
+     * text and returns them in the proper order in a new string.
+     *
+     * @param text the raw text to lemmatize.
+     *
+     * @return a new string containing only the nouns, verbs, and
+     * adjectives from the raw text (with order maintained).
+     */
+    public static String lemmatize(String text) {
+        return lemmatize(annotate(text));
+    }
+
+    /**
+     * Retains only lemmatized nouns, verbs and adjectives from
+     * raw text strings and returns them in the proper order in
+     * new strings.
+     *
+     * @param strings the raw text to lemmatize.
+     *
+     * @return a list of lemmatized text for each input string.
+     */
+    public static List<String> lemmatize(Collection<String> strings) {
+        return ListUtil.apply(strings, s -> lemmatize(s));
+    }
+
+    /**
+     * Retains only lemmatized nouns, verbs and adjectives from an
+     * annotated document and returns them in the proper order in a
+     * new string.
+     *
+     * @param document the annotated document to lemmatize.
+     *
+     * @return a new string containing only the nouns, verbs, and
+     * adjectives from the annotated document (with order maintained).
+     */
+    public static String lemmatize(CoreDocument document) {
+        List<String> words = new ArrayList<String>();
+
+        for (CoreLabel token : document.tokens())
+            if (Token.isContentWord(token))
+                words.add(Token.lemma(token));
+
+        return String.join(" ", words);
     }
 
     /**

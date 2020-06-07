@@ -20,6 +20,19 @@ public final class Token {
     }
 
     /**
+     * Determines whether a text tokent represents a <em>content
+     * word</em>: a noun, verb, or adjective.
+     *
+     * @param token a text token.
+     *
+     * @return {@code true} iff the text token represents a noun,
+     * verb, or adjective.
+     */
+    public static boolean isContentWord(CoreLabel token) {
+        return isNoun(token) || isVerb(token) || isAdjective(token);
+    }
+
+    /**
      * Determines whether a text token represents a keyword (a noun or
      * adjective.
      *
@@ -56,6 +69,11 @@ public final class Token {
 
     /**
      * Extracts the lemma from a token in <em>lower</em> case.
+     *
+     * @param token a text token.
+     *
+     * @return the lemma contained in the token, converted to lower
+     * case.
      */
     public static String lemma(CoreLabel token) {
         return token.lemma().toLowerCase();

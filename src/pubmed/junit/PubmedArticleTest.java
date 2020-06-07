@@ -5,14 +5,6 @@ import java.util.List;
 
 import jam.util.ListUtil;
 
-import pubmed.medline.ISSN;
-import pubmed.medline.MedlineJournal;
-import pubmed.medline.MedlineTA;
-import pubmed.medline.NlmUniqueID;
-import pubmed.mesh.MeshDescriptorKey;
-import pubmed.mesh.MeshHeading;
-import pubmed.mesh.MeshQualifierKey;
-import pubmed.mesh.MeshRecordKey;
 import pubmed.article.ArticleType;
 import pubmed.article.DOI;
 import pubmed.article.ORCID;
@@ -22,6 +14,14 @@ import pubmed.article.PubmedAuthor;
 import pubmed.article.PubmedDate;
 import pubmed.article.PubmedRegistry;
 import pubmed.article.PubmedXmlDocument;
+import pubmed.medline.ISSN;
+import pubmed.medline.MedlineJournal;
+import pubmed.medline.MedlineTA;
+import pubmed.medline.NlmUniqueID;
+import pubmed.mesh.MeshDescriptorKey;
+import pubmed.mesh.MeshHeading;
+import pubmed.mesh.MeshQualifierKey;
+import pubmed.mesh.MeshRecordKey;
 
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -143,12 +143,24 @@ public class PubmedArticleTest {
             assertEquals(qualifierKeys[index], heading.viewQualifierKeys().get(index).getKey());
     }
 
+    @Test public void testKeywordLemmas() {
+        assertEquals(List.of(), articles.get(0).viewKeywordLemmas());
+        assertEquals(List.of(), articles.get(2).viewKeywordLemmas());
+
+        assertEquals(List.of("glioblastoma",
+                             "glioblastoma cell line",
+                             "invasion",
+                             "multicellular spheroid",
+                             "t98g"),
+                     articles.get(1).viewKeywordLemmas());
+    }
+
     @Test public void testKeywordList() {
         assertEquals(List.of(), articles.get(0).viewKeywordList());
         assertEquals(List.of(), articles.get(2).viewKeywordList());
 
         assertEquals(List.of("Glioblastoma",
-                             "Glioblastoma|cell|lines",
+                             "Glioblastoma cell lines",
                              "Invasion",
                              "Multicellular spheroids",
                              "T98G"),
