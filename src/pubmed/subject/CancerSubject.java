@@ -10,18 +10,20 @@ import pubmed.mesh.MeshRecordType;
 /**
  * Defines <em>cancer</em> as a subject covered in articles.
  */
-public final class CancerSubject implements Subject {
+public final class CancerSubject extends Subject {
     private CancerSubject() {
+        super(KEY);
     }
 
     /**
      * The single {@code CancerSubject} instance.
      */
     public static CancerSubject INSTANCE = new CancerSubject();
-        
-    @Override public String getName() {
-        return "Cancer";
-    }
+
+    /**
+     * The cancer key string.
+     */
+    public static String KEY = "cancer";
 
     @Override public List<String> getKeywords() {
         return List.of("adenocarcinoma",
