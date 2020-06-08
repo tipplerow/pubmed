@@ -24,6 +24,17 @@ public class LemmaListTest {
         assertFalse(list1.equals(list4));
     }
 
+    @Test public void testHashCode() {
+        LemmaList list1 = LemmaList.create("abc", "def", "ghi");
+        LemmaList list2 = LemmaList.create("abc", "def", "ghi");
+        LemmaList list3 = LemmaList.create("abc", "def");
+        LemmaList list4 = LemmaList.create("abc", "def", "ghi", "jkl");
+
+        assertTrue(list1.hashCode() == list2.hashCode());
+        assertTrue(list1.hashCode() != list3.hashCode());
+        assertTrue(list1.hashCode() != list4.hashCode());
+    }
+
     @Test public void testContentWords() {
         assertEquals(LemmaList.create("lens", "have", "interesting",  "property"),
                      LemmaList.contentWords("Lenses have interesting properties."));

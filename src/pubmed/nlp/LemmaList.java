@@ -8,12 +8,14 @@ import java.util.List;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.CoreDocument;
 
+import jam.util.ListUtil;
 import jam.util.TargetList;
 
 /**
  * Represents an immutable sequence of lemmas extracted from text.
  */
 public final class LemmaList extends AbstractList<String> {
+    private int hashCode = 0;
     private final TargetList<String> lemmas;
 
     private LemmaList(List<String> lemmas) {
@@ -37,6 +39,19 @@ public final class LemmaList extends AbstractList<String> {
      */
     public static LemmaList contentWords(String text) {
         return contentWords(LemmaAnnotator.annotate(text));
+    }
+
+    /**
+     * Creates new lemma lists by annotating raw text and retaining
+     * only the <em>content words</em> (nouns, verbs, and adjectives).
+     *
+     * @param strings the raw text to lemmatize.
+     *
+     * @return new lemma lists containing the lemmatized content words
+     * in the specified strings.
+     */
+    public static List<LemmaList> contentWords(List<String> strings) {
+        return ListUtil.apply(strings, text -> contentWords(text));
     }
 
     /**
@@ -122,6 +137,13 @@ public final class LemmaList extends AbstractList<String> {
 
     @Override public String get(int index) {
         return lemmas.get(index);
+    }
+
+    @Override public int hashCode() {
+        if (hashCode == 0)
+            hashCode = lemmas.hashCode();
+
+        return hashCode;
     }
 
     @Override public int size() {
