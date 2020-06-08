@@ -3,6 +3,7 @@ package pubmed.nlp;
 
 import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import edu.stanford.nlp.ling.CoreLabel;
@@ -50,7 +51,7 @@ public final class LemmaList extends AbstractList<String> {
      * @return new lemma lists containing the lemmatized content words
      * in the specified strings.
      */
-    public static List<LemmaList> contentWords(List<String> strings) {
+    public static List<LemmaList> contentWords(Collection<String> strings) {
         return ListUtil.apply(strings, text -> contentWords(text));
     }
 

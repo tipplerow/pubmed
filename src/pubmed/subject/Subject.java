@@ -86,24 +86,6 @@ public abstract class Subject extends KeyedObject<String> {
     public abstract boolean isChemical();
 
     /**
-     * Returns lemmatized keywords or phrases that may be used to
-     * identify this subject.
-     *
-     * @return lemmatized keywords or phrases that may be used to
-     * identify this subject.
-     */
-    public List<LemmaList> getKeywordLemmas() {
-        if (keywordLemmas == null)
-            keywordLemmas = Collections.unmodifiableList(lemmatizeKeywords());
-
-        return keywordLemmas;
-    }
-
-    private List<LemmaList> lemmatizeKeywords() {
-        return LemmaList.contentWords(getKeywords());
-    }
-
-    /**
      * Returns the (raw) keywords or phrases that may be used to
      * identify this subject.
      *
@@ -120,6 +102,24 @@ public abstract class Subject extends KeyedObject<String> {
         else {
             return List.of(key);
         }
+    }
+
+    /**
+     * Returns lemmatized keywords or phrases that may be used to
+     * identify this subject.
+     *
+     * @return lemmatized keywords or phrases that may be used to
+     * identify this subject.
+     */
+    public List<LemmaList> getKeywordLemmas() {
+        if (keywordLemmas == null)
+            keywordLemmas = Collections.unmodifiableList(lemmatizeKeywords());
+
+        return keywordLemmas;
+    }
+
+    private List<LemmaList> lemmatizeKeywords() {
+        return LemmaList.contentWords(getKeywords());
     }
 
     /**
