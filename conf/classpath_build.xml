@@ -5,5 +5,8 @@
     <fileset dir="${dir.jlib}">
       <!-- Just a placeholder for now... -->
     </fileset>
+    <fileset dir="${env.CORE_NLP_HOME}">
+      <include name="*.jar"/>
+    </fileset>
   </path>
 </project>
