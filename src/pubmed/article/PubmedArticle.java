@@ -24,6 +24,7 @@ import pubmed.mesh.MeshQualifierKey;
 import pubmed.mesh.MeshRecordKey;
 import pubmed.mesh.MeshTreeNumber;
 import pubmed.nlp.LemmaAnnotator;
+import pubmed.nlp.LemmaList;
 
 /**
  * Represents one article from the {@code PubMed} database.
@@ -48,10 +49,8 @@ public final class PubmedArticle {
 
     private final ArticleType articleType;
 
-    // Lemmatized title, abstract, and keywords...
-    private String titleContent = null;
-    private String abstractContent = null;
-    private List<String> keywordLemmas = null;
+    // Lemmatized keywords...
+    private List<LemmaList> keywordLemmas = null;
 
     private PubmedArticle(PMID pmid,
                           int version,
@@ -607,9 +606,9 @@ public final class PubmedArticle {
      * @return the <em>lemmatized</em> key words associated with this
      * article.
      */
-    public List<String> viewKeywordLemmas() {
+    public List<LemmaList> viewKeywordLemmas() {
         if (keywordLemmas == null)
-            keywordLemmas = Collections.unmodifiableList(LemmaAnnotator.lemmatize(keywordList));
+            keywordLemmas = Collections.unmodifiableList(LemmaList.contentWords(keywordList));
 
         return keywordLemmas;
     }
