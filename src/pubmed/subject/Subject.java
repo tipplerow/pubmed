@@ -9,10 +9,12 @@ import java.util.Map;
 import jam.lang.JamException;
 import jam.lang.KeyedObject;
 
-import pubmed.mesh.MeshDB;
-import pubmed.mesh.MeshRecordKey;
-import pubmed.mesh.MeshRecordName;
-import pubmed.mesh.MeshRecordType;
+import pubmed.mesh.MeshDescriptor;
+import pubmed.mesh.MeshRecord;
+import pubmed.mesh.MeshTreeCategory;
+import pubmed.mesh.MeshTreeNumber;
+import pubmed.mesh.MeshTreeNumberList;
+import pubmed.mesh.MeshTreeRecord;
 import pubmed.nlp.LemmaList;
 
 /**
@@ -47,43 +49,31 @@ public abstract class Subject extends KeyedObject<String> {
     /**
      * The <em>cancer</em> subject.
      */
-    public static final Subject CANCER = CancerSubject.INSTANCE;
+    public static final Subject CANCER = MeshSubject.create("D009369");
 
     /**
-     * Returns the {@code MeSH} record key for this subject.
+     * Returns the {@code MeSH} record for this subject.
      *
-     * @return the {@code MeSH} record key for this subject
-     * (or {@code null} if there is no corresponding record).
+     * @return the {@code MeSH} record for this subject (or
+     * {@code null} if there is no corresponding record).
      */
-    public abstract MeshRecordKey getMeshKey();
+    public abstract MeshRecord getMeshRecord();
 
     /**
-     * Returns the {@code MeSH} record name for this subject.
+     * Returns the {@code MeSH} descriptor for this subject (or
+     * {@code null} if there is no corresponding descriptor).
      *
-     * @return the {@code MeSH} record name for this subject.
-     * (or {@code null} if there is no corresponding record).
+     * @return the {@code MeSH} descriptor for this subject (or
+     * {@code null} if there is no corresponding descriptor).
      */
-    public abstract MeshRecordName getMeshName();
+    public MeshDescriptor getDescriptor() {
+        MeshRecord record = getMeshRecord();
 
-    /**
-     * Returns the type of {@code MeSH} record that corresponds to
-     * this subject.
-     *
-     * @return the type of {@code MeSH} record that corresponds to
-     * this subject (or {@code null} if there is no corresponding
-     * record).
-     */
-    public abstract MeshRecordType getMeshType();
-
-    /**
-     * Specifies whether this subject is a chemical substance with
-     * a corresponding {@code MeSH} record that may appear in the
-     * chemical substance list of an article.
-     *
-     * @return {@code true} iff this subject is a chemical substance
-     * with a corresponding {@code MeSH} record.
-     */
-    public abstract boolean isChemical();
+        if (record != null && record.isDescriptor())
+            return (MeshDescriptor) record;
+        else
+            return null;
+    }
 
     /**
      * Returns the (raw) keywords or phrases that may be used to
@@ -93,15 +83,12 @@ public abstract class Subject extends KeyedObject<String> {
      * identify this subject.
      */
     public List<String> getKeywords() {
-        MeshRecordKey meshKey = getMeshKey();
+        MeshRecord record = getMeshRecord();
 
-        if (meshKey != null) {
-            MeshDB.load();
-            return MeshDB.record(meshKey).termStrings();
-        }
-        else {
+        if (record != null)
+            return record.termStrings();
+        else
             return List.of(key);
-        }
     }
 
     /**
@@ -123,32 +110,50 @@ public abstract class Subject extends KeyedObject<String> {
     }
 
     /**
-     * Returns the {@code MeSH} record key for this subject.
+     * Returns the {@code MeSH} tree numbers associated with this
+     * subject.
      *
-     * @return the {@code MeSH} record key for this subject
-     * (an empty string if there is no corresponding record).
+     * @return the {@code MeSH} tree numbers associated with this
+     * subject (an empty list unless this subject has a descriptor
+     * or qualifier record).
      */
-    public String getMeshKeyString() {
-        MeshRecordKey meshKey = getMeshKey();
-        
-        if (meshKey != null)
-            return meshKey.getKey();
+    public MeshTreeNumberList getMeshTreeNumbers() {
+        MeshRecord record = getMeshRecord();
+
+        if (record != null && (record instanceof MeshTreeRecord))
+            return ((MeshTreeRecord) record).getNumberList();
         else
-            return "";
+            return MeshTreeNumberList.EMPTY;
     }
 
     /**
-     * Returns the {@code MeSH} record name for this subject.
+     * Specifies whether this subject is a chemical substance with
+     * a corresponding {@code MeSH} record that may appear in the
+     * chemical substance list of an article.
      *
-     * @return the {@code MeSH} record name for this subject.
-     * (an empty string if there is no corresponding record).
+     * @return {@code true} iff this subject is a chemical substance
+     * with a corresponding {@code MeSH} record.
      */
-    public String getMeshNameString() {
-        MeshRecordName meshName = getMeshName();
+    public boolean isChemical() {
+        MeshTreeNumberList treeNumbers = getMeshTreeNumbers();
 
-        if (meshName != null)
-            return meshName.getName();
-        else
-            return "";
+        for (MeshTreeNumber treeNumber : treeNumbers)
+            if (treeNumber.getCategory().equals(MeshTreeCategory.Chemicals_and_Drugs))
+                return true;
+
+        return false;
+    }
+
+    /**
+     * Specifies whether this subject has a corresponding {@code MeSH}
+     * descriptor record that may appear in the heading list of an
+     * article.
+     *
+     * @return {@code true} iff this subject has a corresponding
+     * {@code MeSH} descriptor record.
+     */
+    public boolean isDescriptor() {
+        MeshRecord record = getMeshRecord();
+        return record != null && record.isDescriptor();
     }
 }

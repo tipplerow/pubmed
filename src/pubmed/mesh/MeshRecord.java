@@ -254,6 +254,36 @@ public abstract class MeshRecord {
     }
 
     /**
+     * Identifies {@code MeSH} descriptor records.
+     *
+     * @return {@code true} iff this is a {@code Mesh} descriptor
+     * record.
+     */
+    public boolean isDescriptor() {
+        return getType().equals(MeshRecordType.DESCRIPTOR);
+    }
+
+    /**
+     * Identifies {@code MeSH} qualifier records.
+     *
+     * @return {@code true} iff this is a {@code Mesh} qualifier
+     * record.
+     */
+    public boolean isQualifier() {
+        return getType().equals(MeshRecordType.QUALIFIER);
+    }
+
+    /**
+     * Identifies {@code MeSH} supplemental records.
+     *
+     * @return {@code true} iff this is a {@code Mesh} supplemental
+     * record.
+     */
+    public boolean isSupplemental() {
+        return getType().equals(MeshRecordType.SUPPLEMENTAL);
+    }
+
+    /**
      * Returns the keywords and phrases associated with this record in
      * a list of {@code MeshTerm} objects.
      *

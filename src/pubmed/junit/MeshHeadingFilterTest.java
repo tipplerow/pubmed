@@ -6,8 +6,11 @@ import java.util.List;
 import pubmed.article.PMID;
 import pubmed.article.PubmedArticle;
 import pubmed.article.PubmedXmlDocument;
+import pubmed.filter.ArticleFilter;
 import pubmed.filter.MeshHeadingFilter;
 import pubmed.mesh.MeshDescriptorKey;
+import pubmed.subject.MeshSubject;
+import pubmed.subject.Subject;
 
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -21,6 +24,18 @@ public class MeshHeadingFilterTest {
 
     private static final PubmedXmlDocument document = PubmedXmlDocument.parse(SAMPLE_XML);
     private static final List<PubmedArticle> articles = document.viewLatest();
+
+    private static final PubmedArticle CRCArticle =
+        PubmedXmlDocument.parse("data/test/31400583.xml").viewLatest().get(0);
+
+    private static final PubmedArticle melanomaArticle =
+        PubmedXmlDocument.parse("data/test/31408116.xml").viewLatest().get(0);
+
+    private static final MeshSubject CRC = MeshSubject.create("D015179");
+    private static final MeshSubject FAP = MeshSubject.create("D011125");
+
+    private static final MeshSubject melanoma = MeshSubject.create("D008545");
+    private static final MeshSubject amelanomicMelanoma = MeshSubject.create("D018328");
 
     @Test public void testFilter() {
         MeshHeadingFilter filter1 = MeshHeadingFilter.create(key1);
@@ -54,6 +69,28 @@ public class MeshHeadingFilterTest {
         assertEquals(0, filter2.score(articles.get(1)));
         assertEquals(0, filter3.score(articles.get(1)));
         assertEquals(0, filter123.score(articles.get(1)));
+    }
+
+    @Test public void testSubjects() {
+        ArticleFilter cancerFilter = MeshHeadingFilter.create(Subject.CANCER);
+
+        ArticleFilter CRCFilter = MeshHeadingFilter.create(CRC);
+        ArticleFilter FAPFilter = MeshHeadingFilter.create(FAP);
+
+        ArticleFilter melanomaFilter = MeshHeadingFilter.create(melanoma);
+        ArticleFilter amelanomicMelanomaFilter = MeshHeadingFilter.create(amelanomicMelanoma);
+
+        assertTrue(CRCFilter.test(CRCArticle));
+        assertFalse(cancerFilter.test(CRCArticle));
+        assertFalse(FAPFilter.test(CRCArticle));
+        assertFalse(melanomaFilter.test(CRCArticle));
+        assertFalse(amelanomicMelanomaFilter.test(CRCArticle));
+
+        assertTrue(melanomaFilter.test(melanomaArticle));
+        assertFalse(cancerFilter.test(melanomaArticle));
+        assertFalse(CRCFilter.test(melanomaArticle));
+        assertFalse(FAPFilter.test(melanomaArticle));
+        assertFalse(amelanomicMelanomaFilter.test(melanomaArticle));
     }
 
     public static void main(String[] args) {

@@ -18,9 +18,9 @@ public abstract class ArticleFilter implements Predicate<PubmedArticle> {
      *
      * @return a no-op filter that passes all articles.
      */
-    public static Predicate<PubmedArticle> all() {
-        return new Predicate<PubmedArticle>() {
-            @Override public boolean test(PubmedArticle article) {
+    public static ArticleFilter all() {
+        return new ArticleFilter() {
+            @Override public boolean testArticle(PubmedArticle article) {
                 return true;
             };
         };
@@ -31,9 +31,9 @@ public abstract class ArticleFilter implements Predicate<PubmedArticle> {
      *
      * @return a filter that fails all articles.
      */
-    public static Predicate<PubmedArticle> none() {
-        return new Predicate<PubmedArticle>() {
-            @Override public boolean test(PubmedArticle article) {
+    public static ArticleFilter none() {
+        return new ArticleFilter() {
+            @Override public boolean testArticle(PubmedArticle article) {
                 return false;
             };
         };

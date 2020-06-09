@@ -5,7 +5,9 @@ import java.util.Collection;
 import java.util.List;
 
 import pubmed.article.PubmedArticle;
+import pubmed.mesh.MeshRecord;
 import pubmed.mesh.MeshRecordKey;
+import pubmed.subject.Subject;
 
 /**
  * Implements a filter that selects articles that contain one or more
@@ -17,6 +19,27 @@ public final class ChemicalListFilter extends ArticleFilter {
 
     private ChemicalListFilter(Collection<MeshRecordKey> targets) {
         this.targets = targets;
+    }
+
+    /**
+     * Creates a filter that selects articles containing a specific
+     * chemical substance in their chemical list.
+     *
+     * @param subject the chemical substance to match.
+     *
+     * @return a filter that selects articles containing the given
+     * substance.
+     */
+    public static ArticleFilter create(Subject subject) {
+        if (!subject.isChemical())
+            return ArticleFilter.none();
+
+        MeshRecord record = subject.getMeshRecord();
+
+        if (record != null)
+            return create(record.getKey());
+        else
+            return ArticleFilter.none();
     }
 
     /**

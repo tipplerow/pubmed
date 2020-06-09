@@ -1,4 +1,4 @@
 /**
- * Operates on the <b>Me</b>dical <b>S</b>ubject <b>H</b>eadings (MeSH) database.
+ * Operates on the Medical Subject Headings (MeSH) database.
  */
 package pubmed.mesh;

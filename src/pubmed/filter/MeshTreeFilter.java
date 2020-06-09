@@ -8,6 +8,7 @@ import pubmed.article.PubmedArticle;
 import pubmed.mesh.MeshDescriptor;
 import pubmed.mesh.MeshHeading;
 import pubmed.mesh.MeshTreeNumber;
+import pubmed.subject.Subject;
 
 /**
  * Matches articles that contain one or more {@code MeSH} headings
@@ -19,6 +20,24 @@ public final class MeshTreeFilter extends ArticleFilter {
 
     private MeshTreeFilter(Collection<MeshTreeNumber> targets) {
         this.targets = targets;
+    }
+
+    /**
+     * Creates a filter that matches a subject with articles that
+     * contain a {@code MeSH} heading whose descriptor has a tree
+     * number equal to or more specific than a tree number for the
+     * subject.
+     *
+     * @param subject the subject to match.
+     *
+     * @return a filter that selects articles matching the given
+     * subject.
+     */
+    public static ArticleFilter create(Subject subject) {
+        if (subject.isDescriptor())
+            return create(subject.getDescriptor().getNumberList());
+        else
+            return ArticleFilter.none();
     }
 
     /**

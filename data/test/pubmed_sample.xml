@@ -395,7 +395,7 @@
       <CitationSubset>IM</CitationSubset>
       <KeywordList Owner="NOTNLM">
         <Keyword MajorTopicYN="N">Glioblastoma</Keyword>
-        <Keyword MajorTopicYN="N">Glioblastoma|cell|lines</Keyword>
+        <Keyword MajorTopicYN="N">Glioblastoma cell lines</Keyword>
         <Keyword MajorTopicYN="N">Invasion</Keyword>
         <Keyword MajorTopicYN="N">Multicellular spheroids</Keyword>
         <Keyword MajorTopicYN="N">T98G</Keyword>
@@ -1480,7 +1480,7 @@
       <CitationSubset>IM</CitationSubset>
       <KeywordList Owner="NOTNLM">
         <Keyword MajorTopicYN="N">Glioblastoma</Keyword>
-        <Keyword MajorTopicYN="N">Glioblastoma|cell|lines</Keyword>
+        <Keyword MajorTopicYN="N">Glioblastoma cell lines</Keyword>
         <Keyword MajorTopicYN="N">Invasion</Keyword>
         <Keyword MajorTopicYN="N">Multicellular spheroids</Keyword>
         <Keyword MajorTopicYN="N">T98G</Keyword>

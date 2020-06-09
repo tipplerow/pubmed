@@ -6,6 +6,7 @@ import java.util.List;
 
 import pubmed.article.PubmedArticle;
 import pubmed.mesh.MeshDescriptorKey;
+import pubmed.subject.Subject;
 
 /**
  * Implements a filter that selects articles that contain one or more
@@ -16,6 +17,22 @@ public final class MeshHeadingFilter extends ArticleFilter {
 
     private MeshHeadingFilter(Collection<MeshDescriptorKey> targets) {
         this.targets = targets;
+    }
+
+    /**
+     * Creates a filter that selects articles containing a subject
+     * descriptor record in their heading list.
+     *
+     * @param subject the subject to match.
+     *
+     * @return a filter that selects articles matching the given
+     * subject.
+     */
+    public static ArticleFilter create(Subject subject) {
+        if (subject.isDescriptor())
+            return create((MeshDescriptorKey) subject.getMeshRecord().getKey());
+        else
+            return ArticleFilter.none();
     }
 
     /**

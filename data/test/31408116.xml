@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2019//EN" "http://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_190101.dtd">
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+      <PMID Version="1">31408116</PMID>
+      <DateCompleted>
+        <Year>2019</Year>
+        <Month>08</Month>
+        <Day>30</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2019</Year>
+        <Month>08</Month>
+        <Day>30</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Electronic">1538-3598</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>322</Volume>
+            <Issue>6</Issue>
+            <PubDate>
+              <Year>2019</Year>
+              <Month>Aug</Month>
+              <Day>13</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>JAMA</Title>
+          <ISOAbbreviation>JAMA</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Detecting Circulating Tumor Cells Through the Skin.</ArticleTitle>
+        <Pagination>
+          <MedlinePgn>495</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1001/jama.2019.11240</ELocationID>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Abbasi</LastName>
+            <ForeName>Jennifer</ForeName>
+            <Initials>J</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016433">News</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>JAMA</MedlineTA>
+        <NlmUniqueID>7501160</NlmUniqueID>
+        <ISSNLinking>0098-7484</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>AIM</CitationSubset>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D003581" MajorTopicYN="N">Cytodiagnosis</DescriptorName>
+          <QualifierName UI="Q000379" MajorTopicYN="N">methods</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008545" MajorTopicYN="N">Melanoma</DescriptorName>
+          <QualifierName UI="Q000175" MajorTopicYN="Y">diagnosis</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009360" MajorTopicYN="Y">Neoplastic Cells, Circulating</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2019</Year>
+          <Month>8</Month>
+          <Day>14</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2019</Year>
+          <Month>8</Month>
+          <Day>14</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2019</Year>
+          <Month>8</Month>
+          <Day>31</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">31408116</ArticleId>
+        <ArticleId IdType="pii">2747645</ArticleId>
+        <ArticleId IdType="doi">10.1001/jama.2019.11240</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>
