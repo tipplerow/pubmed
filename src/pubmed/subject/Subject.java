@@ -15,6 +15,7 @@ import pubmed.mesh.MeshTreeCategory;
 import pubmed.mesh.MeshTreeNumber;
 import pubmed.mesh.MeshTreeNumberList;
 import pubmed.mesh.MeshTreeRecord;
+import pubmed.nlp.LemmaAnnotator;
 import pubmed.nlp.LemmaList;
 
 /**
@@ -22,9 +23,9 @@ import pubmed.nlp.LemmaList;
  * {@code pubmed} articles.
  */
 public abstract class Subject extends KeyedObject<String> {
-    private List<LemmaList> keywordLemmas = null;
-
+    //
     // Registry of all unique subjects indexed by key...
+    //
     private static final Map<String, Subject> subjects = new HashMap<String, Subject>();
 
     /**
@@ -99,14 +100,12 @@ public abstract class Subject extends KeyedObject<String> {
      * identify this subject.
      */
     public List<LemmaList> getKeywordLemmas() {
-        if (keywordLemmas == null)
-            keywordLemmas = Collections.unmodifiableList(lemmatizeKeywords());
+        MeshRecord record = getMeshRecord();
 
-        return keywordLemmas;
-    }
-
-    private List<LemmaList> lemmatizeKeywords() {
-        return LemmaList.contentWords(getKeywords());
+        if (record != null)
+            return record.termLemmas();
+        else
+            return List.of(LemmaAnnotator.contentWords(key));
     }
 
     /**
@@ -135,6 +134,10 @@ public abstract class Subject extends KeyedObject<String> {
      * with a corresponding {@code MeSH} record.
      */
     public boolean isChemical() {
+        return isSupplemental() || (isDescriptor() && hasChemicalTreeNumber());
+    }
+
+    private boolean hasChemicalTreeNumber() {
         MeshTreeNumberList treeNumbers = getMeshTreeNumbers();
 
         for (MeshTreeNumber treeNumber : treeNumbers)
@@ -155,5 +158,31 @@ public abstract class Subject extends KeyedObject<String> {
     public boolean isDescriptor() {
         MeshRecord record = getMeshRecord();
         return record != null && record.isDescriptor();
+    }
+
+    /**
+     * Specifies whether this subject has a corresponding {@code MeSH}
+     * qualifier record that may appear in the heading list of an
+     * article.
+     *
+     * @return {@code true} iff this subject has a corresponding
+     * {@code MeSH} qualifier record.
+     */
+    public boolean isQualifier() {
+        MeshRecord record = getMeshRecord();
+        return record != null && record.isQualifier();
+    }
+
+    /**
+     * Specifies whether this subject has a corresponding {@code MeSH}
+     * supplemental record that may appear in the heading list of an
+     * article.
+     *
+     * @return {@code true} iff this subject has a corresponding
+     * {@code MeSH} supplemental record.
+     */
+    public boolean isSupplemental() {
+        MeshRecord record = getMeshRecord();
+        return record != null && record.isSupplemental();
     }
 }

@@ -22,6 +22,7 @@ import pubmed.mesh.MeshDescriptorKey;
 import pubmed.mesh.MeshHeading;
 import pubmed.mesh.MeshQualifierKey;
 import pubmed.mesh.MeshRecordKey;
+import pubmed.nlp.LemmaList;
 
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -60,27 +61,19 @@ public class PubmedArticleTest {
         assertTrue(actual.endsWith(end));
     }
 
-    @Test public void testAbstractWords() {
-        assertAbstractWords(pmid1,
-                            List.of("Epidemiological|studies", "indicate", "that"),
-                            List.of("extracellular", "ATP"));
+    @Test public void testAbstractLemmas() {
+        String string0 = articles.get(0).getAbstractLemmas().join();
+        String string1 = articles.get(1).getAbstractLemmas().join();
+        String string2 = articles.get(2).getAbstractLemmas().join();
 
-        assertAbstractWords(pmid2,
-                            List.of("Major", "Glioblastoma's", "hallmarks"),
-                            List.of("primary", "GB", "cell", "cultures"));
+        assertTrue(string0.startsWith("epidemiological study indicate statin"));
+        assertTrue(string0.endsWith("p2x7 counteract invasive effect extracellular atp"));
 
-        assertAbstractWords(pmid3,
-                            List.of("Pain-related", "affective", "and/or"),
-                            List.of("receiving", "conservative", "treatment"));
-    }
+        assertTrue(string1.startsWith("major glioblastoma hallmark include"));
+        assertTrue(string1.endsWith("primary gb cell culture"));
 
-    private void assertAbstractWords(PMID pmid, List<String> start, List<String> end) {
-        assertStartEnd(registry.get(pmid).getAbstractWords(), start, end);
-    }
-
-    private void assertStartEnd(List<String> actual, List<String> start, List<String> end) {
-        assertTrue(ListUtil.startsWith(actual, start));
-        assertTrue(ListUtil.endsWith(actual, end));
+        assertTrue(string2.startsWith("pain relate affective cognitive"));
+        assertTrue(string2.endsWith("osteoarthritis receive conservative treatment"));
     }
 
     @Test public void testAuthorList() {
@@ -147,11 +140,11 @@ public class PubmedArticleTest {
         assertEquals(List.of(), articles.get(0).viewKeywordLemmas());
         assertEquals(List.of(), articles.get(2).viewKeywordLemmas());
 
-        assertEquals(List.of("glioblastoma",
-                             "glioblastoma cell line",
-                             "invasion",
-                             "multicellular spheroid",
-                             "t98g"),
+        assertEquals(List.of(LemmaList.create("glioblastoma"),
+                             LemmaList.create("glioblastoma", "cell", "line"),
+                             LemmaList.create("invasion"),
+                             LemmaList.create("multicellular", "spheroid"),
+                             LemmaList.create("t98g")),
                      articles.get(1).viewKeywordLemmas());
     }
 
@@ -244,18 +237,19 @@ public class PubmedArticleTest {
         assertStartEnd(registry.get(pmid).getTitle(), start, end);
     }
 
-    @Test public void testTitleWords() {
-        assertTitleWords(pmid1,
-                         List.of("Atorvastatin", "prevents", "ATP|driven"),
-                         List.of("prostate", "cancer", "cells"));
+    @Test public void testTitleLemmas() {
+        String string0 = articles.get(0).getTitleLemmas().join();
+        String string1 = articles.get(1).getTitleLemmas().join();
+        String string2 = articles.get(2).getTitleLemmas().join();
 
-        assertTitleWords(pmid2,
-                         List.of("A", "3D", "tumor", "spheroid", "model"),
-                         List.of("cell", "line", "phenotypic", "characterization"));
+        assertTrue(string0.startsWith("atorvastatin prevent atp drive"));
+        assertTrue(string0.endsWith("express prostate cancer cell"));
 
-        assertTitleWords(pmid3,
-                         List.of("Prediction", "models", "considering"),
-                         List.of("multicenter", "prospective", "cohort", "study"));
+        assertTrue(string1.startsWith("3d tumor spheroid"));
+        assertTrue(string1.endsWith("line phenotypic characterization"));
+
+        assertTrue(string2.startsWith("prediction model consider"));
+        assertTrue(string2.endsWith("prospective cohort study"));
     }
 
     @Test public void testVersion() {
@@ -264,10 +258,6 @@ public class PubmedArticleTest {
         assertEquals(3, registry.get(pmid3).getVersion());
         assertEquals(1, registry.get(pmid4).getVersion());
         assertEquals(1, registry.get(pmid5).getVersion());
-    }
-
-    private void assertTitleWords(PMID pmid, List<String> start, List<String> end) {
-        assertStartEnd(registry.get(pmid).getTitleWords(), start, end);
     }
 
     public static void main(String[] args) {

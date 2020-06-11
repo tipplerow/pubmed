@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
+import java.util.function.Predicate;
 
 import jam.util.ListUtil;
 
@@ -13,7 +14,7 @@ import edu.stanford.nlp.pipeline.CoreDocument;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 
 /**
- * Extracts lemmas from raw text.
+ * Extracts lemmas from unstructured text.
  */
 public final class LemmaAnnotator {
     private static StanfordCoreNLP pipeline;
@@ -43,120 +44,113 @@ public final class LemmaAnnotator {
     }
 
     /**
-     * Extracts the lemmatized nouns and adjectives from raw text.
+     * Retains only lemmatized content words from unstructured text
+     * and returns them in the proper order in a new list.
      *
-     * @param text the text to annotate.
+     * @param text the unstructured text to lemmatize.
      *
-     * @return the lemmatized nouns and adjectives in the specified
-     * text.
+     * @return a new list containing only the content words from the
+     * unstructured text (with order maintained).
      */
-    public static List<String> keywords(String text) {
-        return keywords(annotate(text));
+    public static LemmaList contentWords(String text) {
+        return contentWords(annotate(text));
     }
 
     /**
-     * Extracts the lemmatized nouns and adjectives from an annotated
-     * document.
+     * Retains only lemmatized content words from unstructured text
+     * and returns them in the proper order in a list of new lists.
      *
-     * @param document an annotated document.
+     * @param strings the unstructured text to lemmatize.
      *
-     * @return the lemmatized nouns and adjectives in the specified
-     * document.
+     * @return a list of lemmatized content lists.
      */
-    public static List<String> keywords(CoreDocument document) {
-        List<String> keywords = new ArrayList<String>();
-
-        for (CoreLabel token : document.tokens())
-            if (Token.isKeyword(token))
-                keywords.add(Token.lemma(token));
-
-        return keywords;
+    public static List<LemmaList> contentWords(Collection<String> strings) {
+        return ListUtil.apply(strings, s -> contentWords(s));
     }
 
     /**
-     * Retains only lemmatized nouns, verbs and adjectives from raw
-     * text and returns them in the proper order in a new string.
-     *
-     * @param text the raw text to lemmatize.
-     *
-     * @return a new string containing only the nouns, verbs, and
-     * adjectives from the raw text (with order maintained).
-     */
-    public static String lemmatize(String text) {
-        return lemmatize(annotate(text));
-    }
-
-    /**
-     * Retains only lemmatized nouns, verbs and adjectives from
-     * raw text strings and returns them in the proper order in
-     * new strings.
-     *
-     * @param strings the raw text to lemmatize.
-     *
-     * @return a list of lemmatized text for each input string.
-     */
-    public static List<String> lemmatize(Collection<String> strings) {
-        return ListUtil.apply(strings, s -> lemmatize(s));
-    }
-
-    /**
-     * Retains only lemmatized nouns, verbs and adjectives from an
-     * annotated document and returns them in the proper order in a
-     * new string.
+     * Retains only lemmatized content words from an annotated
+     * document and returns them in the proper order in a new
+     * list.
      *
      * @param document the annotated document to lemmatize.
      *
-     * @return a new string containing only the nouns, verbs, and
-     * adjectives from the annotated document (with order maintained).
+     * @return a new list containing only the content words from
+     * the annotated document (with order maintained).
      */
-    public static String lemmatize(CoreDocument document) {
-        List<String> words = new ArrayList<String>();
-
-        for (CoreLabel token : document.tokens())
-            if (Token.isContentWord(token))
-                words.add(Token.lemma(token));
-
-        return String.join(" ", words);
-    }
-
-    /**
-     * Extracts the lemmatized nouns from raw text.
-     *
-     * @param text the text to annotate.
-     *
-     * @return the lemmatized nouns in the specified text.
-     */
-    public static List<String> nouns(String text) {
-        return nouns(annotate(text));
-    }
-
-    /**
-     * Extracts the lemmatized nouns from an annotated document.
-     *
-     * @param document an annotated document.
-     *
-     * @return the lemmatized nouns in the specified document.
-     */
-    public static List<String> nouns(CoreDocument document) {
-        List<String> nouns = new ArrayList<String>();
-
-        for (CoreLabel token : document.tokens())
-            if (Token.isNoun(token))
-                nouns.add(Token.lemma(token));
-
-        return nouns;
+    public static LemmaList contentWords(CoreDocument document) {
+        return filter(document, Token::isContentWord);
     }
 
     /**
      * Writes to standard output the lemmas and parts of speech
-     * contained in raw text.
+     * contained in unstructured text.
      *
-     * @param text the raw text to annotate.
+     * @param text the unstructured text to annotate.
      */
     public static void display(String text) {
         CoreDocument document = annotate(text);
 
         for (CoreLabel label : document.tokens())
             System.out.println(String.format("[%s] (%s)", label.lemma(), label.tag()));
+    }
+
+    /**
+     * Retains only desired tokens from an annotated document and
+     * returns them in the proper order in a new list.
+     *
+     * @param document the annotated document to lemmatize.
+     *
+     * @param predicate a predicate to select the desired tokens.
+     *
+     * @return a new list containing only tokens that are selected by
+     * the specified predicate (with order maintained).
+     */
+    public static LemmaList filter(CoreDocument document, Predicate<CoreLabel> predicate) {
+        List<String> words = new ArrayList<String>();
+
+        for (CoreLabel token : document.tokens())
+            if (predicate.test(token))
+                words.add(Token.lemma(token));
+
+        return LemmaList.create(words);
+    }
+
+    /**
+     * Retains only lemmatized nouns from unstructured text and
+     * returns them in the proper order in a new list.
+     *
+     * @param text the unstructured text to lemmatize.
+     *
+     * @return a new list containing only the lemmatized nouns from
+     * the unstructured text (with order maintained).
+     */
+    public static LemmaList nouns(String text) {
+        return nouns(annotate(text));
+    }
+
+    /**
+     * Retains only lemmatized nouns from unstructured text and
+     * returns them in the proper order in a list of new lists.
+     *
+     * @param strings the unstructured text to lemmatize.
+     *
+     * @return a list of lemmatized content lists.
+     */
+    public static List<LemmaList> nouns(Collection<String> strings) {
+        return ListUtil.apply(strings, s -> nouns(s));
+    }
+
+    /**
+     * Retains only lemmatized nouns from an annotated document and
+     * returns them in the proper order in a new list.
+     *
+     * @param document the annotated document to lemmatize.
+     *
+     * @return a new list containing only the lemmatized nouns from
+     * the annotated document (with order maintained).
+     */
+    public static LemmaList nouns(CoreDocument document) {
+        return filter(document, Token::isNoun);
     }
 }

@@ -35,24 +35,8 @@ public class LemmaListTest {
         assertTrue(list1.hashCode() != list4.hashCode());
     }
 
-    @Test public void testContentWords() {
-        assertEquals(LemmaList.create("lens", "have", "interesting",  "property"),
-                     LemmaList.contentWords("Lenses have interesting properties."));
-
-        assertEquals(LemmaList.create("lens", "have", "interesting",  "property"),
-                     LemmaList.contentWords("A lens has an interesting property."));
-
-        assertEquals(LemmaList.create("p53", "kras", "apc", "be", "important", "oncogene"),
-                     LemmaList.contentWords("P53, KRAS, and APC are important oncogenes."));
-
-        assertEquals(LemmaList.create("mtor", "signaling", "orchestrate", "stress", "induce",
-                                      "mutagenesis", "facilitate", "adaptive", "evolution", "cancer"),
-                     LemmaList.contentWords("MTOR signaling orchestrates stress-induced mutagenesis,"
-                                            + " facilitating adaptive evolution in cancer."));
-    }
-
     @Test public void testContainsOne() {
-        LemmaList list = LemmaList.contentWords("This article discusses new treatments for gastric cancers.");
+        LemmaList list = LemmaList.create("article", "discuss", "new", "treatment", "gastric", "cancer");
 
         assertTrue(list.contains("article"));
         assertTrue(list.contains("discuss"));
@@ -66,10 +50,13 @@ public class LemmaListTest {
     }
 
     @Test public void testContainsList() {
-        LemmaList list = LemmaList.contentWords("This article discusses new treatments for gastric cancers.");
+        LemmaList list = LemmaList.create("article", "discuss", "new", "treatment", "gastric", "cancer");
 
-        assertTrue(list.contains(List.of("gastric", "cancer")));
-        assertFalse(list.contains(List.of("cancer", "gastric")));
+        assertTrue(list.containsSequence(List.of("new", "treatment")));
+        assertFalse(list.containsSequence(List.of("treatment", "new")));
+
+        assertTrue(list.containsSequence(List.of("gastric", "cancer")));
+        assertFalse(list.containsSequence(List.of("cancer", "gastric")));
     }
 
     public static void main(String[] args) {

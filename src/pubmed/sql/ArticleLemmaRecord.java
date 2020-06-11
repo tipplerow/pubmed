@@ -33,9 +33,9 @@ public final class ArticleLemmaRecord extends ArticleTextJoinRecord {
     }
 
     /**
-     * Extracts lemmatized nouns from raw text (and article title
-     * or abstract) and associates them with the identifier of the
-     * article where they occur.
+     * Extracts lemmatized nouns from unstructured text (an article
+     * title or abstract) and associates them with the identifier of
+     * the article where they occur.
      *
      * @param pmid the identifier of the article.
      *

@@ -21,28 +21,27 @@ public final class Token {
 
     /**
      * Determines whether a text tokent represents a <em>content
-     * word</em>: a noun, verb, or adjective.
+     * word</em> for the purposes of lemmatizing unstructured text,
+     * keywords, and phrases.
      *
      * @param token a text token.
      *
-     * @return {@code true} iff the text token represents a noun,
-     * verb, or adjective.
+     * @return {@code true} iff the text token represents a content
+     * word.
      */
     public static boolean isContentWord(CoreLabel token) {
-        return isNoun(token) || isVerb(token) || isAdjective(token);
+        return POS.isContent(token.tag());
     }
 
     /**
-     * Determines whether a text token represents a keyword (a noun or
-     * adjective.
+     * Determines whether a text token represents a hyphen.
      *
      * @param token a text token.
      *
-     * @return {@code true} iff the text token represents a keyword (a
-     * noun or adjective).
+     * @return {@code true} iff the text token represents a hyphen.
      */
-    public static boolean isKeyword(CoreLabel token) {
-        return isNoun(token) || isAdjective(token);
+    public static boolean isHyphen(CoreLabel token) {
+        return POS.isHyphen(token.tag());
     }
 
     /**
@@ -54,6 +53,18 @@ public final class Token {
      */
     public static boolean isNoun(CoreLabel token) {
         return POS.isNoun(token.tag());
+    }
+
+    /**
+     * Determines whether a text token represents a cardinal number.
+     *
+     * @param token a text token.
+     *
+     * @return {@code true} iff the text token represents a cardinal
+     * number.
+     */
+    public static boolean isNumber(CoreLabel token) {
+        return POS.isNumber(token.tag());
     }
 
     /**

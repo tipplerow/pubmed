@@ -30,50 +30,9 @@ public final class LemmaList extends AbstractList<String> {
     public static final String DELIM = " ";
 
     /**
-     * Creates a new lemma list by annotating raw text and retaining
-     * only the <em>content words</em> (nouns, verbs, and adjectives).
-     *
-     * @param text the raw text to lemmatize.
-     *
-     * @return a new lemma list containing the lemmatized content
-     * words in the specified text.
+     * A sharable empty list.
      */
-    public static LemmaList contentWords(String text) {
-        return contentWords(LemmaAnnotator.annotate(text));
-    }
-
-    /**
-     * Creates new lemma lists by annotating raw text and retaining
-     * only the <em>content words</em> (nouns, verbs, and adjectives).
-     *
-     * @param strings the raw text to lemmatize.
-     *
-     * @return new lemma lists containing the lemmatized content words
-     * in the specified strings.
-     */
-    public static List<LemmaList> contentWords(Collection<String> strings) {
-        return ListUtil.apply(strings, text -> contentWords(text));
-    }
-
-    /**
-     * Creates a new lemma list by retaining only the <em>content
-     * words</em> (nouns, verbs, and adjectives) from an annotated
-     * document.
-     *
-     * @param document an annotated document.
-     *
-     * @return a new lemma list containing the lemmatized content
-     * words in the specified document.
-     */
-    public static LemmaList contentWords(CoreDocument document) {
-        List<String> lemmas = new ArrayList<String>();
-
-        for (CoreLabel token : document.tokens())
-            if (Token.isContentWord(token))
-                lemmas.add(Token.lemma(token));
-
-        return create(lemmas);
-    }
+    public static final LemmaList EMPTY = create();
 
     /**
      * Creates a new lemma list.
@@ -104,13 +63,42 @@ public final class LemmaList extends AbstractList<String> {
      * <p>This method executes in <em>amortized</em> {@code O(n)} time,
      * where {@code n} is the length of the input list.
      *
-     * @param subList the lemma sequence to search for.
+     * @param sequence the lemma sequence to search for.
      *
      * @return {@code true} iff the specified list is a sublist within
      * this list.
      */
-    public boolean contains(List<String> subList) {
-        return lemmas.contains(subList);
+    public boolean containsSequence(List<String> sequence) {
+        return lemmas.containsSequence(sequence);
+    }
+
+    /**
+     * Counts the number of times a lemma occurs in this list.
+     *
+     * <p>This method executes in <em>amortized constant time</em>.
+     *
+     * @param lemma the lemma to count.
+     *
+     * @return the number of times the specified lemma occurs in this
+     * list.
+     */
+    public int count(String lemma) {
+        return lemmas.count(lemma);
+    }
+
+    /**
+     * Counts the number of times a sequence of lemmas occurs in this
+     * list.
+     *
+     * <p>This method executes in <em>amortized constant time</em>.
+     *
+     * @param sequence the lemma sequence to count.
+     *
+     * @return the number of times the specified lemma sequence occurs
+     * in this list.
+     */
+    public int countSequence(List<String> sequence) {
+        return lemmas.countSequence(sequence);
     }
 
     /**

@@ -12,6 +12,7 @@ import pubmed.mesh.MeshTerm;
 import pubmed.mesh.MeshTermList;
 import pubmed.mesh.MeshTreeNumber;
 import pubmed.mesh.MeshTreeNumberList;
+import pubmed.nlp.LemmaList;
 
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -118,6 +119,13 @@ public class MeshDescriptorTest {
         assertTrue(descriptors.get(0) == MeshDescriptor.instance(key1));
         assertTrue(descriptors.get(1) == MeshDescriptor.instance(key2));
         assertTrue(descriptors.get(2) == MeshDescriptor.instance(key3));
+    }
+
+    @Test public void testTermLemmas() {
+        assertEquals(List.of(LemmaList.create("hematoma")), descriptors.get(4).termLemmas());
+
+        assertEquals(LemmaList.create("nivolumab"), descriptors.get(3).termLemmas().get(0));
+        assertEquals(LemmaList.create("opdivo"), descriptors.get(3).termLemmas().get(1));
     }
 
     @Test public void testTermList() {

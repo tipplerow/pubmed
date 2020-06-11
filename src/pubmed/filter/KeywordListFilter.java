@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import pubmed.article.PubmedArticle;
+import pubmed.nlp.LemmaAnnotator;
 import pubmed.nlp.LemmaList;
 import pubmed.subject.Subject;
 
@@ -54,7 +55,7 @@ public final class KeywordListFilter extends ArticleFilter {
      * @return a new keyword list filter with the specified targets.
      */
     public static KeywordListFilter create(Collection<String> targets) {
-        return new KeywordListFilter(targets, LemmaList.contentWords(targets));
+        return new KeywordListFilter(targets, LemmaAnnotator.contentWords(targets));
     }
 
     @Override public int score(PubmedArticle article) {

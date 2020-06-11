@@ -13,7 +13,6 @@ import java.util.TreeSet;
 
 import jam.lang.JamException;
 import jam.text.TextMatcher;
-import jam.text.TextUtil;
 import jam.util.FixedList;
 import jam.util.ListUtil;
 
@@ -49,7 +48,9 @@ public final class PubmedArticle {
 
     private final ArticleType articleType;
 
-    // Lemmatized keywords...
+    // Lemmatized title, abstract, and keywords...
+    private LemmaList titleLemmas = null;
+    private LemmaList abstractLemmas = null;
     private List<LemmaList> keywordLemmas = null;
 
     private PubmedArticle(PMID pmid,
@@ -316,16 +317,24 @@ public final class PubmedArticle {
     }
 
     /**
-     * Returns the individual words in the title of this article.
+     * Returns the lemmatized content words from the title of this
+     * article.
      *
-     * @return the individual words in the title of this article.
+     * @return the lemmatized content words from the title of this
+     * article.
      */
-    public List<String> getTitleWords() {
-        return split(title);
+    public LemmaList getTitleLemmas() {
+        if (titleLemmas == null)
+            lemmatizeTitle();
+
+        return titleLemmas;
     }
 
-    private static List<String> split(String s) {
-        return TextUtil.splitWords(s);
+    private void lemmatizeTitle() {
+        if (hasTitle())
+            titleLemmas = LemmaAnnotator.contentWords(title);
+        else
+            titleLemmas = LemmaList.EMPTY;
     }
 
     /**
@@ -338,12 +347,24 @@ public final class PubmedArticle {
     }
 
     /**
-     * Returns the individual words in the abstract of this article.
+     * Returns the lemmatized content words from the abstract of this
+     * article.
      *
-     * @return the individual words in the abstract of this article.
+     * @return the lemmatized content words from the abstract of this
+     * article.
      */
-    public List<String> getAbstractWords() {
-        return split(abstract_);
+    public LemmaList getAbstractLemmas() {
+        if (abstractLemmas == null)
+            lemmatizeAbstract();
+
+        return abstractLemmas;
+    }
+
+    private void lemmatizeAbstract() {
+        if (hasAbstract())
+            abstractLemmas = LemmaAnnotator.contentWords(abstract_);
+        else
+            titleLemmas = LemmaList.EMPTY;
     }
 
     /**
@@ -608,7 +629,7 @@ public final class PubmedArticle {
      */
     public List<LemmaList> viewKeywordLemmas() {
         if (keywordLemmas == null)
-            keywordLemmas = Collections.unmodifiableList(LemmaList.contentWords(keywordList));
+            keywordLemmas = Collections.unmodifiableList(LemmaAnnotator.contentWords(keywordList));
 
         return keywordLemmas;
     }

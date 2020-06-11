@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2019//EN" "http://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_190101.dtd">
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+      <PMID Version="1">30073290</PMID>
+      <DateCompleted>
+        <Year>2019</Year>
+        <Month>10</Month>
+        <Day>09</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2019</Year>
+        <Month>12</Month>
+        <Day>10</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Electronic">2168-6157</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>75</Volume>
+            <Issue>11</Issue>
+            <PubDate>
+              <Year>2018</Year>
+              <Month>11</Month>
+              <Day>01</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>JAMA neurology</Title>
+          <ISOAbbreviation>JAMA Neurol</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Safety and Efficacy of Atorvastatin for Chronic Subdural Hematoma in Chinese Patients: A Randomized ClinicalTrial.</ArticleTitle>
+        <Pagination>
+          <MedlinePgn>1338-1346</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1001/jamaneurol.2018.2030</ELocationID>
+        <Abstract>
+          <AbstractText Label="Importance">Chronic subdural hematoma (CSDH) is a trauma-associated condition commonly found in elderly patients. Surgery is currently the treatment of choice, but it carries a significant risk of recurrence and death. Nonsurgical treatments remain limited and ineffective. Our recent studies suggest that atorvastatin reduces hematomas and improves the clinical outcomes of patients with CSDH.</AbstractText>
+          <AbstractText Label="Objective">To investigate the safety and therapeutic efficacy of atorvastatin to nonsurgically treat patients with CSDH.</AbstractText>
+          <AbstractText Label="Design, Setting, and Participants">The Effect of Atorvastatin on Chronic Subdural Hematoma (ATOCH) randomized, placebo-controlled, double-blind phase II clinical trial was conducted in multiple centers in China from February 2014 to November 2015. For this trial, we approached 254 patients with CSDH who received a diagnosis via a computed tomography scan; of these, 200 (78.7%) were enrolled because 23 patients (9.1%) refused to participate and 31 (12.2%) were disqualified.</AbstractText>
+          <AbstractText Label="Interventions">Patients were randomly assigned to receive either 20 mg of atorvastatin or placebo daily for 8 weeks and were followed up for an additional 16 weeks.</AbstractText>
+          <AbstractText Label="Main Outcomes and Measures">The primary outcome was change in hematoma volume (HV) by computed tomography after 8 weeks of treatment. The secondary outcomes included HV measured at the 4th, 12th, and 24th weeks and neurological function that was evaluated using the Markwalder grading scale/Glasgow Coma Scale and the Barthel Index at the 8th week.</AbstractText>
+          <AbstractText Label="Results">One hundred ninety-six patients received treatment (169 men [86.2%]; median [SD] age, 63.6 [14.2] years). The baseline HV and clinical presentations were similar between patients who were taking atorvastatin (98 [50%]) and the placebo (98 [50%]). After 8 weeks, the HV reduction in patients who were taking atorvastatin was 12.55 mL more than those taking the placebo (95% CI, 0.9-23.9 mL; P = .003). Forty-five patients (45.9%) who were taking atorvastatin significantly improved their neurological function, but only 28 (28.6%) who were taking the placebo did, resulting in an adjusted odds ratio of 1.957 for clinical improvements (95% CI, 1.07-3.58; P = .03). Eleven patients (11.2%) who were taking atorvastatin and 23 (23.5%) who were taking the placebo underwent surgery during the trial for an enlarging hematoma and/or a deteriorating clinical condition (hazard ratio, 0.47; 95% CI, 0.24-0.92; P = .03). No significant adverse events were reported.</AbstractText>
+          <AbstractText Label="Conclusions and Relevance">Atorvastatin may be a safe and efficacious nonsurgical alternative for treating patients with CSDH.</AbstractText>
+          <AbstractText Label="Trial Registration">ClinicalTrials.gov Identifier: NCT02024373.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Jiang</LastName>
+            <ForeName>Rongcai</ForeName>
+            <Initials>R</Initials>
+            <AffiliationInfo>
+              <Affiliation>Key Laboratory of Post-Neurotrauma Neurorepair and Regeneration in Central Nervous System, Ministry of Education in China and Tianjin, Tianjin Neurological Institute, Tianjin, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Zhao</LastName>
+            <ForeName>Shiguang</ForeName>
+            <Initials>S</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, First Affiliated Hospital of Harbin Medical University, Harbin, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Wang</LastName>
+            <ForeName>Renzhi</ForeName>
+            <Initials>R</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Peking Union Medical College Hospital, Beijing, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Feng</LastName>
+            <ForeName>Hua</ForeName>
+            <Initials>H</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Southwest Hospital, Chongqing, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Zhang</LastName>
+            <ForeName>Jianmin</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Second Affiliated Hospital, Zhejiang University School of Medicine, Hangzhou, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Li</LastName>
+            <ForeName>Xingang</ForeName>
+            <Initials>X</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Qilu Hospital of Shandong University, Jinan, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Mao</LastName>
+            <ForeName>Ying</ForeName>
+            <Initials>Y</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Huashan Hospital Fudan University, Shanghai, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Yuan</LastName>
+            <ForeName>Xianrui</ForeName>
+            <Initials>X</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Xiangya Hospital of Central South University, Changsha, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Fei</LastName>
+            <ForeName>Zhou</ForeName>
+            <Initials>Z</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Xijing Hospital, Xian, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Zhao</LastName>
+            <ForeName>Yuanli</ForeName>
+            <Initials>Y</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Beijing TianTan Hospital, the Capital Medical University, Beijing, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Yu</LastName>
+            <ForeName>Xinguang</ForeName>
+            <Initials>X</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, General Hospital of Chinese People's Liberation Army, Beijing, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Poon</LastName>
+            <ForeName>Wai Sang</ForeName>
+            <Initials>WS</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Neurosurgery, Department of Surgery, Prince of Wales Hospital, Chinese University of Hong Kong, Shatin, Hong Kong.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Zhu</LastName>
+            <ForeName>Xide</ForeName>
+            <Initials>X</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Linyi People's Hospital, Linyi, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Liu</LastName>
+            <ForeName>Ning</ForeName>
+            <Initials>N</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Jiangsu Provincial Hospital, Nanjing Medical University First Affiliated Hospital, Nanjing, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Kang</LastName>
+            <ForeName>Dezhi</ForeName>
+            <Initials>D</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, First Affiliated Hospital of Fujian Medical University, Fuzhou, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Sun</LastName>
+            <ForeName>Tao</ForeName>
+            <Initials>T</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, General Hospital of Ningxia Medical University, Yinchuan, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Jiao</LastName>
+            <ForeName>Baohua</ForeName>
+            <Initials>B</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Second Affiliated Hospital of Hebei Medical University, Shijiazhuang, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Liu</LastName>
+            <ForeName>Xianzhi</ForeName>
+            <Initials>X</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, First Affiliated Hospital of Zhengzhou University, Zhengzhou, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Yu</LastName>
+            <ForeName>Rutong</ForeName>
+            <Initials>R</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Affiliated Hospital of Xuzhou Medical College, Xuzhou, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Zhang</LastName>
+            <ForeName>Junyi</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Central Hospital of Erdos, Erdos, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Gao</LastName>
+            <ForeName>Guodong</ForeName>
+            <Initials>G</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Xi'an Tangdu Hospital of the fourth Military Medical University, Xian, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Hao</LastName>
+            <ForeName>Jiehe</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, First Affiliated Hospital of Shanxi Medical University, Taiyuan, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Su</LastName>
+            <ForeName>Ning</ForeName>
+            <Initials>N</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Provincial People's Hospital of Inner Mongolia, Huhehot, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Yin</LastName>
+            <ForeName>Gangfeng</ForeName>
+            <Initials>G</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Cangzhou Central Hospital, Cangzhou, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Zhu</LastName>
+            <ForeName>Xingen</ForeName>
+            <Initials>X</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Second Affiliated Hospital of Nanchang University, Nanchang, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Lu</LastName>
+            <ForeName>Yicheng</ForeName>
+            <Initials>Y</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Shanghai Changzheng Hospital, Shanghai, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Wei</LastName>
+            <ForeName>Junji</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Peking Union Medical College Hospital, Beijing, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Hu</LastName>
+            <ForeName>Jin</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Huashan Hospital Fudan University, Shanghai, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Hu</LastName>
+            <ForeName>Rong</ForeName>
+            <Initials>R</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, Southwest Hospital, Chongqing, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Li</LastName>
+            <ForeName>Jianrong</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Neurosurgery, 117th Hospital of Chinese People's Liberation Army, Hangzhou, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Wang</LastName>
+            <ForeName>Dong</ForeName>
+            <Initials>D</Initials>
+            <AffiliationInfo>
+              <Affiliation>Key Laboratory of Post-Neurotrauma Neurorepair and Regeneration in Central Nervous System, Ministry of Education in China and Tianjin, Tianjin Neurological Institute, Tianjin, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Wei</LastName>
+            <ForeName>Huijie</ForeName>
+            <Initials>H</Initials>
+            <AffiliationInfo>
+              <Affiliation>Key Laboratory of Post-Neurotrauma Neurorepair and Regeneration in Central Nervous System, Ministry of Education in China and Tianjin, Tianjin Neurological Institute, Tianjin, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Tian</LastName>
+            <ForeName>Ye</ForeName>
+            <Initials>Y</Initials>
+            <AffiliationInfo>
+              <Affiliation>Key Laboratory of Post-Neurotrauma Neurorepair and Regeneration in Central Nervous System, Ministry of Education in China and Tianjin, Tianjin Neurological Institute, Tianjin, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Lei</LastName>
+            <ForeName>Ping</ForeName>
+            <Initials>P</Initials>
+            <AffiliationInfo>
+              <Affiliation>Laboratory of Neuro-Trauma and Neurodegenerative Disorders, Tianjin Geriatrics Institute, Tianjin Medical University General Hospital, Tianjin, China.</Affiliation>
+            </AffiliationInfo>
+            <AffiliationInfo>
+              <Affiliation>Department of Geriatrics, Tianjin Medical University General Hospital, Tianjin, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Dong</LastName>
+            <ForeName>Jing-Fei</ForeName>
+            <Initials>JF</Initials>
+            <AffiliationInfo>
+              <Affiliation>Bloodworks Research Institute, Division of Hematology, Department of Medicine, University of Washington School of Medicine, Seattle.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Zhang</LastName>
+            <ForeName>Jianning</ForeName>
+            <Initials>J</Initials>
+            <AffiliationInfo>
+              <Affiliation>Key Laboratory of Post-Neurotrauma Neurorepair and Regeneration in Central Nervous System, Ministry of Education in China and Tianjin, Tianjin Neurological Institute, Tianjin, China.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <DataBankList CompleteYN="Y">
+          <DataBank>
+            <DataBankName>ClinicalTrials.gov</DataBankName>
+            <AccessionNumberList>
+              <AccessionNumber>NCT02024373</AccessionNumber>
+            </AccessionNumberList>
+          </DataBank>
+        </DataBankList>
+        <PublicationTypeList>
+          <PublicationType UI="D017427">Clinical Trial, Phase II</PublicationType>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D016448">Multicenter Study</PublicationType>
+          <PublicationType UI="D016449">Randomized Controlled Trial</PublicationType>
+          <PublicationType UI="D052061">Research Support, N.I.H., Extramural</PublicationType>
+          <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>JAMA Neurol</MedlineTA>
+        <NlmUniqueID>101589536</NlmUniqueID>
+        <ISSNLinking>2168-6149</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D019161">Hydroxymethylglutaryl-CoA Reductase Inhibitors</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>A0JWA85V8F</RegistryNumber>
+          <NameOfSubstance UI="D000069059">Atorvastatin</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>AIM</CitationSubset>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000368" MajorTopicYN="N">Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000069059" MajorTopicYN="N">Atorvastatin</DescriptorName>
+          <QualifierName UI="Q000008" MajorTopicYN="N">administration &amp; dosage</QualifierName>
+          <QualifierName UI="Q000009" MajorTopicYN="N">adverse effects</QualifierName>
+          <QualifierName UI="Q000494" MajorTopicYN="Y">pharmacology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002681" MajorTopicYN="N" Type="Geographic">China</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004311" MajorTopicYN="N">Double-Blind Method</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D020200" MajorTopicYN="N">Hematoma, Subdural, Chronic</DescriptorName>
+          <QualifierName UI="Q000188" MajorTopicYN="Y">drug therapy</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D019161" MajorTopicYN="N">Hydroxymethylglutaryl-CoA Reductase Inhibitors</DescriptorName>
+          <QualifierName UI="Q000008" MajorTopicYN="N">administration &amp; dosage</QualifierName>
+          <QualifierName UI="Q000009" MajorTopicYN="N">adverse effects</QualifierName>
+          <QualifierName UI="Q000494" MajorTopicYN="Y">pharmacology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008875" MajorTopicYN="N">Middle Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D017063" MajorTopicYN="Y">Outcome Assessment, Health Care</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2018</Year>
+          <Month>8</Month>
+          <Day>4</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2019</Year>
+          <Month>10</Month>
+          <Day>11</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2018</Year>
+          <Month>8</Month>
+          <Day>4</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">30073290</ArticleId>
+        <ArticleId IdType="pii">2694718</ArticleId>
+        <ArticleId IdType="doi">10.1001/jamaneurol.2018.2030</ArticleId>
+        <ArticleId IdType="pmc">PMC6248109</ArticleId>
+      </ArticleIdList>
+      <ReferenceList>
+        <Reference>
+          <Citation>Clin Pharmacol Ther. 1996 Dec;60(6):687-95</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">8988072</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Trials. 2015 Nov 18;16:528</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">26581842</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Cold Spring Harb Symp Quant Biol. 2002;67:227-37</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">12858545</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>N Engl J Med. 2006 Aug 10;355(6):549-59</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">16899775</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Trials. 2016 May 05;17(1):235</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">27150916</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>JAMA. 1996 Jan 10;275(2):128-33</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">8531308</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>NCHS Data Brief. 2014 Dec;(177):1-8</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">25536410</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Assoc Physicians India. 2015 Aug;63(8):79-80</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">27604441</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Neurol Sci. 2016 Mar 15;362:91-9</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">26944125</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Biomed Pharmacother. 2010 Jan;64(1):29-34</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">19811885</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Neurotrauma. 2010 Aug;27(8):1489-98</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">20486809</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Stroke. 2008 Jan;39(1):220-6</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">18063826</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Neurol Sci. 2014 Jan 15;336(1-2):237-42</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">24269089</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Korean Neurosurg Soc. 2015 Sep;58(3):301-3</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">26539279</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Br J Pharmacol. 2015 Nov;172(21):5188-98</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">26289767</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Neurosurg. 2016 Feb;124(2):546-51</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">26162032</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>No Shinkei Geka. 2011 Dec;39(12):1149-53</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">22128269</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Am J Med Sci. 2012 Sep;344(3):220-6</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">22475732</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Neurotrauma. 2009 Nov;26(11):1929-33</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">19426108</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Arterioscler Thromb Vasc Biol. 1995 May;15(5):678-82</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">7749881</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Neurochem. 2007 Aug;102(4):1001-8</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">17442054</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Br J Neurosurg. 2005 Aug;19(4):327-33</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">16455539</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Neurosurg. 1981 Sep;55(3):390-6</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">7264730</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Clin Diagn Res. 2015 Jun;9(6):PD01-2</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">26266165</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Neurotrauma. 2016 Sep 1;33(17):1569-75</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">26541092</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Biomed Res Int. 2014;2014:218646</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">25295251</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Eur J Neurol. 2012 Dec;19(12):1539-46</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">22640405</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Neurosurg. 2011 Jan;114(1):72-6</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">20868215</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Neurol Sci. 2014 Jun 15;341(1-2):88-96</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">24774750</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Medicine (Baltimore). 2017 Jun;96(26):e7290</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">28658127</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Neurosurg. 2014 Sep;121(3):665-73</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">24995782</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Stroke. 2010 May;41(5):921-6</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">20378868</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>Stroke. 1996 Aug;27(8):1304-5</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">8711791</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Neurotrauma. 2005 May;22(5):518-28</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">15892598</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Neuroimmune Pharmacol. 2017 Mar;12(1):152-162</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">27614888</ArticleId>
+          </ArticleIdList>
+        </Reference>
+        <Reference>
+          <Citation>J Neurosurg. 2017 Oct;127(4):732-739</Citation>
+          <ArticleIdList>
+            <ArticleId IdType="pubmed">27834599</ArticleId>
+          </ArticleIdList>
+        </Reference>
+      </ReferenceList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

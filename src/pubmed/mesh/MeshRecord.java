@@ -5,11 +5,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import jam.lang.JamException;
 import jam.util.MapUtil;
+
+import pubmed.nlp.LemmaAnnotator;
+import pubmed.nlp.LemmaList;
 
 /**
  * Provides a base class for all {@code MeSH} records.
@@ -20,6 +25,8 @@ public abstract class MeshRecord {
     private final MeshRecordName name;
     private final MeshTermList termStrings;
     private final List<MeshTerm> termObjects;
+
+    private List<LemmaList> termLemmas = null;
 
     private static final Map<MeshRecordKey, MeshRecord> keyIndex =
         new HashMap<MeshRecordKey, MeshRecord>();
@@ -281,6 +288,33 @@ public abstract class MeshRecord {
      */
     public boolean isSupplemental() {
         return getType().equals(MeshRecordType.SUPPLEMENTAL);
+    }
+
+    /**
+     * Returns the lemmatized keywords and phrases associated with
+     * this record.
+     *
+     * @return the lemmatized keywords and phrases associated with
+     * this record.
+     */
+    public List<LemmaList> termLemmas() {
+        if (termLemmas == null)
+            termLemmas = lemmatizeTerms();
+
+        return termLemmas;
+    }
+
+    private List<LemmaList> lemmatizeTerms() {
+        //
+        // Even if the terms are unique, their lemmatized forms may
+        // not be...
+        //
+        Set<LemmaList> lemmaLists = new LinkedHashSet<LemmaList>();
+
+        for (String term : termStrings)
+            lemmaLists.add(LemmaAnnotator.contentWords(term));
+
+        return Collections.unmodifiableList(new ArrayList<LemmaList>(lemmaLists));
     }
 
     /**
