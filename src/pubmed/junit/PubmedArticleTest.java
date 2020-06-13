@@ -47,7 +47,7 @@ public class PubmedArticleTest {
     private static final PubmedRegistry registry = PubmedRegistry.create(articles);
 
     @Test public void testAbstract() {
-        assertAbstract(pmid1, "Epidemiological|studies indicate", "extracellular ATP.");
+        assertAbstract(pmid1, "Epidemiological studies indicate", "extracellular ATP.");
         assertAbstract(pmid2, "Major Glioblastoma's hallmarks", "primary GB cell cultures.");
         assertAbstract(pmid3, "Pain-related affective and/or", "receiving conservative treatment.");
     }
@@ -72,7 +72,7 @@ public class PubmedArticleTest {
         assertTrue(string1.startsWith("major glioblastoma hallmark include"));
         assertTrue(string1.endsWith("primary gb cell culture"));
 
-        assertTrue(string2.startsWith("pain relate affective cognitive"));
+        assertTrue(string2.startsWith("pain - relate affective / cognitive"));
         assertTrue(string2.endsWith("osteoarthritis receive conservative treatment"));
     }
 
@@ -228,7 +228,7 @@ public class PubmedArticleTest {
     }
 
     @Test public void testTitle() {
-        assertTitle(pmid1, "Atorvastatin prevents ATP|driven", "prostate cancer cells.");
+        assertTitle(pmid1, "Atorvastatin prevents ATP driven", "prostate cancer cells.");
         assertTitle(pmid2, "A 3D tumor spheroid model", "phenotypic characterization.");
         assertTitle(pmid3, "Prediction models considering", "prospective cohort study.");
     }
