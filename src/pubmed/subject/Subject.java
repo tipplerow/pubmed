@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import jam.lang.JamException;
 import jam.lang.KeyedObject;
@@ -23,34 +24,59 @@ import pubmed.nlp.LemmaList;
  * {@code pubmed} articles.
  */
 public abstract class Subject extends KeyedObject<String> {
-    //
-    // Registry of all unique subjects indexed by key...
-    //
-    private static final Map<String, Subject> subjects = new HashMap<String, Subject>();
+    private final String name;
+
+    // Registry of all unique subjects indexed by key and name...
+    private static final Map<String, Subject> registry = new HashMap<String, Subject>();
 
     /**
-     * Creates a new subject with a unique key.
+     * Creates a new subject with a unique key and name.
      *
      * @param key the unique key for the subject.
      *
-     * @throws RuntimeException unless the key is unique.
+     * @param name the unique name for the subject.
+     *
+     * @throws RuntimeException unless the key and name are unique.
      */
-    protected Subject(String key) {
+    protected Subject(String key, String name) {
         super(key);
+        this.name = name;
         register();
     }
 
     private void register() {
-        if (subjects.containsKey(key))
-            throw JamException.runtime("Duplicate subject key: [%s]", key);
+        // The key must be unique...
+        register(key);
+
+        // The name may be the same as the key, but if not, it must be
+        // unique...
+        if (!name.equals(key))
+            register(name);
+    }
+
+    private void register(String identifier) {
+        if (registry.containsKey(identifier))
+            throw JamException.runtime("Duplicate subject identifier: [%s]", identifier);
         else
-            subjects.put(key, this);
+            registry.put(identifier, this);
     }
 
     /**
      * The <em>cancer</em> subject.
      */
     public static final Subject CANCER = MeshSubject.create("D009369");
+
+    /**
+     * Retrieves the subject having a specific key or name.
+     *
+     * @param identifier the unique key or name of a subject.
+     *
+     * @return the subject with the specified identifier (or
+     * {@code null} if there is no matching subject).
+     */
+    public static Subject instance(String identifier) {
+        return registry.get(identifier);
+    }
 
     /**
      * Returns the {@code MeSH} record for this subject.
@@ -126,6 +152,15 @@ public abstract class Subject extends KeyedObject<String> {
     }
 
     /**
+     * Returns the name of this subject.
+     *
+     * @return the name of this subject.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
      * Specifies whether this subject is a chemical substance with
      * a corresponding {@code MeSH} record that may appear in the
      * chemical substance list of an article.
@@ -184,5 +219,9 @@ public abstract class Subject extends KeyedObject<String> {
     public boolean isSupplemental() {
         MeshRecord record = getMeshRecord();
         return record != null && record.isSupplemental();
+    }
+
+    @Override public String toString() {
+        return String.format("%s(%s)", name, key);
     }
 }
