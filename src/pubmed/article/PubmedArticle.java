@@ -88,10 +88,6 @@ public final class PubmedArticle {
         this.articleType = ArticleType.resolve(title, commCorrList, pubTypes);
     }
 
-    private ArticleType resolveArticleType() {
-        return null;
-    }
-
     /**
      * Orders articles by their unique identifiers.
      */

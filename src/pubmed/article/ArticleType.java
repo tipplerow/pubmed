@@ -16,68 +16,70 @@ public enum ArticleType {
     /**
      * Typically short reports on individual patient cases.
      */
-    CASE_REPORT("D002363", List.of("case report"), List.of()),
+    CASE_REPORT("D002363", true, List.of("case report"), List.of()),
 
     /**
      * A comment on a previously published article or the response to
      * a comment.
      */
-    COMMENT("D016420", List.of(), List.of("Comment ", "Re: ", "In reply to ", "Reply to ", "Response to ")),
+    COMMENT("D016420", false, List.of(), List.of("Comment ", "Re: ", "In reply to ", "Reply to ", "Response to ")),
 
     /**
      * Editorial or introductory article.
      */
-    EDITORIAL("D016421", List.of(), List.of()),
+    EDITORIAL("D016421", false, List.of(), List.of()),
 
     /**
      * An error in a previously published article.
      */
-    ERRATUM("D016425", List.of(), List.of("Correction", "Corrigendum", "Erratum")),
+    ERRATUM("D016425", false, List.of(), List.of("Correction", "Corrigendum", "Erratum")),
 
     /**
      * An editorial expression of concern about a previously published
      * article, often leading to a retraction.
      */
-    EXPRESSION_OF_CONCERN("D000075742", List.of("expression of concern", "notice of concern"), List.of()),
+    EXPRESSION_OF_CONCERN("D000075742", false, List.of("expression of concern", "notice of concern"), List.of()),
 
     /**
      * A letter to the editors or readers, typically not peer-reviewed.
      */
-    LETTER("D016422", List.of(), List.of("A letter to ", "Letter to ")),
+    LETTER("D016422", false, List.of(), List.of("A letter to ", "Letter to ")),
 
     /**
      * A meta-analysis of previously published work, possibly
      * containing new conclusions but no original data.
      */
-    META_ANALYSIS("D017418", List.of("meta-analysis"), List.of()),
+    META_ANALYSIS("D017418", true, List.of("meta-analysis"), List.of()),
 
     /**
      * An original, peer-reviewed journal article.
      */
-    ORIGINAL_JOURNAL("D016428", List.of(), List.of()),
+    ORIGINAL_JOURNAL("D016428", true, List.of(), List.of()),
 
     /**
      * A retraction notice for a previously published article.
      */
-    RETRACTION_NOTICE("D016440", List.of(), List.of("Retracted: ")),
+    RETRACTION_NOTICE("D016440", false, List.of(), List.of("Retracted: ")),
 
     /**
      * A retracted article.
      */
-    RETRACTED_PUBLICATION("D016441", List.of(), List.of()),
+    RETRACTED_PUBLICATION("D016441", false, List.of(), List.of()),
 
     /**
      * A review of prior work in a subject area.
      */
-    REVIEW("D016454", List.of("review of", "systematic review"), List.of());
+    REVIEW("D016454", true, List.of("review of", "systematic review"), List.of());
 
     private final MeshDescriptorKey pubTypeKey;
     private final List<String> titleKeywords;
     private final List<String> titlePrefixes;
+    private final boolean isPrimary;
 
     private final TextMatcher titleKeywordMatcher;
 
-    private ArticleType(String pubTypeKey, List<String> titleKeywords, List<String> titlePrefixes) {
+    private ArticleType(String pubTypeKey, boolean isPrimary, List<String> titleKeywords, List<String> titlePrefixes) {
+        this.isPrimary = isPrimary;
         this.pubTypeKey = MeshDescriptorKey.instance(pubTypeKey);
         this.titleKeywords = titleKeywords;
         this.titlePrefixes = titlePrefixes;
@@ -167,5 +169,16 @@ public enum ArticleType {
      */
     public List<String> getTitlePrefixes() {
         return titlePrefixes;
+    }
+
+    /**
+     * Identifies <em>primary</em> articles: original articles, case
+     * studies, meta-analyses, and reviews (but not comments, errata,
+     * letters, or retractions).
+     *
+     * @return {@code true} iff this is a primary article type.
+     */
+    public boolean isPrimary() {
+        return isPrimary;
     }
 }
