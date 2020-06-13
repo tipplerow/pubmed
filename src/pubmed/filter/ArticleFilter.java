@@ -40,6 +40,24 @@ public abstract class ArticleFilter implements Predicate<PubmedArticle> {
     }
 
     /**
+     * Returns a filter that assigns a zero score to all articles.
+     *
+     * @return a filter that fails all articles and assigns a zero
+     * score.
+     */
+    public static ArticleFilter zero() {
+        return new ArticleFilter() {
+            @Override public int score(PubmedArticle article) {
+                return 0;
+            }
+
+            @Override public boolean testArticle(PubmedArticle article) {
+                return false;
+            };
+        };
+    }
+
+    /**
      * Applies the filter test to an article.
      *
      * @param article the article to test.

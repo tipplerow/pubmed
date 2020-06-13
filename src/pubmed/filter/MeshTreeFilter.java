@@ -37,7 +37,7 @@ public final class MeshTreeFilter extends ArticleFilter {
         if (subject.isDescriptor())
             return create(subject.getDescriptor().getNumberList());
         else
-            return ArticleFilter.none();
+            return ArticleFilter.zero();
     }
 
     /**

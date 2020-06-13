@@ -32,14 +32,14 @@ public final class ChemicalListFilter extends ArticleFilter {
      */
     public static ArticleFilter create(Subject subject) {
         if (!subject.isChemical())
-            return ArticleFilter.none();
+            return ArticleFilter.zero();
 
         MeshRecord record = subject.getMeshRecord();
 
         if (record != null)
             return create(record.getKey());
         else
-            return ArticleFilter.none();
+            return ArticleFilter.zero();
     }
 
     /**

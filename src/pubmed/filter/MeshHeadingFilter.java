@@ -32,7 +32,7 @@ public final class MeshHeadingFilter extends ArticleFilter {
         if (subject.isDescriptor())
             return create((MeshDescriptorKey) subject.getMeshRecord().getKey());
         else
-            return ArticleFilter.none();
+            return ArticleFilter.zero();
     }
 
     /**
