@@ -37,7 +37,7 @@ public final class LemmaAnnotator {
      *
      * @return the annotated document.
      */
-    public static synchronized CoreDocument annotate(String text) {
+    public static CoreDocument annotate(String text) {
         CoreDocument document = new CoreDocument(text);
         pipeline.annotate(document);
         return document;
