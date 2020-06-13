@@ -46,6 +46,20 @@ public class KeywordTitleFilterTest {
         assertFalse(cancerFilter.test(atorvastatinArticle));
     }
 
+    @Test public void testScore() {
+        assertEquals(1, atorvastatinFilter.score(atorvastatinArticle));
+        assertEquals(0, atorvastatinFilter.score(nivolumabArticle));
+
+        assertEquals(1, nivolumabFilter.score(nivolumabArticle));
+        assertEquals(0, nivolumabFilter.score(atorvastatinArticle));
+
+        assertEquals(1, hematomaFilter.score(atorvastatinArticle));
+        assertEquals(0, hematomaFilter.score(nivolumabArticle));
+
+        assertEquals(1, cancerFilter.score(nivolumabArticle));
+        assertEquals(0, cancerFilter.score(atorvastatinArticle));
+    }
+
     public static void main(String[] args) {
         org.junit.runner.JUnitCore.main("pubmed.junit.KeywordTitleFilterTest");
     }
