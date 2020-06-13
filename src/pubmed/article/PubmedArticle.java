@@ -360,7 +360,7 @@ public final class PubmedArticle {
         if (hasAbstract())
             abstractLemmas = LemmaAnnotator.contentWords(abstract_);
         else
-            titleLemmas = LemmaList.EMPTY;
+            abstractLemmas = LemmaList.EMPTY;
     }
 
     /**
