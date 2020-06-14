@@ -22,6 +22,11 @@ public final class MeshSubject extends Subject {
     }
 
     /**
+     * The <em>neoplasms</em> subject.
+     */
+    public static final Subject NEOPLASMS = MeshSubject.create("D009369");
+
+    /**
      * Creates a new {@code MeSH} subject for a specific record.
      *
      * @param recordKey the key of the {@code MeSH} record that

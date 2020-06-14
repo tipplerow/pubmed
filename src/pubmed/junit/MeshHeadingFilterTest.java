@@ -10,7 +10,6 @@ import pubmed.filter.ArticleFilter;
 import pubmed.filter.MeshHeadingFilter;
 import pubmed.mesh.MeshDescriptorKey;
 import pubmed.subject.MeshSubject;
-import pubmed.subject.Subject;
 
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -72,7 +71,7 @@ public class MeshHeadingFilterTest {
     }
 
     @Test public void testSubjects() {
-        ArticleFilter cancerFilter = MeshHeadingFilter.create(Subject.CANCER);
+        ArticleFilter cancerFilter = MeshHeadingFilter.create(MeshSubject.NEOPLASMS);
 
         ArticleFilter CRCFilter = MeshHeadingFilter.create(CRC);
         ArticleFilter FAPFilter = MeshHeadingFilter.create(FAP);

@@ -5,7 +5,6 @@ import pubmed.article.PubmedArticle;
 import pubmed.article.PubmedXmlDocument;
 import pubmed.filter.KeywordAbstractFilter;
 import pubmed.subject.MeshSubject;
-import pubmed.subject.Subject;
 
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -15,7 +14,7 @@ public class KeywordAbstractFilterTest {
         KeywordAbstractFilter.create(MeshSubject.create("D000069059"));
 
     private static final KeywordAbstractFilter cancerFilter =
-        KeywordAbstractFilter.create(Subject.CANCER);
+        KeywordAbstractFilter.create(MeshSubject.NEOPLASMS);
 
     private static final KeywordAbstractFilter hematomaFilter =
         KeywordAbstractFilter.create(MeshSubject.create("D006406"));

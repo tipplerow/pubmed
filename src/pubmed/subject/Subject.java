@@ -62,11 +62,6 @@ public abstract class Subject extends KeyedObject<String> {
     }
 
     /**
-     * The <em>cancer</em> subject.
-     */
-    public static final Subject CANCER = MeshSubject.create("D009369");
-
-    /**
      * Retrieves the subject having a specific key or name.
      *
      * @param identifier the unique key or name of a subject.

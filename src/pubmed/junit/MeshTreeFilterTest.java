@@ -10,7 +10,6 @@ import pubmed.filter.ArticleFilter;
 import pubmed.filter.MeshTreeFilter;
 import pubmed.mesh.MeshTreeNumber;
 import pubmed.subject.MeshSubject;
-import pubmed.subject.Subject;
 
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -62,7 +61,7 @@ public class MeshTreeFilterTest {
     }
 
     @Test public void testSubjects() {
-        ArticleFilter cancerFilter = MeshTreeFilter.create(Subject.CANCER);
+        ArticleFilter cancerFilter = MeshTreeFilter.create(MeshSubject.NEOPLASMS);
 
         ArticleFilter CRCFilter = MeshTreeFilter.create(CRC);
         ArticleFilter FAPFilter = MeshTreeFilter.create(FAP);
