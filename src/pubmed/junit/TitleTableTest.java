@@ -38,7 +38,7 @@ public class TitleTableTest {
     private static final PMID key5 = record5.getPMID();
 
     static {
-        DbEnv.TEST.use();
+        DbEnv.use("TEST");
     }
 
     @Test public void testInsertAdd() {

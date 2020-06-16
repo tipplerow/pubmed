@@ -103,6 +103,18 @@ public enum DbEnv {
     }
 
     /**
+     * Marks a named environment as the default or global environment.
+     *
+     * @param name the name to use as the global environment.
+     *
+     * @throws RuntimeException unless the name is a valid environment
+     * name.
+     */
+    public static void use(String name) {
+        valueOf(name).use();
+    }
+
+    /**
      * Returns the database endpoint for this environment.
      *
      * @return the database endpoint for this environment.
