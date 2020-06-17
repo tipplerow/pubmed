@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2019//EN" "https://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_190101.dtd">
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="In-Data-Review" Owner="NLM">
+      <PMID Version="1">32048627</PMID>
+      <DateRevised>
+        <Year>2020</Year>
+        <Month>02</Month>
+        <Day>12</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0971-5916</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>150</Volume>
+            <Issue>6</Issue>
+            <PubDate>
+              <Year>2019</Year>
+              <Month>Dec</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>The Indian journal of medical research</Title>
+          <ISOAbbreviation>Indian J. Med. Res.</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle><i>In vitro</i> comparison of the cytotoxic effects of statins in the U266 myeloma cell line.</ArticleTitle>
+        <Pagination>
+          <MedlinePgn>630-634</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.4103/ijmr.IJMR_672_18</ELocationID>
+        <Abstract>
+          <AbstractText Label="Background &amp; objectives" NlmCategory="UNASSIGNED">Statins are one of the most widely used drugs and have antilipidemic effects as well as antioxidant, anti-inflammatory, anti-angiogenic and anti-tumorigenic effects. It has been shown that the synergistic combinations of statins which can provide better clinical benefit in the treatment of cancer and if administered with other anticancer agents, may be an alternative treatment modality. The aim of this study was to assess the efficacy of administrating statin in multiple myeloma (MM) cell line on cell proliferation.</AbstractText>
+          <AbstractText Label="Methods" NlmCategory="UNASSIGNED">U266 myeloma cells were cultured in 25 or 75 cm<sup>[2]</sup> flasks by using cell culture medium mixtures obtained with the supplementation of 10 per cent foetal bovine serum and one per cent of penicillin-streptomycin into RPMI 1640 medium. When the cells reached confluence (reached to the density of 70%), they were reproduced by passaging. Cytotoxicity was evaluated by using the XTT test.</AbstractText>
+          <AbstractText Label="Results" NlmCategory="UNASSIGNED">Statins (atorvastatin and simvastatin), were administered to the U266 myeloma cell line at 100, 50, 25, 12.5, 6.25 and 3.12 μM concentrations. Inhibitor concentration 50 (IC<sub>50</sub>) values calculated for atorvastatin and simvastatin were determined as 94 and 38 μM, respectively. While 100, 50, 25, 12.5, 6.25 and 3.12 μM concentrations were used for bortezomib, the IC<sub>50</sub>value calculated for this agent was 18.2 nM. When six concentrations of bortezomib used in the study were combined with 12.5 μM inactive concentrations of statins that did not cause inhibition in cell proliferation, both atorvastatin and simvastatin increased the effect of bortezomib at all the concentrations used, and simvastatin showed a stronger efficacy than atorvastatin.</AbstractText>
+          <AbstractText Label="Interpretation &amp; conclusions" NlmCategory="UNASSIGNED">Our in vitro results indicated that atorvastatin and simvastatin when used along with the conventional treatment in myeloma patients, may improve the effectiveness of the standard therapy and prevent the bortezomib-induced cytotoxic and neurotoxic side effects when used at a low dose. Further studies need to be done in MM patints to confirm these findings.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Terzi</LastName>
+            <ForeName>Hatice</ForeName>
+            <Initials>H</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Hematology, Faculty of Medicine, Cumhuriyet University, Sivas, Turkey.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Altun</LastName>
+            <ForeName>Ahmet</ForeName>
+            <Initials>A</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Pharmacology, Faculty of Medicine, Cumhuriyet University, Sivas, Turkey.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Şencan</LastName>
+            <ForeName>Mehmet</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Hematology, Faculty of Medicine, Cumhuriyet University, Sivas, Turkey.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>India</Country>
+        <MedlineTA>Indian J Med Res</MedlineTA>
+        <NlmUniqueID>0374701</NlmUniqueID>
+        <ISSNLinking>0971-5916</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>IM</CitationSubset>
+      <KeywordList Owner="NOTNLM">
+        <Keyword MajorTopicYN="N">Bortezomib</Keyword>
+        <Keyword MajorTopicYN="N">cancer</Keyword>
+        <Keyword MajorTopicYN="N">cytotoxic effect</Keyword>
+        <Keyword MajorTopicYN="N">multiple myeloma</Keyword>
+        <Keyword MajorTopicYN="N">standard therapy</Keyword>
+        <Keyword MajorTopicYN="N">statin</Keyword>
+      </KeywordList>
+      <CoiStatement>None</CoiStatement>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2020</Year>
+          <Month>2</Month>
+          <Day>13</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">32048627</ArticleId>
+        <ArticleId IdType="pii">IndianJMedRes_2019_150_6_630_277415</ArticleId>
+        <ArticleId IdType="doi">10.4103/ijmr.IJMR_672_18</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>
