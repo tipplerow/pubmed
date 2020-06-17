@@ -72,10 +72,16 @@ public final class SubjectScoreTable
 
     private void register() {
         //
+        // One table per subject...
+        //
+        if (instances.containsKey(subject))
+            throw JamException.runtime("Duplicate subject table: [%s].", subject);
+        else
+            instances.put(subject, this);
+
         // Substance names are unique, but there is a VERY small
         // possibility that their table names might not be unique
         // after removing white space and non-word characters...
-        //
         if (tableNames.contains(tableName))
             throw JamException.runtime("Duplicate table name: [%s].", tableName);
         else
