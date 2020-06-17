@@ -80,7 +80,7 @@ public abstract class PubmedXmlParser extends JDOMParser {
      */
     public String parseArticleTitle(Element element) {
         assertTagName(element, "ArticleTitle");
-        return element.getTextNormalize();
+        return element.getValue().trim();
     }
 
     /**
