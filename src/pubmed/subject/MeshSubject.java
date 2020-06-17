@@ -17,7 +17,7 @@ public final class MeshSubject extends Subject {
     }
 
     private MeshSubject(MeshRecord record) {
-        super(record.getKeyString(), record.getNameString());
+        super(record.getKeyString());
         this.record = record;
     }
 
@@ -68,5 +68,13 @@ public final class MeshSubject extends Subject {
 
     @Override public MeshRecord getMeshRecord() {
         return record;
+    }
+
+    @Override public String getTablePrefix() {
+        return "mesh";
+    }
+
+    @Override public String getTableSuffix() {
+        return record.getNameString();
     }
 }

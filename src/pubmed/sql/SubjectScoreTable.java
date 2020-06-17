@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Set;
 
 import jam.lang.JamException;
+import jam.report.LineBuilder;
 import jam.sql.SQLColumn;
 import jam.sql.SQLKeyTable;
 import jam.util.ListUtil;
@@ -227,7 +228,20 @@ public final class SubjectScoreTable
      * the specified subject.
      */
     public static String getTableName(Subject subject) {
-        return "subject_score_" + getTableCode(subject.getName());
+        String prefix = subject.getTablePrefix();
+        String suffix = subject.getTableSuffix();
+
+        LineBuilder builder = new LineBuilder("_");
+
+        if (prefix != null && !prefix.isEmpty())
+            builder.append(getTableCode(prefix));
+
+        builder.append("score");
+
+        if (suffix != null && !suffix.isEmpty())
+            builder.append(getTableCode(suffix));
+
+        return builder.toString();
     }
 
     /**

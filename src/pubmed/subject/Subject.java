@@ -24,53 +24,38 @@ import pubmed.nlp.LemmaList;
  * {@code pubmed} articles.
  */
 public abstract class Subject extends KeyedObject<String> {
-    private final String name;
-
-    // Registry of all unique subjects indexed by key and name...
+    // Registry of all unique subjects indexed by key...
     private static final Map<String, Subject> registry = new HashMap<String, Subject>();
 
     /**
-     * Creates a new subject with a unique key and name.
+     * Creates a new subject with a unique key.
      *
      * @param key the unique key for the subject.
      *
-     * @param name the unique name for the subject.
-     *
-     * @throws RuntimeException unless the key and name are unique.
+     * @throws RuntimeException unless the key is unique.
      */
-    protected Subject(String key, String name) {
+    protected Subject(String key) {
         super(key);
-        this.name = name;
         register();
     }
 
     private void register() {
-        // The key must be unique...
-        register(key);
-
-        // The name may be the same as the key, but if not, it must be
-        // unique...
-        if (!name.equals(key))
-            register(name);
-    }
-
-    private void register(String identifier) {
-        if (registry.containsKey(identifier))
-            throw JamException.runtime("Duplicate subject identifier: [%s]", identifier);
+        if (registry.containsKey(key))
+            throw JamException.runtime("Duplicate subject key: [%s]", key);
         else
-            registry.put(identifier, this);
+            registry.put(key, this);
     }
 
     /**
-     * Retrieves the subject having a specific key or name.
+     * Retrieves the subject having a specific key.
      *
-     * @param identifier the unique key or name of a subject.
+     * @param key the unique key of a subject.
      *
-     * @return the subject with the specified identifier (or
+     * @return the subject with the specified key (or
      * {@code null} if there is no matching subject).
      */
-    public static Subject instance(String identifier) {
-        return registry.get(identifier);
+    public static Subject instance(String key) {
+        return registry.get(key);
     }
 
     /**
@@ -80,6 +65,25 @@ public abstract class Subject extends KeyedObject<String> {
      * {@code null} if there is no corresponding record).
      */
     public abstract MeshRecord getMeshRecord();
+
+    /**
+     * Returns the prefix used to create database table names for
+     * articles related to this subject.
+     *
+     * @return the prefix used to create database table names for
+     * articles related to this subject.
+     */
+    public abstract String getTablePrefix();
+
+    /**
+     * Returns the suffix used to create database table names for
+     * articles related to this subject.
+     *
+     * @return the suffix used to create database table names for
+     * articles related to this subject ({@code null} if no suffix
+     * is necessary).
+     */
+    public abstract String getTableSuffix();
 
     /**
      * Returns the {@code MeSH} descriptor for this subject (or
@@ -147,15 +151,6 @@ public abstract class Subject extends KeyedObject<String> {
     }
 
     /**
-     * Returns the name of this subject.
-     *
-     * @return the name of this subject.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
      * Specifies whether this subject is a chemical substance with
      * a corresponding {@code MeSH} record that may appear in the
      * chemical substance list of an article.
@@ -217,6 +212,6 @@ public abstract class Subject extends KeyedObject<String> {
     }
 
     @Override public String toString() {
-        return String.format("%s(%s)", name, key);
+        return String.format("%s(%s)", getClass().getSimpleName(), key);
     }
 }

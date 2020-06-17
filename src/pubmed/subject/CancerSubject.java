@@ -14,11 +14,11 @@ import pubmed.nlp.LemmaList;
  */
 public final class CancerSubject extends Subject {
     private CancerSubject() {
-        super("CANCER", "cancer");
+        super("CANCER");
     }
 
     /**
-     *
+     * The single cancer subject instance.
      */
     public static final Subject INSTANCE = new CancerSubject();
 
@@ -115,6 +115,14 @@ public final class CancerSubject extends Subject {
 
     @Override public MeshTreeNumberList getMeshTreeNumbers() {
         return TREE_NUMBERS;
+    }
+
+    @Override public String getTablePrefix() {
+        return "cancer";
+    }
+
+    @Override public String getTableSuffix() {
+        return null;
     }
 
     @Override public boolean isChemical() {
