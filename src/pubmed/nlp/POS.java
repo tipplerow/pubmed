@@ -32,7 +32,20 @@ public final class POS {
             || isVerb(tag)
             || isAdjective(tag)
             || isNumber(tag)
+            || isForeign(tag)
             || isHyphen(tag);
+    }
+
+    /**
+     * Determines whether a part of speech is a foreign word.
+     *
+     * @param tag the part-of-speech tag.
+     *
+     * @return {@code true} iff the specified part-of-speech tag
+     * identifies a foreign word.
+     */
+    public static boolean isForeign(String tag) {
+        return tag.equals("FW");
     }
 
     /**

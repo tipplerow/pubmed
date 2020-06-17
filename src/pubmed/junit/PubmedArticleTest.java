@@ -46,6 +46,12 @@ public class PubmedArticleTest {
     private static final List<PubmedArticle> articles = document.viewLatest();
     private static final PubmedRegistry registry = PubmedRegistry.create(articles);
 
+    private PubmedArticle parseArticle(String baseName) {
+        PubmedXmlDocument doc = PubmedXmlDocument.parse("data/test/" + baseName);
+        assertEquals(1, doc.viewLatest().size());
+        return doc.viewLatest().get(0);
+    }
+
     @Test public void testAbstract() {
         assertAbstract(pmid1, "Epidemiological studies indicate", "extracellular ATP.");
         assertAbstract(pmid2, "Major Glioblastoma's hallmarks", "primary GB cell cultures.");
@@ -181,12 +187,6 @@ public class PubmedArticleTest {
         assertEquals(ArticleType.META_ANALYSIS, article.getType());
     }
 
-    private PubmedArticle parseArticle(String baseName) {
-        PubmedXmlDocument doc = PubmedXmlDocument.parse("data/test/" + baseName);
-        assertEquals(1, doc.viewLatest().size());
-        return doc.viewLatest().get(0);
-    }
-
     @Test public void testPubDate() {
         assertEquals(PubmedDate.instance(2014, 1, 22), registry.get(pmid1).getPubDate());
         assertEquals(PubmedDate.instance(2019, 6, 15), registry.get(pmid2).getPubDate());
@@ -250,6 +250,13 @@ public class PubmedArticleTest {
 
         assertTrue(string2.startsWith("prediction model consider"));
         assertTrue(string2.endsWith("prospective cohort study"));
+    }
+
+    @Test public void testTitleMarkup() {
+        PubmedArticle article = parseArticle("32048627.xml");
+
+        assertTrue(article.getTitle().startsWith("In vitro comparison"));
+        assertEquals(List.of("in", "vitro", "comparison"), article.getTitleLemmas().subList(0, 3));
     }
 
     @Test public void testVersion() {
