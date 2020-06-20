@@ -3,6 +3,7 @@ package pubmed.bulk;
 
 import java.io.File;
 import java.util.List;
+import java.util.function.Function;
 
 import jam.app.JamLogger;
 import jam.io.IOUtil;
@@ -80,26 +81,35 @@ public final class BulkFileLemmaProcessor extends BulkFileProcessor {
     }
 
     @Override public void processFile(File bulkFile) {
+        File titleLemmaFile = getTitleLemmaFile(bulkFile);
+        File abstractLemmaFile = getAbstractLemmaFile(bulkFile);
+
+        if (titleLemmaFile.canRead() && abstractLemmaFile.canRead()) {
+            JamLogger.info("Bulk file has been processed; skipping...");
+            return;
+        }
+
         PubmedXmlDocument document = PubmedXmlDocument.parse(bulkFile);
         List<PubmedArticle> articles = document.viewLatest();
 
-        JamLogger.info("Lemmatizing article titles...");
+        if (!titleLemmaFile.canRead()) {
+            JamLogger.info("Lemmatizing article titles...");
+            processLemmas(articles, titleLemmaFile, article -> lemmatizeTitle(article));
+        }
 
-        List<String> titleLines =
-            StreamUtil.apply(articles.parallelStream(),
-                             article -> lemmatizeTitle(article));
+        if (!abstractLemmaFile.canRead()) {
+            JamLogger.info("Lemmatizing article abstracts...");
+            processLemmas(articles, abstractLemmaFile, article -> lemmatizeAbstract(article));
+        }
+    }
 
-        JamLogger.info("Lemmatizing article abstracts...");
+    private void processLemmas(List<PubmedArticle> articles, File lemmaFile,
+                               Function<PubmedArticle, String> lemmaFunc) {
+        List<String> lemmaLines =
+            StreamUtil.apply(articles.parallelStream(), lemmaFunc);
 
-        List<String> abstractLines =
-            StreamUtil.apply(articles.parallelStream(),
-                             article -> lemmatizeAbstract(article));
-
-        JamLogger.info("Writing title lemmas...");
-        IOUtil.writeLines(getTitleLemmaFile(bulkFile), false, titleLines);
-
-        JamLogger.info("Writing abstract lemmas...");
-        IOUtil.writeLines(getAbstractLemmaFile(bulkFile), false, abstractLines);
+        JamLogger.info("Writing lemma file [%s]...", lemmaFile);
+        IOUtil.writeLines(lemmaFile, false, lemmaLines);
     }
 
     private static void usage() {
