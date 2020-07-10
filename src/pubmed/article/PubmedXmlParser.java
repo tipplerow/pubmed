@@ -8,7 +8,6 @@ import org.jdom2.Element;
 
 import jam.xml.JDOMParser;
 
-import pubmed.medline.ISSN;
 import pubmed.medline.MedlineJournal;
 import pubmed.medline.MedlineTA;
 import pubmed.medline.NlmUniqueID;
@@ -215,10 +214,7 @@ public abstract class PubmedXmlParser extends JDOMParser {
 
         for (Element commCorrElement : commCorrElements) {
             CommentCorrectionType commCorrType =
-                CommentCorrectionType.parseAttribute(commCorrElement.getAttributeValue("RefType"));
-
-            if (commCorrType == null)
-                continue;
+                CommentCorrectionType.valueOf(commCorrElement.getAttributeValue("RefType"));
 
             Element PMIDElement = commCorrElement.getChild("PMID");
 

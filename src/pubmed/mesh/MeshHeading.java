@@ -15,10 +15,12 @@ public final class MeshHeading {
     private final MeshDescriptorKey descriptorKey;
     private final List<MeshQualifierKey> qualifierKeys;
 
+    /*
     static {
         JamLogger.info("MeshHeading: Loading MeSH descriptors...");
         MeshDescriptor.load();
     }
+    */
 
     private MeshHeading(MeshDescriptorKey descriptorKey, List<MeshQualifierKey> qualifierKeys) {
         this.descriptorKey = descriptorKey;

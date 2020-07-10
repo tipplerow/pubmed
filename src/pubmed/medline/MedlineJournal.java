@@ -4,6 +4,8 @@ package pubmed.medline;
 import jam.lang.ObjectUtil;
 import jam.sql.BulkRecord;
 
+import pubmed.article.ISSN;
+
 /**
  * Encapsulates {@code MEDLINE} journal information within the
  * {@code PubMed} database.

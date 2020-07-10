@@ -1,51 +1,43 @@
 
 package pubmed.article;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
- * Enumerates relevant categories of comments and corrections to
- * previously published articles.
+ * Enumerates categories of comments and corrections to previously
+ * published articles.
  */
 public enum CommentCorrectionType {
-    COMMENT_ON("CommentOn", ArticleType.COMMENT),
-    ERRATUM_FOR("ErratumFor", ArticleType.ERRATUM),
-    EXPRESSION_OF_CONCERN_FOR("ExpressionOfConcernFor", ArticleType.EXPRESSION_OF_CONCERN),
-    RETRACTION_OF("RetractionOf", ArticleType.RETRACTION_NOTICE);
+    AssociatedDataset(),
+    AssociatedPublication(),
+    Cites(),
+    CommentIn(),
+    CommentOn(ArticleType.COMMENT),
+    CorrectedandRepublishedIn(),
+    CorrectedandRepublishedFrom(),
+    ErratumIn(),
+    ErratumFor(ArticleType.ERRATUM),
+    ExpressionOfConcernIn(),
+    ExpressionOfConcernFor(ArticleType.EXPRESSION_OF_CONCERN),
+    OriginalReportIn(),
+    ReprintIn(),
+    ReprintOf(),
+    RepublishedIn(),
+    RepublishedFrom(),
+    RetractedandRepublishedIn(ArticleType.RETRACTED_PUBLICATION),
+    RetractedandRepublishedFrom(ArticleType.RETRACTION_NOTICE),
+    RetractionIn(ArticleType.RETRACTED_PUBLICATION),
+    RetractionOf(ArticleType.RETRACTION_NOTICE),
+    SummaryForPatientsIn(),
+    UpdateIn(),
+    UpdateOf();
 
-    private final String xmlAttribute;
     private final ArticleType articleType;
 
-    private static final Map<String, CommentCorrectionType> attributeMap =
-        new HashMap<String, CommentCorrectionType>();
-
-    static {
-        fillAttributeMap();
+    private CommentCorrectionType() {
+        this(null);
     }
 
-    private static void fillAttributeMap() {
-        for (CommentCorrectionType type : values())
-            attributeMap.put(type.xmlAttribute, type);
-    }
-
-    private CommentCorrectionType(String xmlAttribute, ArticleType articleType) {
+    private CommentCorrectionType(ArticleType articleType) {
         this.articleType = articleType;
-        this.xmlAttribute = xmlAttribute;
-    }
-
-    /**
-     * Returns the type that corresponds to an XML attribute
-     * string.
-     *
-     * @param xmlAttribute an attribute string from an XML
-     * document file.
-     *
-     * @return the type that corresponds to the specified XML
-     * attribute string.
-     */
-    public static CommentCorrectionType parseAttribute(String xmlAttribute) {
-        return attributeMap.get(xmlAttribute);
     }
 
     /**
@@ -53,7 +45,8 @@ public enum CommentCorrectionType {
      * correction.
      *
      * @return the article type corresponding to this comment or
-     * correction.
+     * correction ({@code null} if there is no unique mapping for
+     * this type).
      */
     public ArticleType getArticleType() {
         return articleType;

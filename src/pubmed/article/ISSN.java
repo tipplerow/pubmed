@@ -1,5 +1,5 @@
 
-package pubmed.medline;
+package pubmed.article;
 
 import java.util.HashMap;
 import java.util.Map;

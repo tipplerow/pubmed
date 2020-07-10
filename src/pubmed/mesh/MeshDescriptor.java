@@ -50,6 +50,7 @@ public final class MeshDescriptor extends MeshTreeRecord {
      * @throws RuntimeException unless the requested record exists.
      */
     public static MeshDescriptor instance(MeshDescriptorKey key) {
+        load();
         return (MeshDescriptor) MeshRecord.instance(key);
     }
 

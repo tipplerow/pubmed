@@ -7,6 +7,7 @@ import jam.util.ListUtil;
 
 import pubmed.article.ArticleType;
 import pubmed.article.DOI;
+import pubmed.article.ISSN;
 import pubmed.article.ORCID;
 import pubmed.article.PMID;
 import pubmed.article.PubmedArticle;
@@ -14,7 +15,6 @@ import pubmed.article.PubmedAuthor;
 import pubmed.article.PubmedDate;
 import pubmed.article.PubmedRegistry;
 import pubmed.article.PubmedXmlDocument;
-import pubmed.medline.ISSN;
 import pubmed.medline.MedlineJournal;
 import pubmed.medline.MedlineTA;
 import pubmed.medline.NlmUniqueID;

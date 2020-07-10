@@ -1534,4 +1534,340 @@
       </ArticleIdList>
     </PubmedData>
   </PubmedArticle>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+      <PMID Version="1">29355075</PMID>
+      <DateCompleted>
+        <Year>2019</Year>
+        <Month>07</Month>
+        <Day>17</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2019</Year>
+        <Month>07</Month>
+        <Day>17</Day>
+      </DateRevised>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISSN IssnType="Electronic">1527-7755</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>36</Volume>
+            <Issue>8</Issue>
+            <PubDate>
+              <Year>2018</Year>
+              <Month>03</Month>
+              <Day>10</Day>
+            </PubDate>
+          </JournalIssue>
+          <Title>Journal of clinical oncology : official journal of the American Society of Clinical Oncology</Title>
+          <ISOAbbreviation>J. Clin. Oncol.</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Durable Clinical Benefit With Nivolumab Plus Ipilimumab in DNA Mismatch Repair-Deficient/Microsatellite Instability-High Metastatic Colorectal Cancer.</ArticleTitle>
+        <Pagination>
+          <MedlinePgn>773-779</MedlinePgn>
+        </Pagination>
+        <ELocationID EIdType="doi" ValidYN="Y">10.1200/JCO.2017.76.9901</ELocationID>
+        <Abstract>
+          <AbstractText>Purpose Nivolumab provides clinical benefit (objective response rate [ORR], 31%; 95% CI, 20.8 to 42.9; disease control rate, 69%; 12-month overall survival [OS], 73%) in previously treated patients with DNA mismatch repair-deficient (dMMR)/microsatellite instability-high (MSI-H) metastatic colorectal cancer (mCRC); nivolumab plus ipilimumab may improve these outcomes. Efficacy and safety results for the nivolumab plus ipilimumab cohort of CheckMate-142, the largest single-study report of an immunotherapy combination in dMMR/MSI-H mCRC, are reported. Patients and Methods Patients received nivolumab 3 mg/kg plus ipilimumab 1 mg/kg once every 3 weeks (four doses) followed by nivolumab 3 mg/kg once every 2 weeks. Primary end point was investigator-assessed ORR. Results Of 119 patients, 76% had received ≥ two prior systemic therapies. At median follow-up of 13.4 months, investigator-assessed ORR was 55% (95% CI, 45.2 to 63.8), and disease control rate for ≥ 12 weeks was 80%. Median duration of response was not reached; most responses (94%) were ongoing at data cutoff. Progression-free survival rates were 76% (9 months) and 71% (12 months); respective OS rates were 87% and 85%. Statistically significant and clinically meaningful improvements were observed in patient-reported outcomes, including functioning, symptoms, and quality of life. Grade 3 to 4 treatment-related adverse events (AEs) occurred in 32% of patients and were manageable. Patients (13%) who discontinued treatment because of study drug-related AEs had an ORR (63%) consistent with that of the overall population. Conclusion Nivolumab plus ipilimumab demonstrated high response rates, encouraging progression-free survival and OS at 12 months, manageable safety, and meaningful improvements in key patient-reported outcomes. Indirect comparisons suggest combination therapy provides improved efficacy relative to anti-programmed death-1 monotherapy and has a favorable benefit-risk profile. Nivolumab plus ipilimumab provides a promising new treatment option for patients with dMMR/MSI-H mCRC.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Overman</LastName>
+            <ForeName>Michael J</ForeName>
+            <Initials>MJ</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Lonardi</LastName>
+            <ForeName>Sara</ForeName>
+            <Initials>S</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Wong</LastName>
+            <ForeName>Ka Yeung Mark</ForeName>
+            <Initials>KYM</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Lenz</LastName>
+            <ForeName>Heinz-Josef</ForeName>
+            <Initials>HJ</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Gelsomino</LastName>
+            <ForeName>Fabio</ForeName>
+            <Initials>F</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Aglietta</LastName>
+            <ForeName>Massimo</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Morse</LastName>
+            <ForeName>Michael A</ForeName>
+            <Initials>MA</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Van Cutsem</LastName>
+            <ForeName>Eric</ForeName>
+            <Initials>E</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>McDermott</LastName>
+            <ForeName>Ray</ForeName>
+            <Initials>R</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Hill</LastName>
+            <ForeName>Andrew</ForeName>
+            <Initials>A</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Sawyer</LastName>
+            <ForeName>Michael B</ForeName>
+            <Initials>MB</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Hendlisz</LastName>
+            <ForeName>Alain</ForeName>
+            <Initials>A</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Neyns</LastName>
+            <ForeName>Bart</ForeName>
+            <Initials>B</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Svrcek</LastName>
+            <ForeName>Magali</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Moss</LastName>
+            <ForeName>Rebecca A</ForeName>
+            <Initials>RA</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Ledeine</LastName>
+            <ForeName>Jean-Marie</ForeName>
+            <Initials>JM</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Cao</LastName>
+            <ForeName>Z Alexander</ForeName>
+            <Initials>ZA</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Kamble</LastName>
+            <ForeName>Shital</ForeName>
+            <Initials>S</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Kopetz</LastName>
+            <ForeName>Scott</ForeName>
+            <Initials>S</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>André</LastName>
+            <ForeName>Thierry</ForeName>
+            <Initials>T</Initials>
+            <AffiliationInfo>
+              <Affiliation>Michael J. Overman and Scott Kopetz, University of Texas MD Anderson Cancer Center, Houston, TX; Sara Lonardi, Istituto Oncologico Veneto, Istituto di Ricovero e Cura a Carattere Scientifico, Padova; Fabio Gelsomino, University Hospital of Modena, Modena; Massimo Aglietta, Institute for Cancer Research and Treatment of Candiolo, University of Torino Medical School, Turin, Italy; Ka Yeung Mark Wong, Sydney Medical School, University of Sydney, Sydney, New South Wales; Andrew Hill, Tasman Oncology Research, Ltd., Southport, Queensland, Australia; Heinz-Josef Lenz, University of Southern California Norris Comprehensive Cancer Center, Los Angeles, CA; Michael A. Morse, Duke University Medical Center, Durham, NC; Eric Van Cutsem, University Hospitals Gasthuisberg Leuven and Katholieke Universiteit Leuven, Leuven; Alain Hendlisz, Institut Jules Bordet; Bart Neyns, Universitair Ziekenhuis Brussel, Brussels; Jean-Marie Ledeine, Bristol-Myers Squibb, Braine-L'Alleud, Belgium; Ray McDermott, St Vincent's University Hospital and Cancer Trials Ireland, Dublin, Ireland; Michael B. Sawyer, Cross Cancer Institute and University of Alberta, Edmonton, Alberta, Canada; Magali Svrcek and Thierry André, Hopital Saint Antoine, Assistance Publique Hôpitaux de Paris and Sorbonne Universités, Université Pierre et Marie Curie, Paris, France; and Rebecca A. Moss, Z. Alexander Cao, and Shital Kamble, Bristol-Myers Squibb, Princeton, NJ.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <DataBankList CompleteYN="Y">
+          <DataBank>
+            <DataBankName>ClinicalTrials.gov</DataBankName>
+            <AccessionNumberList>
+              <AccessionNumber>NCT02060188</AccessionNumber>
+            </AccessionNumberList>
+          </DataBank>
+        </DataBankList>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2018</Year>
+          <Month>01</Month>
+          <Day>20</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>J Clin Oncol</MedlineTA>
+        <NlmUniqueID>8309333</NlmUniqueID>
+        <ISSNLinking>0732-183X</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D000074324">Ipilimumab</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>31YO63LBSN</RegistryNumber>
+          <NameOfSubstance UI="D000077594">Nivolumab</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <CommentsCorrectionsList>
+        <CommentsCorrections RefType="CommentIn">
+          <RefSource>Cancer Discov. 2018 Mar;8(3):263</RefSource>
+          <PMID Version="1">29420181</PMID>
+        </CommentsCorrections>
+      </CommentsCorrectionsList>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000328" MajorTopicYN="N">Adult</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000368" MajorTopicYN="N">Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000369" MajorTopicYN="N">Aged, 80 and over</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000971" MajorTopicYN="N">Antineoplastic Combined Chemotherapy Protocols</DescriptorName>
+          <QualifierName UI="Q000494" MajorTopicYN="N">pharmacology</QualifierName>
+          <QualifierName UI="Q000627" MajorTopicYN="Y">therapeutic use</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015179" MajorTopicYN="N">Colorectal Neoplasms</DescriptorName>
+          <QualifierName UI="Q000188" MajorTopicYN="Y">drug therapy</QualifierName>
+          <QualifierName UI="Q000401" MajorTopicYN="N">mortality</QualifierName>
+          <QualifierName UI="Q000473" MajorTopicYN="N">pathology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D053843" MajorTopicYN="N">DNA Mismatch Repair</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000074324" MajorTopicYN="N">Ipilimumab</DescriptorName>
+          <QualifierName UI="Q000494" MajorTopicYN="N">pharmacology</QualifierName>
+          <QualifierName UI="Q000627" MajorTopicYN="Y">therapeutic use</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D053842" MajorTopicYN="N">Microsatellite Instability</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008875" MajorTopicYN="N">Middle Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009362" MajorTopicYN="N">Neoplasm Metastasis</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000077594" MajorTopicYN="N">Nivolumab</DescriptorName>
+          <QualifierName UI="Q000494" MajorTopicYN="N">pharmacology</QualifierName>
+          <QualifierName UI="Q000627" MajorTopicYN="Y">therapeutic use</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015996" MajorTopicYN="N">Survival Rate</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2018</Year>
+          <Month>1</Month>
+          <Day>23</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2019</Year>
+          <Month>7</Month>
+          <Day>18</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2018</Year>
+          <Month>1</Month>
+          <Day>23</Day>
+          <Hour>6</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">29355075</ArticleId>
+        <ArticleId IdType="doi">10.1200/JCO.2017.76.9901</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+  <DeleteCitation>
+    <PMID Version="1">30830050</PMID>
+    <PMID Version="1">30830053</PMID>
+    <PMID Version="1">30830055</PMID>
+  </DeleteCitation>
 </PubmedArticleSet>
+
+
+

@@ -10,7 +10,7 @@ import java.util.List;
 import jam.sql.SQLColumn;
 import jam.sql.SQLKeyTable;
 
-import pubmed.medline.ISSN;
+import pubmed.article.ISSN;
 import pubmed.medline.MedlineJournal;
 import pubmed.medline.MedlineTA;
 import pubmed.medline.NlmUniqueID;

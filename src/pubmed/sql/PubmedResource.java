@@ -11,11 +11,11 @@ import jam.lang.JamException;
 import jam.sql.SQLColumn;
 
 import pubmed.article.DOI;
+import pubmed.article.ISSN;
 import pubmed.article.PMID;
 import pubmed.article.PubmedDate;
 import pubmed.medline.MedlineTA;
 import pubmed.medline.NlmUniqueID;
-import pubmed.medline.ISSN;
 import pubmed.mesh.MeshDescriptorKey;
 import pubmed.mesh.MeshRecordKey;
 

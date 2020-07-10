@@ -231,6 +231,39 @@ public final class PubmedArticle {
         return ListUtil.apply(articles, article -> article.getPMID());
     }
 
+    void setAbstractLemmas(LemmaList list) {
+        //
+        // Assign previously computed abstract lemmas, but this should
+        // only occur once after the article has been created...
+        //
+        if (abstractLemmas == null)
+            abstractLemmas = list;
+        else
+            throw JamException.runtime("Abstract lemmas have already been assigned.");
+    }
+
+    void setTitleLemmas(LemmaList list) {
+        //
+        // Assign previously computed title lemmas, but this should
+        // only occur once after the article has been created...
+        //
+        if (titleLemmas == null)
+            titleLemmas = list;
+        else
+            throw JamException.runtime("Title lemmas have already been assigned.");
+    }
+
+    void setKeywordLemmas(List<LemmaList> lists) {
+        //
+        // Assign previously computed keyword lemmas, but this should
+        // only occur once after the article has been created...
+        //
+        if (keywordLemmas == null)
+            keywordLemmas = lists;
+        else
+            throw JamException.runtime("Abstract lemmas have already been assigned.");
+    }
+
     /**
      * Returns the number of {@code MeSH} chemicals in this article.
      *
@@ -321,16 +354,9 @@ public final class PubmedArticle {
      */
     public LemmaList getTitleLemmas() {
         if (titleLemmas == null)
-            lemmatizeTitle();
+            titleLemmas = lemmatizeTitle();
 
         return titleLemmas;
-    }
-
-    private void lemmatizeTitle() {
-        if (hasTitle())
-            titleLemmas = LemmaAnnotator.contentWords(title);
-        else
-            titleLemmas = LemmaList.EMPTY;
     }
 
     /**
@@ -351,16 +377,9 @@ public final class PubmedArticle {
      */
     public LemmaList getAbstractLemmas() {
         if (abstractLemmas == null)
-            lemmatizeAbstract();
+            abstractLemmas = lemmatizeAbstract();
 
         return abstractLemmas;
-    }
-
-    private void lemmatizeAbstract() {
-        if (hasAbstract())
-            abstractLemmas = LemmaAnnotator.contentWords(abstract_);
-        else
-            abstractLemmas = LemmaList.EMPTY;
     }
 
     /**
@@ -566,6 +585,42 @@ public final class PubmedArticle {
     }
 
     /**
+     * Generates lemmas from the title of this article.
+     *
+     * @return the lemmas extracted from the title of this article.
+     */
+    public LemmaList lemmatizeTitle() {
+        if (hasTitle())
+            return LemmaAnnotator.contentWords(title);
+        else
+            return LemmaList.EMPTY;
+    }
+
+    /**
+     * Generates lemmas from the abstract of this article.
+     *
+     * @return the lemmas extracted from the abstract of this article.
+     */
+    public LemmaList lemmatizeAbstract() {
+        if (hasAbstract())
+            return LemmaAnnotator.contentWords(abstract_);
+        else
+            return LemmaList.EMPTY;
+    }
+
+    /**
+     * Generates lemmas from the keywords in this article.
+     *
+     * @return the lemmas extracted from the keywords in this article.
+     */
+    public List<LemmaList> lemmatizeKeywords() {
+        if (hasKeywordList())
+            return LemmaAnnotator.contentWords(keywordList);
+        else
+            return List.of();
+    }
+
+    /**
      * Identifies articles that are revisions of previous versions of
      * the same article.
      *
@@ -625,7 +680,7 @@ public final class PubmedArticle {
      */
     public List<LemmaList> viewKeywordLemmas() {
         if (keywordLemmas == null)
-            keywordLemmas = Collections.unmodifiableList(LemmaAnnotator.contentWords(keywordList));
+            keywordLemmas = lemmatizeKeywords();
 
         return keywordLemmas;
     }
