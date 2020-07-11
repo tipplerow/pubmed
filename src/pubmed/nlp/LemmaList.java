@@ -9,6 +9,7 @@ import java.util.List;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.CoreDocument;
 
+import jam.io.Delimiter;
 import jam.util.ListUtil;
 import jam.util.TargetList;
 
@@ -27,7 +28,7 @@ public final class LemmaList extends AbstractList<String> {
      * The default delimiter to be used when joining the lemmas into a
      * single string.
      */
-    public static final String DELIM = " ";
+    public static final Delimiter DELIM = Delimiter.WHITE_SPACE;
 
     /**
      * A sharable empty list.
@@ -54,6 +55,18 @@ public final class LemmaList extends AbstractList<String> {
      */
     public static LemmaList create(List<String> lemmas) {
         return new LemmaList(lemmas);
+    }
+
+    /**
+     * Creates a new lemma list by parsing a string of lemmas
+     * separated by white space.
+     *
+     * @param s a string of lemmas separated by white space.
+     *
+     * @return the new lemma list.
+     */
+    public static LemmaList parse(String s) {
+        return create(DELIM.split(s));
     }
 
     /**
@@ -107,7 +120,7 @@ public final class LemmaList extends AbstractList<String> {
      * @return a single string composed of the lemmas in this list.
      */
     public String join() {
-        return String.join(DELIM, lemmas);
+        return DELIM.join(lemmas);
     }
 
     /**

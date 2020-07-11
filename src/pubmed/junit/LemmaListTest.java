@@ -59,6 +59,14 @@ public class LemmaListTest {
         assertFalse(list.containsSequence(List.of("cancer", "gastric")));
     }
 
+    @Test public void testJoinParse() {
+        assertEquals(List.of("formate", "assay", "body", "fluid", "application", "methanol", "poisoning"),
+                     LemmaList.parse("formate assay body fluid application methanol poisoning"));
+
+        assertEquals("formate assay body fluid application methanol poisoning",
+                     LemmaList.create("formate", "assay", "body", "fluid", "application", "methanol", "poisoning").join());
+    }
+
     public static void main(String[] args) {
         org.junit.runner.JUnitCore.main("pubmed.junit.LemmaListTest");
     }
