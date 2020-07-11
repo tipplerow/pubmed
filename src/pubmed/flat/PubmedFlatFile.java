@@ -3,11 +3,13 @@ package pubmed.flat;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.List;
 
 import jam.app.JamLogger;
 import jam.io.FileUtil;
 import jam.io.IOUtil;
 import jam.flat.FlatRecord;
+import jam.util.StreamUtil;
 
 import pubmed.xml.PubmedArticleElement;
 import pubmed.xml.PubmedXmlDocument;
@@ -41,6 +43,19 @@ public abstract class PubmedFlatFile<V extends FlatRecord> {
 
     private File resolveFlatFile() {
         return new File(FileUtil.getCanonicalPrefix(xmlFile) + "_" + getBasenameSuffix() + ".psv.gz");
+    }
+
+    /**
+     * Extracts data record from a parsed XML document.
+     *
+     * @param document the document derived from the bulk XML file.
+     *
+     * @return the data records extracted from the specified document
+     * (elements may be {@code null} for articles that do not contain
+     * the relevant data items).
+     */
+    public List<V> extractRecords(PubmedXmlDocument document) {
+        return StreamUtil.applyParallel(document.getPubmedArticleElements(), element -> extractRecord(element));
     }
 
     /**
@@ -146,12 +161,9 @@ public abstract class PubmedFlatFile<V extends FlatRecord> {
         try (PrintWriter writer = IOUtil.openWriter(flatFile)) {
             JamLogger.info("Writing file [%s]...", flatFile);
 
-            for (PubmedArticleElement element : document.getPubmedArticleElements()) {
-                V record = extractRecord(element);
-
+            for (V record : extractRecords(document))
                 if (record != null)
                     writer.println(record.format());
-            }
         }
     }
 }
