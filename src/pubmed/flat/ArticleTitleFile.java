@@ -9,8 +9,7 @@ import pubmed.xml.PubmedArticleElement;
 import pubmed.xml.PubmedXmlDocument;
 
 /**
- * Represents a data record containing the identifier and title of a
- * {@code PubMed} article.
+ * Reads and writes flat files containing article titles.
  */
 public final class ArticleTitleFile extends PubmedFlatFile<ArticleTitleRecord> {
     private ArticleTitleFile(File xmlFile) {

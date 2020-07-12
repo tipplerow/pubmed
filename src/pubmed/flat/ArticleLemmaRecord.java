@@ -3,8 +3,6 @@ package pubmed.flat;
 
 import java.util.List;
 
-import jam.lang.ObjectUtil;
-
 import pubmed.article.PMID;
 import pubmed.nlp.LemmaList;
 
@@ -32,9 +30,5 @@ public abstract class ArticleLemmaRecord extends PubmedFlatRecord {
 
     @Override public List<String> formatFields() {
         return List.of(format(pmid), format(lemmas));
-    }
-
-    @Override public boolean equals(Object obj) {
-        return ObjectUtil.equalsClass(this, obj);
     }
 }

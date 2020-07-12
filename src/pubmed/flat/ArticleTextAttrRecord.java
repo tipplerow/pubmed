@@ -3,8 +3,6 @@ package pubmed.flat;
 
 import java.util.List;
 
-import jam.lang.ObjectUtil;
-
 import pubmed.article.PMID;
 
 /**
@@ -31,9 +29,5 @@ public abstract class ArticleTextAttrRecord extends PubmedFlatRecord {
 
     @Override public List<String> formatFields() {
         return List.of(format(pmid), format(text));
-    }
-
-    @Override public boolean equals(Object obj) {
-        return ObjectUtil.equalsClass(this, obj);
     }
 }

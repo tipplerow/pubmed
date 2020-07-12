@@ -2,6 +2,7 @@
 package pubmed.flat;
 
 import java.io.File;
+import java.util.List;
 
 import jam.lang.JamException;
 
@@ -9,17 +10,18 @@ import pubmed.xml.PubmedArticleElement;
 import pubmed.xml.PubmedXmlDocument;
 
 /**
- * Reads and writes flat files containing lemmatized article titles.
+ * Reads and writes joining files for articles and (lemmatized)
+ * keywords.
  */
-public final class TitleLemmaFile extends PubmedFlatFile<TitleLemmaRecord> {
-    private TitleLemmaFile(File xmlFile) {
+public final class KeywordFile extends PubmedJoinFile<KeywordRecord> {
+    private KeywordFile(File xmlFile) {
         super(xmlFile);
     }
 
     /**
      * The suffix for flat file names.
      */
-    public static final String SUFFIX = "title_lemma";
+    public static final String SUFFIX = "keyword";
 
     /**
      * Returns the flat file derived from a bulk XML file.
@@ -28,8 +30,8 @@ public final class TitleLemmaFile extends PubmedFlatFile<TitleLemmaRecord> {
      *
      * @return the flat file derived from the given bulk XML file.
      */
-    public static TitleLemmaFile from(File xmlFile) {
-        return new TitleLemmaFile(xmlFile);
+    public static KeywordFile from(File xmlFile) {
+        return new KeywordFile(xmlFile);
     }
 
     /**
@@ -40,18 +42,18 @@ public final class TitleLemmaFile extends PubmedFlatFile<TitleLemmaRecord> {
      * @throws RuntimeException unless the physical flat file has been
      * generated.
      */
-    public TitleLemmaTable load() {
+    public KeywordTable load() {
         if (!exists())
             throw JamException.runtime("Missing file [%s].", flatFile);
 
-        TitleLemmaTable table = new TitleLemmaTable();
+        KeywordTable table = new KeywordTable();
         table.parse(flatFile);
 
         return table;
     }
 
-    @Override public TitleLemmaRecord extractRecord(PubmedArticleElement element) {
-        return TitleLemmaRecord.from(element);
+    @Override public List<KeywordRecord> extractRecords(PubmedArticleElement element) {
+        return KeywordRecord.from(element);
     }
 
     @Override public String getBasenameSuffix() {

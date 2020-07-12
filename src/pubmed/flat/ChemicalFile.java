@@ -10,8 +10,8 @@ import pubmed.xml.PubmedArticleElement;
 import pubmed.xml.PubmedXmlDocument;
 
 /**
- * Represents a data record containing the identifier and title of a
- * {@code PubMed} article.
+ * Reads and writes joining files for articles and chemical
+ * substances.
  */
 public final class ChemicalFile extends PubmedJoinFile<ChemicalRecord> {
     private ChemicalFile(File xmlFile) {

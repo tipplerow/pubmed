@@ -9,8 +9,7 @@ import pubmed.xml.PubmedArticleElement;
 import pubmed.xml.PubmedXmlDocument;
 
 /**
- * Represents a data record containing the identifier and abstract of a
- * {@code PubMed} article.
+ * Reads and writes flat files containing lemmatized article abstracts.
  */
 public final class AbstractLemmaFile extends PubmedFlatFile<AbstractLemmaRecord> {
     private AbstractLemmaFile(File xmlFile) {
