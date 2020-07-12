@@ -6,18 +6,38 @@ import jam.flat.FlatRecord;
 import pubmed.article.PMID;
 
 /**
- * A data record that may be written to a delimited flat file.
+ * Provides a base class for data rows containing article attributes
+ * keyed by {@code PMID}.
  */
-public interface PubmedFlatRecord<K> extends FlatRecord<K> {
+public abstract class PubmedFlatRecord implements FlatRecord<PMID>, FlatRecordBase {
     /**
-     * Formats a (possibly {@code null}) identifier.
-     *
-     * @param pmid the (possibly {@code null}) identifier.
-     *
-     * @return the string value of the identifier, if it is not
-     * {@code null}, otherwise the {@code NULL_STRING}.
+     * The {@code PubMed} identifier for the article.
      */
-    public default String format(PMID pmid) {
-        return (pmid != null) ? Integer.toString(pmid.intValue()) : NULL_STRING;
+    protected final PMID pmid;
+
+    /**
+     * Creates a new record with a fixed primary key.
+     *
+     * @param pmid the primary key for the record.
+     */
+    protected PubmedFlatRecord(PMID pmid) {
+        this.pmid = pmid;
+    }
+
+    /**
+     * Returns the {@code PubMed} identifier for the article.
+     *
+     * @return the {@code PubMed} identifier for the article.
+     */
+    public PMID getPMID() {
+        return pmid;
+    }
+
+    @Override public PMID getPrimaryKey() {
+        return pmid;
+    }
+
+    @Override public int hashCode() {
+        return pmid.intValue();
     }
 }

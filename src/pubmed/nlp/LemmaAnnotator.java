@@ -25,7 +25,9 @@ public final class LemmaAnnotator {
 
     private static StanfordCoreNLP createPipeline() {
         Properties props = new Properties();
+
         props.put("annotators", "tokenize, ssplit, pos, lemma");
+        props.put("tokenize.options", "untokenizable=noneDelete");
 
         return new StanfordCoreNLP(props);
     }

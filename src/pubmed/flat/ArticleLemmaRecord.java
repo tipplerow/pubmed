@@ -12,7 +12,7 @@ import pubmed.nlp.LemmaList;
  * Represents a data record containing the identifier of a
  * {@code PubMed} article and a list of lemmas (content words).
  */
-public abstract class ArticleLemmaRecord extends ArticleAttrRecord {
+public abstract class ArticleLemmaRecord extends PubmedFlatRecord {
     /**
      * The article lemmas.
      */

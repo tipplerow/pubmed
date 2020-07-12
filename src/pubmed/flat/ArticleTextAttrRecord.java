@@ -11,7 +11,7 @@ import pubmed.article.PMID;
  * Represents a data record containing the identifier of a
  * {@code PubMed} article and a single text attribute.
  */
-public abstract class ArticleTextAttrRecord extends ArticleAttrRecord {
+public abstract class ArticleTextAttrRecord extends PubmedFlatRecord {
     /**
      * The text attribute for the article.
      */
