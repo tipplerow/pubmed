@@ -31,7 +31,7 @@ public abstract class ArticleLemmaRecord extends PubmedFlatRecord {
     }
 
     @Override public List<String> formatFields() {
-        return List.of(format(pmid), format(lemmas.join()));
+        return List.of(format(pmid), format(lemmas));
     }
 
     @Override public boolean equals(Object obj) {
