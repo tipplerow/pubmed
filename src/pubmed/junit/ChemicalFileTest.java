@@ -32,12 +32,8 @@ public class ChemicalFileTest {
         assertEquals(4, records.size());
         assertEquals(MeshRecordKey.instance("D005561"), records.get(0).getForeignKey());
         assertEquals(MeshRecordKey.instance("D000432"), records.get(3).getMeshKey());
-        /*
-        assertEquals("Formate assay in body fluids: application in methanol poisoning.\\",
-                     table.select(PMID.instance(1)).getChemical());
-        */
 
-        //assertTrue(chemicalFile.delete());
+        assertTrue(chemicalFile.delete());
     }
 
     public static void main(String[] args) {
