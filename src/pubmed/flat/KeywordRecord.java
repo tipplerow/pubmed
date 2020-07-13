@@ -4,7 +4,7 @@ package pubmed.flat;
 import java.util.List;
 
 import jam.flat.FlatRecord;
-import jam.util.ListUtil;
+import jam.util.StreamUtil;
 
 import pubmed.article.PMID;
 import pubmed.nlp.LemmaAnnotator;
@@ -46,7 +46,7 @@ public final class KeywordRecord extends PubmedJoinRecord<String> {
         if (keywordList.isEmpty())
             return List.of();
         else
-            return ListUtil.apply(keywordList, keyword -> create(element.getPMID(), lemmatize(keyword)));
+            return StreamUtil.applyParallel(keywordList, keyword -> create(element.getPMID(), lemmatize(keyword)));
     }
 
     private static String lemmatize(String keyword) {
