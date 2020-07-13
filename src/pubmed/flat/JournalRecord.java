@@ -62,10 +62,10 @@ public final class JournalRecord extends PubmedJoinRecord<ISSN> {
     public static JournalRecord parse(String line) {
         String[] fields = FlatRecord.split(line, 4);
 
-        PMID pmid = PMID.instance(fields[0]);
-        ISSN issn = ISSN.instance(fields[1]);
-        String title = fields[2];
-        String abbrev = fields[3];
+        PMID pmid = parsePMID(fields[0]);
+        ISSN issn = parseISSN(fields[1]);
+        String title = FlatRecord.parseString(fields[2]);
+        String abbrev = FlatRecord.parseString(fields[3]);
 
         return create(pmid, PubmedJournal.create(issn, title, abbrev));
     }

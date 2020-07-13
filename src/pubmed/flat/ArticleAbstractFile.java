@@ -6,7 +6,6 @@ import java.io.File;
 import jam.lang.JamException;
 
 import pubmed.xml.PubmedArticleElement;
-import pubmed.xml.PubmedXmlDocument;
 
 /**
  * Reads and writes flat files containing article abstracts.

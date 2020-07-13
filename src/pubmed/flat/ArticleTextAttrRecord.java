@@ -25,6 +25,12 @@ public abstract class ArticleTextAttrRecord extends PubmedFlatRecord {
     protected ArticleTextAttrRecord(PMID pmid, String text) {
         super(pmid);
         this.text = text;
+        validateText();
+    }
+
+    private void validateText() {
+        if (text == null)
+            throw new NullPointerException("Null text attribute.");
     }
 
     @Override public List<String> formatFields() {

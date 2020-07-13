@@ -2,23 +2,25 @@
 package pubmed.flat;
 
 import java.io.File;
+import java.util.List;
 
 import jam.lang.JamException;
 
 import pubmed.xml.PubmedArticleElement;
 
 /**
- * Reads and writes flat files containing lemmatized article abstracts.
+ * Reads and writes joining files for articles and chemical
+ * substances.
  */
-public final class AbstractLemmaFile extends PubmedFlatFile<AbstractLemmaRecord> {
-    private AbstractLemmaFile(File xmlFile) {
+public final class HeadingDescFile extends PubmedJoinFile<HeadingDescRecord> {
+    private HeadingDescFile(File xmlFile) {
         super(xmlFile);
     }
 
     /**
      * The suffix for flat file names.
      */
-    public static final String SUFFIX = "abstract_lemma";
+    public static final String SUFFIX = "heading_desc";
 
     /**
      * Returns the flat file derived from a bulk XML file.
@@ -27,8 +29,8 @@ public final class AbstractLemmaFile extends PubmedFlatFile<AbstractLemmaRecord>
      *
      * @return the flat file derived from the given bulk XML file.
      */
-    public static AbstractLemmaFile from(File xmlFile) {
-        return new AbstractLemmaFile(xmlFile);
+    public static HeadingDescFile from(File xmlFile) {
+        return new HeadingDescFile(xmlFile);
     }
 
     /**
@@ -39,18 +41,18 @@ public final class AbstractLemmaFile extends PubmedFlatFile<AbstractLemmaRecord>
      * @throws RuntimeException unless the physical flat file has been
      * generated.
      */
-    public AbstractLemmaTable load() {
+    public HeadingDescTable load() {
         if (!exists())
             throw JamException.runtime("Missing file [%s].", flatFile);
 
-        AbstractLemmaTable table = new AbstractLemmaTable();
+        HeadingDescTable table = new HeadingDescTable();
         table.parse(flatFile);
 
         return table;
     }
 
-    @Override public AbstractLemmaRecord extractRecord(PubmedArticleElement element) {
-        return AbstractLemmaRecord.from(element);
+    @Override public List<HeadingDescRecord> extractRecords(PubmedArticleElement element) {
+        return HeadingDescRecord.from(element);
     }
 
     @Override public String getBasenameSuffix() {

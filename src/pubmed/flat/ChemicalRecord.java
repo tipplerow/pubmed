@@ -57,7 +57,7 @@ public final class ChemicalRecord extends PubmedJoinRecord<MeshRecordKey> {
      */
     public static ChemicalRecord parse(String line) {
         String[] fields = FlatRecord.split(line, 2);
-        return create(PMID.instance(fields[0]), MeshRecordKey.instance(fields[1]));
+        return create(parsePMID(fields[0]), parseRecordKey(fields[1]));
     }
 
     /**

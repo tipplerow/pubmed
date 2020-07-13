@@ -102,6 +102,7 @@ public final class FlatFileProcessor {
 
         ArticleTitleFile.from(bulkFile).processDocument(document, false);
         ArticleAbstractFile.from(bulkFile).processDocument(document, false);
+        JournalFile.from(bulkFile).processDocument(document, false);
 
         TitleLemmaFile.from(bulkFile).processDocument(document, false);
         AbstractLemmaFile.from(bulkFile).processDocument(document, false);

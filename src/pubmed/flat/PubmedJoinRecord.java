@@ -24,6 +24,12 @@ public abstract class PubmedJoinRecord<K2> extends PubmedFlatRecord implements J
     protected PubmedJoinRecord(PMID pmid, K2 fkey) {
         super(pmid);
         this.fkey = fkey;
+        validateForeignKey();
+    }
+
+    private void validateForeignKey() {
+        if (fkey == null)
+            throw new NullPointerException("Null foreign key.");
     }
 
     @Override public K2 getForeignKey() {

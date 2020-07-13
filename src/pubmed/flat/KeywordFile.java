@@ -7,7 +7,6 @@ import java.util.List;
 import jam.lang.JamException;
 
 import pubmed.xml.PubmedArticleElement;
-import pubmed.xml.PubmedXmlDocument;
 
 /**
  * Reads and writes joining files for articles and (lemmatized)

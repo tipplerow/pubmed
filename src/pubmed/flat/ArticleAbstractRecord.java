@@ -54,7 +54,7 @@ public final class ArticleAbstractRecord extends ArticleTextAttrRecord {
      */
     public static ArticleAbstractRecord parse(String line) {
         String[] fields = FlatRecord.split(line, 2);
-        return create(PMID.instance(fields[0]), fields[1]);
+        return create(parsePMID(fields[0]), fields[1]);
     }
 
     /**
