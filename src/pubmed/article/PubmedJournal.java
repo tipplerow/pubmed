@@ -63,6 +63,15 @@ public final class PubmedJournal implements BulkRecord {
         return title;
     }
 
+    /**
+     * Identifies journals with non-{@code null ISSN} values.
+     *
+     * @return {@code true} iff this journal has a non-{@code null ISSN}.
+     */
+    public boolean hasISSN() {
+        return issn != null;
+    }
+
     @Override public String formatBulk() {
         return joinBulk(formatBulk(issn),
                         formatBulk(title),
