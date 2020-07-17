@@ -47,6 +47,18 @@ public abstract class MeshRecordKey extends KeyedObject<String> {
     }
 
     /**
+     * Determines whether a string is a valid record key.
+     *
+     * @param key the key to examine.
+     *
+     * @return {@code true} iff the specified string is a valid record
+     * key.
+     */
+    public static boolean isRecordKey(String key) {
+        return MeshRecordType.isRecordKey(key);
+    }
+
+    /**
      * Returns the enumerated type of this record key.
      *
      * @return the enumerated type of this record key.

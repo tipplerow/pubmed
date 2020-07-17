@@ -18,6 +18,22 @@ public enum MeshRecordType {
     }
 
     /**
+     * Determines whether a string is a valid record key.
+     *
+     * @param key the key to examine.
+     *
+     * @return {@code true} iff the specified string is a valid record
+     * key.
+     */
+    public static boolean isRecordKey(String key) {
+        for (MeshRecordType type : values())
+            if (key.startsWith(type.keyPrefix))
+                return true;
+
+        return false;
+    }
+
+    /**
      * Infers the record type for a given key string by matching the
      * key prefix.
      *
