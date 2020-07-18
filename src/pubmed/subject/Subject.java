@@ -56,6 +56,18 @@ public abstract class Subject extends KeyedObject<String> {
     }
 
     /**
+     * Identifies existing subjects.
+     *
+     * @param key the unique key of a subject.
+     *
+     * @return {@code true} iff a subject with the specified key has
+     * been created.
+     */
+    public static boolean exists(String key) {
+        return registry.containsKey(key);
+    }
+
+    /**
      * Retrieves the subject having a specific key.
      *
      * @param key the unique key of a subject.

@@ -14,6 +14,18 @@ public class SubjectTest {
     private static final Subject hematoma = MeshSubject.create("D006406");
     private static final Subject nivolumab = MeshSubject.create("D000077594");
 
+    @Test public void testExists() {
+        assertTrue(Subject.exists("D006406"));
+        assertTrue(Subject.exists("D000077594"));
+        assertFalse(Subject.exists("foo"));
+    }
+
+    @Test public void testInstance() {
+        assertNull(Subject.instance("foo"));
+        assertEquals(hematoma, Subject.instance("D006406"));
+        assertEquals(nivolumab, Subject.instance("D000077594"));
+    }
+
     @Test public void testKeywords() {
         assertEquals(List.of("Hematoma", "Hematomas"), hematoma.getKeywords());
         assertEquals(List.of("Nivolumab", "Opdivo",
