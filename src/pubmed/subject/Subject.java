@@ -5,10 +5,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import jam.lang.JamException;
 import jam.lang.KeyedObject;
+import jam.util.UniqueList;
 
 import pubmed.mesh.MeshDescriptor;
 import pubmed.mesh.MeshRecord;
@@ -24,6 +24,15 @@ import pubmed.nlp.LemmaList;
  * {@code pubmed} articles.
  */
 public abstract class Subject extends KeyedObject<String> {
+    // Names for the subject: the first serves as the primary name...
+    private final List<String> names = UniqueList.create();
+
+    // Keywords, assembled on demand...
+    private List<String> keywords = null;
+
+    // Lemmatized keywords, computed on demand...
+    private List<LemmaList> keywordLemmas = null;
+
     // Registry of all unique subjects indexed by key...
     private static final Map<String, Subject> registry = new HashMap<String, Subject>();
 
@@ -56,6 +65,18 @@ public abstract class Subject extends KeyedObject<String> {
      */
     public static Subject instance(String key) {
         return registry.get(key);
+    }
+
+    /**
+     * Adds a name for this subject. The first name added will serve
+     * as the primary name; {@code null} and duplicate names will be
+     * ignored.
+     *
+     * @param name the name to add.
+     */
+    protected void addName(String name) {
+        if (name != null)
+            names.add(name);
     }
 
     /**
@@ -109,12 +130,23 @@ public abstract class Subject extends KeyedObject<String> {
      * identify this subject.
      */
     public List<String> getKeywords() {
+        if (keywords == null)
+            assembleKeywords();
+
+        return keywords;
+    }
+
+    private void assembleKeywords() {
+        keywords = UniqueList.create();
         MeshRecord record = getMeshRecord();
 
         if (record != null)
-            return record.termStrings();
+            keywords.addAll(record.termStrings());
         else
-            return List.of(key);
+            keywords.add(key);
+
+        keywords.addAll(names);
+        keywords = Collections.unmodifiableList(keywords);
     }
 
     /**
@@ -125,12 +157,16 @@ public abstract class Subject extends KeyedObject<String> {
      * identify this subject.
      */
     public List<LemmaList> getKeywordLemmas() {
-        MeshRecord record = getMeshRecord();
+        if (keywordLemmas == null)
+            lemmatizeKeywords();
 
-        if (record != null)
-            return record.termLemmas();
-        else
-            return List.of(LemmaAnnotator.contentWords(key));
+        return keywordLemmas;
+    }
+
+    private void lemmatizeKeywords() {
+        keywordLemmas = LemmaAnnotator.contentWords(getKeywords());
+        keywordLemmas = UniqueList.create(keywordLemmas);
+        keywordLemmas = Collections.unmodifiableList(keywordLemmas);
     }
 
     /**
@@ -148,6 +184,27 @@ public abstract class Subject extends KeyedObject<String> {
             return ((MeshTreeRecord) record).getNumberList();
         else
             return MeshTreeNumberList.EMPTY;
+    }
+
+    /**
+     * Returns the names assigned to this subject.
+     *
+     * @return the names assigned to this subject.
+     */
+    public List<String> getNames() {
+        return Collections.unmodifiableList(names);
+    }
+
+    /**
+     * Returns the primary name for this subject.
+     *
+     * @return the primary name for this subject.
+     */
+    public String getPrimaryName() {
+        if (names.isEmpty())
+            return getKey();
+        else
+            return names.get(0);
     }
 
     /**

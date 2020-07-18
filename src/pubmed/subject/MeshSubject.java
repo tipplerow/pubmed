@@ -19,6 +19,7 @@ public final class MeshSubject extends Subject {
     private MeshSubject(MeshRecord record) {
         super(record.getKeyString());
         this.record = record;
+        addName(record.getNameString());
     }
 
     /**

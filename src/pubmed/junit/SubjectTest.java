@@ -30,6 +30,11 @@ public class SubjectTest {
         assertEquals(LemmaList.create("opdivo"), nivolumab.getKeywordLemmas().get(1));
     }
 
+    @Test public void testPrimaryName() {
+        assertEquals("Hematoma", hematoma.getPrimaryName());
+        assertEquals("Nivolumab", nivolumab.getPrimaryName());
+    }
+
     public static void main(String[] args) {
         org.junit.runner.JUnitCore.main("pubmed.junit.SubjectTest");
     }
