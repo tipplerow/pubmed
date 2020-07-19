@@ -81,13 +81,13 @@ public abstract class Subject extends KeyedObject<String> {
 
     /**
      * Adds a name for this subject. The first name added will serve
-     * as the primary name; {@code null} and duplicate names will be
-     * ignored.
+     * as the primary name; {@code null}, empty, and duplicate names
+     * will be ignored.
      *
      * @param name the name to add.
      */
     protected void addName(String name) {
-        if (name != null)
+        if (name != null && !name.isEmpty())
             names.add(name);
     }
 
