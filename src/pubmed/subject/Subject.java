@@ -100,25 +100,6 @@ public abstract class Subject extends KeyedObject<String> {
     public abstract MeshRecord getMeshRecord();
 
     /**
-     * Returns the prefix used to create database table names for
-     * articles related to this subject.
-     *
-     * @return the prefix used to create database table names for
-     * articles related to this subject.
-     */
-    public abstract String getTablePrefix();
-
-    /**
-     * Returns the suffix used to create database table names for
-     * articles related to this subject.
-     *
-     * @return the suffix used to create database table names for
-     * articles related to this subject ({@code null} if no suffix
-     * is necessary).
-     */
-    public abstract String getTableSuffix();
-
-    /**
      * Returns the {@code MeSH} descriptor for this subject (or
      * {@code null} if there is no corresponding descriptor).
      *
@@ -220,6 +201,29 @@ public abstract class Subject extends KeyedObject<String> {
     }
 
     /**
+     * Returns the prefix used to create database table names for
+     * articles related to this subject.
+     *
+     * @return the prefix used to create database table names for
+     * articles related to this subject.
+     */
+    public String getTablePrefix() {
+        return getClass().getSimpleName();
+    }
+
+    /**
+     * Returns the suffix used to create database table names for
+     * articles related to this subject.
+     *
+     * @return the suffix used to create database table names for
+     * articles related to this subject ({@code null} if no suffix
+     * is necessary).
+     */
+    public String getTableSuffix() {
+        return key;
+    }
+
+    /**
      * Specifies whether this subject is a chemical substance with
      * a corresponding {@code MeSH} record that may appear in the
      * chemical substance list of an article.
@@ -281,6 +285,6 @@ public abstract class Subject extends KeyedObject<String> {
     }
 
     @Override public String toString() {
-        return String.format("%s(%s)", getClass().getSimpleName(), key);
+        return String.format("%s(%s)", getClass().getSimpleName(), getPrimaryName());
     }
 }

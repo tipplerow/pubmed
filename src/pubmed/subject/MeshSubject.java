@@ -70,12 +70,4 @@ public final class MeshSubject extends Subject {
     @Override public MeshRecord getMeshRecord() {
         return record;
     }
-
-    @Override public String getTablePrefix() {
-        return "mesh";
-    }
-
-    @Override public String getTableSuffix() {
-        return record.getNameString();
-    }
 }
