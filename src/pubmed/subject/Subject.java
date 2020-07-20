@@ -92,6 +92,24 @@ public abstract class Subject extends KeyedObject<String> {
     }
 
     /**
+     * Assembles the keywords for this subject.
+     *
+     * <p>If this subject has a corresponding {@code MeSH} record,
+     * this default implementation returns the terms mapped to the
+     * record; otherwise, it returns the subject names.
+     *
+     * @return the keywords for this subject.
+     */
+    protected List<String> assembleKeywords() {
+        MeshRecord record = getMeshRecord();
+
+        if (record != null)
+            return record.termStrings();
+        else
+            return names;
+    }
+
+    /**
      * Returns the {@code MeSH} record for this subject.
      *
      * @return the {@code MeSH} record for this subject (or
@@ -124,22 +142,9 @@ public abstract class Subject extends KeyedObject<String> {
      */
     public List<String> getKeywords() {
         if (keywords == null)
-            assembleKeywords();
+            keywords = Collections.unmodifiableList(assembleKeywords());
 
         return keywords;
-    }
-
-    private void assembleKeywords() {
-        keywords = UniqueList.create();
-        MeshRecord record = getMeshRecord();
-
-        if (record != null)
-            keywords.addAll(record.termStrings());
-        else
-            keywords.add(key);
-
-        keywords.addAll(names);
-        keywords = Collections.unmodifiableList(keywords);
     }
 
     /**
