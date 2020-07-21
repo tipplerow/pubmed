@@ -142,7 +142,7 @@ public abstract class Subject extends KeyedObject<String> {
      */
     public List<String> getKeywords() {
         if (keywords == null)
-            keywords = Collections.unmodifiableList(assembleKeywords());
+            keywords = Collections.unmodifiableList(UniqueList.create(assembleKeywords()));
 
         return keywords;
     }
