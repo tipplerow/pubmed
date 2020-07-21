@@ -237,17 +237,8 @@ public abstract class Subject extends KeyedObject<String> {
      * with a corresponding {@code MeSH} record.
      */
     public boolean isChemical() {
-        return isSupplemental() || (isDescriptor() && hasChemicalTreeNumber());
-    }
-
-    private boolean hasChemicalTreeNumber() {
-        MeshTreeNumberList treeNumbers = getMeshTreeNumbers();
-
-        for (MeshTreeNumber treeNumber : treeNumbers)
-            if (treeNumber.getCategory().equals(MeshTreeCategory.Chemicals_and_Drugs))
-                return true;
-
-        return false;
+        MeshRecord record = getMeshRecord();
+        return record != null && record.isChemical();
     }
 
     /**

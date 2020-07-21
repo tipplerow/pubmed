@@ -261,6 +261,26 @@ public abstract class MeshRecord {
     }
 
     /**
+     * Identifies chemical substance records.
+     *
+     * @return {@code true} iff this record refers to a chemical
+     * substance.
+     */
+    public boolean isChemical() {
+        return isSupplemental() || (isDescriptor() && hasChemicalTreeNumber());
+    }
+
+    private boolean hasChemicalTreeNumber() {
+        MeshTreeNumberList treeNumbers = ((MeshDescriptor) this).getNumberList();
+
+        for (MeshTreeNumber treeNumber : treeNumbers)
+            if (treeNumber.getCategory().equals(MeshTreeCategory.Chemicals_and_Drugs))
+                return true;
+
+        return false;
+    }
+
+    /**
      * Identifies {@code MeSH} descriptor records.
      *
      * @return {@code true} iff this is a {@code Mesh} descriptor
