@@ -1,13 +1,13 @@
 
 package pubmed.junit;
 
-import java.io.File;
 import java.util.List;
 
 import pubmed.article.ISSN;
 import pubmed.article.PMID;
 import pubmed.article.PubmedJournal;
-import pubmed.flat.JournalFile;
+import pubmed.bulk.BulkFile;
+import pubmed.bulk.JournalFile;
 import pubmed.flat.JournalRecord;
 import pubmed.flat.JournalTable;
 
@@ -15,12 +15,12 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class JournalFileTest {
-    private static final File sampleXml = new File("data/test/pubmed_sample.xml");
-    private static final JournalFile journalFile = JournalFile.from(sampleXml);
+    private static final BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
+    private static final JournalFile journalFile = JournalFile.from(bulkFile);
 
     @Test public void testFile() {
         journalFile.processFile(true);
-        journalFile.processFile(true);
+        journalFile.processFile(false);
 
         JournalTable table = journalFile.load();
 

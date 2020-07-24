@@ -1,11 +1,11 @@
 
 package pubmed.junit;
 
-import java.io.File;
 import java.util.List;
 
 import pubmed.article.PMID;
-import pubmed.flat.KeywordFile;
+import pubmed.bulk.BulkFile;
+import pubmed.bulk.KeywordFile;
 import pubmed.flat.KeywordRecord;
 import pubmed.flat.KeywordTable;
 
@@ -13,12 +13,12 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class KeywordFileTest {
-    private static final File sampleXml = new File("data/test/pubmed_sample.xml");
-    private static final KeywordFile keywordFile = KeywordFile.from(sampleXml);
+    private static final BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
+    private static final KeywordFile keywordFile = KeywordFile.from(bulkFile);
 
     @Test public void testFile() {
         keywordFile.processFile(true);
-        keywordFile.processFile(true);
+        keywordFile.processFile(false);
 
         KeywordTable table = keywordFile.load();
 

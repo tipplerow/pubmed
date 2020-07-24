@@ -4,7 +4,8 @@ package pubmed.junit;
 import java.io.File;
 
 import pubmed.article.PMID;
-import pubmed.flat.ArticleAbstractFile;
+import pubmed.bulk.ArticleAbstractFile;
+import pubmed.bulk.BulkFile;
 import pubmed.flat.ArticleAbstractRecord;
 import pubmed.flat.ArticleAbstractTable;
 
@@ -12,12 +13,12 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class ArticleAbstractFileTest {
-    private static final File sampleXml = new File("data/test/pubmed_sample.xml");
-    private static final ArticleAbstractFile abstractFile = ArticleAbstractFile.from(sampleXml);
+    private static final BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
+    private static final ArticleAbstractFile abstractFile = ArticleAbstractFile.from(bulkFile);
 
     @Test public void testFile() {
         abstractFile.processFile(true);
-        abstractFile.processFile(true);
+        abstractFile.processFile(false);
 
         ArticleAbstractTable table = abstractFile.load();
         ArticleAbstractRecord record = table.select(PMID.instance(31383387));

@@ -1,11 +1,11 @@
 
 package pubmed.junit;
 
-import java.io.File;
 import java.util.List;
 
 import pubmed.article.PMID;
-import pubmed.flat.ChemicalFile;
+import pubmed.bulk.BulkFile;
+import pubmed.bulk.ChemicalFile;
 import pubmed.flat.ChemicalRecord;
 import pubmed.flat.ChemicalTable;
 import pubmed.mesh.MeshRecordKey;
@@ -14,12 +14,16 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class ChemicalFileTest {
-    private static final File sampleXml = new File("data/test/pubmed_sample.xml");
-    private static final ChemicalFile chemicalFile = ChemicalFile.from(sampleXml);
+    private static final BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
+    private static final ChemicalFile chemicalFile = ChemicalFile.from(bulkFile);
 
     @Test public void testFile() {
+        System.out.println(chemicalFile.getBulkFile());
+        System.out.println(chemicalFile.getFlatFile());
+        System.out.println(chemicalFile.getGZipFile());
+
         chemicalFile.processFile(true);
-        chemicalFile.processFile(true);
+        chemicalFile.processFile(false);
 
         ChemicalTable table = chemicalFile.load();
 

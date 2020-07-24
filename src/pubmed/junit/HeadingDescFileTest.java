@@ -1,11 +1,11 @@
 
 package pubmed.junit;
 
-import java.io.File;
 import java.util.List;
 
 import pubmed.article.PMID;
-import pubmed.flat.HeadingDescFile;
+import pubmed.bulk.BulkFile;
+import pubmed.bulk.HeadingDescFile;
 import pubmed.flat.HeadingDescRecord;
 import pubmed.flat.HeadingDescTable;
 import pubmed.mesh.MeshDescriptorKey;
@@ -14,12 +14,12 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class HeadingDescFileTest {
-    private static final File sampleXml = new File("data/test/pubmed_sample.xml");
-    private static final HeadingDescFile headingFile = HeadingDescFile.from(sampleXml);
+    private static final BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
+    private static final HeadingDescFile headingFile = HeadingDescFile.from(bulkFile);
 
     @Test public void testFile() {
         headingFile.processFile(true);
-        headingFile.processFile(true);
+        headingFile.processFile(false);
 
         HeadingDescTable table = headingFile.load();
 

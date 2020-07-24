@@ -8,9 +8,12 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
+import jam.app.JamLogger;
 import jam.io.FileUtil;
 import jam.lang.JamException;
 import jam.util.ListUtil;
+
+import pubmed.xml.PubmedXmlDocument;
 
 /**
  * Represents a bulk XML file in the {@code PubMed} production system.
@@ -18,8 +21,17 @@ import jam.util.ListUtil;
 public final class BulkFile {
     private final File file;
 
+    private AbstractLemmaFile   abstractLemmaFile   = null;
+    private ArticleAbstractFile articleAbstractFile = null;
+    private ArticleTitleFile    articleTitleFile    = null;
+    private ChemicalFile        chemicalFile        = null;
+    private HeadingDescFile     headingDescFile     = null;
+    private JournalFile         journalFile         = null;
+    private KeywordFile         keywordFile         = null;
+    private TitleLemmaFile      titleLemmaFile      = null;
+
     private BulkFile(File file) {
-        this.file = file;
+        this.file = FileUtil.getCanonicalFile(file);
     }
 
     /**
@@ -136,6 +148,181 @@ public final class BulkFile {
      */
     public File getFile() {
         return file;
+    }
+
+    /**
+     * Returns the lemmatized abstract flat file derived from this
+     * bulk file.
+     *
+     * @return the lemmatized abstract flat file derived from this
+     * bulk file.
+     */
+    public AbstractLemmaFile getAbstractLemmaFile() {
+        if (abstractLemmaFile == null)
+            abstractLemmaFile = AbstractLemmaFile.from(this);
+
+        return abstractLemmaFile;
+    }
+
+    /**
+     * Returns the article abstract flat file derived from this bulk
+     * file.
+     *
+     * @return the article abstract flat file derived from this bulk
+     * file.
+     */
+    public ArticleAbstractFile getArticleAbstractFile() {
+        if (articleAbstractFile == null)
+            articleAbstractFile = ArticleAbstractFile.from(this);
+
+        return articleAbstractFile;
+    }
+
+    /**
+     * Returns the article title flat file derived from this bulk
+     * file.
+     *
+     * @return the article title flat file derived from this bulk
+     * file.
+     */
+    public ArticleTitleFile getArticleTitleFile() {
+        if (articleTitleFile == null)
+            articleTitleFile = ArticleTitleFile.from(this);
+
+        return articleTitleFile;
+    }
+
+    /**
+     * Returns the chemical substance flat file derived from this bulk
+     * file.
+     *
+     * @return the chemical substance flat file derived from this bulk
+     * file.
+     */
+    public ChemicalFile getChemicalFile() {
+        if (chemicalFile == null)
+            chemicalFile = ChemicalFile.from(this);
+
+        return chemicalFile;
+    }
+
+    /**
+     * Returns the heading descriptor flat file derived from this bulk
+     * file.
+     *
+     * @return the heading descriptor flat file derived from this bulk
+     * file.
+     */
+    public HeadingDescFile getHeadingDescFile() {
+        if (headingDescFile == null)
+            headingDescFile = HeadingDescFile.from(this);
+
+        return headingDescFile;
+    }
+
+    /**
+     * Returns the journal flat file derived from this bulk file.
+     *
+     * @return the journal flat file derived from this bulk file.
+     */
+    public JournalFile getJournalFile() {
+        if (journalFile == null)
+            journalFile = JournalFile.from(this);
+
+        return journalFile;
+    }
+
+    /**
+     * Returns the keyword flat file derived from this bulk file.
+     *
+     * @return the keyword flat file derived from this bulk file.
+     */
+    public KeywordFile getKeywordFile() {
+        if (keywordFile == null)
+            keywordFile = KeywordFile.from(this);
+
+        return keywordFile;
+    }
+
+    /**
+     * Returns the lemmatized title flat file derived from this bulk
+     * file.
+     *
+     * @return the lemmatized title flat file derived from this bulk
+     * file.
+     */
+    public TitleLemmaFile getTitleLemmaFile() {
+        if (titleLemmaFile == null)
+            titleLemmaFile = TitleLemmaFile.from(this);
+
+        return titleLemmaFile;
+    }
+
+    /**
+     * Returns a read-only list of the document content flat files
+     * derived from this bulk file.
+     *
+     * @return a read-only list of the document content flat files
+     * derived from this bulk file.
+     */
+    public List<DocumentContentFile> getContentFiles() {
+        return List.of(getAbstractLemmaFile(),
+                       getArticleAbstractFile(),
+                       getArticleTitleFile(),
+                       getChemicalFile(),
+                       getHeadingDescFile(),
+                       getJournalFile(),
+                       getKeywordFile(),
+                       getTitleLemmaFile());
+    }
+
+    /**
+     * Returns a read-only list of the document content flat files
+     * that have not yet been generated from this bulk file.
+     *
+     * @return a read-only list of the document content flat files
+     * that have not yet been generated from this bulk file.
+     */
+    public List<DocumentContentFile> getUnprocessedContentFiles() {
+        return ListUtil.filter(getContentFiles(), file -> !file.exists());
+    }
+
+    /**
+     * Parses this bulk XML file.
+     *
+     * @return the XML document contained in this file.
+     */
+    public PubmedXmlDocument parse() {
+        return PubmedXmlDocument.parse(file);
+    }
+
+    /**
+     * Executes the production process for this bulk XML file.
+     *
+     * <p>This method parses the XML document and then generates all
+     * content and analysis files.
+     *
+     * @throws RuntimeException if any errors occur.
+     */
+    public void process() {
+        JamLogger.info("Processing [%s]...", file.getPath());
+
+        processContentFiles();
+    }
+
+    private void processContentFiles() {
+        List<DocumentContentFile> unprocessed =
+            getUnprocessedContentFiles();
+
+        if (unprocessed.isEmpty()) {
+            JamLogger.info("All content files have been processed.");
+            return;
+        }
+
+        PubmedXmlDocument document = parse();
+
+        for (DocumentContentFile contentFile : unprocessed)
+            contentFile.processDocument(document, false);
     }
 
     @Override public boolean equals(Object obj) {
