@@ -1,19 +1,16 @@
 
 package pubmed.bulk;
 
-import java.io.PrintWriter;
 import java.util.List;
 
-import jam.app.JamLogger;
-import jam.flat.FlatRecord;
-
+import pubmed.flat.PubmedFlatRecord;
 import pubmed.xml.PubmedXmlDocument;
 
 /**
  * Provides a base class for flat files that contain data records
  * derived directly from a parsed XML document.
  */
-public abstract class DocumentContentFile<V extends FlatRecord> extends PubmedFlatFile<V> {
+public abstract class DocumentContentFile<V extends PubmedFlatRecord> extends PubmedFlatFile<V> {
     /**
      * Creates a new content file for records derived from a given
      * bulk XML file.
@@ -50,22 +47,8 @@ public abstract class DocumentContentFile<V extends FlatRecord> extends PubmedFl
             processDocument(document);
     }
 
-    private boolean mustProcess(boolean overwrite) {
-        if (overwrite || !exists()) {
-            return true;
-        }
-        else {
-            JamLogger.info("File [%s] exists; not overwriting.", flatFile);
-            return false;
-        }
-    }
-
     private void processDocument(PubmedXmlDocument document) {
-        try (PrintWriter writer = openWriter(false)) {
-            for (V record : extractRecords(document))
-                if (record != null)
-                    writer.println(record.format());
-        }
+        writeRecords(extractRecords(document), false);
     }
 
     /**
@@ -77,6 +60,6 @@ public abstract class DocumentContentFile<V extends FlatRecord> extends PubmedFl
      */
     public void processFile(boolean overwrite) {
         if (mustProcess(overwrite))
-            processDocument(bulkFile.parse());
+            processDocument(bulkFile.getDocument());
     }
 }

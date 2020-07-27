@@ -3,21 +3,23 @@ package pubmed.bulk;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.Collection;
 
 import jam.app.JamLogger;
 import jam.io.IOUtil;
 import jam.io.FileUtil;
 import jam.io.LineReader;
 import jam.io.ZipUtil;
-import jam.flat.FlatRecord;
 import jam.flat.RecordStore;
 import jam.lang.JamException;
+
+import pubmed.flat.PubmedFlatRecord;
 
 /**
  * Provides a base class for flat files containing records derived
  * from bulk XML files.
  */
-public abstract class PubmedFlatFile<V extends FlatRecord> {
+public abstract class PubmedFlatFile<V extends PubmedFlatRecord> {
     /**
      * The bulk XML file.
      */
@@ -90,6 +92,25 @@ public abstract class PubmedFlatFile<V extends FlatRecord> {
      * @return a new empty store for the records in this flat file.
      */
     public abstract RecordStore<V> newStore();
+
+    /**
+     * Determines whether a flat file must be processed.
+     *
+     * @param overwrite whether to overwrite an existing flat file (or
+     * skip processing if the flat file already exists).
+     *
+     * @return {@code true} if the physical flat file is missing or
+     * the {@code overwrite} flag is {@code true}.
+     */
+    protected boolean mustProcess(boolean overwrite) {
+        if (overwrite || !exists()) {
+            return true;
+        }
+        else {
+            JamLogger.info("File [%s] exists; not overwriting.", flatFile);
+            return false;
+        }
+    }
 
     /**
      * Deletes the physical flat file.
@@ -188,5 +209,24 @@ public abstract class PubmedFlatFile<V extends FlatRecord> {
     public PrintWriter openWriter(boolean append) {
         JamLogger.info("Writing file [%s]...", flatFile);
         return IOUtil.openWriter(flatFile, append);
+    }
+
+    /**
+     * Writes records to the physical flat file.
+     *
+     * @param records the records to write.
+     *
+     * @param append whether to append ({@code true}) or truncate
+     * ({@code false}) an existing file.
+     *
+     * @throws RuntimeException unless the physical flat file can be
+     * opened for writing.
+     */
+    public void writeRecords(Collection<V> records, boolean append) {
+        try (PrintWriter writer = openWriter(append)) {
+            for (V record : records)
+                if (record != null)
+                    writer.println(record.format());
+        }
     }
 }
