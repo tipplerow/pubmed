@@ -21,6 +21,8 @@ import pubmed.xml.PubmedXmlDocument;
 public final class BulkFile {
     private final File file;
 
+    private PubmedXmlDocument document = null;
+
     private AbstractLemmaFile   abstractLemmaFile   = null;
     private ArticleAbstractFile articleAbstractFile = null;
     private ArticleTitleFile    articleTitleFile    = null;
@@ -151,13 +153,25 @@ public final class BulkFile {
     }
 
     /**
+     * Returns the parsed XML document contained in this bulk file.
+     *
+     * @return the parsed XML document contained in this bulk file.
+     */
+    public synchronized PubmedXmlDocument getDocument() {
+        if (document == null)
+            document = PubmedXmlDocument.parse(file);
+
+        return document;
+    }
+
+    /**
      * Returns the lemmatized abstract flat file derived from this
      * bulk file.
      *
      * @return the lemmatized abstract flat file derived from this
      * bulk file.
      */
-    public AbstractLemmaFile getAbstractLemmaFile() {
+    public synchronized AbstractLemmaFile getAbstractLemmaFile() {
         if (abstractLemmaFile == null)
             abstractLemmaFile = AbstractLemmaFile.from(this);
 
@@ -171,7 +185,7 @@ public final class BulkFile {
      * @return the article abstract flat file derived from this bulk
      * file.
      */
-    public ArticleAbstractFile getArticleAbstractFile() {
+    public synchronized ArticleAbstractFile getArticleAbstractFile() {
         if (articleAbstractFile == null)
             articleAbstractFile = ArticleAbstractFile.from(this);
 
@@ -185,7 +199,7 @@ public final class BulkFile {
      * @return the article title flat file derived from this bulk
      * file.
      */
-    public ArticleTitleFile getArticleTitleFile() {
+    public synchronized ArticleTitleFile getArticleTitleFile() {
         if (articleTitleFile == null)
             articleTitleFile = ArticleTitleFile.from(this);
 
@@ -199,7 +213,7 @@ public final class BulkFile {
      * @return the chemical substance flat file derived from this bulk
      * file.
      */
-    public ChemicalFile getChemicalFile() {
+    public synchronized ChemicalFile getChemicalFile() {
         if (chemicalFile == null)
             chemicalFile = ChemicalFile.from(this);
 
@@ -213,7 +227,7 @@ public final class BulkFile {
      * @return the heading descriptor flat file derived from this bulk
      * file.
      */
-    public HeadingDescFile getHeadingDescFile() {
+    public synchronized HeadingDescFile getHeadingDescFile() {
         if (headingDescFile == null)
             headingDescFile = HeadingDescFile.from(this);
 
@@ -225,7 +239,7 @@ public final class BulkFile {
      *
      * @return the journal flat file derived from this bulk file.
      */
-    public JournalFile getJournalFile() {
+    public synchronized JournalFile getJournalFile() {
         if (journalFile == null)
             journalFile = JournalFile.from(this);
 
@@ -237,7 +251,7 @@ public final class BulkFile {
      *
      * @return the keyword flat file derived from this bulk file.
      */
-    public KeywordFile getKeywordFile() {
+    public synchronized KeywordFile getKeywordFile() {
         if (keywordFile == null)
             keywordFile = KeywordFile.from(this);
 
@@ -251,7 +265,7 @@ public final class BulkFile {
      * @return the lemmatized title flat file derived from this bulk
      * file.
      */
-    public TitleLemmaFile getTitleLemmaFile() {
+    public synchronized TitleLemmaFile getTitleLemmaFile() {
         if (titleLemmaFile == null)
             titleLemmaFile = TitleLemmaFile.from(this);
 
@@ -288,15 +302,6 @@ public final class BulkFile {
     }
 
     /**
-     * Parses this bulk XML file.
-     *
-     * @return the XML document contained in this file.
-     */
-    public PubmedXmlDocument parse() {
-        return PubmedXmlDocument.parse(file);
-    }
-
-    /**
      * Executes the production process for this bulk XML file.
      *
      * <p>This method parses the XML document and then generates all
@@ -319,7 +324,7 @@ public final class BulkFile {
             return;
         }
 
-        PubmedXmlDocument document = parse();
+        PubmedXmlDocument document = getDocument();
 
         for (DocumentContentFile contentFile : unprocessed)
             contentFile.processDocument(document, false);
