@@ -4,7 +4,10 @@ package pubmed.bulk;
 import java.io.File;
 import java.io.FileFilter;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.NavigableSet;
+import java.util.TreeSet;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
@@ -13,6 +16,8 @@ import jam.io.FileUtil;
 import jam.lang.JamException;
 import jam.util.ListUtil;
 
+import pubmed.article.PMID;
+import pubmed.xml.PubmedArticleElement;
 import pubmed.xml.PubmedXmlDocument;
 
 /**
@@ -31,6 +36,8 @@ public final class BulkFile {
     private JournalFile         journalFile         = null;
     private KeywordFile         keywordFile         = null;
     private TitleLemmaFile      titleLemmaFile      = null;
+
+    private NavigableSet<PMID> pmidSet = null;
 
     private BulkFile(File file) {
         this.file = FileUtil.getCanonicalFile(file);
@@ -299,6 +306,28 @@ public final class BulkFile {
      */
     public List<DocumentContentFile> getUnprocessedContentFiles() {
         return ListUtil.filter(getContentFiles(), file -> !file.exists());
+    }
+
+    /**
+     * Returns an immutable navigable set containing all article
+     * identifiers contained in this bulk file.
+     *
+     * @return an immutable navigable set containing all article
+     * identifiers contained in this bulk file.
+     */
+    public synchronized NavigableSet<PMID> getPMIDSet() {
+        if (pmidSet == null)
+            createPMIDSet();
+
+        return pmidSet;
+    }
+
+    private void createPMIDSet() {
+        PubmedXmlDocument document = getDocument();
+        List<PubmedArticleElement> elements = document.getPubmedArticleElements();
+
+        pmidSet = new TreeSet<PMID>(ListUtil.apply(elements, element -> element.getPMID()));
+        pmidSet = Collections.unmodifiableNavigableSet(pmidSet);
     }
 
     /**

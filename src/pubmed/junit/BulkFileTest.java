@@ -3,9 +3,11 @@ package pubmed.junit;
 
 import java.io.File;
 import java.util.List;
+import java.util.TreeSet;
 
 import jam.app.JamEnv;
 
+import pubmed.article.PMID;
 import pubmed.bulk.BulkFile;
 import pubmed.bulk.DocumentContentFile;
 
@@ -33,6 +35,19 @@ public class BulkFileTest {
 
     @Test public void testList() {
         assertEquals(List.of(bulk0001, bulk0002, bulk1203), BulkFile.list(testDir));
+    }
+
+    @Test public void testPMIDSet() {
+        TreeSet<PMID> pmidSet = new TreeSet<PMID>();
+        pmidSet.add(PMID.instance(1));
+        pmidSet.add(PMID.instance(24451147));
+        pmidSet.add(PMID.instance(31383287));
+        pmidSet.add(PMID.instance(31383387));
+        pmidSet.add(PMID.instance(31383582));
+        pmidSet.add(PMID.instance(31687927));
+
+        BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
+        assertEquals(pmidSet, bulkFile.getPMIDSet());
     }
 
     @Test public void testProcess() {
