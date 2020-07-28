@@ -39,4 +39,8 @@ public abstract class PubmedJoinRecord<K2> extends PubmedFlatRecord implements J
     @Override public int hashCode() {
         return 137 * pmid.intValue() + fkey.hashCode();
     }
+
+    @Override public String toString() {
+        return String.format("%s(%s, %s)", getClass().getSimpleName(), pmid.toString(), fkey.toString());
+    }
 }

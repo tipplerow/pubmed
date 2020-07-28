@@ -120,4 +120,8 @@ public abstract class PubmedFlatRecord implements FlatRecord<PMID>, FlatRecordBa
     @Override public int hashCode() {
         return pmid.intValue();
     }
+
+    @Override public String toString() {
+        return String.format("%s(%s)", getClass().getSimpleName(), pmid.toString());
+    }
 }
