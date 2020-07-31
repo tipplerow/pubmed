@@ -28,6 +28,15 @@ public abstract class ArticleLemmaRecord extends PubmedFlatRecord {
         this.lemmas = lemmas;
     }
 
+    /**
+     * Returns the lemmas in the article.
+     *
+     * @return the lemmas in the article.
+     */
+    public LemmaList getLemmaList() {
+        return lemmas;
+    }
+
     @Override public List<String> formatFields() {
         return List.of(format(pmid), format(lemmas));
     }
