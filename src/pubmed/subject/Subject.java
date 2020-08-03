@@ -12,6 +12,7 @@ import jam.util.UniqueList;
 
 import pubmed.mesh.MeshDescriptor;
 import pubmed.mesh.MeshRecord;
+import pubmed.mesh.MeshRecordKey;
 import pubmed.mesh.MeshTreeCategory;
 import pubmed.mesh.MeshTreeNumber;
 import pubmed.mesh.MeshTreeNumberList;
@@ -182,6 +183,21 @@ public abstract class Subject extends KeyedObject<String> {
             return ((MeshTreeRecord) record).getNumberList();
         else
             return MeshTreeNumberList.EMPTY;
+    }
+
+    /**
+     * Returns the {@code MeSH} record key for this subject.
+     *
+     * @return the {@code MeSH} record key for this subject (or
+     * {@code null} if there is no corresponding record).
+     */
+    public MeshRecordKey getMeshKey() {
+        MeshRecord record = getMeshRecord();
+
+        if (record != null)
+            return record.getKey();
+        else
+            return null;
     }
 
     /**
