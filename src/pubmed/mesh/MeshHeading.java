@@ -15,13 +15,6 @@ public final class MeshHeading {
     private final MeshDescriptorKey descriptorKey;
     private final List<MeshQualifierKey> qualifierKeys;
 
-    /*
-    static {
-        JamLogger.info("MeshHeading: Loading MeSH descriptors...");
-        MeshDescriptor.load();
-    }
-    */
-
     private MeshHeading(MeshDescriptorKey descriptorKey, List<MeshQualifierKey> qualifierKeys) {
         this.descriptorKey = descriptorKey;
         this.qualifierKeys = FixedList.create(qualifierKeys);
@@ -87,6 +80,16 @@ public final class MeshHeading {
      */
     public boolean hasQualifier(MeshQualifierKey qualifierKey) {
         return qualifierKeys.contains(qualifierKey);
+    }
+
+    /**
+     * Identifies headings with qualifiers.
+     *
+     * @return {@code true} iff the heading contains one or more
+     * qualifiers.
+     */
+    public boolean hasQualifiers() {
+        return !qualifierKeys.isEmpty();
     }
 
     /**
