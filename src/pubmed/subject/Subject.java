@@ -11,6 +11,7 @@ import jam.lang.KeyedObject;
 import jam.util.UniqueList;
 
 import pubmed.mesh.MeshDescriptor;
+import pubmed.mesh.MeshDescriptorKey;
 import pubmed.mesh.MeshRecord;
 import pubmed.mesh.MeshRecordKey;
 import pubmed.mesh.MeshTreeCategory;
@@ -130,6 +131,22 @@ public abstract class Subject extends KeyedObject<String> {
 
         if (record != null && record.isDescriptor())
             return (MeshDescriptor) record;
+        else
+            return null;
+    }
+
+    /**
+     * Returns the {@code MeSH} descriptor key for this subject
+     * (or {@code null} if there is no corresponding descriptor).
+     *
+     * @return the {@code MeSH} descriptor key for this subject
+     * (or {@code null} if there is no corresponding descriptor).
+     */
+    public MeshDescriptorKey getDescriptorKey() {
+        MeshDescriptor descriptor = getDescriptor();
+
+        if (descriptor != null)
+            return descriptor.getKey();
         else
             return null;
     }

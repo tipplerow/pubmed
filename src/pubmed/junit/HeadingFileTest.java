@@ -1,6 +1,7 @@
 
 package pubmed.junit;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import com.google.common.collect.Multimap;
@@ -18,29 +19,7 @@ import static org.junit.Assert.*;
 
 public class HeadingFileTest {
     private static final BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
-    /*
-    @Test public void testMap() {
-        HeadingFile headingFile = HeadingFile.from(bulkFile);
-        assertFalse(headingFile.exists());
 
-        Multimap<PMID, HeadingRecord> recordMap = headingFile.getRecordMap();
-
-        // File is created on demand...
-        assertTrue(headingFile.exists());
-        assertEquals(List.of(PMID.instance(24451147), PMID.instance(1)), new ArrayList<PMID>(recordMap.keySet()));
-
-        List<HeadingRecord> recordList =
-            new ArrayList<HeadingRecord>(recordMap.get(PMID.instance(1)));
-
-        assertEquals(4, recordList.size());
-        assertEquals(MeshRecordKey.instance("D005561"), recordList.get(0).getMeshKey());
-        assertEquals(MeshRecordKey.instance("D002245"), recordList.get(1).getMeshKey());
-        assertEquals(MeshRecordKey.instance("D000445"), recordList.get(2).getMeshKey());
-        assertEquals(MeshRecordKey.instance("D000432"), recordList.get(3).getMeshKey());
-        
-        assertTrue(headingFile.delete());
-    }
-    */
     @Test public void testProcess() {
         HeadingFile headingFile = HeadingFile.from(bulkFile);
 
@@ -68,23 +47,46 @@ public class HeadingFileTest {
                             MeshQualifierKey.instance("Q000737")),
                      table.qualifierKeySet());
 
-        HeadingRecord rec1 = HeadingRecord.parse("31383582|D001782|-");
-        HeadingRecord rec2 = HeadingRecord.parse("31383582|D006801|-");
+        assertRecords(table.select(PMID.instance(31383582)),
+                      "31383582|D001782|-", "31383582|D006801|-");
 
-        assertEquals(Set.of(rec1, rec2), table.select(PMID.instance(31383582)));
+        assertRecords(table.select(MeshDescriptorKey.instance("D051059")),
+                      "24451147|D051059|Q000235", "24451147|D051059|Q000378");
 
-        HeadingRecord rec3 = HeadingRecord.parse("24451147|D051059|Q000235");
-        HeadingRecord rec4 = HeadingRecord.parse("24451147|D051059|Q000378");
+        assertRecords(table.select(MeshQualifierKey.instance("Q000494")),
+                      "24451147|D006538|Q000494",
+                      "24451147|D019161|Q000494",
+                      "24451147|D011758|Q000494");
 
-        assertEquals(Set.of(rec3, rec4), table.select(MeshDescriptorKey.instance("D051059")));
+        assertRecords(table.select(PMID.instance(24451147), MeshDescriptorKey.instance("D002352")),
+                      "24451147|D002352|Q000037",
+                      "24451147|D002352|Q000235",
+                      "24451147|D002352|Q000378");
 
-        HeadingRecord rec5 = HeadingRecord.parse("24451147|D006538|Q000494");
-        HeadingRecord rec6 = HeadingRecord.parse("24451147|D019161|Q000494");
-        HeadingRecord rec7 = HeadingRecord.parse("24451147|D011758|Q000494");
+        assertRecords(table.select(PMID.instance(1), MeshDescriptorKey.instance("D000818")), "1|D000818|-");
 
-        assertEquals(Set.of(rec5, rec6, rec7), table.select(MeshQualifierKey.instance("Q000494")));
+        assertTrue(table.select(PMID.instance(1), MeshDescriptorKey.instance("D002352")).isEmpty());
+        assertTrue(table.select(PMID.instance(24451147), MeshDescriptorKey.instance("D007700")).isEmpty());
+
+        assertTrue(table.contains(PMID.instance(1)));
+        assertFalse(table.contains(PMID.instance(2)));
+
+        assertTrue(table.contains(MeshDescriptorKey.instance("D007700")));
+        assertFalse(table.contains(MeshDescriptorKey.instance("D007777")));
+
+        assertTrue(table.contains(MeshQualifierKey.instance("Q000037")));
+        assertFalse(table.contains(MeshQualifierKey.instance("Q000999")));
 
         assertTrue(headingFile.delete());
+    }
+
+    private void assertRecords(Set<HeadingRecord> actualSet, String... expectedStrings) {
+        Set<HeadingRecord> expectedSet = new HashSet<HeadingRecord>();
+
+        for (String s : expectedStrings)
+            expectedSet.add(HeadingRecord.parse(s));
+
+        assertEquals(expectedSet, actualSet);
     }
 
     public static void main(String[] args) {
