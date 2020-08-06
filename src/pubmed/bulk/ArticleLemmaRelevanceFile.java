@@ -1,7 +1,7 @@
 
 package pubmed.bulk;
 
-import java.util.Map;
+import jam.flat.FlatTable;
 
 import pubmed.article.PMID;
 import pubmed.flat.ArticleLemmaRecord;
@@ -17,7 +17,7 @@ import pubmed.subject.Subject;
  * component (title or abstract).
  */
 public abstract class ArticleLemmaRelevanceFile<V extends ArticleLemmaRecord> extends RelevanceScoreFile {
-    private final Map<PMID, V> lemmaMap;
+    private final FlatTable<PMID, V> flatTable;
 
     /**
      * Creates a new relevance file for a given bulk file and lemma
@@ -26,12 +26,12 @@ public abstract class ArticleLemmaRelevanceFile<V extends ArticleLemmaRecord> ex
      * @param bulkFile the bulk XML file containing articles to be
      * scored.
      *
-     * @param lemmaMap the article component (title or abstract)
-     * lemmas extracted from the bulk file.
+     * @param flatTable a table containing the article component
+     * (title or abstract) lemmas extracted from the bulk file.
      */
-    protected ArticleLemmaRelevanceFile(BulkFile bulkFile, Map<PMID, V> lemmaMap) {
+    protected ArticleLemmaRelevanceFile(BulkFile bulkFile, FlatTable<PMID, V> flatTable) {
         super(bulkFile);
-        this.lemmaMap = lemmaMap; 
+        this.flatTable = flatTable;
     }
 
     /**
@@ -53,7 +53,7 @@ public abstract class ArticleLemmaRelevanceFile<V extends ArticleLemmaRecord> ex
     }
 
     @Override public int computeScore(PMID pmid, Subject subject) {
-        ArticleLemmaRecord lemmaRecord = lemmaMap.get(pmid);
+        ArticleLemmaRecord lemmaRecord = flatTable.select(pmid);
 
         if (lemmaRecord != null)
             return computeScore(subject, lemmaRecord.getLemmaList());

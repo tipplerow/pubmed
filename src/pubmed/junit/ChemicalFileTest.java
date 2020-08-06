@@ -1,7 +1,6 @@
 
 package pubmed.junit;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import pubmed.article.PMID;

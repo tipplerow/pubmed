@@ -1,9 +1,7 @@
 
 package pubmed.junit;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import pubmed.article.ISSN;
 import pubmed.article.PMID;
@@ -18,26 +16,6 @@ import static org.junit.Assert.*;
 
 public class JournalFileTest {
     private static final BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
-
-    @Test public void testMap() {
-        JournalFile journalFile = JournalFile.from(bulkFile);
-        assertFalse(journalFile.exists());
-
-        Map<PMID, JournalRecord> recordMap = journalFile.getRecordMap();
-
-        // File is created on demand...
-        assertTrue(journalFile.exists());
-
-        List<PMID> pmidList = new ArrayList<PMID>(recordMap.keySet());
-        assertEquals(List.of(PMID.instance(24451147),
-                             PMID.instance(31383287),
-                             PMID.instance(31383387),
-                             PMID.instance(1),
-                             PMID.instance(31687927),
-                             PMID.instance(31383582)), pmidList);
-        
-        assertTrue(journalFile.delete());
-    }
 
     @Test public void testProcess() {
         JournalFile journalFile = JournalFile.from(bulkFile);

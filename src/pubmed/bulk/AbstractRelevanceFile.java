@@ -8,7 +8,7 @@ import pubmed.flat.AbstractLemmaRecord;
  */
 public final class AbstractRelevanceFile extends ArticleLemmaRelevanceFile<AbstractLemmaRecord> {
     private AbstractRelevanceFile(BulkFile bulkFile) {
-        super(bulkFile, bulkFile.getAbstractLemmaFile().getRecordMap());
+        super(bulkFile, bulkFile.getAbstractLemmaFile().load());
     }
 
     /**

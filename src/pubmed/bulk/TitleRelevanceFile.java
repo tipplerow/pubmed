@@ -8,7 +8,7 @@ import pubmed.flat.TitleLemmaRecord;
  */
 public final class TitleRelevanceFile extends ArticleLemmaRelevanceFile<TitleLemmaRecord> {
     private TitleRelevanceFile(BulkFile bulkFile) {
-        super(bulkFile, bulkFile.getTitleLemmaFile().getRecordMap());
+        super(bulkFile, bulkFile.getTitleLemmaFile().load());
     }
 
     /**
