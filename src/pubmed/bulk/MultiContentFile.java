@@ -4,9 +4,9 @@ package pubmed.bulk;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.collect.ImmutableListMultimap;
-import com.google.common.collect.ImmutableListMultimap.Builder;
-import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 
 import jam.flat.RecordStore;
 
@@ -20,7 +20,11 @@ import pubmed.xml.PubmedXmlDocument;
  * records (many-to-many mappings) for each article.
  */
 public abstract class MultiContentFile<V extends PubmedFlatRecord> extends DocumentContentFile<V> {
-    private ListMultimap<PMID, V> recordMap = null;
+    /**
+     * Immutable multimap of the records in this file indexed by
+     * {@code PMID} and created on demand.
+     */
+    protected Multimap<PMID, V> recordMap = null;
 
     /**
      * Creates a new flat file for records derived from a given bulk
@@ -32,6 +36,15 @@ public abstract class MultiContentFile<V extends PubmedFlatRecord> extends Docum
     protected MultiContentFile(BulkFile bulkFile) {
         super(bulkFile);
     }
+
+    /**
+     * Creates the immutable multimap builder that will be used to
+     * construct the record map.
+     *
+     * @return the immutable multimap builder that will be used to
+     * construct the record map.
+     */
+    protected abstract ImmutableMultimap.Builder<PMID, V> createRecordMapBuilder();
 
     /**
      * Extracts the joining records from an XML article element.
@@ -51,7 +64,7 @@ public abstract class MultiContentFile<V extends PubmedFlatRecord> extends Docum
      * @return an immutable map of the records in this file indexed
      * by {@code PMID}.
      */
-    public synchronized ListMultimap<PMID, V> getRecordMap() {
+    public synchronized Multimap<PMID, V> getRecordMap() {
         if (recordMap == null)
             mapRecords();
 
@@ -63,7 +76,7 @@ public abstract class MultiContentFile<V extends PubmedFlatRecord> extends Docum
             processFile(false);
 
         RecordStore<V> recordStore = load();
-        ImmutableListMultimap.Builder<PMID, V> builder = ImmutableListMultimap.builder();
+        ImmutableMultimap.Builder<PMID, V> builder = createRecordMapBuilder();
 
         for (V record : recordStore)
             builder.put(record.getPMID(), record);

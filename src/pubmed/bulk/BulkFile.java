@@ -32,7 +32,7 @@ public final class BulkFile {
     private ArticleAbstractFile articleAbstractFile = null;
     private ArticleTitleFile    articleTitleFile    = null;
     private ChemicalFile        chemicalFile        = null;
-    private HeadingDescFile     headingDescFile     = null;
+    private HeadingFile         headingFile         = null;
     private JournalFile         journalFile         = null;
     private KeywordFile         keywordFile         = null;
     private TitleLemmaFile      titleLemmaFile      = null;
@@ -234,11 +234,11 @@ public final class BulkFile {
      * @return the heading descriptor flat file derived from this bulk
      * file.
      */
-    public synchronized HeadingDescFile getHeadingDescFile() {
-        if (headingDescFile == null)
-            headingDescFile = HeadingDescFile.from(this);
+    public synchronized HeadingFile getHeadingFile() {
+        if (headingFile == null)
+            headingFile = HeadingFile.from(this);
 
-        return headingDescFile;
+        return headingFile;
     }
 
     /**
@@ -291,7 +291,7 @@ public final class BulkFile {
                        getArticleAbstractFile(),
                        getArticleTitleFile(),
                        getChemicalFile(),
-                       getHeadingDescFile(),
+                       getHeadingFile(),
                        getJournalFile(),
                        getKeywordFile(),
                        getTitleLemmaFile());

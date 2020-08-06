@@ -2,6 +2,7 @@
 package pubmed.flat;
 
 import jam.flat.JoinRecord;
+import jam.lang.ObjectUtil;
 
 import pubmed.article.PMID;
 
@@ -34,6 +35,21 @@ public abstract class PubmedJoinRecord<K2> extends PubmedFlatRecord implements J
 
     @Override public K2 getForeignKey() {
         return fkey;
+    }
+
+    @Override public boolean equalsData(Object record) {
+        //
+        // Subclasses with additional data fields must override...
+        //
+        return true;
+    }
+
+    @Override public boolean equals(Object obj) {
+        return ObjectUtil.equalsClass(this, obj) && equalsRecord((PubmedJoinRecord) obj);
+    }
+
+    private boolean equalsRecord(PubmedJoinRecord that) {
+        return this.pmid.equals(that.pmid) && this.fkey.equals(that.fkey) && equalsData(that);
     }
 
     @Override public int hashCode() {

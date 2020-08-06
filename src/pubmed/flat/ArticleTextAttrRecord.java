@@ -33,6 +33,11 @@ public abstract class ArticleTextAttrRecord extends PubmedFlatRecord {
             throw new NullPointerException("Null text attribute.");
     }
 
+    @Override public boolean equalsData(Object record) {
+        ArticleTextAttrRecord that = (ArticleTextAttrRecord) record;
+        return this.text.equals(that.text);
+    }
+
     @Override public List<String> formatFields() {
         return List.of(format(pmid), format(text));
     }

@@ -3,6 +3,10 @@ package pubmed.bulk;
 
 import java.util.List;
 
+import com.google.common.collect.ImmutableSetMultimap;
+import com.google.common.collect.ImmutableSetMultimap.Builder;
+
+import pubmed.article.PMID;
 import pubmed.flat.ChemicalRecord;
 import pubmed.flat.ChemicalTable;
 import pubmed.xml.PubmedArticleElement;
@@ -30,6 +34,10 @@ public final class ChemicalFile extends MultiContentFile<ChemicalRecord> {
      */
     public static ChemicalFile from(BulkFile bulkFile) {
         return new ChemicalFile(bulkFile);
+    }
+
+    @Override protected ImmutableSetMultimap.Builder<PMID, ChemicalRecord> createRecordMapBuilder() {
+        return ImmutableSetMultimap.builder();
     }
 
     @Override public List<ChemicalRecord> extractRecords(PubmedArticleElement element) {

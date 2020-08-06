@@ -1,9 +1,9 @@
 
 package pubmed.bulk;
 
-import java.util.List;
+import java.util.Collection;
 
-import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Multimap;
 
 import pubmed.article.PMID;
 import pubmed.flat.ChemicalRecord;
@@ -19,7 +19,7 @@ import pubmed.subject.Subject;
  * record or if the article does not have a chemical list.
  */
 public final class ChemicalRelevanceFile extends RelevanceScoreFile {
-    private final ListMultimap<PMID, ChemicalRecord> recordMap;
+    private final Multimap<PMID, ChemicalRecord> recordMap;
 
     private ChemicalRelevanceFile(BulkFile bulkFile) {
         super(bulkFile);
@@ -46,7 +46,7 @@ public final class ChemicalRelevanceFile extends RelevanceScoreFile {
         if (!subject.isChemical())
             return 0;
 
-        List<ChemicalRecord> records = recordMap.get(pmid);
+        Collection<ChemicalRecord> records = recordMap.get(pmid);
         
         if (records.isEmpty())
             return 0;

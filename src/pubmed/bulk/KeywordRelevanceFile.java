@@ -1,9 +1,9 @@
 
 package pubmed.bulk;
 
-import java.util.List;
+import java.util.Collection;
 
-import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Multimap;
 
 import pubmed.article.PMID;
 import pubmed.flat.KeywordRecord;
@@ -19,7 +19,7 @@ import pubmed.subject.Subject;
  * keyword list.
  */
 public final class KeywordRelevanceFile extends RelevanceScoreFile {
-    private final ListMultimap<PMID, KeywordRecord> recordMap;
+    private final Multimap<PMID, KeywordRecord> recordMap;
 
     private KeywordRelevanceFile(BulkFile bulkFile) {
         super(bulkFile);
@@ -43,7 +43,7 @@ public final class KeywordRelevanceFile extends RelevanceScoreFile {
     }
 
     @Override public int computeScore(PMID pmid, Subject subject) {
-        List<KeywordRecord> records = recordMap.get(pmid);
+        Collection<KeywordRecord> records = recordMap.get(pmid);
         
         if (records.isEmpty())
             return 0;

@@ -79,6 +79,11 @@ public final class JournalRecord extends PubmedJoinRecord<ISSN> {
         return journal;
     }
 
+    @Override public boolean equalsData(Object obj) {
+        JournalRecord that = (JournalRecord) obj;
+        return this.journal.equals(that.journal);
+    }
+
     @Override public List<String> formatFields() {
         return List.of(format(pmid),
                        format(journal.getISSN()),

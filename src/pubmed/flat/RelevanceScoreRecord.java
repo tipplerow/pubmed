@@ -98,6 +98,11 @@ public final class RelevanceScoreRecord extends PubmedJoinRecord<String> {
         return score;
     }      
 
+    @Override public boolean equalsData(Object record) {
+        RelevanceScoreRecord that = (RelevanceScoreRecord) record;
+        return this.score == that.score;
+    }
+
     @Override public List<String> formatFields() {
         return List.of(format(pmid), format(fkey), format(score));
     }

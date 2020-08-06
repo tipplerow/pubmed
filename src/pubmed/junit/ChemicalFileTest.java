@@ -4,7 +4,7 @@ package pubmed.junit;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Multimap;
 
 import pubmed.article.PMID;
 import pubmed.bulk.BulkFile;
@@ -23,7 +23,7 @@ public class ChemicalFileTest {
         ChemicalFile chemicalFile = ChemicalFile.from(bulkFile);
         assertFalse(chemicalFile.exists());
 
-        ListMultimap<PMID, ChemicalRecord> recordMap = chemicalFile.getRecordMap();
+        Multimap<PMID, ChemicalRecord> recordMap = chemicalFile.getRecordMap();
 
         // File is created on demand...
         assertTrue(chemicalFile.exists());
