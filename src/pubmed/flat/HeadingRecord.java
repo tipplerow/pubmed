@@ -8,8 +8,10 @@ import jam.flat.FlatRecord;
 import jam.lang.ObjectUtil;
 
 import pubmed.article.PMID;
+import pubmed.mesh.MeshDescriptor;
 import pubmed.mesh.MeshDescriptorKey;
 import pubmed.mesh.MeshHeading;
+import pubmed.mesh.MeshQualifier;
 import pubmed.mesh.MeshQualifierKey;
 import pubmed.xml.PubmedArticleElement;
 
@@ -87,12 +89,34 @@ public final class HeadingRecord extends PubmedJoinRecord<MeshDescriptorKey> {
     }
 
     /**
+     * Returns the {@code MeSH} descriptor in the heading.
+     *
+     * @return the {@code MeSH} descriptor in the heading.
+     */
+    public MeshDescriptor getDescriptor() {
+        return MeshDescriptor.instance(getDescriptorKey());
+    }
+
+    /**
      * Returns the {@code MeSH} descriptor key in the heading.
      *
      * @return the {@code MeSH} descriptor key in the heading.
      */
     public MeshDescriptorKey getDescriptorKey() {
         return fkey;
+    }
+
+    /**
+     * Returns the {@code MeSH} qualifier in the heading.
+     *
+     * @return the {@code MeSH} qualifier in the heading ({@code null}
+     * if the heading does not contain a qualifier).
+     */
+    public MeshQualifier getQualifier() {
+        if (qualKey != null)
+            return MeshQualifier.instance(qualKey);
+        else
+            return null;
     }
 
     /**
