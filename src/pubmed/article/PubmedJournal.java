@@ -72,6 +72,16 @@ public final class PubmedJournal implements BulkRecord {
         return issn != null;
     }
 
+    @Override public boolean equals(Object obj) {
+        return (obj instanceof PubmedJournal) && equalsJournal((PubmedJournal) obj);
+    }
+
+    private boolean equalsJournal(PubmedJournal that) {
+        return ObjectUtil.equals(this.issn, that.issn)
+            && ObjectUtil.equals(this.title, that.title)
+            && ObjectUtil.equals(this.isoAbbrev, that.isoAbbrev);
+    }
+
     @Override public String formatBulk() {
         return joinBulk(formatBulk(issn),
                         formatBulk(title),
