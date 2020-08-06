@@ -1,12 +1,8 @@
 
 package pubmed.bulk;
 
-import java.util.Collection;
-
-import com.google.common.collect.Multimap;
-
 import pubmed.article.PMID;
-import pubmed.flat.ChemicalRecord;
+import pubmed.flat.ChemicalTable;
 import pubmed.subject.Subject;
 
 /**
@@ -19,11 +15,11 @@ import pubmed.subject.Subject;
  * record or if the article does not have a chemical list.
  */
 public final class ChemicalRelevanceFile extends RelevanceScoreFile {
-    private final Multimap<PMID, ChemicalRecord> recordMap;
+    private final ChemicalTable table;
 
     private ChemicalRelevanceFile(BulkFile bulkFile) {
         super(bulkFile);
-        this.recordMap = bulkFile.getChemicalFile().getRecordMap();
+        this.table = bulkFile.getChemicalFile().load();
     }
 
     /**
@@ -46,16 +42,13 @@ public final class ChemicalRelevanceFile extends RelevanceScoreFile {
         if (!subject.isChemical())
             return 0;
 
-        Collection<ChemicalRecord> records = recordMap.get(pmid);
-        
-        if (records.isEmpty())
+        if (!table.containsPrimary(pmid))
             return 0;
 
-        for (ChemicalRecord record : records)
-            if (record.getMeshKey().equals(subject.getMeshKey()))
-                return 1;
-
-        return -1;
+        if (table.contains(pmid, subject.getMeshKey()))
+            return +1;
+        else
+            return -1;
     }
 
     @Override public String getSuffix() {

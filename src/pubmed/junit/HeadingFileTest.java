@@ -77,6 +77,11 @@ public class HeadingFileTest {
         assertTrue(table.contains(MeshQualifierKey.instance("Q000037")));
         assertFalse(table.contains(MeshQualifierKey.instance("Q000999")));
 
+        assertTrue(table.contains(PMID.instance(24451147), MeshDescriptorKey.instance("D000255")));
+        assertTrue(table.contains(PMID.instance(31383582), MeshDescriptorKey.instance("D001782")));
+        assertFalse(table.contains(PMID.instance(31383582), MeshDescriptorKey.instance("D000255")));
+        assertFalse(table.contains(PMID.instance(24451147), MeshDescriptorKey.instance("D001782")));
+
         assertTrue(headingFile.delete());
     }
 

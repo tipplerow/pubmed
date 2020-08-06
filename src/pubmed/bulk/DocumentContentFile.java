@@ -3,6 +3,8 @@ package pubmed.bulk;
 
 import java.util.List;
 
+import jam.flat.RecordStore;
+
 import pubmed.flat.PubmedFlatRecord;
 import pubmed.xml.PubmedXmlDocument;
 
@@ -61,5 +63,21 @@ public abstract class DocumentContentFile<V extends PubmedFlatRecord> extends Pu
     public void processFile(boolean overwrite) {
         if (mustProcess(overwrite))
             processDocument(bulkFile.getDocument());
+    }
+
+    /**
+     * Loads the records in this flat file and generates the file on
+     * demand if necessary.
+     *
+     * @return the records in this flat file.
+     *
+     * @throws RuntimeException unless the physical flat file exists
+     * (or can be generated on demand) and can be parsed sucessfully.
+     */
+    @Override public RecordStore<V> load() {
+        if (!exists())
+            processFile(true);
+
+        return super.load();
     }
 }

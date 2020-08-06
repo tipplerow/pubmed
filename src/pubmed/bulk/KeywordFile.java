@@ -3,10 +3,6 @@ package pubmed.bulk;
 
 import java.util.List;
 
-import com.google.common.collect.ImmutableSetMultimap;
-import com.google.common.collect.ImmutableSetMultimap.Builder;
-
-import pubmed.article.PMID;
 import pubmed.flat.KeywordRecord;
 import pubmed.flat.KeywordTable;
 import pubmed.xml.PubmedArticleElement;
@@ -34,10 +30,6 @@ public final class KeywordFile extends MultiContentFile<KeywordRecord> {
      */
     public static KeywordFile from(BulkFile bulkFile) {
         return new KeywordFile(bulkFile);
-    }
-
-    @Override protected ImmutableSetMultimap.Builder<PMID, KeywordRecord> createRecordMapBuilder() {
-        return ImmutableSetMultimap.builder();
     }
 
     @Override public List<KeywordRecord> extractRecords(PubmedArticleElement element) {

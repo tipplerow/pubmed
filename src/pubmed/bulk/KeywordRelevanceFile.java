@@ -3,10 +3,9 @@ package pubmed.bulk;
 
 import java.util.Collection;
 
-import com.google.common.collect.Multimap;
-
 import pubmed.article.PMID;
 import pubmed.flat.KeywordRecord;
+import pubmed.flat.KeywordTable;
 import pubmed.nlp.LemmaList;
 import pubmed.subject.Subject;
 
@@ -19,11 +18,11 @@ import pubmed.subject.Subject;
  * keyword list.
  */
 public final class KeywordRelevanceFile extends RelevanceScoreFile {
-    private final Multimap<PMID, KeywordRecord> recordMap;
+    private final KeywordTable table;
 
     private KeywordRelevanceFile(BulkFile bulkFile) {
         super(bulkFile);
-        this.recordMap = bulkFile.getKeywordFile().getRecordMap();
+        this.table = bulkFile.getKeywordFile().load();
     }
 
     /**
@@ -43,15 +42,15 @@ public final class KeywordRelevanceFile extends RelevanceScoreFile {
     }
 
     @Override public int computeScore(PMID pmid, Subject subject) {
-        Collection<KeywordRecord> records = recordMap.get(pmid);
-        
-        if (records.isEmpty())
+        if (!table.containsPrimary(pmid))
             return 0;
 
-        for (KeywordRecord record : records)
-            for (LemmaList lemmaList : subject.getKeywordLemmas())
-                if (record.getKeyword().equals(lemmaList.join()))
-                    return 1;
+        for (LemmaList lemmaList : subject.getKeywordLemmas()) {
+            String keyword = lemmaList.join();
+
+            if (table.contains(pmid, keyword))
+                return +1;
+        }
 
         return -1;
     }

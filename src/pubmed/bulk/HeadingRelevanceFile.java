@@ -1,12 +1,7 @@
 
 package pubmed.bulk;
 
-import java.util.Set;
-
-import com.google.common.collect.Multimap;
-
 import pubmed.article.PMID;
-import pubmed.flat.HeadingRecord;
 import pubmed.flat.HeadingTable;
 import pubmed.subject.Subject;
 
@@ -50,10 +45,10 @@ public final class HeadingRelevanceFile extends RelevanceScoreFile {
         if (!table.contains(pmid))
             return 0;
 
-        if (table.select(pmid, subject.getDescriptorKey()).isEmpty())
-            return -1;
+        if (table.contains(pmid, subject.getDescriptorKey()))
+            return +1;
         else
-            return 1;
+            return -1;
     }
 
     @Override public String getSuffix() {

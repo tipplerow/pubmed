@@ -77,6 +77,21 @@ public final class HeadingTable extends RecordStore<HeadingRecord> {
     }
 
     /**
+     * Identifies article-descriptor pairs contained in this table.
+     *
+     * @param pmid the article identifier to query.
+     *
+     * @param desc the descriptor key to query.
+     *
+     * @return {@code true} iff this table contains one or more
+     * records with the specfied article and descriptor.
+     */
+    public boolean contains(PMID pmid, MeshDescriptorKey desc) {
+        SetMultimap<MeshDescriptorKey, HeadingRecord> innerMap = pmidDescMap.get(pmid);
+        return innerMap != null && innerMap.containsKey(desc);
+    }
+
+    /**
      * Returns a read-only set view of the article identifiers in this
      * table.
      *

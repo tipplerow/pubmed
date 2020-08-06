@@ -3,10 +3,6 @@ package pubmed.bulk;
 
 import java.util.List;
 
-import com.google.common.collect.ImmutableSetMultimap;
-import com.google.common.collect.ImmutableSetMultimap.Builder;
-
-import pubmed.article.PMID;
 import pubmed.flat.HeadingRecord;
 import pubmed.flat.HeadingTable;
 import pubmed.xml.PubmedArticleElement;
@@ -34,10 +30,6 @@ public final class HeadingFile extends MultiContentFile<HeadingRecord> {
      */
     public static HeadingFile from(BulkFile bulkFile) {
         return new HeadingFile(bulkFile);
-    }
-
-    @Override protected ImmutableSetMultimap.Builder<PMID, HeadingRecord> createRecordMapBuilder() {
-        return ImmutableSetMultimap.builder();
     }
 
     @Override public List<HeadingRecord> extractRecords(PubmedArticleElement element) {
