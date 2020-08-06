@@ -41,8 +41,8 @@ public class ChemicalRelevanceFileTest {
         RelevanceScoreTable table = chemicalFile.load();
 
         assertEquals(2, table.count());
-        assertEquals(-1, table.select(PMID.instance(1), atorvastatin.getKey()).getScore());
-        assertEquals( 1, table.select(PMID.instance(24451147), atorvastatin.getKey()).getScore());
+        assertEquals(-1, table.getScore(PMID.instance(1), atorvastatin));
+        assertEquals( 1, table.getScore(PMID.instance(24451147), atorvastatin));
 
         assertTrue(chemicalFile.delete());
     }

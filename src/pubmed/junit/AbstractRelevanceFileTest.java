@@ -41,10 +41,10 @@ public class AbstractRelevanceFileTest {
         RelevanceScoreTable table = abstractFile.load();
 
         assertEquals(4, table.count());
-        assertEquals(6, table.select(PMID.instance(24451147), cancer.getKey()).getScore());
-        assertEquals(4, table.select(PMID.instance(31383287), cancer.getKey()).getScore());
-        assertEquals(3, table.select(PMID.instance(24451147), atorvastatin.getKey()).getScore());
-        assertEquals(5, table.select(PMID.instance(31383387), osteoarthritis.getKey()).getScore());
+        assertEquals(6, table.getScore(PMID.instance(24451147), cancer));
+        assertEquals(4, table.getScore(PMID.instance(31383287), cancer));
+        assertEquals(3, table.getScore(PMID.instance(24451147), atorvastatin));
+        assertEquals(5, table.getScore(PMID.instance(31383387), osteoarthritis));
 
         assertTrue(abstractFile.delete());
     }

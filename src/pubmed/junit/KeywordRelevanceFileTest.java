@@ -41,12 +41,12 @@ public class KeywordRelevanceFileTest {
         RelevanceScoreTable table = keywordFile.load();
 
         assertEquals(6, table.count());
-        assertEquals( 1, table.select(PMID.instance(31383287), cancer.getKey()).getScore());
-        assertEquals(-1, table.select(PMID.instance(31687927), cancer.getKey()).getScore());
-        assertEquals(-1, table.select(PMID.instance(31383287), atorvastatin.getKey()).getScore());
-        assertEquals(-1, table.select(PMID.instance(31687927), atorvastatin.getKey()).getScore());
-        assertEquals(-1, table.select(PMID.instance(31383287), rhinovirus.getKey()).getScore());
-        assertEquals( 1, table.select(PMID.instance(31687927), rhinovirus.getKey()).getScore());
+        assertEquals( 1, table.getScore(PMID.instance(31383287), cancer));
+        assertEquals(-1, table.getScore(PMID.instance(31687927), cancer));
+        assertEquals(-1, table.getScore(PMID.instance(31383287), atorvastatin));
+        assertEquals(-1, table.getScore(PMID.instance(31687927), atorvastatin));
+        assertEquals(-1, table.getScore(PMID.instance(31383287), rhinovirus));
+        assertEquals( 1, table.getScore(PMID.instance(31687927), rhinovirus));
 
         assertTrue(keywordFile.delete());
     }

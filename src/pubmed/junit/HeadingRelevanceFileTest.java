@@ -42,12 +42,12 @@ public class HeadingRelevanceFileTest {
         RelevanceScoreTable table = headingFile.load();
 
         assertEquals(6, table.count());
-        assertEquals(-1, table.select(PMID.instance(1), atorvastatin.getKey()).getScore());
-        assertEquals( 1, table.select(PMID.instance(24451147), atorvastatin.getKey()).getScore());
-        assertEquals(-1, table.select(PMID.instance(31383582), atorvastatin.getKey()).getScore());
-        assertEquals(-1, table.select(PMID.instance(1), osteoarthritis.getKey()).getScore());
-        assertEquals(-1, table.select(PMID.instance(24451147), osteoarthritis.getKey()).getScore());
-        assertEquals(-1, table.select(PMID.instance(31383582), osteoarthritis.getKey()).getScore());
+        assertEquals(-1, table.getScore(PMID.instance(1), atorvastatin));
+        assertEquals( 1, table.getScore(PMID.instance(24451147), atorvastatin));
+        assertEquals(-1, table.getScore(PMID.instance(31383582), atorvastatin));
+        assertEquals(-1, table.getScore(PMID.instance(1), osteoarthritis));
+        assertEquals(-1, table.getScore(PMID.instance(24451147), osteoarthritis));
+        assertEquals(-1, table.getScore(PMID.instance(31383582), osteoarthritis));
 
         assertTrue(headingFile.delete());
     }
