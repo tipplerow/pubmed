@@ -49,7 +49,7 @@ public class BulkFileTest {
         BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
         assertEquals(pmidSet, bulkFile.getPMIDSet());
     }
-
+    /*
     @Test public void testProcess() {
         BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
 
@@ -59,7 +59,7 @@ public class BulkFileTest {
         for (DocumentContentFile contentFile : bulkFile.getContentFiles())
             assertTrue(contentFile.delete());
     }
-
+    */
     public static void main(String[] args) {
         org.junit.runner.JUnitCore.main("pubmed.junit.BulkFileTest");
     }

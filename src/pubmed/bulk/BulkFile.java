@@ -93,10 +93,10 @@ public final class BulkFile {
      *
      * @param dirName the bulk file directory to list.
      *
-     * @return a list containing all bulk files in the specified
+     * @return an array containing all bulk files in the specified
      * directory.
      */
-    public static List<BulkFile> list(String dirName) {
+    public static BulkFile[] list(String dirName) {
         return list(new File(dirName));
     }
 
@@ -105,14 +105,26 @@ public final class BulkFile {
      *
      * @param directory the bulk file directory to list.
      *
-     * @return a list containing all bulk files in the specified
+     * @return an array containing all bulk files in the specified
      * directory.
      */
-    public static List<BulkFile> list(File directory) {
-        File[] bulkFileArray = directory.listFiles(FILE_FILTER);
-        Arrays.sort(bulkFileArray);
+    public static BulkFile[] list(File directory) {
+        validateDirectory(directory);
 
-        return ListUtil.apply(Arrays.asList(bulkFileArray), file -> create(file));
+        File[] fileArray = directory.listFiles(FILE_FILTER);
+        BulkFile[] bulkFileArray = new BulkFile[fileArray.length];
+
+        Arrays.sort(fileArray);
+
+        for (int index = 0; index < fileArray.length; ++index)
+            bulkFileArray[index] = create(fileArray[index]);
+
+        return bulkFileArray;
+    }
+
+    private static void validateDirectory(File directory) {
+        if (!directory.isDirectory())
+            throw JamException.runtime("File [%s] is not a directory.", directory);
     }
 
     /**
@@ -446,35 +458,6 @@ public final class BulkFile {
 
         pmidSet = new TreeSet<PMID>(ListUtil.apply(elements, element -> element.getPMID()));
         pmidSet = Collections.unmodifiableNavigableSet(pmidSet);
-    }
-
-    /**
-     * Executes the production process for this bulk XML file.
-     *
-     * <p>This method parses the XML document and then generates all
-     * content and analysis files.
-     *
-     * @throws RuntimeException if any errors occur.
-     */
-    public void process() {
-        JamLogger.info("Processing [%s]...", file.getPath());
-
-        processContentFiles();
-    }
-
-    private void processContentFiles() {
-        List<DocumentContentFile> unprocessed =
-            getUnprocessedContentFiles();
-
-        if (unprocessed.isEmpty()) {
-            JamLogger.info("All content files have been processed.");
-            return;
-        }
-
-        PubmedXmlDocument document = getDocument();
-
-        for (DocumentContentFile contentFile : unprocessed)
-            contentFile.processDocument(document, false);
     }
 
     @Override public boolean equals(Object obj) {

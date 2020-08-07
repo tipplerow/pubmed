@@ -32,10 +32,6 @@ public abstract class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRe
     //
     private final File tocFile;
 
-    // All article identifiers in the bulk file, pulled once and used
-    // for each subject...
-    private final Set<PMID> pmidSet;
-
     /**
      * Creates a new relevance score file for records derived from
      * a given bulk XML file.
@@ -46,7 +42,6 @@ public abstract class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRe
     protected RelevanceScoreFile(BulkFile bulkFile) {
         super(bulkFile);
         this.tocFile = resolveTOCFile();
-        this.pmidSet = bulkFile.getPMIDSet();
     }
 
     private File resolveTOCFile() {
@@ -156,7 +151,7 @@ public abstract class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRe
     private List<RelevanceScoreRecord> process(Subject subject) {
         List<RelevanceScoreRecord> subjectRecords;
 
-        subjectRecords = StreamUtil.applyParallel(pmidSet, pmid -> createRecord(pmid, subject));
+        subjectRecords = StreamUtil.applyParallel(bulkFile.getPMIDSet(), pmid -> createRecord(pmid, subject));
         subjectRecords = ListUtil.filter(subjectRecords, record -> filterRecord(record));
 
         return subjectRecords;
