@@ -3,6 +3,8 @@ package pubmed.bulk;
 
 import java.util.List;
 
+import jam.util.ListUtil;
+
 import pubmed.flat.KeywordRecord;
 import pubmed.flat.KeywordTable;
 import pubmed.xml.PubmedArticleElement;
@@ -33,7 +35,7 @@ public final class KeywordFile extends MultiContentFile<KeywordRecord> {
     }
 
     @Override public List<KeywordRecord> extractRecords(PubmedArticleElement element) {
-        return KeywordRecord.from(element);
+        return ListUtil.filter(KeywordRecord.from(element), record -> !record.getKeyword().isEmpty());
     }
 
     @Override public String getSuffix() {
