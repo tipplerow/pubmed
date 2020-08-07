@@ -1,10 +1,9 @@
 
 package pubmed.junit;
 
-import java.io.File;
-
 import pubmed.article.PMID;
-import pubmed.flat.AbstractLemmaFile;
+import pubmed.bulk.AbstractLemmaFile;
+import pubmed.bulk.BulkFile;
 import pubmed.flat.AbstractLemmaRecord;
 import pubmed.flat.AbstractLemmaTable;
 
@@ -12,7 +11,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class AbstractLemmaFileTest {
-    private static final File sampleXml = new File("data/test/pubmed_sample.xml");
+    private static final BulkFile sampleXml = BulkFile.create("data/test/pubmed_sample.xml");
     private static final AbstractLemmaFile abstractFile = AbstractLemmaFile.from(sampleXml);
 
     @Test public void testFile() {
@@ -22,6 +21,8 @@ public class AbstractLemmaFileTest {
         AbstractLemmaTable table = abstractFile.load();
 
         assertEquals(4, table.count());
+        assertTrue(table.select(PMID.instance(24451147)).getAbstractLemmas().join().startsWith("epidemiological | study"));
+        assertTrue(table.select(PMID.instance(24451147)).getAbstractLemmas().join().endsWith("effect extracellular atp"));
         assertTrue(table.select(PMID.instance(31383287)).getAbstractLemmas().join().startsWith("major glioblastoma hallmark"));
         assertTrue(table.select(PMID.instance(31383287)).getAbstractLemmas().join().endsWith("primary gb cell culture"));
 

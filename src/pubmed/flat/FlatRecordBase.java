@@ -20,7 +20,7 @@ public interface FlatRecordBase {
      * {@code null} or empty, otherwise the {@code NULL_STRING}.
      */
     public default String format(LemmaList lemmas) {
-        return (lemmas != null && !lemmas.isEmpty()) ? lemmas.join() : FlatRecord.NULL_STRING;
+        return (lemmas != null && !lemmas.isEmpty()) ? FlatRecord.DELIMITER.escape(lemmas.join()) : FlatRecord.NULL_STRING;
     }
 
     /**

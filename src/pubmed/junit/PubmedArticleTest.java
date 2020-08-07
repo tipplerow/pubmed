@@ -53,7 +53,7 @@ public class PubmedArticleTest {
     }
 
     @Test public void testAbstract() {
-        assertAbstract(pmid1, "Epidemiological studies indicate", "extracellular ATP.");
+        assertAbstract(pmid1, "Epidemiological | studies indicate", "extracellular ATP.");
         assertAbstract(pmid2, "Major Glioblastoma's hallmarks", "primary GB cell cultures.");
         assertAbstract(pmid3, "Pain-related affective and/or", "receiving conservative treatment.");
     }
@@ -72,7 +72,7 @@ public class PubmedArticleTest {
         String string1 = articles.get(1).getAbstractLemmas().join();
         String string2 = articles.get(2).getAbstractLemmas().join();
 
-        assertTrue(string0.startsWith("epidemiological study indicate statin"));
+        assertTrue(string0.startsWith("epidemiological | study indicate statin"));
         assertTrue(string0.endsWith("p2x7 counteract invasive effect extracellular atp"));
 
         assertTrue(string1.startsWith("major glioblastoma hallmark include"));
@@ -229,7 +229,7 @@ public class PubmedArticleTest {
 
     @Test public void testTitle() {
         assertTitle(pmid1, "Atorvastatin prevents ATP driven", "prostate cancer cells.");
-        assertTitle(pmid2, "A 3D tumor spheroid model", "phenotypic characterization.");
+        assertTitle(pmid2, "A 3D tumor spheroid model", "phenotypic characterization (V2).");
         assertTitle(pmid3, "Prediction models considering", "prospective cohort study.");
     }
 
@@ -246,7 +246,7 @@ public class PubmedArticleTest {
         assertTrue(string0.endsWith("express prostate cancer cell"));
 
         assertTrue(string1.startsWith("3d tumor spheroid"));
-        assertTrue(string1.endsWith("line phenotypic characterization"));
+        assertTrue(string1.endsWith("line phenotypic characterization v2"));
 
         assertTrue(string2.startsWith("prediction model consider"));
         assertTrue(string2.endsWith("prospective cohort study"));
