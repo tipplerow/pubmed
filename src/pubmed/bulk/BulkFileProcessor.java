@@ -57,7 +57,7 @@ public abstract class BulkFileProcessor {
      * directory and all files are processed successfully.
      */
     public synchronized void processDirectory(File directory) {
-        BulkFile[] bulkFileArray = BulkFile.list(directory);
+        bulkFileArray = BulkFile.list(directory);
 
         for (fileIndex = 0; fileIndex < bulkFileArray.length; ++fileIndex)
             processFile();
