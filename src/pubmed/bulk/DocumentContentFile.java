@@ -3,6 +3,7 @@ package pubmed.bulk;
 
 import java.util.List;
 
+import jam.app.JamLogger;
 import jam.flat.RecordStore;
 
 import pubmed.flat.PubmedFlatRecord;
@@ -50,6 +51,7 @@ public abstract class DocumentContentFile<V extends PubmedFlatRecord> extends Pu
     }
 
     private void processDocument(PubmedXmlDocument document) {
+        JamLogger.info("Generating file content: [%s]...", flatFile);
         writeRecords(extractRecords(document), false);
     }
 

@@ -131,13 +131,17 @@ public abstract class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRe
      * @param subjects the subjects of interest.
      */
     public void process(Collection<Subject> subjects) {
+        JamLogger.info("Processing [%s]...", flatFile);
+
         List<Subject> unprocessed = findUnprocessed(subjects);
         List<RelevanceScoreRecord> fileRecords = new ArrayList<RelevanceScoreRecord>();
 
         if (unprocessed.isEmpty()) {
-            JamLogger.info("No new subjects to process for [%s].", bulkFile);
+            JamLogger.info("No new subjects to process.");
             return;
         }
+
+        JamLogger.info("Computing relevance scores for [%s] subjects...", unprocessed.size());
 
         for (Subject subject : unprocessed)
             fileRecords.addAll(process(subject));
