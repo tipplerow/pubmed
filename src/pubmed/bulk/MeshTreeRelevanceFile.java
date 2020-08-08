@@ -3,6 +3,8 @@ package pubmed.bulk;
 
 import java.util.Set;
 
+import jam.app.JamLogger;
+
 import pubmed.article.PMID;
 import pubmed.flat.HeadingRecord;
 import pubmed.flat.HeadingTable;
@@ -58,6 +60,16 @@ public final class MeshTreeRelevanceFile extends RelevanceScoreFile {
         if (articleHeadingRecords.isEmpty())
             return 0;
 
+        try {
+            return computeScore(subjectNumberList, articleHeadingRecords);
+        }
+        catch (Exception ex) {
+            JamLogger.warn(ex);
+            return 0;
+        }
+    }
+
+    private static int computeScore(MeshTreeNumberList subjectNumberList, Set<HeadingRecord> articleHeadingRecords) {
         for (HeadingRecord articleHeadingRecord : articleHeadingRecords) {
             MeshDescriptor headingDescriptor = articleHeadingRecord.getDescriptor();
             MeshTreeNumberList headingNumberList = headingDescriptor.getNumberList();
