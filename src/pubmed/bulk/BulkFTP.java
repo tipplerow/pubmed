@@ -105,5 +105,8 @@ public final class BulkFTP {
 
         return dirName;
     }
-}
 
+    public static void main(String[] args) {
+        downloadUpdateFiles();
+    }
+}
