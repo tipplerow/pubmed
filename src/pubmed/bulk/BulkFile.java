@@ -11,6 +11,7 @@ import java.util.TreeSet;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
+import jam.app.JamEnv;
 import jam.app.JamLogger;
 import jam.io.FileUtil;
 import jam.lang.JamException;
@@ -49,6 +50,12 @@ public final class BulkFile {
     private BulkFile(File file) {
         this.file = FileUtil.getCanonicalFile(file);
     }
+
+    /**
+     * Name of the environment variable that specifies the local
+     * directory that contains the baseline and daily update files.
+     */
+    public static final String LOCAL_DIRNAME_ENV = "PUBMED_LOCAL_DIR";
 
     /**
      * A predicate that matches {@code PubMed} bulk XML data files.
@@ -125,6 +132,39 @@ public final class BulkFile {
     private static void validateDirectory(File directory) {
         if (!directory.isDirectory())
             throw JamException.runtime("File [%s] is not a directory.", directory);
+    }
+
+    /**
+     * Returns the local directory containing the baseline bulk XML
+     * files.
+     *
+     * @return the local directory containing the baseline bulk XML
+     * files.
+     */
+    public static File resolveBaselineDir() {
+        return new File(JamEnv.getRequired(LOCAL_DIRNAME_ENV), "baseline");
+    }
+
+    /**
+     * Returns the local directory where new daily bulk XML files are
+     * downloaded and processed.
+     *
+     * @return the local directory where new daily bulk XML files are
+     * downloaded and processed.
+     */
+    public static File resolveProcessDir() {
+        return new File(JamEnv.getRequired(LOCAL_DIRNAME_ENV), "process");
+    }
+
+    /**
+     * Returns the local directory containing the processed daily bulk
+     * XML files.
+     *
+     * @return the local directory containing the processed daily bulk
+     * XML files.
+     */
+    public static File resolveUpdateDir() {
+        return new File(JamEnv.getRequired(LOCAL_DIRNAME_ENV), "updatefiles");
     }
 
     /**
