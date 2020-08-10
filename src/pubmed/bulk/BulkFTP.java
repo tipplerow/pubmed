@@ -105,36 +105,5 @@ public final class BulkFTP {
 
         return dirName;
     }
-
-    /*
-    private void downloadUnprocessed() {
-        for (String fileName : unprocessed)
-            downloadUnprocessed(fileName);
-    }
-
-    private void downloadUnprocessed(String fileName) {
-        //
-        // The FTP directory already ends with a slash, so just add
-        // the file name without the separator...
-        //
-        String src = remoteDirName + fileName;
-        String dst = FileUtil.join(FileUtil.getCanonicalPath(dailyDir), fileName);
-
-        JamProcess process = JamProcess.create("curl", "-o", dst, src);
-        process.run();
-    }
-
-    private void moveProcessed() {
-        for (String fileName : unprocessed)
-            moveProcessed(fileName);
-    }
-
-    private void moveProcessed(String fileName) {
-        File srcFile = new File(dailyDir, fileName);
-        File dstFile = new File(updateDir, fileName);
-
-        if (!srcFile.renameTo(dstFile))
-            JamLogger.warn("Failed to move file [%s].", fileName);
-    }
-    */
 }
+
