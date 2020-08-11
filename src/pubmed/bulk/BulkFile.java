@@ -188,6 +188,15 @@ public final class BulkFile {
     }
 
     /**
+     * Returns the canonical path name for the underlying file.
+     *
+     * @return the canonical path name for the underlying file.
+     */
+    public String getCanonicalPath() {
+        return FileUtil.getCanonicalPath(file);
+    }
+
+    /**
      * Returns the prefix of the underlying file name with the
      * absolute path information retained.
      *
