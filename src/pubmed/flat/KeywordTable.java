@@ -8,7 +8,7 @@ import jam.flat.JoinTable;
 import pubmed.article.PMID;
 
 /**
- * Maintains a flat table of article title records.
+ * Maintains a flat table of article keyword records.
  */
 public final class KeywordTable extends JoinTable<PMID, String, KeywordRecord> {
     /**

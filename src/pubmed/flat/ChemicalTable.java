@@ -9,7 +9,7 @@ import pubmed.article.PMID;
 import pubmed.mesh.MeshRecordKey;
 
 /**
- * Maintains a flat table of article title records.
+ * Maintains a flat table of chemical substance records.
  */
 public final class ChemicalTable extends JoinTable<PMID, MeshRecordKey, ChemicalRecord> {
     /**

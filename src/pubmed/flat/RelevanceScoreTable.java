@@ -9,7 +9,7 @@ import pubmed.article.PMID;
 import pubmed.subject.Subject;
 
 /**
- * Maintains a flat table of article title records.
+ * Maintains a flat table of relevance score records.
  */
 public final class RelevanceScoreTable extends JoinTable<PMID, String, RelevanceScoreRecord> {
     /**
