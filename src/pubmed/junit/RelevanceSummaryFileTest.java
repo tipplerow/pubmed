@@ -10,6 +10,7 @@ import pubmed.relev.RelevanceSummaryFile;
 import pubmed.relev.RelevanceSummaryRecord;
 import pubmed.relev.RelevanceSummaryTable;
 import pubmed.subject.CancerSubject;
+import pubmed.subject.MeshSubject;
 import pubmed.subject.Subject;
 
 import org.junit.*;
@@ -22,44 +23,58 @@ public class RelevanceSummaryFileTest {
 
     private static final BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
 
-    private static final RelevanceSummaryFile cancerFile = RelevanceSummaryFile.instance(CancerSubject.INSTANCE);
+    private static final Subject cancer = CancerSubject.INSTANCE;
+    private static final Subject atorvastatin = MeshSubject.create("D000069059");
+    private static final Subject osteoarthritis = MeshSubject.create("D010003");
+
+    private static final RelevanceSummaryFile cancerFile = RelevanceSummaryFile.instance(cancer);
+    private static final RelevanceSummaryFile atorvastatinFile = RelevanceSummaryFile.instance(atorvastatin);
+    private static final RelevanceSummaryFile osteoarthritisFile = RelevanceSummaryFile.instance(osteoarthritis);
 
     @Test public void testCancerFile() {
         cancerFile.delete();
+        atorvastatinFile.delete();
+        osteoarthritisFile.delete();
 
         assertTrue(cancerFile.loadContrib().isEmpty());
         assertFalse(cancerFile.isContributor(bulkFile));
 
-        RelevanceSummaryFile.process(bulkFile, List.of(CancerSubject.INSTANCE));
+        RelevanceSummaryFile.process(bulkFile, List.of(cancer, atorvastatin, osteoarthritis));
 
         assertFalse(cancerFile.loadContrib().isEmpty());
         assertTrue(cancerFile.isContributor(bulkFile));
 
         RelevanceSummaryTable cancerTable = cancerFile.load();
+        RelevanceSummaryTable atorvastatinTable = atorvastatinFile.load();
+        RelevanceSummaryTable osteoarthritisTable = osteoarthritisFile.load();
+
         assertEquals(2, cancerTable.count());
-        
-        RelevanceSummaryRecord rec1 = cancerTable.select(PMID.instance(24451147), "CANCER");
-        RelevanceSummaryRecord rec2 = cancerTable.select(PMID.instance(31383287), "CANCER");
+        assertEquals(1, atorvastatinTable.count());
+        assertEquals(1, osteoarthritisTable.count());
 
-        assertEquals(PMID.instance(24451147), rec1.getPMID());
-        assertEquals("CANCER", rec1.getSubjectKey());
-        assertEquals(1, rec1.getTitleScore());
-        assertEquals(6, rec1.getAbstractScore());
-        assertEquals(1, rec1.getMeshTreeScore());
-        assertEquals(0, rec1.getHeadingListScore());
-        assertEquals(0, rec1.getKeywordListScore());
-        assertEquals(0, rec1.getChemicalListScore());
-
-        assertEquals(PMID.instance(31383287), rec2.getPMID());
-        assertEquals("CANCER", rec2.getSubjectKey());
-        assertEquals(2, rec2.getTitleScore());
-        assertEquals(4, rec2.getAbstractScore());
-        assertEquals(0, rec2.getMeshTreeScore());
-        assertEquals(0, rec2.getHeadingListScore());
-        assertEquals(1, rec2.getKeywordListScore());
-        assertEquals(0, rec2.getChemicalListScore());
+        assertRecord(cancerTable.select(PMID.instance(24451147), "CANCER"), 1, 6, 1, 0, 0, 0);
+        assertRecord(cancerTable.select(PMID.instance(31383287), "CANCER"), 2, 4, 0, 0, 1, 0);
+        assertRecord(atorvastatinTable.select(PMID.instance(24451147), "D000069059"), 1, 3, 1, 1, 0, 1);
+        assertRecord(osteoarthritisTable.select(PMID.instance(31383387), "D010003"), 1, 5, 0, 0, 0, 0);
 
         assertTrue(cancerFile.delete());
+        assertTrue(atorvastatinFile.delete());
+        assertTrue(osteoarthritisFile.delete());
+    }
+
+    private void assertRecord(RelevanceSummaryRecord record,
+                              int titleScore,
+                              int abstractScore,
+                              int meshTreeScore,
+                              int headingListScore,
+                              int keywordListScore,
+                              int chemicalListScore) {
+        assertEquals(titleScore, record.getTitleScore());
+        assertEquals(abstractScore, record.getAbstractScore());
+        assertEquals(meshTreeScore, record.getMeshTreeScore());
+        assertEquals(headingListScore, record.getHeadingListScore());
+        assertEquals(keywordListScore, record.getKeywordListScore());
+        assertEquals(chemicalListScore, record.getChemicalListScore());
     }
 
     public static void main(String[] args) {
