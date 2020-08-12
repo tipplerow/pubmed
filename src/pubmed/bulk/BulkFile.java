@@ -31,12 +31,14 @@ public final class BulkFile {
 
     private AbstractLemmaFile   abstractLemmaFile   = null;
     private ArticleAbstractFile articleAbstractFile = null;
+    private ArticleDOIFile      articleDOIFile      = null;
     private ArticleTitleFile    articleTitleFile    = null;
     private ChemicalFile        chemicalFile        = null;
     private HeadingFile         headingFile         = null;
     private JournalFile         journalFile         = null;
     private KeywordFile         keywordFile         = null;
     private PubDateFile         pubDateFile         = null;
+    private PubTypeFile         pubTypeFile         = null;
     private TitleLemmaFile      titleLemmaFile      = null;
 
     private AbstractRelevanceFile abstractRelevanceFile = null;
@@ -289,6 +291,20 @@ public final class BulkFile {
      * @return the article title flat file derived from this bulk
      * file.
      */
+    public synchronized ArticleDOIFile getArticleDOIFile() {
+        if (articleDOIFile == null)
+            articleDOIFile = ArticleDOIFile.from(this);
+
+        return articleDOIFile;
+    }
+
+    /**
+     * Returns the article title flat file derived from this bulk
+     * file.
+     *
+     * @return the article title flat file derived from this bulk
+     * file.
+     */
     public synchronized ArticleTitleFile getArticleTitleFile() {
         if (articleTitleFile == null)
             articleTitleFile = ArticleTitleFile.from(this);
@@ -419,6 +435,20 @@ public final class BulkFile {
     }
 
     /**
+     * Returns the publication date flat file derived from this bulk
+     * file.
+     *
+     * @return the publication date flat file derived from this bulk
+     * file.
+     */
+    public synchronized PubTypeFile getPubTypeFile() {
+        if (pubTypeFile == null)
+            pubTypeFile = PubTypeFile.from(this);
+
+        return pubTypeFile;
+    }
+
+    /**
      * Returns the lemmatized title flat file derived from this bulk
      * file.
      *
@@ -456,12 +486,14 @@ public final class BulkFile {
     public List<DocumentContentFile> getContentFiles() {
         return List.of(getAbstractLemmaFile(),
                        getArticleAbstractFile(),
+                       getArticleDOIFile(),
                        getArticleTitleFile(),
                        getChemicalFile(),
                        getHeadingFile(),
                        getJournalFile(),
                        getKeywordFile(),
                        getPubDateFile(),
+                       getPubTypeFile(),
                        getTitleLemmaFile());
     }
 

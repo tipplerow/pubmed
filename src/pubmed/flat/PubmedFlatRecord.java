@@ -4,6 +4,7 @@ package pubmed.flat;
 import jam.flat.FlatRecord;
 import jam.lang.ObjectUtil;
 
+import pubmed.article.DOI;
 import pubmed.article.ISSN;
 import pubmed.article.PMID;
 import pubmed.mesh.MeshDescriptorKey;
@@ -66,6 +67,20 @@ public abstract class PubmedFlatRecord implements FlatRecord<PMID>, FlatRecordBa
             return format(qualKey);
         else
             return MISSING_QUALIFIER;
+    }
+
+    /**
+     * Parses the Digital Object Identifier encoded in a string field.
+     *
+     * @param field the field to parse.
+     *
+     * @return the Digital Object Identifier encoded in the string field.
+     */
+    public static DOI parseDOI(String field) {
+        if (FlatRecord.isNull(field))
+            return null;
+        else
+            return DOI.instance(field);
     }
 
     /**
