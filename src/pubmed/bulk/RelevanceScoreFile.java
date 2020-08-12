@@ -32,6 +32,8 @@ public abstract class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRe
     //
     private final File tocFile;
 
+    private RelevanceScoreTable cache;
+
     /**
      * Creates a new relevance score file for records derived from
      * a given bulk XML file.
@@ -62,6 +64,19 @@ public abstract class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRe
      * subject.
      */
     public abstract int computeScore(PMID pmid, Subject subject);
+
+    /**
+     * Returns the cached contents of this file, loading the file upon
+     * the first call.
+     *
+     * @return the cached contents of this file.
+     */
+    public RelevanceScoreTable cache() {
+        if (cache == null && exists())
+            cache = load();
+
+        return cache;
+    }
 
     /**
      * Creates the score record for an article and subject.

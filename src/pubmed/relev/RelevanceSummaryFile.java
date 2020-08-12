@@ -201,7 +201,12 @@ public final class RelevanceSummaryFile {
         }
 
         private void process() {
+            FileUtil.ensureDir(resolveRelevanceDir());
+
             pmidSet = bulkFile.getPMIDSet();
+
+            // Process and load all relevance files in parallel...
+            bulkFile.getRelevanceScoreFiles().parallelStream().forEach(scoreFile -> prepareScoreFile(scoreFile));
 
             titleScoreTable = getScoreTable(bulkFile.getTitleRelevanceFile());
             abstractScoreTable = getScoreTable(bulkFile.getAbstractRelevanceFile());
@@ -213,11 +218,14 @@ public final class RelevanceSummaryFile {
             subjects.parallelStream().forEach(subject -> process(subject));
         }
 
-        private RelevanceScoreTable getScoreTable(RelevanceScoreFile scoreFile) {
+        private void prepareScoreFile(RelevanceScoreFile scoreFile) {
             scoreFile.process(subjects);
+            scoreFile.cache();
+        }
 
+        private RelevanceScoreTable getScoreTable(RelevanceScoreFile scoreFile) {
             if (scoreFile.exists())
-                return scoreFile.load();
+                return scoreFile.cache();
             else
                 return new RelevanceScoreTable();
         }
