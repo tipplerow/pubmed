@@ -22,7 +22,7 @@ public class RelevanceSummaryFileTest {
 
     private static final BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
 
-    private static final RelevanceSummaryFile cancerFile = RelevanceSummaryFile.create(CancerSubject.INSTANCE);
+    private static final RelevanceSummaryFile cancerFile = RelevanceSummaryFile.instance(CancerSubject.INSTANCE);
 
     @Test public void testCancerFile() {
         cancerFile.delete();
@@ -30,7 +30,7 @@ public class RelevanceSummaryFileTest {
         assertTrue(cancerFile.loadContrib().isEmpty());
         assertFalse(cancerFile.isContributor(bulkFile));
 
-        cancerFile.process(bulkFile);
+        RelevanceSummaryFile.process(bulkFile, List.of(CancerSubject.INSTANCE));
 
         assertFalse(cancerFile.loadContrib().isEmpty());
         assertTrue(cancerFile.isContributor(bulkFile));

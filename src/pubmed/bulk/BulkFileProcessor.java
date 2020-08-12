@@ -8,6 +8,7 @@ import java.util.List;
 import jam.app.JamLogger;
 import jam.util.ListUtil;
 
+import pubmed.relev.RelevanceSummaryFile;
 import pubmed.subject.Subject;
 import pubmed.xml.PubmedXmlDocument;
 
@@ -118,7 +119,11 @@ public abstract class BulkFileProcessor {
         // Relevance score files must be processed even if they
         // already exist, because new subjects might be present...
         //
+        Collection<Subject> subjects = getSubjects();
+
         for (RelevanceScoreFile relevanceFile : bulkFile.getRelevanceScoreFiles())
-            relevanceFile.process(getSubjects());
+            relevanceFile.process(subjects);
+
+        RelevanceSummaryFile.process(bulkFile, subjects);
     }
 }

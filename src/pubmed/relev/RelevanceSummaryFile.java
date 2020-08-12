@@ -4,11 +4,13 @@ package pubmed.relev;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
 import jam.app.JamEnv;
+import jam.app.JamLogger;
 import jam.app.JamProperties;
 import jam.io.FileUtil;
 import jam.io.IOUtil;
@@ -71,14 +73,30 @@ public final class RelevanceSummaryFile {
     public static final String RELEV_DIR_PROPERTY = "pubmed.relev.dirName";
 
     /**
-     * Creates the relevance summary file for a subject.
+     * Returns the relevance summary file for a subject.
      *
      * @param subject the subject of the relevance file.
      *
      * @return the relevance summary file for the specified subject.
      */
-    public static RelevanceSummaryFile create(Subject subject) {
+    public static RelevanceSummaryFile instance(Subject subject) {
         return new RelevanceSummaryFile(subject);
+    }
+
+    /**
+     * Processes one bulk file: Loads all subject relevance scores
+     * derived from the bulk file, aggregates the relevance scores
+     * into summary records for each subject, and appends summary
+     * records to the underlying physical files.
+     *
+     * @param bulkFile the bulk file to process.
+     *
+     * @param subjects the subjects to process.
+     *
+     * @throws RuntimeException if any errors occur.
+     */
+    public static synchronized void process(BulkFile bulkFile, Collection<Subject> subjects) {
+        BulkProcessor.process(bulkFile, subjects);
     }
 
     /**
@@ -121,9 +139,7 @@ public final class RelevanceSummaryFile {
     }
 
     private static String contributorName(BulkFile bulkFile) {
-        //
         // Always use the canonical path name of the contributors...
-        //
         return bulkFile.getCanonicalPath();
     }
 
@@ -150,43 +166,92 @@ public final class RelevanceSummaryFile {
             return Set.of();
     }
 
-    /**
-     * Processes all bulk files in a given directory.
-     *
-     * @param bulkDir the bulk directory to process.
-     *
-     * @throws RuntimeException unless the file is a directory.
-     */
-    public void process(File bulkDir) {
-        for (BulkFile bulkFile : BulkFile.list(bulkDir))
-            process(bulkFile);
+    private void addSummaryRecords(List<RelevanceSummaryRecord> summaryRecords) {
+        try (PrintWriter writer = IOUtil.openWriter(summaryFile, true)) {
+            for (RelevanceSummaryRecord summaryRecord : summaryRecords)
+                writer.println(summaryRecord.format());
+        }
     }
 
-    /**
-     * Processes one bulk file: Loads individual relevance scores for
-     * the subject of this file, aggregates the scores into relevance
-     * summary records, and writes appends the summary records to the
-     * underlying physical file.
-     *
-     * @param bulkFile the bulk file to process.
-     *
-     * @throws RuntimeException if any errors occur.
-     */
-    public synchronized void process(BulkFile bulkFile) {
-        if (isContributor(bulkFile))
-            return;
+    private void addContributor(BulkFile bulkFile) {
+        IOUtil.writeLines(contribFile, true, contributorName(bulkFile));
+    }
 
-        Set<PMID> pmidSet = bulkFile.getPMIDSet();
-        List<RelevanceSummaryRecord> summaryRecords = new ArrayList<RelevanceSummaryRecord>();
+    private static final class BulkProcessor {
+        private final BulkFile bulkFile;
+        private final Collection<Subject> subjects;
 
-        RelevanceScoreTable titleScoreTable = getScoreTable(bulkFile.getTitleRelevanceFile());
-        RelevanceScoreTable abstractScoreTable = getScoreTable(bulkFile.getAbstractRelevanceFile());
-        RelevanceScoreTable meshTreeScoreTable = getScoreTable(bulkFile.getMeshTreeRelevanceFile());
-        RelevanceScoreTable headingListScoreTable = getScoreTable(bulkFile.getHeadingRelevanceFile());
-        RelevanceScoreTable keywordListScoreTable = getScoreTable(bulkFile.getKeywordRelevanceFile());
-        RelevanceScoreTable chemicalListScoreTable = getScoreTable(bulkFile.getChemicalRelevanceFile());
+        private Set<PMID> pmidSet;
 
-        for (PMID pmid : pmidSet) {
+        private RelevanceScoreTable titleScoreTable;
+        private RelevanceScoreTable abstractScoreTable;
+        private RelevanceScoreTable meshTreeScoreTable;
+        private RelevanceScoreTable headingListScoreTable;
+        private RelevanceScoreTable keywordListScoreTable;
+        private RelevanceScoreTable chemicalListScoreTable;
+
+        private BulkProcessor(BulkFile bulkFile, Collection<Subject> subjects) {
+            this.bulkFile = bulkFile;
+            this.subjects = subjects;
+        }
+
+        private static void process(BulkFile bulkFile, Collection<Subject> subjects) {
+            BulkProcessor processor = new BulkProcessor(bulkFile, subjects);
+            processor.process();
+        }
+
+        private void process() {
+            pmidSet = bulkFile.getPMIDSet();
+
+            titleScoreTable = getScoreTable(bulkFile.getTitleRelevanceFile());
+            abstractScoreTable = getScoreTable(bulkFile.getAbstractRelevanceFile());
+            meshTreeScoreTable = getScoreTable(bulkFile.getMeshTreeRelevanceFile());
+            headingListScoreTable = getScoreTable(bulkFile.getHeadingRelevanceFile());
+            keywordListScoreTable = getScoreTable(bulkFile.getKeywordRelevanceFile());
+            chemicalListScoreTable = getScoreTable(bulkFile.getChemicalRelevanceFile());
+
+            subjects.parallelStream().forEach(subject -> process(subject));
+        }
+
+        private RelevanceScoreTable getScoreTable(RelevanceScoreFile scoreFile) {
+            scoreFile.process(subjects);
+
+            if (scoreFile.exists())
+                return scoreFile.load();
+            else
+                return new RelevanceScoreTable();
+        }
+
+        private void process(Subject subject) {
+            RelevanceSummaryFile summaryFile = instance(subject);
+
+            if (summaryFile.isContributor(bulkFile))
+                return;
+
+            JamLogger.info("Generating relevance summary for subject [%s]...", subject.getKey());
+
+            List<RelevanceSummaryRecord> summaryRecords =
+                createSummaryRecords(subject);
+
+            summaryFile.addSummaryRecords(summaryRecords);
+            summaryFile.addContributor(bulkFile);
+        }
+
+        private List<RelevanceSummaryRecord> createSummaryRecords(Subject subject) {
+            List<RelevanceSummaryRecord> summaryRecords =
+                new ArrayList<RelevanceSummaryRecord>(pmidSet.size());
+
+            for (PMID pmid : pmidSet) {
+                RelevanceSummaryRecord summaryRecord = createSummaryRecord(pmid, subject);
+
+                if (summaryRecord.filter())
+                    summaryRecords.add(summaryRecord);
+            }
+
+            return summaryRecords;
+        }
+
+        private RelevanceSummaryRecord createSummaryRecord(PMID pmid, Subject subject) {
             int titleScore = titleScoreTable.getScore(pmid, subject);
             int abstractScore = abstractScoreTable.getScore(pmid, subject);
             int meshTreeScore = meshTreeScoreTable.getScore(pmid, subject);
@@ -194,41 +259,14 @@ public final class RelevanceSummaryFile {
             int keywordListScore = keywordListScoreTable.getScore(pmid, subject);
             int chemicalListScore = chemicalListScoreTable.getScore(pmid, subject);
 
-            RelevanceSummaryRecord summaryRecord =
-                RelevanceSummaryRecord.create(pmid,
-                                              subject.getKey(),
-                                              titleScore,
-                                              abstractScore,
-                                              meshTreeScore,
-                                              headingListScore,
-                                              keywordListScore,
-                                              chemicalListScore);
-
-            summaryRecords.add(summaryRecord);
+            return RelevanceSummaryRecord.create(pmid,
+                                                 subject.getKey(),
+                                                 titleScore,
+                                                 abstractScore,
+                                                 meshTreeScore,
+                                                 headingListScore,
+                                                 keywordListScore,
+                                                 chemicalListScore);
         }
-
-        addSummaryRecords(summaryRecords);
-        addContributor(bulkFile);
-    }
-
-    private RelevanceScoreTable getScoreTable(RelevanceScoreFile scoreFile) {
-        scoreFile.process(List.of(subject));
-
-        if (scoreFile.exists())
-            return scoreFile.load();
-        else
-            return new RelevanceScoreTable();
-    }
-
-    private void addSummaryRecords(List<RelevanceSummaryRecord> summaryRecords) {
-        try (PrintWriter writer = IOUtil.openWriter(summaryFile, true)) {
-            for (RelevanceSummaryRecord summaryRecord : summaryRecords)
-                if (summaryRecord.filter())
-                    writer.println(summaryRecord.format());
-        }
-    }
-
-    private void addContributor(BulkFile bulkFile) {
-        IOUtil.writeLines(contribFile, true, contributorName(bulkFile));
     }
 }
