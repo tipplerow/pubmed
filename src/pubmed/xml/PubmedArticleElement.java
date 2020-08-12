@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeSet;
 
 import org.jdom2.Element;
 
@@ -267,5 +268,38 @@ public final class PubmedArticleElement extends JDOMElement {
      */
     public PubmedJournal getPubmedJournal() {
         return getJournalElement().getJournalRecord();
+    }
+
+    /**
+     * Finds the best date to assign as the publication date of the
+     * article.
+     *
+     * @return the earliest of the publication date references in the
+     * XML document ({@code null} if there are none).
+     */
+    public LocalDate resolvePublicationDate() {
+        TreeSet<LocalDate> dates = new TreeSet<LocalDate>();
+
+        LocalDate pubmedDate    = getPubmedDate();
+        LocalDate dateCompleted = getDateCompleted();
+        LocalDate dateRevised   = getDateRevised();
+
+        if (pubmedDate != null)
+            dates.add(pubmedDate);
+
+        if (dateCompleted != null)
+            dates.add(dateCompleted);
+
+        if (dateRevised != null)
+            dates.add(dateRevised);
+
+        for (LocalDate date : getArticleDates())
+            if (date != null)
+                dates.add(date);
+
+        if (dates.isEmpty())
+            return null;
+        else
+            return dates.first();
     }
 }

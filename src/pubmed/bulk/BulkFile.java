@@ -36,6 +36,7 @@ public final class BulkFile {
     private HeadingFile         headingFile         = null;
     private JournalFile         journalFile         = null;
     private KeywordFile         keywordFile         = null;
+    private PubDateFile         pubDateFile         = null;
     private TitleLemmaFile      titleLemmaFile      = null;
 
     private AbstractRelevanceFile abstractRelevanceFile = null;
@@ -404,6 +405,20 @@ public final class BulkFile {
     }
 
     /**
+     * Returns the publication date flat file derived from this bulk
+     * file.
+     *
+     * @return the publication date flat file derived from this bulk
+     * file.
+     */
+    public synchronized PubDateFile getPubDateFile() {
+        if (pubDateFile == null)
+            pubDateFile = PubDateFile.from(this);
+
+        return pubDateFile;
+    }
+
+    /**
      * Returns the lemmatized title flat file derived from this bulk
      * file.
      *
@@ -446,6 +461,7 @@ public final class BulkFile {
                        getHeadingFile(),
                        getJournalFile(),
                        getKeywordFile(),
+                       getPubDateFile(),
                        getTitleLemmaFile());
     }
 
