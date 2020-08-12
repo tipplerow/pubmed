@@ -1,11 +1,11 @@
 #!/bin/sh
 ########################################################################
-# Usage: bulk-file-lemma-processor.sh DIR1 [DIR2 ...]
+# Usage: bulk-file-content-processor.sh DIR1 [DIR2 ...]
 ########################################################################
 
 if [ $# -lt 1 ]
 then
-    echo "Usage: `basename $0` DIR1 [DIR2 ...]"
+    echo "Usage:" `basename $0` "DIR1 [DIR2 ...]"
     exit 1
 fi
 
@@ -15,4 +15,4 @@ then
     exit 1
 fi
 
-${PUBMED_HOME}/bin/pubmed-run.sh pubmed.bulk.BulkFileLemmaProcessor $@
+${PUBMED_HOME}/bin/pubmed-run.sh pubmed.bulk.BulkFileContentProcessor "$@"
