@@ -1,6 +1,8 @@
 
 package pubmed.article;
 
+import jam.app.JamLogger;
+
 import pubmed.mesh.MeshDescriptor;
 import pubmed.mesh.MeshDescriptorKey;
 
@@ -23,7 +25,13 @@ public final class PublicationType {
      * @return the decorated {@code PublicationType} elements.
      */
     public static PublicationType create(String descriptorKey) {
-        return create(MeshDescriptorKey.instance(descriptorKey));
+        try {
+            return create(MeshDescriptorKey.instance(descriptorKey));
+        }
+        catch (RuntimeException ex) {
+            JamLogger.warn(ex);
+            return null;
+        }
     }
 
     /**

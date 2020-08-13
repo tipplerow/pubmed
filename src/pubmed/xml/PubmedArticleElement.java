@@ -246,7 +246,10 @@ public final class PubmedArticleElement extends JDOMElement {
      * @return the publication types for the article.
      */
     public List<PublicationType> getPublicationTypes() {
-        return ListUtil.apply(getPublicationTypeListElement().getPublicationTypeElements(), element -> element.getType());
+        List<PublicationTypeElement> elements =
+            getPublicationTypeListElement().getPublicationTypeElements();
+
+        return ListUtil.notNull(ListUtil.apply(elements, element -> element.getType()));
     }
 
     /**
