@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import jam.app.JamLogger;
 import jam.io.FileUtil;
@@ -16,6 +17,8 @@ import jam.util.ListUtil;
 import jam.util.StreamUtil;
 
 import pubmed.article.PMID;
+import pubmed.flat.ArticleAbstractRecord;
+import pubmed.flat.ArticleAbstractTable;
 import pubmed.flat.RelevanceScoreRecord;
 import pubmed.flat.RelevanceScoreTable;
 import pubmed.relev.AbstractRelevanceScorer;
@@ -36,6 +39,8 @@ public final class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRecor
     // added...
     //
     private final File tocFile;
+
+    private final Set<PMID> pmidSet = new TreeSet<PMID>();
 
     private TitleRelevanceScorer    titleScorer;
     private AbstractRelevanceScorer abstractScorer;
@@ -124,6 +129,8 @@ public final class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRecor
         }
 
         JamLogger.info("Computing relevance scores for [%s] subjects...", unprocessed.size());
+
+        loadPMIDs();
         createScorers();
 
         List<RelevanceScoreRecord> fileRecords =
@@ -136,6 +143,17 @@ public final class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRecor
             writeRecords(fileRecords, true);
 
         updateTOC(unprocessed);
+    }
+
+    private void loadPMIDs() {
+        //
+        // Only process articles with abstracts...
+        //
+        ArticleAbstractTable abstractTable =
+            bulkFile.getArticleAbstractFile().load();
+
+        for (ArticleAbstractRecord abstractRecord : abstractTable)
+            pmidSet.add(abstractRecord.getPMID());
     }
 
     private void createScorers() {
@@ -161,7 +179,7 @@ public final class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRecor
     private List<RelevanceScoreRecord> process(Subject subject) {
         List<RelevanceScoreRecord> subjectRecords;
 
-        subjectRecords = StreamUtil.applyParallel(bulkFile.getPMIDSet(), pmid -> process(pmid, subject));
+        subjectRecords = StreamUtil.applyParallel(pmidSet, pmid -> process(pmid, subject));
         subjectRecords = ListUtil.filter(subjectRecords, record -> record.filter());
 
         return subjectRecords;
