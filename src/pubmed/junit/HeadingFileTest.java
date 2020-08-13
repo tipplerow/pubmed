@@ -21,7 +21,7 @@ public class HeadingFileTest {
     private static final BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
 
     @Test public void testProcess() {
-        HeadingFile headingFile = HeadingFile.from(bulkFile);
+        HeadingFile headingFile = HeadingFile.instance(bulkFile);
 
         headingFile.processFile(true);
         headingFile.processFile(false);

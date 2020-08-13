@@ -17,7 +17,7 @@ public class ChemicalFileTest {
     private static final BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
 
     @Test public void testProcess() {
-        ChemicalFile chemicalFile = ChemicalFile.from(bulkFile);
+        ChemicalFile chemicalFile = ChemicalFile.instance(bulkFile);
 
         chemicalFile.processFile(true);
         chemicalFile.processFile(false);

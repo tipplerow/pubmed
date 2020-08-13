@@ -25,7 +25,7 @@ public final class JournalFile extends UniqueContentFile<JournalRecord> {
      *
      * @return the flat file derived from the given bulk XML file.
      */
-    public static JournalFile from(BulkFile bulkFile) {
+    public static JournalFile instance(BulkFile bulkFile) {
         return new JournalFile(bulkFile);
     }
 

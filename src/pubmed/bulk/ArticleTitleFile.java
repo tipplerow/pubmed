@@ -25,7 +25,7 @@ public final class ArticleTitleFile extends UniqueContentFile<ArticleTitleRecord
      *
      * @return the flat file derived from the given bulk XML file.
      */
-    public static ArticleTitleFile from(BulkFile bulkFile) {
+    public static ArticleTitleFile instance(BulkFile bulkFile) {
         return new ArticleTitleFile(bulkFile);
     }
 

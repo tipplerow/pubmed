@@ -17,7 +17,7 @@ public class PubDateFileTest {
     private static final BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
 
     @Test public void testProcess() {
-        PubDateFile pubDateFile = PubDateFile.from(bulkFile);
+        PubDateFile pubDateFile = PubDateFile.instance(bulkFile);
 
         pubDateFile.processFile(true);
         pubDateFile.processFile(false);

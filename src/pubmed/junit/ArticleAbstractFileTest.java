@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 public class ArticleAbstractFileTest {
     private static final BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
-    private static final ArticleAbstractFile abstractFile = ArticleAbstractFile.from(bulkFile);
+    private static final ArticleAbstractFile abstractFile = ArticleAbstractFile.instance(bulkFile);
 
     @Test public void testFile() {
         abstractFile.processFile(true);

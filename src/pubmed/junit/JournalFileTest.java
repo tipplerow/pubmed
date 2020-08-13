@@ -18,7 +18,7 @@ public class JournalFileTest {
     private static final BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
 
     @Test public void testProcess() {
-        JournalFile journalFile = JournalFile.from(bulkFile);
+        JournalFile journalFile = JournalFile.instance(bulkFile);
 
         journalFile.processFile(true);
         journalFile.processFile(false);

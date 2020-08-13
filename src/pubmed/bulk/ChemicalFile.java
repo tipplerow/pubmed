@@ -28,7 +28,7 @@ public final class ChemicalFile extends MultiContentFile<ChemicalRecord> {
      *
      * @return the flat file derived from the given bulk XML file.
      */
-    public static ChemicalFile from(BulkFile bulkFile) {
+    public static ChemicalFile instance(BulkFile bulkFile) {
         return new ChemicalFile(bulkFile);
     }
 

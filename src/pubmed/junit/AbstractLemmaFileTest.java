@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 
 public class AbstractLemmaFileTest {
     private static final BulkFile sampleXml = BulkFile.create("data/test/pubmed_sample.xml");
-    private static final AbstractLemmaFile abstractFile = AbstractLemmaFile.from(sampleXml);
+    private static final AbstractLemmaFile abstractFile = AbstractLemmaFile.instance(sampleXml);
 
     @Test public void testFile() {
         abstractFile.processFile(true);

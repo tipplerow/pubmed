@@ -27,7 +27,7 @@ public final class PubDateFile extends MultiContentFile<PubDateRecord> {
      *
      * @return the flat file derived from the given bulk XML file.
      */
-    public static PubDateFile from(BulkFile bulkFile) {
+    public static PubDateFile instance(BulkFile bulkFile) {
         return new PubDateFile(bulkFile);
     }
 

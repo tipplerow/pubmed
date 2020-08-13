@@ -30,7 +30,7 @@ public final class KeywordFile extends MultiContentFile<KeywordRecord> {
      *
      * @return the flat file derived from the given bulk XML file.
      */
-    public static KeywordFile from(BulkFile bulkFile) {
+    public static KeywordFile instance(BulkFile bulkFile) {
         return new KeywordFile(bulkFile);
     }
 

@@ -27,7 +27,7 @@ public final class PubTypeFile extends MultiContentFile<PubTypeRecord> {
      *
      * @return the flat file derived from the given bulk XML file.
      */
-    public static PubTypeFile from(BulkFile bulkFile) {
+    public static PubTypeFile instance(BulkFile bulkFile) {
         return new PubTypeFile(bulkFile);
     }
 

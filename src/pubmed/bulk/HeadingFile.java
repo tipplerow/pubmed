@@ -28,7 +28,7 @@ public final class HeadingFile extends MultiContentFile<HeadingRecord> {
      *
      * @return the flat file derived from the given bulk XML file.
      */
-    public static HeadingFile from(BulkFile bulkFile) {
+    public static HeadingFile instance(BulkFile bulkFile) {
         return new HeadingFile(bulkFile);
     }
 

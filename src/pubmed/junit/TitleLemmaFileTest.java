@@ -4,7 +4,8 @@ package pubmed.junit;
 import java.io.File;
 
 import pubmed.article.PMID;
-import pubmed.flat.TitleLemmaFile;
+import pubmed.bulk.BulkFile;
+import pubmed.bulk.TitleLemmaFile;
 import pubmed.flat.TitleLemmaRecord;
 import pubmed.flat.TitleLemmaTable;
 
@@ -12,8 +13,8 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class TitleLemmaFileTest {
-    private static final File sampleXml = new File("data/test/pubmed_sample.xml");
-    private static final TitleLemmaFile titleFile = TitleLemmaFile.from(sampleXml);
+    private static final BulkFile sampleXml = BulkFile.create("data/test/pubmed_sample.xml");
+    private static final TitleLemmaFile titleFile = TitleLemmaFile.instance(sampleXml);
 
     @Test public void testFile() {
         titleFile.processFile(true);

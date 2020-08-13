@@ -1,5 +1,5 @@
 
-package pubmed.bulk;
+package pubmed.relev;
 
 import jam.flat.FlatTable;
 
@@ -9,29 +9,23 @@ import pubmed.nlp.LemmaList;
 import pubmed.subject.Subject;
 
 /**
- * Base class to compute and store relevance score records for
- * lemmatized titles or abstracts.
+ * Base class to compute relevance scores for lemmatized titles
+ * or abstracts.
  *
  * <p>The relevance score is the number of times a (lemmatized)
  * subject keyword or phrase occurs in the (lemmatized) article
  * component (title or abstract).
  */
-public abstract class ArticleLemmaRelevanceFile<V extends ArticleLemmaRecord> extends RelevanceScoreFile {
-    private final FlatTable<PMID, V> flatTable;
+public abstract class LemmaRelevanceScorer<V extends ArticleLemmaRecord> implements RelevanceScorer {
+    private final FlatTable<PMID, V> lemmaTable;
 
     /**
-     * Creates a new relevance file for a given bulk file and lemma
-     * components.
+     * Creates a new relevance scorer for table of lemma records.
      *
-     * @param bulkFile the bulk XML file containing articles to be
-     * scored.
-     *
-     * @param flatTable a table containing the article component
-     * (title or abstract) lemmas extracted from the bulk file.
+     * @param lemmaTable lemma records derived from a bulk XML file.
      */
-    protected ArticleLemmaRelevanceFile(BulkFile bulkFile, FlatTable<PMID, V> flatTable) {
-        super(bulkFile);
-        this.flatTable = flatTable;
+    protected LemmaRelevanceScorer(FlatTable<PMID, V> lemmaTable) {
+        this.lemmaTable = lemmaTable;
     }
 
     /**
@@ -53,7 +47,7 @@ public abstract class ArticleLemmaRelevanceFile<V extends ArticleLemmaRecord> ex
     }
 
     @Override public int computeScore(PMID pmid, Subject subject) {
-        ArticleLemmaRecord lemmaRecord = flatTable.select(pmid);
+        ArticleLemmaRecord lemmaRecord = lemmaTable.select(pmid);
 
         if (lemmaRecord != null)
             return computeScore(subject, lemmaRecord.getLemmaList());

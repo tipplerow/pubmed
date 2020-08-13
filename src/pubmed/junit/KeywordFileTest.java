@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 public class KeywordFileTest {
     private static final BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
-    private static final KeywordFile keywordFile = KeywordFile.from(bulkFile);
+    private static final KeywordFile keywordFile = KeywordFile.instance(bulkFile);
 
     @Test public void testFile() {
         keywordFile.processFile(true);

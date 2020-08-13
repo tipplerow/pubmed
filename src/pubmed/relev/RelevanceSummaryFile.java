@@ -201,6 +201,8 @@ public final class RelevanceSummaryFile {
         }
 
         private void process() {
+            throw new UnsupportedOperationException();
+            /*
             FileUtil.ensureDir(resolveRelevanceDir());
 
             pmidSet = bulkFile.getPMIDSet();
@@ -216,8 +218,9 @@ public final class RelevanceSummaryFile {
             chemicalListScoreTable = getScoreTable(bulkFile.getChemicalRelevanceFile());
 
             subjects.parallelStream().forEach(subject -> process(subject));
+            */
         }
-
+        /*
         private void prepareScoreFile(RelevanceScoreFile scoreFile) {
             scoreFile.process(subjects);
             scoreFile.cache();
@@ -229,7 +232,7 @@ public final class RelevanceSummaryFile {
             else
                 return new RelevanceScoreTable();
         }
-
+        */
         private void process(Subject subject) {
             RelevanceSummaryFile summaryFile = instance(subject);
 
@@ -260,6 +263,8 @@ public final class RelevanceSummaryFile {
         }
 
         private RelevanceSummaryRecord createSummaryRecord(PMID pmid, Subject subject) {
+            throw new UnsupportedOperationException();
+            /*
             int titleScore = titleScoreTable.getScore(pmid, subject);
             int abstractScore = abstractScoreTable.getScore(pmid, subject);
             int meshTreeScore = meshTreeScoreTable.getScore(pmid, subject);
@@ -275,6 +280,7 @@ public final class RelevanceSummaryFile {
                                                  headingListScore,
                                                  keywordListScore,
                                                  chemicalListScore);
+            */
         }
     }
 }

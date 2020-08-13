@@ -25,7 +25,7 @@ public final class ArticleDOIFile extends UniqueContentFile<ArticleDOIRecord> {
      *
      * @return the flat file derived from the given bulk XML file.
      */
-    public static ArticleDOIFile from(BulkFile bulkFile) {
+    public static ArticleDOIFile instance(BulkFile bulkFile) {
         return new ArticleDOIFile(bulkFile);
     }
 

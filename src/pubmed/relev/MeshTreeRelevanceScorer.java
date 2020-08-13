@@ -1,11 +1,12 @@
 
-package pubmed.bulk;
+package pubmed.relev;
 
 import java.util.Set;
 
 import jam.app.JamLogger;
 
 import pubmed.article.PMID;
+import pubmed.bulk.BulkFile;
 import pubmed.flat.HeadingRecord;
 import pubmed.flat.HeadingTable;
 import pubmed.mesh.MeshDescriptor;
@@ -14,7 +15,7 @@ import pubmed.mesh.MeshTreeNumberList;
 import pubmed.subject.Subject;
 
 /**
- * Computes and stores {@code MeSH} tree relevance score records.
+ * Computes {@code MeSH} tree relevance score records.
  *
  * <p>If the subject is described by one or more {@code MeSH} tree
  * numbers and the article has a {@code MeSH} heading list, the score
@@ -25,28 +26,33 @@ import pubmed.subject.Subject;
  * not described by a {@code MeSH} tree number or if the article does
  * not have a heading list.
  */
-public final class MeshTreeRelevanceFile extends RelevanceScoreFile {
+public final class MeshTreeRelevanceScorer implements RelevanceScorer {
     private final HeadingTable table;
 
-    private MeshTreeRelevanceFile(BulkFile bulkFile) {
-        super(bulkFile);
-        this.table = bulkFile.getHeadingFile().load();
+    private MeshTreeRelevanceScorer(HeadingTable table) {
+        this.table = table;
     }
 
     /**
-     * The suffix for flat file names.
+     * Returns the relevance scorer for a given bulk XML file.
+     *
+     * @param bulkFile the bulk XML file to process.
+     *
+     * @return the relevance scorer for the given bulk XML file.
      */
-    public static final String SUFFIX = "mesh_tree_relevance";
+    public static MeshTreeRelevanceScorer instance(BulkFile bulkFile) {
+        return instance(bulkFile.getHeadingFile().load());
+    }
 
     /**
-     * Returns the flat file derived from a bulk XML file.
+     * Returns the relevance scorer for a table of heading records.
      *
-     * @param bulkFile a bulk XML file.
+     * @param table heading records derived from a bulk XML file.
      *
-     * @return the flat file derived from the given bulk XML file.
+     * @return the relevance scorer for the given lemma table.
      */
-    public static MeshTreeRelevanceFile from(BulkFile bulkFile) {
-        return new MeshTreeRelevanceFile(bulkFile);
+    public static MeshTreeRelevanceScorer instance(HeadingTable table) {
+        return new MeshTreeRelevanceScorer(table);
     }
 
     @Override public int computeScore(PMID pmid, Subject subject) {
@@ -81,9 +87,5 @@ public final class MeshTreeRelevanceFile extends RelevanceScoreFile {
         }
 
         return -1;
-    }
-
-    @Override public String getSuffix() {
-        return SUFFIX;
     }
 }

@@ -18,13 +18,18 @@ import jam.util.StreamUtil;
 import pubmed.article.PMID;
 import pubmed.flat.RelevanceScoreRecord;
 import pubmed.flat.RelevanceScoreTable;
+import pubmed.relev.AbstractRelevanceScorer;
+import pubmed.relev.ChemicalRelevanceScorer;
+import pubmed.relev.HeadingRelevanceScorer;
+import pubmed.relev.KeywordRelevanceScorer;
+import pubmed.relev.MeshTreeRelevanceScorer;
+import pubmed.relev.TitleRelevanceScorer;
 import pubmed.subject.Subject;
 
 /**
- * Provides a base class for flat files that contain relevance score
- * records.
+ * Computes and stores relevance score records.
  */
-public abstract class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRecord> {
+public final class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRecord> {
     //
     // A file containing keys of the subjects that have already been
     // processed, used to skip those subjects when new subjects are
@@ -32,16 +37,14 @@ public abstract class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRe
     //
     private final File tocFile;
 
-    private RelevanceScoreTable cache;
-
-    /**
-     * Creates a new relevance score file for records derived from
-     * a given bulk XML file.
-     *
-     * @param bulkFile the bulk XML file containing articles to be
-     * scored.
-     */
-    protected RelevanceScoreFile(BulkFile bulkFile) {
+    private TitleRelevanceScorer    titleScorer;
+    private AbstractRelevanceScorer abstractScorer;
+    private MeshTreeRelevanceScorer meshTreeScorer;
+    private HeadingRelevanceScorer  headingListScorer;
+    private KeywordRelevanceScorer  keywordListScorer;
+    private ChemicalRelevanceScorer chemicalListScorer;
+    
+    private RelevanceScoreFile(BulkFile bulkFile) {
         super(bulkFile);
         this.tocFile = resolveTOCFile();
     }
@@ -54,55 +57,21 @@ public abstract class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRe
     }
 
     /**
-     * Computes the relevance score for an article and subject.
-     *
-     * @param pmid the identifier of the article to score.
-     *
-     * @param subject the subject of interest.
-     *
-     * @return the relevance score for the specified article and
-     * subject.
+     * The suffix for flat file names.
      */
-    public abstract int computeScore(PMID pmid, Subject subject);
+    public static final String SUFFIX = "relevance";
 
     /**
-     * Returns the cached contents of this file, loading the file upon
-     * the first call.
+     * Creates a new relevance score file for records derived from
+     * a given bulk XML file.
      *
-     * @return the cached contents of this file.
+     * @param bulkFile the bulk XML file containing articles to be
+     * scored.
+     *
+     * @return the relevance score file for the given bulk file.
      */
-    public RelevanceScoreTable cache() {
-        if (cache == null && exists())
-            cache = load();
-
-        return cache;
-    }
-
-    /**
-     * Creates the score record for an article and subject.
-     *
-     * @param pmid the identifier of the article to score.
-     *
-     * @param subject the subject of interest.
-     *
-     * @return the score record for the specified article and subject.
-     */
-    public RelevanceScoreRecord createRecord(PMID pmid, Subject subject) {
-        return RelevanceScoreRecord.create(pmid, subject, computeScore(pmid, subject));
-    }
-
-    /**
-     * Determines whether to store a computed relevance record in the
-     * physical flat file.  This default implementation retains only
-     * records with non-zero scores.
-     *
-     * @param record the record to filter.
-     *
-     * @return {@code true} iff the record should be stored in the
-     * physical flat file.
-     */
-    public boolean filterRecord(RelevanceScoreRecord record) {
-        return record != null && record.getScore() != 0;
+    public static RelevanceScoreFile instance(BulkFile bulkFile) {
+        return new RelevanceScoreFile(bulkFile);
     }
 
     /**
@@ -145,11 +114,9 @@ public abstract class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRe
      *
      * @param subjects the subjects of interest.
      */
-    public void process(Collection<Subject> subjects) {
+    public synchronized void process(Collection<Subject> subjects) {
         JamLogger.info("Processing [%s]...", flatFile);
-
         List<Subject> unprocessed = findUnprocessed(subjects);
-        List<RelevanceScoreRecord> fileRecords = new ArrayList<RelevanceScoreRecord>();
 
         if (unprocessed.isEmpty()) {
             JamLogger.info("No new subjects to process.");
@@ -157,6 +124,10 @@ public abstract class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRe
         }
 
         JamLogger.info("Computing relevance scores for [%s] subjects...", unprocessed.size());
+        createScorers();
+
+        List<RelevanceScoreRecord> fileRecords =
+            new ArrayList<RelevanceScoreRecord>();
 
         for (Subject subject : unprocessed)
             fileRecords.addAll(process(subject));
@@ -167,13 +138,50 @@ public abstract class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRe
         updateTOC(unprocessed);
     }
 
+    private void createScorers() {
+        if (titleScorer == null)
+            titleScorer = TitleRelevanceScorer.instance(bulkFile);
+
+        if (abstractScorer == null)
+            abstractScorer = AbstractRelevanceScorer.instance(bulkFile);
+
+        if (meshTreeScorer == null)
+            meshTreeScorer = MeshTreeRelevanceScorer.instance(bulkFile);
+
+        if (headingListScorer == null)
+            headingListScorer = HeadingRelevanceScorer.instance(bulkFile);
+
+        if (keywordListScorer == null)
+            keywordListScorer = KeywordRelevanceScorer.instance(bulkFile);
+
+        if (chemicalListScorer == null)
+            chemicalListScorer = ChemicalRelevanceScorer.instance(bulkFile);
+    }
+
     private List<RelevanceScoreRecord> process(Subject subject) {
         List<RelevanceScoreRecord> subjectRecords;
 
-        subjectRecords = StreamUtil.applyParallel(bulkFile.getPMIDSet(), pmid -> createRecord(pmid, subject));
-        subjectRecords = ListUtil.filter(subjectRecords, record -> filterRecord(record));
+        subjectRecords = StreamUtil.applyParallel(bulkFile.getPMIDSet(), pmid -> process(pmid, subject));
+        subjectRecords = ListUtil.filter(subjectRecords, record -> record.filter());
 
         return subjectRecords;
+    }
+
+    private RelevanceScoreRecord process(PMID pmid, Subject subject) {
+        try {
+            return RelevanceScoreRecord.compute(pmid,
+                                                subject,
+                                                titleScorer,
+                                                abstractScorer,
+                                                meshTreeScorer,
+                                                headingListScorer,
+                                                keywordListScorer,
+                                                chemicalListScorer);
+        }
+        catch (RuntimeException ex) {
+            JamLogger.warn(ex);
+            return RelevanceScoreRecord.zero(pmid, subject.getKey());
+        }
     }
 
     private void updateTOC(Collection<Subject> subjects) {
@@ -184,6 +192,10 @@ public abstract class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRe
     @Override public boolean delete() {
         super.delete();
         return tocFile.delete();
+    }
+
+    @Override public String getSuffix() {
+        return SUFFIX;
     }
 
     @Override public RelevanceScoreTable load() {

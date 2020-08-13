@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 
 public class ArticleTitleFileTest {
     private static final BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
-    private static final ArticleTitleFile titleFile = ArticleTitleFile.from(bulkFile);
+    private static final ArticleTitleFile titleFile = ArticleTitleFile.instance(bulkFile);
 
     @Test public void testFile() {
         titleFile.processFile(true);

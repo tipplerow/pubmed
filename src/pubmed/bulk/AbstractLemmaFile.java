@@ -26,7 +26,7 @@ public final class AbstractLemmaFile extends UniqueContentFile<AbstractLemmaReco
      *
      * @return the flat file derived from the given bulk XML file.
      */
-    public static AbstractLemmaFile from(BulkFile bulkFile) {
+    public static AbstractLemmaFile instance(BulkFile bulkFile) {
         return new AbstractLemmaFile(bulkFile);
     }
 

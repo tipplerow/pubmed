@@ -28,12 +28,9 @@ public abstract class BulkFileRelevanceScoreProcessor extends BulkFileProcessor 
 
     @Override public void processFile(BulkFile bulkFile) {
         //
-        // Relevance score files must be processed even if they
-        // already exist, because new subjects might be present...
+        // The relevance score files must be processed even if it
+        // already exists, because new subjects might be present...
         //
-        Collection<Subject> subjects = getSubjects();
-
-        for (RelevanceScoreFile relevanceFile : bulkFile.getRelevanceScoreFiles())
-            relevanceFile.process(subjects);
+        bulkFile.getRelevanceScoreFile().process(getSubjects());
     }
 }

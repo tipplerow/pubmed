@@ -41,12 +41,7 @@ public final class BulkFile {
     private PubTypeFile         pubTypeFile         = null;
     private TitleLemmaFile      titleLemmaFile      = null;
 
-    private AbstractRelevanceFile abstractRelevanceFile = null;
-    private ChemicalRelevanceFile chemicalRelevanceFile = null;
-    private HeadingRelevanceFile  headingRelevanceFile  = null;
-    private KeywordRelevanceFile  keywordRelevanceFile  = null;
-    private MeshTreeRelevanceFile meshTreeRelevanceFile = null;
-    private TitleRelevanceFile    titleRelevanceFile    = null;
+    private RelevanceScoreFile relevanceScoreFile = null;
 
     private NavigableSet<PMID> pmidSet = null;
 
@@ -251,23 +246,9 @@ public final class BulkFile {
      */
     public synchronized AbstractLemmaFile getAbstractLemmaFile() {
         if (abstractLemmaFile == null)
-            abstractLemmaFile = AbstractLemmaFile.from(this);
+            abstractLemmaFile = AbstractLemmaFile.instance(this);
 
         return abstractLemmaFile;
-    }
-
-    /**
-     * Returns the abstract relevance score file derived from this
-     * bulk file.
-     *
-     * @return the abstract relevance score file derived from this
-     * bulk file.
-     */
-    public synchronized AbstractRelevanceFile getAbstractRelevanceFile() {
-        if (abstractRelevanceFile == null)
-            abstractRelevanceFile = AbstractRelevanceFile.from(this);
-
-        return abstractRelevanceFile;
     }
 
     /**
@@ -279,7 +260,7 @@ public final class BulkFile {
      */
     public synchronized ArticleAbstractFile getArticleAbstractFile() {
         if (articleAbstractFile == null)
-            articleAbstractFile = ArticleAbstractFile.from(this);
+            articleAbstractFile = ArticleAbstractFile.instance(this);
 
         return articleAbstractFile;
     }
@@ -293,7 +274,7 @@ public final class BulkFile {
      */
     public synchronized ArticleDOIFile getArticleDOIFile() {
         if (articleDOIFile == null)
-            articleDOIFile = ArticleDOIFile.from(this);
+            articleDOIFile = ArticleDOIFile.instance(this);
 
         return articleDOIFile;
     }
@@ -307,7 +288,7 @@ public final class BulkFile {
      */
     public synchronized ArticleTitleFile getArticleTitleFile() {
         if (articleTitleFile == null)
-            articleTitleFile = ArticleTitleFile.from(this);
+            articleTitleFile = ArticleTitleFile.instance(this);
 
         return articleTitleFile;
     }
@@ -321,23 +302,9 @@ public final class BulkFile {
      */
     public synchronized ChemicalFile getChemicalFile() {
         if (chemicalFile == null)
-            chemicalFile = ChemicalFile.from(this);
+            chemicalFile = ChemicalFile.instance(this);
 
         return chemicalFile;
-    }
-
-    /**
-     * Returns the chemical substance relevance score file derived
-     * from this bulk file.
-     *
-     * @return the chemical substance relevance score file derived
-     * from this bulk file.
-     */
-    public synchronized ChemicalRelevanceFile getChemicalRelevanceFile() {
-        if (chemicalRelevanceFile == null)
-            chemicalRelevanceFile = ChemicalRelevanceFile.from(this);
-
-        return chemicalRelevanceFile;
     }
 
     /**
@@ -349,23 +316,9 @@ public final class BulkFile {
      */
     public synchronized HeadingFile getHeadingFile() {
         if (headingFile == null)
-            headingFile = HeadingFile.from(this);
+            headingFile = HeadingFile.instance(this);
 
         return headingFile;
-    }
-
-    /**
-     * Returns the heading descriptor relevance score file derived
-     * from this bulk file.
-     *
-     * @return the heading descriptor relevance score file derived
-     * from this bulk file.
-     */
-    public synchronized HeadingRelevanceFile getHeadingRelevanceFile() {
-        if (headingRelevanceFile == null)
-            headingRelevanceFile = HeadingRelevanceFile.from(this);
-
-        return headingRelevanceFile;
     }
 
     /**
@@ -375,7 +328,7 @@ public final class BulkFile {
      */
     public synchronized JournalFile getJournalFile() {
         if (journalFile == null)
-            journalFile = JournalFile.from(this);
+            journalFile = JournalFile.instance(this);
 
         return journalFile;
     }
@@ -387,37 +340,9 @@ public final class BulkFile {
      */
     public synchronized KeywordFile getKeywordFile() {
         if (keywordFile == null)
-            keywordFile = KeywordFile.from(this);
+            keywordFile = KeywordFile.instance(this);
 
         return keywordFile;
-    }
-
-    /**
-     * Returns the keyword relevance score file derived from this bulk
-     * file.
-     *
-     * @return the keyword relevance score file derived from this bulk
-     * file.
-     */
-    public synchronized KeywordRelevanceFile getKeywordRelevanceFile() {
-        if (keywordRelevanceFile == null)
-            keywordRelevanceFile = KeywordRelevanceFile.from(this);
-
-        return keywordRelevanceFile;
-    }
-
-    /**
-     * Returns the {@code MeSH} tree relevance score file derived from
-     * this bulk file.
-     *
-     * @return the {@code MeSH} tree relevance score file derived from
-     * this bulk file.
-     */
-    public synchronized MeshTreeRelevanceFile getMeshTreeRelevanceFile() {
-        if (meshTreeRelevanceFile == null)
-            meshTreeRelevanceFile = MeshTreeRelevanceFile.from(this);
-
-        return meshTreeRelevanceFile;
     }
 
     /**
@@ -429,7 +354,7 @@ public final class BulkFile {
      */
     public synchronized PubDateFile getPubDateFile() {
         if (pubDateFile == null)
-            pubDateFile = PubDateFile.from(this);
+            pubDateFile = PubDateFile.instance(this);
 
         return pubDateFile;
     }
@@ -443,9 +368,21 @@ public final class BulkFile {
      */
     public synchronized PubTypeFile getPubTypeFile() {
         if (pubTypeFile == null)
-            pubTypeFile = PubTypeFile.from(this);
+            pubTypeFile = PubTypeFile.instance(this);
 
         return pubTypeFile;
+    }
+
+    /**
+     * Returns the relevance score file derived from this bulk file.
+     *
+     * @return the relevance score file derived from this bulk file.
+     */
+    public synchronized RelevanceScoreFile getRelevanceScoreFile() {
+        if (relevanceScoreFile == null)
+            relevanceScoreFile = RelevanceScoreFile.instance(this);
+
+        return relevanceScoreFile;
     }
 
     /**
@@ -457,23 +394,9 @@ public final class BulkFile {
      */
     public synchronized TitleLemmaFile getTitleLemmaFile() {
         if (titleLemmaFile == null)
-            titleLemmaFile = TitleLemmaFile.from(this);
+            titleLemmaFile = TitleLemmaFile.instance(this);
 
         return titleLemmaFile;
-    }
-
-    /**
-     * Returns the title relevance score file derived from this bulk
-     * file.
-     *
-     * @return the title relevance score file derived from this bulk
-     * file.
-     */
-    public synchronized TitleRelevanceFile getTitleRelevanceFile() {
-        if (titleRelevanceFile == null)
-            titleRelevanceFile = TitleRelevanceFile.from(this);
-
-        return titleRelevanceFile;
     }
 
     /**
@@ -498,22 +421,6 @@ public final class BulkFile {
     }
 
     /**
-     * Returns a read-only list of the relevance score flat files
-     * derived from this bulk file.
-     *
-     * @return a read-only list of the relevance score flat files
-     * derived from this bulk file.
-     */
-    public List<RelevanceScoreFile> getRelevanceScoreFiles() {
-        return List.of(getAbstractRelevanceFile(),
-                       getChemicalRelevanceFile(),
-                       getHeadingRelevanceFile(),
-                       getKeywordRelevanceFile(),
-                       getMeshTreeRelevanceFile(),
-                       getTitleRelevanceFile());
-    }
-
-    /**
      * Returns a read-only list of the document content flat files
      * that have not yet been generated from this bulk file.
      *
@@ -522,17 +429,6 @@ public final class BulkFile {
      */
     public List<DocumentContentFile> getUnprocessedContentFiles() {
         return ListUtil.filter(getContentFiles(), file -> !file.exists());
-    }
-
-    /**
-     * Returns a read-only list of the document content flat files
-     * that have not yet been generated from this bulk file.
-     *
-     * @return a read-only list of the document content flat files
-     * that have not yet been generated from this bulk file.
-     */
-    public List<RelevanceScoreFile> getUnprocessedRelevanceScoreFiles() {
-        return ListUtil.filter(getRelevanceScoreFiles(), file -> !file.exists());
     }
 
     /**

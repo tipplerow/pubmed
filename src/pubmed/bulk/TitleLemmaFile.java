@@ -25,7 +25,7 @@ public final class TitleLemmaFile extends UniqueContentFile<TitleLemmaRecord> {
      *
      * @return the flat file derived from the given bulk XML file.
      */
-    public static TitleLemmaFile from(BulkFile bulkFile) {
+    public static TitleLemmaFile instance(BulkFile bulkFile) {
         return new TitleLemmaFile(bulkFile);
     }
 
