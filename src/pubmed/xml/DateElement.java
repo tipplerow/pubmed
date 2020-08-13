@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 import org.jdom2.Element;
 
+import jam.app.JamLogger;
 import jam.xml.JDOMElement;
 
 /**
@@ -31,7 +32,20 @@ public abstract class DateElement extends JDOMElement {
         int month = Integer.parseInt(getRequiredChild("Month").getTextNormalize());
         int day   = Integer.parseInt(getRequiredChild("Day").getTextNormalize());
 
-        return LocalDate.of(year, month, day);
+        try {
+            return LocalDate.of(year, month, day);
+        }
+        catch (RuntimeException ex) {
+            JamLogger.warn("Invalid date: [%02d-%02d-%02d]", year, month, day);
+            return approximateDate(year, month);
+        }
+    }
+
+    private static LocalDate approximateDate(int year, int month) {
+        if (month < 1 || month > 12)
+            return LocalDate.of(year, 1, 1);
+        else
+            return LocalDate.of(year, month, 1);
     }
 
     /**
