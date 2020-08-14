@@ -14,7 +14,7 @@ import pubmed.nlp.LemmaList;
  */
 public final class CancerSubject extends Subject {
     private CancerSubject() {
-        super("CANCER");
+        super("CANCER_v2");
     }
 
     /**
@@ -28,6 +28,7 @@ public final class CancerSubject extends Subject {
      */
     public static final List<String> KEYWORDS =
         List.of("adenocarcinoma",
+                "anticancer",
                 "anticarcinogenic",
                 "antineoplastic",
                 "antitumor",
