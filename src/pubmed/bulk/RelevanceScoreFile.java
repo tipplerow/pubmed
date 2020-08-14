@@ -128,13 +128,15 @@ public final class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRecor
             return;
         }
 
-        JamLogger.info("Computing relevance scores for [%s] subjects...", unprocessed.size());
+        JamLogger.info("Gathering required data...");
 
         loadPMIDs();
         createScorers();
 
         List<RelevanceScoreRecord> fileRecords =
             new ArrayList<RelevanceScoreRecord>();
+
+        JamLogger.info("Computing relevance scores for [%s] subjects...", unprocessed.size());
 
         for (Subject subject : unprocessed)
             fileRecords.addAll(process(subject));
