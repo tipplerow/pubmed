@@ -53,8 +53,17 @@ public final class ArticleAbstractRecord extends ArticleTextAttrRecord {
      * @return a new record with the data encoded in the line.
      */
     public static ArticleAbstractRecord parse(String line) {
-        String[] fields = FlatRecord.split(line, 2);
-        return create(parsePMID(fields[0]), fields[1]);
+        try {
+            String[] fields = FlatRecord.split(line, 2);
+            return create(parsePMID(fields[0]), fields[1]);
+        }
+        catch (RuntimeException ex) {
+            return parseEmpty(line);
+        }
+    }
+
+    private static ArticleAbstractRecord parseEmpty(String line) {
+        return null;
     }
 
     /**

@@ -1,31 +1,17 @@
 
 package pubmed.relev;
 
-import java.io.File;
-
-import jam.flat.JoinTable;
+import jam.util.PairKeyTreeTable;
 
 import pubmed.article.PMID;
 
-/**
- * Maintains a flat table of relevance summary records.
- */
-public final class RelevanceSummaryTable extends JoinTable<PMID, String, RelevanceSummaryRecord> {
-    /**
-     * Creates a new table by parsing a flat file.
-     *
-     * @param file the flat file containing the table data.
-     *
-     * @return a new table containing the data in the given
-     * flat file.
-     */
-    public static RelevanceSummaryTable load(File file) {
-        RelevanceSummaryTable table = new RelevanceSummaryTable();
-        table.parse(file);
-        return table;
+public final class RelevanceSummaryTable extends PairKeyTreeTable<PMID, String, RelevanceSummaryRecord> {
+    private RelevanceSummaryTable() {
+        super();
     }
 
-    @Override public RelevanceSummaryRecord parse(String line) {
-        return RelevanceSummaryRecord.parse(line);
+    @SuppressWarnings("unchecked")
+    public static RelevanceSummaryTable create() {
+        return new RelevanceSummaryTable();
     }
 }

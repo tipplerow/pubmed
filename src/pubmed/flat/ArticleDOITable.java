@@ -5,6 +5,7 @@ import java.io.File;
 
 import jam.flat.FlatTable;
 
+import pubmed.article.DOI;
 import pubmed.article.PMID;
 
 /**
@@ -23,6 +24,15 @@ public final class ArticleDOITable extends FlatTable<PMID, ArticleDOIRecord> {
         ArticleDOITable table = new ArticleDOITable();
         table.parse(file);
         return table;
+    }
+
+    public DOI selectDOI(PMID pmid) {
+        ArticleDOIRecord record = select(pmid);
+
+        if (record != null)
+            return record.getDOI();
+        else
+            return null;
     }
 
     @Override public ArticleDOIRecord parse(String line) {

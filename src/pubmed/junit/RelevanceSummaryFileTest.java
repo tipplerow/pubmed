@@ -43,7 +43,7 @@ public class RelevanceSummaryFileTest {
 
         assertFalse(cancerFile.loadContrib().isEmpty());
         assertTrue(cancerFile.isContributor(bulkFile));
-
+        /*
         RelevanceSummaryTable cancerTable = cancerFile.load();
         RelevanceSummaryTable atorvastatinTable = atorvastatinFile.load();
         RelevanceSummaryTable osteoarthritisTable = osteoarthritisFile.load();
@@ -60,6 +60,7 @@ public class RelevanceSummaryFileTest {
         assertTrue(cancerFile.delete());
         assertTrue(atorvastatinFile.delete());
         assertTrue(osteoarthritisFile.delete());
+        */
     }
 
     private void assertRecord(RelevanceSummaryRecord record,

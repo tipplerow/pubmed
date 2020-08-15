@@ -25,6 +25,15 @@ public final class ArticleTitleTable extends FlatTable<PMID, ArticleTitleRecord>
         return table;
     }
 
+    public String selectTitle(PMID pmid) {
+        ArticleTitleRecord record = select(pmid);
+
+        if (record != null)
+            return record.getTitle();
+        else
+            return null;
+    }
+
     @Override public ArticleTitleRecord parse(String line) {
         return ArticleTitleRecord.parse(line);
     }

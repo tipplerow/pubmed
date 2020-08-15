@@ -1,55 +1,32 @@
 
 package pubmed.relev;
 
-import java.util.List;
+import java.time.LocalDate;
 
-import jam.flat.FlatRecord;
+import jam.io.Delimiter;
+import jam.report.LineBuilder;
 
 import pubmed.article.PMID;
-import pubmed.flat.PubmedJoinRecord;
-import pubmed.subject.Subject;
+import pubmed.flat.RelevanceScoreRecord;
 
 /**
- * Represents a joining record containing the identifier for an
- * article, the key of a subject covered in that article, and
- * scoring metrics that quantify the degree of relevance of the
- * article to the subject.
- *
- * <p><b>Title score:</b> The number of times a subject keyword or
- * phrase occurs in the article title.
- *
- * <p><b>Abstract score:</b> The number of times a subject keyword
- * or phrase occurs in the article abstract.
- *
- * <p><b>MeSH tree score:</b> If the subject maps to a {@code MeSH}
- * descriptor and the article has a {@code MeSH} heading list, the
- * tree score is {@code +1} if one or more of the heading descriptors
- * has a MeSH tree number equal to or more specific than a tree number
- * assigned to the subject descriptor and the tree score is {@code -1}
- * if there are no matching heading descriptors.  The tree score is
- * {@code 0} if the subject does not map to a {@code MeSH} descriptor
- * or if the article does not have a heading list.
- *
- * <p><b>Heading list score:</b> If the subject maps to a {@code MeSH}
- * descriptor and the article has a {@code MeSH} heading list, the
- * score is {@code +1} if the list contains the subject descriptor,
- * {@code -1} if it does not.  The score is {@code 0} if the subject
- * does not map to a {@code MeSH} descriptor or if the article does
- * not have a heading list.
- *
- * <p><b>Keyword list score:</b> If the article has a keyword list, the
- * score is {@code +1} if the keyword list contains a subject keyword
- * or phrase, {@code -1} if it does not.  The score is {@code 0} if
- * article does not have a keyword list.
- *
- * <p><b>Chemical list score:</b> If the subject maps to a {@code MeSH}
- * chemical record and the article has a chemical list, the score is
- * {@code +1} if the list contains the subject record, {@code -1} if
- * it does not. The score is {@code 0} if the subject does not map to
- * a {@code MeSH} chemical record or if the article does not have a
- * chemical list.
+ * Represents a joining record containing the identifier of an
+ * article, the key of a subject covered in that article, scoring
+ * metrics that quantify the degree of relevance of the article to
+ * the subject, and article attributes like the title, publication
+ * date, PubMed URL, and DOI.
  */
-public final class RelevanceSummaryRecord extends PubmedJoinRecord<String> {
+public final class RelevanceSummaryRecord {
+    private final PMID pmid;
+    private final String subjectKey;
+
+    private final String title;
+    private final String journal;
+    private final String doiURL;
+    private final String pubMedURL;
+    private final LocalDate pubDate;
+    private final LocalDate reportDate;
+
     private final int titleScore;
     private final int abstractScore;
     private final int meshTreeScore;
@@ -57,15 +34,29 @@ public final class RelevanceSummaryRecord extends PubmedJoinRecord<String> {
     private final int keywordListScore;
     private final int chemicalListScore;
 
-    private RelevanceSummaryRecord(PMID pmid,
-                                   String subjectKey,
-                                   int titleScore,
-                                   int abstractScore,
-                                   int meshTreeScore,
-                                   int headingListScore,
-                                   int keywordListScore,
-                                   int chemicalListScore) {
-        super(pmid, subjectKey);
+    private RelevanceSummaryRecord(PMID      pmid,
+                                   String    subjectKey,
+                                   LocalDate pubDate,
+                                   LocalDate reportDate,
+                                   String    title,
+                                   String    journal,
+                                   String    pubMedURL,
+                                   String    doiURL,
+                                   int       titleScore,
+                                   int       abstractScore,
+                                   int       meshTreeScore,
+                                   int       headingListScore,
+                                   int       keywordListScore,
+                                   int       chemicalListScore) {
+        this.pmid = pmid;
+        this.subjectKey = subjectKey;
+        
+        this.title = title;
+        this.doiURL = doiURL;
+        this.journal = journal;
+        this.pubDate = pubDate;
+        this.pubMedURL = pubMedURL;
+        this.reportDate = reportDate;
 
         this.titleScore = titleScore;
         this.abstractScore = abstractScore;
@@ -76,48 +67,149 @@ public final class RelevanceSummaryRecord extends PubmedJoinRecord<String> {
     }
 
     /**
+     * The minimum number of keyword occurrences required in the
+     * article abstract in order to qualify as relevant (barring
+     * other qualifying criteria).
+     */
+    public static final int ABSTRACT_KEYWORD_THRESHOLD = 3;
+
+    /**
+     * The flat file delimiter for relevance summary records.
+     */
+    public static final Delimiter DELIMITER = Delimiter.TAB;
+
+    /**
      * Creates a new record with fixed attributes.
      *
      * @param pmid the article identifier.
      *
      * @param subjectKey a key of the subject covered in the article.
      *
-     * @param titleScore the title score described in the class
-     * header.
+     * @param pubDate the publication date of the article.
      *
-     * @param abstractScore the abstract score described in the class
-     * header.
+     * @param reportDate the date when the record was added to the
+     * report file.
      *
-     * @param meshTreeScore the MeSH tree score described in the class
-     * header.
+     * @param title the title of the article.
      *
-     * @param headingListScore the heading list score described in the
-     * class header.
+     * @param journal the journal where the article appeared.
      *
-     * @param keywordListScore the keyword list score described in the
-     * class header.
+     * @param pubMedURL the URL to the PubMed article page.
      *
-     * @param chemicalListScore the chemical list score described in
-     * the class header.
+     * @param doiURL the URL for the Digital Object Identifier.
+     *
+     * @param titleScore the title relevance score.
+     *
+     * @param abstractScore the abstract relevance score.
+     *
+     * @param meshTreeScore the MeSH tree relevance score.
+     *
+     * @param headingListScore the heading list relevance score.
+     *
+     * @param keywordListScore the keyword list relevance score.
+     *
+     * @param chemicalListScore the chemical list relevance score.
      *
      * @return a new record with the specified attributes.
      */
-    public static RelevanceSummaryRecord create(PMID pmid,
-                                                String subjectKey,
-                                                int titleScore,
-                                                int abstractScore,
-                                                int meshTreeScore,
-                                                int headingListScore,
-                                                int keywordListScore,
-                                                int chemicalListScore) {
+    public static RelevanceSummaryRecord create(PMID      pmid,
+                                                String    subjectKey,
+                                                LocalDate pubDate,
+                                                LocalDate reportDate,
+                                                String    title,
+                                                String    journal,
+                                                String    pubMedURL,
+                                                String    doiURL,
+                                                int       titleScore,
+                                                int       abstractScore,
+                                                int       meshTreeScore,
+                                                int       headingListScore,
+                                                int       keywordListScore,
+                                                int       chemicalListScore) {
         return new RelevanceSummaryRecord(pmid,
                                           subjectKey,
+                                          pubDate,
+                                          reportDate,
+                                          title,
+                                          journal,
+                                          pubMedURL,
+                                          doiURL,
                                           titleScore,
                                           abstractScore,
                                           meshTreeScore,
                                           headingListScore,
                                           keywordListScore,
                                           chemicalListScore);
+    }
+
+    /**
+     * Creates a new record with fixed attributes.
+     *
+     * @param scoreRecord the relevance score record for the summary.
+     *
+     * @param pubDate the publication date of the article.
+     *
+     * @param reportDate the date when the record was added to the
+     * report file.
+     *
+     * @param title the title of the article.
+     *
+     * @param journal the journal where the article appeared.
+     *
+     * @param pubMedURL the URL to the PubMed article page.
+     *
+     * @param doiURL the URL for the Digital Object Identifier.
+     *
+     * @return a new record with the specified attributes.
+     */
+    public static RelevanceSummaryRecord create(RelevanceScoreRecord scoreRecord,
+                                                LocalDate pubDate,
+                                                LocalDate reportDate,
+                                                String title,
+                                                String journal,
+                                                String pubMedURL,
+                                                String doiURL) {
+        return create(scoreRecord.getPMID(),
+                      scoreRecord.getSubjectKey(),
+                      pubDate,
+                      reportDate,
+                      title,
+                      journal,
+                      pubMedURL,
+                      doiURL,
+                      scoreRecord.getTitleScore(),
+                      scoreRecord.getAbstractScore(),
+                      scoreRecord.getMeshTreeScore(),
+                      scoreRecord.getHeadingListScore(),
+                      scoreRecord.getKeywordListScore(),
+                      scoreRecord.getChemicalListScore());
+    }
+
+    /**
+     * Returns the header line for relevance summary files.
+     *
+     * @return the header line for relevance summary files.
+     */
+    public static String header() {
+        LineBuilder builder = new LineBuilder(DELIMITER);
+
+        builder.append("pmid");
+        builder.append("subject");
+        builder.append("pubDate");
+        builder.append("reportDate");
+        builder.append("title");
+        builder.append("journal");
+        builder.append("pubMedURL");
+        builder.append("doiURL");
+        builder.append("titleScore");
+        builder.append("abstractScore");
+        builder.append("meshTreeScore");
+        builder.append("headingListScore");
+        builder.append("keywordListScore");
+        builder.append("chemicalListScore");
+        builder.append("isLikelyMatch");
+
+        return builder.toString();
     }
 
     /**
@@ -128,32 +220,62 @@ public final class RelevanceSummaryRecord extends PubmedJoinRecord<String> {
      * @return a new record with the data encoded in the line.
      */
     public static RelevanceSummaryRecord parse(String line) {
-        String[] fields = FlatRecord.split(line, 8);
+        //
+        // The last field is the "likelyMatch" flag, which is derived
+        // from the individual scores rather than parsed...
+        //
+        String[] fields = DELIMITER.split(line, 15);
 
-        return create(parsePMID(fields[0]),
+        return create(PMID.instance(fields[0]),
                       fields[1],
-                      FlatRecord.parseInt(fields[2]),
-                      FlatRecord.parseInt(fields[3]),
-                      FlatRecord.parseInt(fields[4]),
-                      FlatRecord.parseInt(fields[5]),
-                      FlatRecord.parseInt(fields[6]),
-                      FlatRecord.parseInt(fields[7]));
+                      LocalDate.parse(fields[2]),
+                      LocalDate.parse(fields[3]),
+                      fields[4],
+                      fields[5],
+                      fields[6],
+                      fields[7],
+                      Integer.parseInt(fields[8]),
+                      Integer.parseInt(fields[9]),
+                      Integer.parseInt(fields[10]),
+                      Integer.parseInt(fields[11]),
+                      Integer.parseInt(fields[12]),
+                      Integer.parseInt(fields[13]));
     }
 
     /**
-     * Defines a filter that selects relevance records with one
-     * or more positive scores.
+     * Formats this record as a delimited text field.
      *
-     * @return {@code true} iff this record contains one or more
-     * positive relevance scores
+     * @return a delimited string representation of this record.
      */
-    public boolean filter() {
-        return titleScore > 0
-            || abstractScore > 0
-            || meshTreeScore > 0
-            || headingListScore > 0
-            || keywordListScore > 0
-            || chemicalListScore > 0;
+    public String format() {
+        LineBuilder builder = new LineBuilder(DELIMITER);
+
+        builder.append(pmid.intValue());
+        builder.append(subjectKey);
+        builder.append(pubDate);
+        builder.append(reportDate);
+        builder.append(title);
+        builder.append(journal);
+        builder.append(pubMedURL);
+        builder.append(doiURL);
+        builder.append(titleScore);
+        builder.append(abstractScore);
+        builder.append(meshTreeScore);
+        builder.append(headingListScore);
+        builder.append(keywordListScore);
+        builder.append(chemicalListScore);
+        builder.append(isLikelyMatch());
+
+        return builder.toString();
+    }
+
+    /**
+     * Returns the unique identifier for the article.
+     *
+     * @return the unique identifier for the article.
+     */
+    public PMID getPMID() {
+        return pmid;
     }
 
     /**
@@ -162,82 +284,158 @@ public final class RelevanceSummaryRecord extends PubmedJoinRecord<String> {
      * @return the key of the subject covered in the article.
      */
     public String getSubjectKey() {
-        return fkey;
+        return subjectKey;
     }
 
     /**
-     * Returns the title score described in the class header.
+     * Returns the publication date of the article.
      *
-     * @return the title score described in the class header.
+     * @return the publication date of the article.
+     */
+    public LocalDate getPubDate() {
+        return pubDate;
+    }
+
+    /**
+     * Returns the date when this record was added to the report file.
+     *
+     * @return the date when this record was added to the report file.
+     */
+    public LocalDate getReportDate() {
+        return reportDate;
+    }
+
+    /**
+     * Returns the title of the article.
+     *
+     * @return the title of the article.
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * Returns the journal where the article appeared.
+     *
+     * @return the journal where the article appeared.
+     */
+    public String getJournal() {
+        return journal;
+    }
+
+    /**
+     * Returns the URL to the PubMed article page.
+     *
+     * @return the URL to the PubMed article page.
+     */
+    public String getPubMedURL() {
+        return pubMedURL;
+    }
+
+    /**
+     * Returns the URL for the Digital Object Identifier.
+     *
+     * @return the URL for the Digital Object Identifier.
+     */
+    public String getDoiURL() {
+        return doiURL;
+    }
+
+    /**
+     * Returns the title relevance score.
+     *
+     * @return the title relevance score.
      */
     public int getTitleScore() {
         return titleScore;
     }
 
     /**
-     * Returns the abstract score described in the class header.
+     * Returns the abstract relevance score.
      *
-     * @return the abstract score described in the class header.
+     * @return the abstract relevance score.
      */
     public int getAbstractScore() {
         return abstractScore;
     }
 
     /**
-     * Returns the MeSH tree score described in the class header.
+     * Returns the MeSH tree relevance score.
      *
-     * @return the MeSH tree score described in the class header.
+     * @return the MeSH tree relevance score.
      */
     public int getMeshTreeScore() {
         return meshTreeScore;
     }
 
     /**
-     * Returns the heading list score described in the class header.
+     * Returns the heading list relevance score.
      *
-     * @return the heading list score described in the class header.
+     * @return the heading list relevance score.
      */
     public int getHeadingListScore() {
         return headingListScore;
     }
 
     /**
-     * Returns the keyword list score described in the class header.
+     * Returns the keyword list relevance score.
      *
-     * @return the keyword list score described in the class header.
+     * @return the keyword list relevance score.
      */
     public int getKeywordListScore() {
         return keywordListScore;
     }
 
     /**
-     * Returns the chemical list score described in the class header.
+     * Returns the chemical list relevance score.
      *
-     * @return the chemical list score described in the class header.
+     * @return the chemical list relevance score.
      */
     public int getChemicalListScore() {
         return chemicalListScore;
     }
 
-    @Override public boolean equalsData(Object record) {
-        RelevanceSummaryRecord that = (RelevanceSummaryRecord) record;
+    /**
+     * Denotes whether this record is likely to contain a relevant
+     * article for its subject.
+     *
+     * @return {@code true} iff the record has been deemed likely to
+     * contain a relevant article for its subject.
+     */
+    public boolean isLikelyMatch() {
+        //
+        // The MeSH taxonomy and keywords are targeted and specific,
+        // so any positive match should identify a relevant article...
+        //
+        if (meshTreeScore > 0)
+            return true;
 
-        return this.titleScore == that.titleScore
-            && this.abstractScore == that.abstractScore
-            && this.meshTreeScore == that.meshTreeScore
-            && this.headingListScore == that.headingListScore
-            && this.keywordListScore == that.keywordListScore
-            && this.chemicalListScore == that.chemicalListScore;
-    }
+        if (headingListScore > 0)
+            return true;
 
-    @Override public List<String> formatFields() {
-        return List.of(format(pmid),
-                       format(getSubjectKey()),
-                       format(titleScore),
-                       format(abstractScore),
-                       format(meshTreeScore),
-                       format(headingListScore),
-                       format(keywordListScore),
-                       format(chemicalListScore));
+        if (chemicalListScore > 0)
+            return true;
+
+        if (keywordListScore > 0)
+            return true;
+
+        // The MeSH taxonomy is very precise, so the absence of a
+        // positive match likely indicates that the article is not
+        // relevant. We exclude the keyword list from the rejection
+        // criteria because many keyword lists are incomplete or use
+        // non-standard abbreviations....
+        if (meshTreeScore < 0)
+            return false;
+
+        if (headingListScore < 0)
+            return false;
+
+        if (chemicalListScore < 0)
+            return false;
+
+        // Okay, the MeSH taxonomy and keyword list could not decide
+        // the relevance.  Require at least one keyword in the title
+        // or three or more keyword occurrences in the abstract...
+        return titleScore > 0 || abstractScore >= ABSTRACT_KEYWORD_THRESHOLD;
     }
 }
