@@ -108,6 +108,8 @@ public final class RelevanceSummaryFile {
      * @throws RuntimeException if any errors occur.
      */
     public static synchronized void process(BulkFile bulkFile, Collection<Subject> subjects) {
+        JamLogger.info("Updating relevance summary files with [%s]....", bulkFile.getBaseName());
+
         FileUtil.ensureDir(resolveRelevanceDir());
         bulkFile.getRelevanceScoreFile().process(subjects);
 
@@ -201,8 +203,6 @@ public final class RelevanceSummaryFile {
                          RelevanceScoreTable relevanceScoreTable) {
         if (isContributor(bulkFile))
             return;
-
-        JamLogger.info("Generating relevance summary: [%s, %s].", bulkFile.getBaseName(), subject.getKey());
 
         LocalDate reportDate = LocalDate.now();
 

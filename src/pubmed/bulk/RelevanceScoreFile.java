@@ -179,6 +179,9 @@ public final class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRecor
     }
 
     private List<RelevanceScoreRecord> process(Subject subject) {
+        JamLogger.info("Computing relevance scores for [%s, %s]...",
+                       bulkFile.getBaseName(), subject.getPrimaryName());
+
         List<RelevanceScoreRecord> subjectRecords;
 
         subjectRecords = StreamUtil.applyParallel(pmidSet, pmid -> process(pmid, subject));
