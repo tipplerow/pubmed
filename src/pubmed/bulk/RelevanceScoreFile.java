@@ -136,8 +136,6 @@ public final class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRecor
         List<RelevanceScoreRecord> fileRecords =
             new ArrayList<RelevanceScoreRecord>();
 
-        JamLogger.info("Computing relevance scores for [%s] subjects...", unprocessed.size());
-
         for (Subject subject : unprocessed)
             fileRecords.addAll(process(subject));
 
