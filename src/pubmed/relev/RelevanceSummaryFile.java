@@ -202,6 +202,8 @@ public final class RelevanceSummaryFile {
         if (isContributor(bulkFile))
             return;
 
+        JamLogger.info("Generating relevance summary: [%s, %s].", bulkFile.getBaseName(), subject.getKey());
+
         LocalDate reportDate = LocalDate.now();
 
         List<RelevanceScoreRecord> scoreRecords =
