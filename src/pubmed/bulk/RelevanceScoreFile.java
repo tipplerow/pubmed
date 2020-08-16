@@ -141,9 +141,7 @@ public final class RelevanceScoreFile extends PubmedFlatFile<RelevanceScoreRecor
         for (Subject subject : unprocessed)
             fileRecords.addAll(process(subject));
 
-        if (!fileRecords.isEmpty())
-            writeRecords(fileRecords, true);
-
+        writeRecords(fileRecords, true);
         updateTOC(unprocessed);
     }
 
