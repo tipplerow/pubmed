@@ -3,17 +3,19 @@ package pubmed.bulk;
 
 import java.util.Collection;
 
+import pubmed.relev.RelevanceSummaryFile;
 import pubmed.subject.Subject;
 
 /**
- * Provides a base class to generate the relevance score files for all
- * {@code PubMed} bulk XML files in a given directory.
+ * Provides a base class to generate relevance score files and update
+ * relevance summary files for all {@code PubMed} bulk XML files in a
+ * given directory.
  */
-public abstract class BulkFileRelevanceScoreProcessor extends BulkFileProcessor {
+public abstract class BulkFileRelevanceProcessor extends BulkFileProcessor {
     /**
      * Creates a new bulk file relevance score processor.
      */
-    protected BulkFileRelevanceScoreProcessor() {
+    protected BulkFileRelevanceProcessor() {
         super();
     }
 
@@ -28,9 +30,12 @@ public abstract class BulkFileRelevanceScoreProcessor extends BulkFileProcessor 
 
     @Override public void processFile(BulkFile bulkFile) {
         //
-        // The relevance score files must be processed even if it
+        // The relevance score file must be processed even if it
         // already exists, because new subjects might be present...
         //
-        bulkFile.getRelevanceScoreFile().process(getSubjects());
+        Collection<Subject> subjects = getSubjects();
+
+        bulkFile.getRelevanceScoreFile().process(subjects);
+        RelevanceSummaryFile.process(bulkFile, subjects);
     }
 }
