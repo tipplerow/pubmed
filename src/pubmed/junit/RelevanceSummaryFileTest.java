@@ -43,24 +43,23 @@ public class RelevanceSummaryFileTest {
 
         assertFalse(cancerFile.loadContrib().isEmpty());
         assertTrue(cancerFile.isContributor(bulkFile));
-        /*
+
         RelevanceSummaryTable cancerTable = cancerFile.load();
         RelevanceSummaryTable atorvastatinTable = atorvastatinFile.load();
         RelevanceSummaryTable osteoarthritisTable = osteoarthritisFile.load();
 
-        assertEquals(2, cancerTable.count());
-        assertEquals(1, atorvastatinTable.count());
-        assertEquals(1, osteoarthritisTable.count());
+        assertEquals(2, cancerTable.size());
+        assertEquals(1, atorvastatinTable.size());
+        assertEquals(1, osteoarthritisTable.size());
 
-        assertRecord(cancerTable.select(PMID.instance(24451147), "CANCER"), 1, 6, 1, 0, 0, 0);
-        assertRecord(cancerTable.select(PMID.instance(31383287), "CANCER"), 2, 4, 0, 0, 1, 0);
-        assertRecord(atorvastatinTable.select(PMID.instance(24451147), "D000069059"), 1, 3, 1, 1, 0, 1);
-        assertRecord(osteoarthritisTable.select(PMID.instance(31383387), "D010003"), 1, 5, 0, 0, 0, 0);
+        assertRecord(cancerTable.get(PMID.instance(24451147), CancerSubject.INSTANCE), 1, 6, 1, 0, 0, 0);
+        assertRecord(cancerTable.get(PMID.instance(31383287), CancerSubject.INSTANCE), 2, 4, 0, 0, 1, 0);
+        assertRecord(atorvastatinTable.get(PMID.instance(24451147), "D000069059"), 1, 3, 1, 1, 0, 1);
+        assertRecord(osteoarthritisTable.get(PMID.instance(31383387), "D010003"), 1, 5, 0, 0, 0, 0);
 
         assertTrue(cancerFile.delete());
         assertTrue(atorvastatinFile.delete());
         assertTrue(osteoarthritisFile.delete());
-        */
     }
 
     private void assertRecord(RelevanceSummaryRecord record,

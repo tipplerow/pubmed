@@ -177,9 +177,9 @@ public final class RelevanceSummaryFile {
      *
      * @return the records in this as an indexed table.
      */
-    //public RelevanceSummaryTable load() {
-    //return RelevanceSummaryTable.load(summaryFile);
-    //}
+    public RelevanceSummaryTable load() {
+        return RelevanceSummaryTable.load(summaryFile);
+    }
 
     /**
      * Loads the names of the bulk files that have contributed to
