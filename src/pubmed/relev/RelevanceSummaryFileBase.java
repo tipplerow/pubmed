@@ -31,7 +31,10 @@ public abstract class RelevanceSummaryFileBase {
      */
     protected RelevanceSummaryFileBase(File summaryFile) {
         this.summaryFile = summaryFile;
-        FileUtil.ensureParentDirs(summaryFile);
+
+        synchronized (RelevanceSummaryFileBase.class) {
+            FileUtil.ensureParentDirs(summaryFile);
+        }
     }
 
     /**
