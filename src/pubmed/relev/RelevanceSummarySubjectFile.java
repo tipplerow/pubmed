@@ -2,7 +2,6 @@
 package pubmed.relev;
 
 import java.io.File;
-import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,10 +9,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import jam.app.JamEnv;
 import jam.app.JamLogger;
-import jam.app.JamProperties;
-import jam.io.FileUtil;
 import jam.io.IOUtil;
 
 import pubmed.article.DOI;
@@ -34,54 +30,38 @@ import pubmed.flat.RelevanceScoreTable;
 import pubmed.subject.Subject;
 
 /**
- * Provides a base class for flat files that contain relevance score
- * records.
+ * Generates and stores article-subject relevance summary records.
  */
-public final class RelevanceSummaryFile {
+public final class RelevanceSummarySubjectFile extends RelevanceSummaryFileBase {
     // The subject of this file...
     private final Subject subject;
 
-    // The file containing the summary records...
-    private final File summaryFile;
-
     // A file containing the full path names of the bulk files that
-    // have contributed to the contents of the summary file.
+    // have contributed to the contents of the summary file...
     private final File contribFile;
 
-    private RelevanceSummaryFile(Subject subject) {
+    private RelevanceSummarySubjectFile(Subject subject) {
+        super(resolveSummaryFile(subject));
+
         this.subject = subject;
-        this.summaryFile = resolveSummaryFile();
-        this.contribFile = resolveContribFile();
+        this.contribFile = resolveContribFile(subject);
     }
 
-    private File resolveSummaryFile() {
-        return new File(resolveRelevanceDir(), summaryBaseName());
+    private static File resolveSummaryFile(Subject subject) {
+        return new File(resolveRelevanceDir(), summaryBaseName(subject));
     }
 
-    private File resolveContribFile() {
-        return new File(resolveRelevanceDir(), contribBaseName());
+    private static File resolveContribFile(Subject subject) {
+        return new File(resolveRelevanceDir(), contribBaseName(subject));
     }
 
-    private String summaryBaseName() {
+    private static String summaryBaseName(Subject subject) {
         return subject.getKey() + "_relevance_summary.txt";
     }
 
-    private String contribBaseName() {
+    private static String contribBaseName(Subject subject) {
         return subject.getKey() + "_relevance_contrib.txt";
     }
-
-    /**
-     * Name of the subdirectory (under the PubMed parent) that
-     * contains the relevance summary files.
-     */
-    public static final String RELEV_DIR_NAME = "relev";
-
-    /**
-     * Name of the system property that specifies the full path to
-     * the relevance file directory.  If this property is not set,
-     * the directory will resolve to $PUBMED_LOCAL_DIR/relev.
-     */
-    public static final String RELEV_DIR_PROPERTY = "pubmed.relev.dirName";
 
     /**
      * Returns the relevance summary file for a subject.
@@ -90,8 +70,34 @@ public final class RelevanceSummaryFile {
      *
      * @return the relevance summary file for the specified subject.
      */
-    public static RelevanceSummaryFile instance(Subject subject) {
-        return new RelevanceSummaryFile(subject);
+    public static RelevanceSummarySubjectFile instance(Subject subject) {
+        return new RelevanceSummarySubjectFile(subject);
+    }
+
+    /**
+     * Loads the relevance summary records from the file for a given
+     * subject.
+     *
+     * @param subject the subject of interest.
+     *
+     * @return the relevance summary records from the file for the
+     * specified subject.
+     */
+    public static RelevanceSummaryTable load(Subject subject) {
+        return instance(subject).load();
+    }
+
+    /**
+     * Loads the identifiers for articles that are deemed likely to be
+     * relevant to a given subject.
+     *
+     * @param subject the subject of interest.
+     *
+     * @return a set containing the identifiers for articles that are
+     * deemed likely to be relevant to the specified subject.
+     */
+    public static Set<PMID> loadRelevantPMID(Subject subject) {
+        return load(subject).getRelevantPMID();
     }
 
     /**
@@ -110,7 +116,6 @@ public final class RelevanceSummaryFile {
     public static synchronized void process(BulkFile bulkFile, Collection<Subject> subjects) {
         JamLogger.info("Updating relevance summary files with [%s]....", bulkFile.getBaseName());
 
-        FileUtil.ensureDir(resolveRelevanceDir());
         bulkFile.getRelevanceScoreFile().process(subjects);
 
         JournalTable journalTable = bulkFile.getJournalFile().load();
@@ -126,73 +131,6 @@ public final class RelevanceSummaryFile {
                                                                     articleDOITable,
                                                                     articleTitleTable,
                                                                     relevanceScoreTable));
-    }
-
-    /**
-     * Resolves the location of the relevance summary file set.
-     *
-     * @return the directory containing the relevance summary files.
-     */
-    public static File resolveRelevanceDir() {
-        if (JamProperties.isSet(RELEV_DIR_PROPERTY))
-            return new File(JamProperties.getRequired(RELEV_DIR_PROPERTY));
-        else
-            return new File(JamEnv.getRequired(BulkFile.LOCAL_DIRNAME_ENV), RELEV_DIR_NAME);
-    }
-
-    /**
-     * Deletes this relevance summary file and its corresponding
-     * contributor file.
-     *
-     * @return {@code true} iff both the summary and contributor
-     * files were successfully deleted.
-     */
-    public boolean delete() {
-        boolean status1 = summaryFile.delete();
-        boolean status2 = contribFile.delete();
-
-        return status1 && status2;
-    }
-
-    /**
-     * Determines whether a bulk file has already contributed to this
-     * summary file.
-     *
-     * @param bulkFile the bulk file in question.
-     *
-     * @return {@code true} iff the specified bulk file has already
-     * contributed to this summary file.
-     */
-    public boolean isContributor(BulkFile bulkFile) {
-        return loadContrib().contains(contributorName(bulkFile));
-    }
-
-    private static String contributorName(BulkFile bulkFile) {
-        // Always use the canonical path name of the contributors...
-        return bulkFile.getCanonicalPath();
-    }
-
-    /**
-     * Loads the records in this file into an indexed table.
-     *
-     * @return the records in this as an indexed table.
-     */
-    public RelevanceSummaryTable load() {
-        return RelevanceSummaryTable.load(summaryFile);
-    }
-
-    /**
-     * Loads the names of the bulk files that have contributed to
-     * the contents of this summary file.
-     *
-     * @return a set containing the names of the contributing bulk
-     * files.
-     */
-    public Set<String> loadContrib() {
-        if (contribFile.exists())
-            return new LinkedHashSet<String>(IOUtil.readLines(contribFile));
-        else
-            return Set.of();
     }
 
     private void process(BulkFile bulkFile,
@@ -241,23 +179,57 @@ public final class RelevanceSummaryFile {
                                                              doi.asURL()));
         }
 
-        addSummaryRecords(summaryRecords);
+        appendSummaryRecords(summaryRecords);
         addContributor(bulkFile);
-    }
-
-    private void addSummaryRecords(List<RelevanceSummaryRecord> summaryRecords) {
-        long fileLen = summaryFile.length();
-
-        try (PrintWriter writer = IOUtil.openWriter(summaryFile, true)) {
-            if (fileLen < 1)
-                writer.println(RelevanceSummaryRecord.header());
-
-            for (RelevanceSummaryRecord summaryRecord : summaryRecords)
-                writer.println(summaryRecord.format());
-        }
     }
 
     private void addContributor(BulkFile bulkFile) {
         IOUtil.writeLines(contribFile, true, contributorName(bulkFile));
+    }
+
+    /**
+     * Deletes this relevance summary file and its corresponding
+     * contributor file.
+     *
+     * @return {@code true} iff both the summary and contributor
+     * files were successfully deleted.
+     */
+    @Override public boolean delete() {
+        boolean status1 = summaryFile.delete();
+        boolean status2 = contribFile.delete();
+
+        return status1 && status2;
+    }
+
+    /**
+     * Determines whether a bulk file has already contributed to this
+     * summary file.
+     *
+     * @param bulkFile the bulk file in question.
+     *
+     * @return {@code true} iff the specified bulk file has already
+     * contributed to this summary file.
+     */
+    public boolean isContributor(BulkFile bulkFile) {
+        return loadContrib().contains(contributorName(bulkFile));
+    }
+
+    private static String contributorName(BulkFile bulkFile) {
+        // Always use the canonical path name of the contributors...
+        return bulkFile.getCanonicalPath();
+    }
+
+    /**
+     * Loads the names of the bulk files that have contributed to
+     * the contents of this summary file.
+     *
+     * @return a set containing the names of the contributing bulk
+     * files.
+     */
+    public Set<String> loadContrib() {
+        if (contribFile.exists())
+            return new LinkedHashSet<String>(IOUtil.readLines(contribFile));
+        else
+            return Set.of();
     }
 }

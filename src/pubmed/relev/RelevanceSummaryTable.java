@@ -2,6 +2,8 @@
 package pubmed.relev;
 
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 import jam.io.LineReader;
 import jam.util.PairKeyTreeTable;
@@ -70,5 +72,22 @@ public final class RelevanceSummaryTable extends PairKeyTreeTable<PMID, String, 
      */
     public RelevanceSummaryRecord get(PMID pmid, Subject subject) {
         return get(pmid, subject.getKey());
+    }
+
+    /**
+     * Extracts the identifiers for the relevant articles in this
+     * table.
+     *
+     * @return a new set containing the identifiers for all records
+     * marked as <em>likely relevant</em>.
+     */
+    public Set<PMID> getRelevantPMID() {
+        Set<PMID> pmids = new HashSet<PMID>();
+
+        for (RelevanceSummaryRecord record : values())
+            if (record.isLikelyMatch())
+                pmids.add(record.getPMID());
+
+        return pmids;
     }
 }

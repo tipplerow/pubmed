@@ -3,7 +3,7 @@ package pubmed.bulk;
 
 import java.util.Collection;
 
-import pubmed.relev.RelevanceSummaryFile;
+import pubmed.relev.RelevanceSummarySubjectFile;
 import pubmed.subject.Subject;
 
 /**
@@ -36,6 +36,6 @@ public abstract class BulkFileRelevanceProcessor extends BulkFileProcessor {
         Collection<Subject> subjects = getSubjects();
 
         bulkFile.getRelevanceScoreFile().process(subjects);
-        RelevanceSummaryFile.process(bulkFile, subjects);
+        RelevanceSummarySubjectFile.process(bulkFile, subjects);
     }
 }

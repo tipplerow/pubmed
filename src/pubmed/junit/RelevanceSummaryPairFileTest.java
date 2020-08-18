@@ -6,8 +6,9 @@ import java.util.Set;
 
 import pubmed.article.PMID;
 import pubmed.bulk.BulkFile;
-import pubmed.relev.RelevanceSummaryFile;
+import pubmed.relev.RelevanceSummaryPairFile;
 import pubmed.relev.RelevanceSummaryRecord;
+import pubmed.relev.RelevanceSummarySubjectFile;
 import pubmed.relev.RelevanceSummaryTable;
 import pubmed.subject.CancerSubject;
 import pubmed.subject.MeshSubject;
@@ -16,9 +17,9 @@ import pubmed.subject.Subject;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class RelevanceSummaryFileTest {
+public class RelevanceSummaryPairFileTest {
     static {
-        System.setProperty(RelevanceSummaryFile.RELEV_DIR_PROPERTY, "data/test");
+        System.setProperty(RelevanceSummarySubjectFile.RELEV_DIR_PROPERTY, "data/test/relevance_pair");
     }
 
     private static final BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
@@ -27,9 +28,15 @@ public class RelevanceSummaryFileTest {
     private static final Subject atorvastatin = MeshSubject.create("D000069059");
     private static final Subject osteoarthritis = MeshSubject.create("D010003");
 
-    private static final RelevanceSummaryFile cancerFile = RelevanceSummaryFile.instance(cancer);
-    private static final RelevanceSummaryFile atorvastatinFile = RelevanceSummaryFile.instance(atorvastatin);
-    private static final RelevanceSummaryFile osteoarthritisFile = RelevanceSummaryFile.instance(osteoarthritis);
+    private static final RelevanceSummarySubjectFile cancerFile = RelevanceSummarySubjectFile.instance(cancer);
+    private static final RelevanceSummarySubjectFile atorvastatinFile = RelevanceSummarySubjectFile.instance(atorvastatin);
+    private static final RelevanceSummarySubjectFile osteoarthritisFile = RelevanceSummarySubjectFile.instance(osteoarthritis);
+
+    private static final RelevanceSummaryPairFile cancerAtorvastatinFile =
+        RelevanceSummaryPairFile.instance(cancer, atorvastatin);
+
+    private static final RelevanceSummaryPairFile cancerOsteoarthritisFile =
+        RelevanceSummaryPairFile.instance(cancer, osteoarthritis);
 
     @Test public void testCancerFile() {
         cancerFile.delete();
@@ -39,27 +46,23 @@ public class RelevanceSummaryFileTest {
         assertTrue(cancerFile.loadContrib().isEmpty());
         assertFalse(cancerFile.isContributor(bulkFile));
 
-        RelevanceSummaryFile.process(bulkFile, List.of(cancer, atorvastatin, osteoarthritis));
+        RelevanceSummarySubjectFile.process(bulkFile, List.of(cancer, atorvastatin, osteoarthritis));
+        RelevanceSummaryPairFile.process(cancer, List.of(atorvastatin, osteoarthritis));
 
-        assertFalse(cancerFile.loadContrib().isEmpty());
-        assertTrue(cancerFile.isContributor(bulkFile));
+        RelevanceSummaryTable atorvastatinTable = cancerAtorvastatinFile.load();
+        RelevanceSummaryTable osteoarthritisTable = cancerOsteoarthritisFile.load();
 
-        RelevanceSummaryTable cancerTable = cancerFile.load();
-        RelevanceSummaryTable atorvastatinTable = atorvastatinFile.load();
-        RelevanceSummaryTable osteoarthritisTable = osteoarthritisFile.load();
-
-        assertEquals(2, cancerTable.size());
         assertEquals(1, atorvastatinTable.size());
-        assertEquals(1, osteoarthritisTable.size());
+        assertEquals(0, osteoarthritisTable.size());
 
-        assertRecord(cancerTable.get(PMID.instance(24451147), CancerSubject.INSTANCE), 1, 6, 1, 0, 0, 0);
-        assertRecord(cancerTable.get(PMID.instance(31383287), CancerSubject.INSTANCE), 2, 4, 0, 0, 1, 0);
         assertRecord(atorvastatinTable.get(PMID.instance(24451147), "D000069059"), 1, 3, 1, 1, 0, 1);
-        assertRecord(osteoarthritisTable.get(PMID.instance(31383387), "D010003"), 1, 5, 0, 0, 0, 0);
 
         assertTrue(cancerFile.delete());
         assertTrue(atorvastatinFile.delete());
         assertTrue(osteoarthritisFile.delete());
+
+        assertTrue(cancerAtorvastatinFile.delete());
+        assertTrue(cancerOsteoarthritisFile.delete());
     }
 
     private void assertRecord(RelevanceSummaryRecord record,
@@ -78,6 +81,6 @@ public class RelevanceSummaryFileTest {
     }
 
     public static void main(String[] args) {
-        org.junit.runner.JUnitCore.main("pubmed.junit.RelevanceSummaryFileTest");
+        org.junit.runner.JUnitCore.main("pubmed.junit.RelevanceSummaryPairFileTest");
     }
 }
