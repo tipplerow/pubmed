@@ -64,7 +64,7 @@ public final class RelevanceSummaryPairFile extends RelevanceSummaryFileBase {
      * @throws RuntimeException unless all single-subject summary
      * files exist.
      */
-    public static synchronized void process(Subject subject1, Collection<Subject> subjects2) {
+    public static synchronized void process(Subject subject1, Collection<? extends Subject> subjects2) {
         Set<PMID> subject1PMID =
             RelevanceSummarySubjectFile.loadRelevantPMID(subject1);
 
