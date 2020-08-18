@@ -187,6 +187,15 @@ public final class RelevanceSummarySubjectFile extends RelevanceSummaryFileBase 
         IOUtil.writeLines(contribFile, true, contributorName(bulkFile));
     }
 
+    private static String contributorName(BulkFile bulkFile) {
+        //
+        // In the standard daily update, the bulk files move from the
+        // "process" directory to the "updatefiles" directory, so only
+        // the basename is relevant...
+        //
+        return bulkFile.getBaseName();
+    }
+
     /**
      * Deletes this relevance summary file and its corresponding
      * contributor file.
@@ -212,11 +221,6 @@ public final class RelevanceSummarySubjectFile extends RelevanceSummaryFileBase 
      */
     public boolean isContributor(BulkFile bulkFile) {
         return loadContrib().contains(contributorName(bulkFile));
-    }
-
-    private static String contributorName(BulkFile bulkFile) {
-        // Always use the canonical path name of the contributors...
-        return bulkFile.getCanonicalPath();
     }
 
     /**
