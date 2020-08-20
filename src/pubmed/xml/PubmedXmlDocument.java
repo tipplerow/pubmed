@@ -61,7 +61,13 @@ public final class PubmedXmlDocument {
      * @return the deleted citations encoded in the document.
      */
     public List<PMID> getDeletedCitations() {
-        return pubmedArticleSetElement.getDeleteCitationElement().getDeleted();
+        DeleteCitationElement deleteCitationElement =
+            pubmedArticleSetElement.getDeleteCitationElement();
+
+        if (deleteCitationElement != null)
+            return deleteCitationElement.getDeleted();
+        else
+            return List.of();
     }
 
     /**
