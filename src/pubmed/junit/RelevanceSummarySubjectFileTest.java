@@ -45,7 +45,7 @@ public class RelevanceSummarySubjectFileTest {
         assertTrue(cancerFile.isContributor(bulkFile));
         assertFalse(atorvastatinFile.isContributor(bulkFile));
         assertFalse(osteoarthritisFile.isContributor(bulkFile));
-        
+
         RelevanceSummarySubjectFile.process(bulkFile, List.of(cancer, atorvastatin, osteoarthritis));
 
         assertTrue(cancerFile.isContributor(bulkFile));

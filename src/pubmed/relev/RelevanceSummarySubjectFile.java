@@ -16,17 +16,13 @@ import jam.io.IOUtil;
 import pubmed.article.DOI;
 import pubmed.article.PMID;
 import pubmed.article.PubmedJournal;
-import pubmed.bulk.ArticleDOIFile;
-import pubmed.bulk.ArticleTitleFile;
 import pubmed.bulk.BulkContributorFile;
 import pubmed.bulk.BulkFile;
-import pubmed.bulk.JournalFile;
-import pubmed.bulk.PubDateFile;
-import pubmed.bulk.RelevanceScoreFile;
 import pubmed.flat.ArticleDOITable;
 import pubmed.flat.ArticleTitleTable;
 import pubmed.flat.JournalTable;
 import pubmed.flat.PubDateTable;
+import pubmed.flat.PMIDTable;
 import pubmed.flat.RelevanceScoreRecord;
 import pubmed.flat.RelevanceScoreTable;
 import pubmed.subject.Subject;
@@ -133,6 +129,7 @@ public final class RelevanceSummarySubjectFile extends RelevanceSummaryFileBase 
 
         bulkFile.getRelevanceScoreFile().process(subjects);
 
+        PMIDTable deletedTable = bulkFile.getDeleteCitationFile().load();
         JournalTable journalTable = bulkFile.getJournalFile().load();
         PubDateTable pubDateTable = bulkFile.getPubDateFile().load();
         ArticleDOITable articleDOITable = bulkFile.getArticleDOIFile().load();
@@ -141,6 +138,7 @@ public final class RelevanceSummarySubjectFile extends RelevanceSummaryFileBase 
 
         subjects.parallelStream().forEach(subject ->
                                           instance(subject).process(bulkFile,
+                                                                    deletedTable,
                                                                     journalTable,
                                                                     pubDateTable,
                                                                     articleDOITable,
@@ -149,6 +147,7 @@ public final class RelevanceSummarySubjectFile extends RelevanceSummaryFileBase 
     }
 
     private void process(BulkFile bulkFile,
+                         PMIDTable deletedTable,
                          JournalTable journalTable,
                          PubDateTable pubDateTable,
                          ArticleDOITable articleDOITable,
@@ -158,6 +157,9 @@ public final class RelevanceSummarySubjectFile extends RelevanceSummaryFileBase 
             return;
 
         JamLogger.info("Processing relevance summary file: [%s]...", subject);
+
+        if (deletedTable.count() > 0)
+            deleteSummaryRecords(deletedTable.viewKeys());
 
         LocalDate reportDate = LocalDate.now();
 
