@@ -13,30 +13,47 @@ public class BulkContributorFileTest {
     private static final BulkFile bulk1203 = BulkFile.create("data/test/pubmed20n1203.xml.gz");
 
     @Test public void testBasic() {
-        BulkContributorFile contribFile =
+        BulkContributorFile contribFile1 =
             BulkContributorFile.instance("data/test/bulk_contrib.txt");
 
-        contribFile.delete();
-        assertFalse(contribFile.exists());
+        BulkContributorFile contribFile2 =
+            BulkContributorFile.instance("data/test/bulk_contrib.txt");
 
-        assertFalse(contribFile.isContributor(bulk0001));
-        assertFalse(contribFile.isContributor(bulk0002));
-        assertFalse(contribFile.isContributor(bulk1203));
+        contribFile1.delete();
+        assertFalse(contribFile1.exists());
+        assertFalse(contribFile2.exists());
 
-        contribFile.addContributor(bulk0001);
+        assertFalse(contribFile1.isContributor(bulk0001));
+        assertFalse(contribFile1.isContributor(bulk0002));
+        assertFalse(contribFile1.isContributor(bulk1203));
 
-        assertTrue(contribFile.isContributor(bulk0001));
-        assertFalse(contribFile.isContributor(bulk0002));
-        assertFalse(contribFile.isContributor(bulk1203));
+        assertFalse(contribFile2.isContributor(bulk0001));
+        assertFalse(contribFile2.isContributor(bulk0002));
+        assertFalse(contribFile2.isContributor(bulk1203));
 
-        contribFile.addContributor(bulk0002);
-        contribFile.addContributor(bulk1203);
+        contribFile1.addContributor(bulk0001);
 
-        assertTrue(contribFile.isContributor(bulk0001));
-        assertTrue(contribFile.isContributor(bulk0002));
-        assertTrue(contribFile.isContributor(bulk1203));
+        assertTrue(contribFile1.isContributor(bulk0001));
+        assertFalse(contribFile1.isContributor(bulk0002));
+        assertFalse(contribFile1.isContributor(bulk1203));
 
-        assertTrue(contribFile.delete());
+        assertTrue(contribFile2.isContributor(bulk0001));
+        assertFalse(contribFile2.isContributor(bulk0002));
+        assertFalse(contribFile2.isContributor(bulk1203));
+
+        contribFile2.addContributor(bulk0002);
+        contribFile2.addContributor(bulk1203);
+
+        assertTrue(contribFile1.isContributor(bulk0001));
+        assertTrue(contribFile1.isContributor(bulk0002));
+        assertTrue(contribFile1.isContributor(bulk1203));
+
+        assertTrue(contribFile2.isContributor(bulk0001));
+        assertTrue(contribFile2.isContributor(bulk0002));
+        assertTrue(contribFile2.isContributor(bulk1203));
+
+        assertTrue(contribFile1.delete());
+        assertFalse(contribFile2.delete());
     }
 
     public static void main(String[] args) {

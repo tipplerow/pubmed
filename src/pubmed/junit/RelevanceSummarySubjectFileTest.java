@@ -36,13 +36,21 @@ public class RelevanceSummarySubjectFileTest {
         atorvastatinFile.delete();
         osteoarthritisFile.delete();
 
-        assertTrue(cancerFile.loadContrib().isEmpty());
         assertFalse(cancerFile.isContributor(bulkFile));
+        assertFalse(atorvastatinFile.isContributor(bulkFile));
+        assertFalse(osteoarthritisFile.isContributor(bulkFile));
 
+        RelevanceSummarySubjectFile.process(bulkFile, List.of(cancer));
+
+        assertTrue(cancerFile.isContributor(bulkFile));
+        assertFalse(atorvastatinFile.isContributor(bulkFile));
+        assertFalse(osteoarthritisFile.isContributor(bulkFile));
+        
         RelevanceSummarySubjectFile.process(bulkFile, List.of(cancer, atorvastatin, osteoarthritis));
 
-        assertFalse(cancerFile.loadContrib().isEmpty());
         assertTrue(cancerFile.isContributor(bulkFile));
+        assertTrue(atorvastatinFile.isContributor(bulkFile));
+        assertTrue(osteoarthritisFile.isContributor(bulkFile));
 
         RelevanceSummaryTable cancerTable = cancerFile.load();
         RelevanceSummaryTable atorvastatinTable = atorvastatinFile.load();

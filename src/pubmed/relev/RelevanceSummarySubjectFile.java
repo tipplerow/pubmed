@@ -5,8 +5,9 @@ import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedHashSet;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import jam.app.JamLogger;
@@ -17,6 +18,7 @@ import pubmed.article.PMID;
 import pubmed.article.PubmedJournal;
 import pubmed.bulk.ArticleDOIFile;
 import pubmed.bulk.ArticleTitleFile;
+import pubmed.bulk.BulkContributorFile;
 import pubmed.bulk.BulkFile;
 import pubmed.bulk.JournalFile;
 import pubmed.bulk.PubDateFile;
@@ -36,15 +38,19 @@ public final class RelevanceSummarySubjectFile extends RelevanceSummaryFileBase 
     // The subject of this file...
     private final Subject subject;
 
-    // A file containing the full path names of the bulk files that
-    // have contributed to the contents of the summary file...
-    private final File contribFile;
+    // A file containing the names of the bulk files that have
+    // contributed to the contents of the summary file...
+    private final BulkContributorFile contribFile;
+
+    // One file per subject...
+    private static final Map<Subject, RelevanceSummarySubjectFile> instances =
+        new HashMap<Subject, RelevanceSummarySubjectFile>();
 
     private RelevanceSummarySubjectFile(Subject subject) {
         super(resolveSummaryFile(subject));
 
         this.subject = subject;
-        this.contribFile = resolveContribFile(subject);
+        this.contribFile = BulkContributorFile.instance(resolveContribFile(subject));
     }
 
     private static File resolveSummaryFile(Subject subject) {
@@ -71,7 +77,16 @@ public final class RelevanceSummarySubjectFile extends RelevanceSummaryFileBase 
      * @return the relevance summary file for the specified subject.
      */
     public static RelevanceSummarySubjectFile instance(Subject subject) {
-        return new RelevanceSummarySubjectFile(subject);
+        synchronized (subject) {
+            RelevanceSummarySubjectFile instance = instances.get(subject);
+
+            if (instance == null) {
+                instance = new RelevanceSummarySubjectFile(subject);
+                instances.put(subject, instance);
+            }
+
+            return instance;
+        }
     }
 
     /**
@@ -142,6 +157,8 @@ public final class RelevanceSummarySubjectFile extends RelevanceSummaryFileBase 
         if (isContributor(bulkFile))
             return;
 
+        JamLogger.info("Processing relevance summary file: [%s]...", subject);
+
         LocalDate reportDate = LocalDate.now();
 
         List<RelevanceScoreRecord> scoreRecords =
@@ -180,20 +197,7 @@ public final class RelevanceSummarySubjectFile extends RelevanceSummaryFileBase 
         }
 
         appendSummaryRecords(summaryRecords);
-        addContributor(bulkFile);
-    }
-
-    private void addContributor(BulkFile bulkFile) {
-        IOUtil.writeLines(contribFile, true, contributorName(bulkFile));
-    }
-
-    private static String contributorName(BulkFile bulkFile) {
-        //
-        // In the standard daily update, the bulk files move from the
-        // "process" directory to the "updatefiles" directory, so only
-        // the basename is relevant...
-        //
-        return bulkFile.getBaseName();
+        contribFile.addContributor(bulkFile);
     }
 
     /**
@@ -204,7 +208,7 @@ public final class RelevanceSummarySubjectFile extends RelevanceSummaryFileBase 
      * files were successfully deleted.
      */
     @Override public boolean delete() {
-        boolean status1 = summaryFile.delete();
+        boolean status1 = super.delete();
         boolean status2 = contribFile.delete();
 
         return status1 && status2;
@@ -220,20 +224,6 @@ public final class RelevanceSummarySubjectFile extends RelevanceSummaryFileBase 
      * contributed to this summary file.
      */
     public boolean isContributor(BulkFile bulkFile) {
-        return loadContrib().contains(contributorName(bulkFile));
-    }
-
-    /**
-     * Loads the names of the bulk files that have contributed to
-     * the contents of this summary file.
-     *
-     * @return a set containing the names of the contributing bulk
-     * files.
-     */
-    public Set<String> loadContrib() {
-        if (contribFile.exists())
-            return new LinkedHashSet<String>(IOUtil.readLines(contribFile));
-        else
-            return Set.of();
+        return contribFile.isContributor(bulkFile);
     }
 }

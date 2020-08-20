@@ -10,9 +10,11 @@ import jam.io.TOCFile;
  * have contributed to a monitored production process (the contents of
  * a content or analysis file).
  */
-public final class BulkContributorFile extends TOCFile {
+public final class BulkContributorFile {
+    private final TOCFile tocFile;
+
     private BulkContributorFile(File file) {
-        super(file);
+        this.tocFile = TOCFile.instance(file);
     }
 
     private static String contributorName(BulkFile bulkFile) {
@@ -53,7 +55,26 @@ public final class BulkContributorFile extends TOCFile {
      * @param bulkFile the contributing bulk file.
      */
     public synchronized void addContributor(BulkFile bulkFile) {
-        add(contributorName(bulkFile));
+        tocFile.add(contributorName(bulkFile));
+    }
+
+    /**
+     * Deletes the underlying physical file.
+     *
+     * @return {@code true} iff the underlying file was successfully
+     * deleted.
+     */
+    public boolean delete() {
+        return tocFile.delete();
+    }
+
+    /**
+     * Identifies existing contributor files.
+     *
+     * @return {@code true} iff the underlying file exists.
+     */
+    public boolean exists() {
+        return tocFile.exists();
     }
 
     /**
@@ -66,6 +87,6 @@ public final class BulkContributorFile extends TOCFile {
      * contributed to the monitored production process.
      */
     public boolean isContributor(BulkFile bulkFile) {
-        return contains(contributorName(bulkFile));
+        return tocFile.contains(contributorName(bulkFile));
     }
 }
