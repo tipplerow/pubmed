@@ -96,7 +96,7 @@ public abstract class RelevanceSummaryFileBase extends UniqueFile {
         JamLogger.info("Loading existing summary records...");
 
         RelevanceSummaryTable table = load();
-        int initSize = 0;
+        int initSize = table.size();
 
         // There may be thousands or millions of records in the file,
         // but only tens of deleted citations, so iterating over the
