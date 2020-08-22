@@ -1,47 +1,37 @@
 
 package pubmed.junit;
 
+import java.util.Set;
+
 import pubmed.article.PMID;
 import pubmed.bulk.BulkFile;
-import pubmed.bulk.DeleteCitationFile;
-import pubmed.flat.PMIDRecord;
-import pubmed.flat.PMIDTable;
+import pubmed.delcit.DeleteCitationFile;
 
 import org.junit.*;
 import static org.junit.Assert.*;
 
 public class DeleteCitationFileTest {
-    @Test public void testBaseline() {
-        BulkFile bulkFile = BulkFile.create("data/test/pubmed20n0001.xml.gz");
-        DeleteCitationFile deleteCitationFile = DeleteCitationFile.instance(bulkFile);
-
-        deleteCitationFile.processFile(true);
-        deleteCitationFile.processFile(true);
-
-        PMIDTable table = deleteCitationFile.load();
-
-        assertEquals(0, table.count());
-
-        assertTrue(deleteCitationFile.delete());
+    static {
+        System.setProperty(DeleteCitationFile.DELCIT_FILENAME_PROPERTY, "data/test/delcit_test.txt");
     }
 
-    @Test public void testUpdateFiles() {
+    @Test public void testProcess() {
         BulkFile bulkFile = BulkFile.create("data/test/pubmed_sample.xml");
-        DeleteCitationFile deleteCitationFile = DeleteCitationFile.instance(bulkFile);
+        DeleteCitationFile delcitFile = DeleteCitationFile.instance();
 
-        deleteCitationFile.processFile(true);
-        deleteCitationFile.processFile(true);
+        delcitFile.add(bulkFile);
 
-        PMIDTable table = deleteCitationFile.load();
+        assertFalse(delcitFile.contains(PMID.instance(30830049)));
+        assertTrue(delcitFile.contains(PMID.instance(30830050)));
+        assertTrue(delcitFile.contains(PMID.instance(30830053)));
+        assertTrue(delcitFile.contains(PMID.instance(30830055)));
 
-        assertEquals(3, table.count());
+        assertEquals(Set.of(PMID.instance(30830050),
+                            PMID.instance(30830053),
+                            PMID.instance(30830055)),
+                     delcitFile.viewDeleted());
 
-        assertFalse(table.contains(PMID.instance(30830049)));
-        assertTrue(table.contains(PMID.instance(30830050)));
-        assertTrue(table.contains(PMID.instance(30830053)));
-        assertTrue(table.contains(PMID.instance(30830055)));
-
-        assertTrue(deleteCitationFile.delete());
+        assertTrue(delcitFile.delete());
     }
 
     public static void main(String[] args) {
