@@ -7,6 +7,7 @@ import java.util.List;
 import jam.app.JamLogger;
 import jam.util.ListUtil;
 
+import pubmed.delcit.DeleteCitationFile;
 import pubmed.xml.PubmedXmlDocument;
 
 /**
@@ -24,22 +25,15 @@ public final class BulkFileContentProcessor extends BulkFileProcessor {
     public static final BulkFileContentProcessor INSTANCE = new BulkFileContentProcessor();
 
     @Override public void processFile(BulkFile bulkFile) {
-        //
-        // Do not parse the XML document if all content files already
-        // exist...
-        //
+        PubmedXmlDocument document = bulkFile.getDocument();
+
         List<DocumentContentFile> unprocessed =
             ListUtil.filter(bulkFile.getContentFiles(), file -> !file.exists());
 
-        if (unprocessed.isEmpty()) {
-            JamLogger.info("All content files have been processed.");
-            return;
-        }
-
-        PubmedXmlDocument document = bulkFile.getDocument();
-
         for (DocumentContentFile contentFile : unprocessed)
             contentFile.processDocument(document, false);
+
+        DeleteCitationFile.instance().add(document);
     }
 
     private static void usage() {
