@@ -33,7 +33,6 @@ public final class BulkFile {
     private ArticleAbstractFile articleAbstractFile = null;
     private ArticleDOIFile      articleDOIFile      = null;
     private ArticleTitleFile    articleTitleFile    = null;
-    private DeleteCitationFile  deleteCitationFile  = null;
     private ChemicalFile        chemicalFile        = null;
     private HeadingFile         headingFile         = null;
     private JournalFile         journalFile         = null;
@@ -295,20 +294,6 @@ public final class BulkFile {
     }
 
     /**
-     * Returns the article title flat file derived from this bulk
-     * file.
-     *
-     * @return the article title flat file derived from this bulk
-     * file.
-     */
-    public synchronized DeleteCitationFile getDeleteCitationFile() {
-        if (deleteCitationFile == null)
-            deleteCitationFile = DeleteCitationFile.instance(this);
-
-        return deleteCitationFile;
-    }
-
-    /**
      * Returns the chemical substance flat file derived from this bulk
      * file.
      *
@@ -426,7 +411,6 @@ public final class BulkFile {
                        getArticleAbstractFile(),
                        getArticleDOIFile(),
                        getArticleTitleFile(),
-                       getDeleteCitationFile(),
                        getChemicalFile(),
                        getHeadingFile(),
                        getJournalFile(),
