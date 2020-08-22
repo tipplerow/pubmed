@@ -22,8 +22,6 @@ public final class DeleteCitationFile {
 
     private DeleteCitationFile() {
         this.tocFile = TOCFile.instance(resolveFileName());
-        System.out.println(resolveFileName());
-        System.out.println(tocFile.getCanonicalFile());
     }
 
     private static String resolveFileName() {
