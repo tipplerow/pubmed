@@ -129,7 +129,6 @@ public final class RelevanceSummarySubjectFile extends RelevanceSummaryFileBase 
 
         bulkFile.getRelevanceScoreFile().process(subjects);
 
-        PMIDTable deletedTable = bulkFile.getDeleteCitationFile().load();
         JournalTable journalTable = bulkFile.getJournalFile().load();
         PubDateTable pubDateTable = bulkFile.getPubDateFile().load();
         ArticleDOITable articleDOITable = bulkFile.getArticleDOIFile().load();
@@ -138,7 +137,6 @@ public final class RelevanceSummarySubjectFile extends RelevanceSummaryFileBase 
 
         subjects.parallelStream().forEach(subject ->
                                           instance(subject).process(bulkFile,
-                                                                    deletedTable,
                                                                     journalTable,
                                                                     pubDateTable,
                                                                     articleDOITable,
@@ -147,7 +145,6 @@ public final class RelevanceSummarySubjectFile extends RelevanceSummaryFileBase 
     }
 
     private void process(BulkFile bulkFile,
-                         PMIDTable deletedTable,
                          JournalTable journalTable,
                          PubDateTable pubDateTable,
                          ArticleDOITable articleDOITable,
@@ -157,9 +154,6 @@ public final class RelevanceSummarySubjectFile extends RelevanceSummaryFileBase 
             return;
 
         JamLogger.info("Processing relevance summary file: [%s]...", subject);
-
-        if (deletedTable.count() > 0)
-            deleteSummaryRecords(deletedTable.viewKeys());
 
         LocalDate reportDate = LocalDate.now();
 

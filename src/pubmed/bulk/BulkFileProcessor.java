@@ -51,6 +51,7 @@ public abstract class BulkFileProcessor {
         for (int fileIndex = 0; fileIndex < bulkFileArray.length; ++fileIndex)
             processFile(fileIndex);
 
+        postProcess(directory);
         JamLogger.info("DONE!");
     }
 
@@ -76,5 +77,17 @@ public abstract class BulkFileProcessor {
             bulkFile = null;
             bulkFileArray[fileIndex] = null;
         }
+    }
+
+    /**
+     * Performs additional actions after all of the individual bulk
+     * XML files in a directory have been processed.
+     *
+     * <p>This base class implementation is a no-op: just a hook for
+     * subclasses to specialize if necessary.
+     *
+     * @param directory the directory being processed.
+     */
+    protected void postProcess(File directory) {
     }
 }

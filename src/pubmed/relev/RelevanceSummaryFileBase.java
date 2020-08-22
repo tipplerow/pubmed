@@ -4,6 +4,7 @@ package pubmed.relev;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.Collection;
+import java.util.Set;
 
 import jam.app.JamEnv;
 import jam.app.JamLogger;
@@ -14,6 +15,7 @@ import jam.io.UniqueFile;
 
 import pubmed.article.PMID;
 import pubmed.bulk.BulkFile;
+import pubmed.delcit.DeleteCitationFile;
 
 /**
  * Provides a base class to generate and store article-subject
@@ -67,7 +69,7 @@ public abstract class RelevanceSummaryFileBase extends UniqueFile {
      *
      * @throws RuntimeException if any I/O errors occur.
      */
-    protected synchronized void appendSummaryRecords(Collection<RelevanceSummaryRecord> summaryRecords) {
+    public synchronized void appendSummaryRecords(Collection<RelevanceSummaryRecord> summaryRecords) {
         long fileLen = file.length();
 
         try (PrintWriter writer = IOUtil.openWriter(file, true)) {
@@ -80,39 +82,30 @@ public abstract class RelevanceSummaryFileBase extends UniqueFile {
     }
 
     /**
-     * Deletes summary records from the summary file.
-     *
-     * @param deleted the identifiers for the records to delete.
+     * Removes deleted citations from the summary file.
      *
      * @throws RuntimeException if any I/O errors occur.
      */
-    protected synchronized void deleteSummaryRecords(Collection<PMID> deleted) {
-        //
-        // Much time can be saved by checking for empty input...
-        //
-        if (deleted.isEmpty() || !file.exists())
+    public synchronized void removeDeletedCitations() {
+        if (!file.exists())
+            return;
+
+        Set<PMID> deletedPMID = DeleteCitationFile.instance().viewDeleted();
+
+        if (deletedPMID.isEmpty())
             return;
 
         JamLogger.info("Loading existing summary records...");
-
         RelevanceSummaryTable table = load();
-        int initSize = table.size();
 
-        // There may be thousands or millions of records in the file,
-        // but only tens of deleted citations, so iterating over the
-        // deleted citations is more efficient...
         JamLogger.info("Deleting citations...");
-
-        for (PMID pmid : deleted)
-            table.removeOuter(pmid);
+        Collection<RelevanceSummaryRecord> deletedRec = table.removeOuter(deletedPMID);
 
         // If any records have been deleted, we just rewrite the
-        // entire file...
-        int deletedCount = initSize - table.size();
+        // entire file.  Not particularly elegant, but effective...
+        JamLogger.info("Deleted [%d] citations.", deletedRec.size());
 
-        JamLogger.info("Deleted [%d] citations.", deletedCount);
-
-        if (deletedCount > 0)
+        if (!deletedRec.isEmpty())
             writeSummaryRecords(table.values());
     }
 
@@ -124,7 +117,7 @@ public abstract class RelevanceSummaryFileBase extends UniqueFile {
      *
      * @throws RuntimeException if any I/O errors occur.
      */
-    protected synchronized void writeSummaryRecords(Collection<RelevanceSummaryRecord> summaryRecords) {
+    public synchronized void writeSummaryRecords(Collection<RelevanceSummaryRecord> summaryRecords) {
         JamLogger.info("Writing [%d] summary records to [%s]...", summaryRecords.size(), file);
 
         try (PrintWriter writer = IOUtil.openWriter(file, false)) {

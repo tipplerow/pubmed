@@ -1,6 +1,7 @@
 
 package pubmed.bulk;
 
+import java.io.File;
 import java.util.Collection;
 
 import pubmed.relev.RelevanceSummarySubjectFile;
@@ -37,5 +38,15 @@ public abstract class BulkFileRelevanceProcessor extends BulkFileProcessor {
 
         bulkFile.getRelevanceScoreFile().process(subjects);
         RelevanceSummarySubjectFile.process(bulkFile, subjects);
+    }
+
+    @Override protected void postProcess(File directory) {
+        if (!directory.getName().equals("baseline"))
+            removeDeletedCitations();
+    }
+
+    private void removeDeletedCitations() {
+        for (Subject subject : getSubjects())
+            RelevanceSummarySubjectFile.instance(subject).removeDeletedCitations();
     }
 }
