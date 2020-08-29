@@ -1,0 +1,43 @@
+########################################################################
+# Environment variables required to compile and run PUBMED applications.
+########################################################################
+
+if [ -z "${GITHUB_ROOT}" ]
+then
+    echo "Environment variable GITHUB_ROOT is not set; exiting."
+    exit 1
+fi
+
+# GitHub project directory
+export PUBMED_HOME=${GITHUB_ROOT}/pubmed
+
+# Paths to the Medical Subject Headings data files
+export MESH_HOME=${HOME}/Dropbox/MeSH
+
+export MESH_DESC_XML=${MESH_HOME}/desc2020.xml.gz
+export MESH_PA_XML=${MESH_HOME}/pa2020.xml.gz
+export MESH_QUAL_XML=${MESH_HOME}/qual2020.xml.gz
+export MESH_SUPP_XML=${MESH_HOME}/supp2020.xml.gz
+
+# Local directory containing PubMed bulk data files
+export PUBMED_LOCAL_DIR=${HOME}/PubMed
+
+# Remote directory containing PubMed daily update files
+export PUBMED_REMOTE_DIR=ftp://ftp.ncbi.nlm.nih.gov/pubmed/updatefiles/
+
+# PubMed production database parameters
+export PUBMED_PROD_SQL_HOSTNAME=localhost
+export PUBMED_PROD_SQL_PORT=5432
+export PUBMED_PROD_SQL_DATABASE=pubmed_prod
+export PUBMED_PROD_SQL_USERNAME=pubmed_prod
+export PUBMED_PROD_SQL_PASSWORD=pubmed_prod
+
+# PubMed prod database parameters
+export PUBMED_TEST_SQL_HOSTNAME=localhost
+export PUBMED_TEST_SQL_PORT=5432
+export PUBMED_TEST_SQL_DATABASE=pubmed_test
+export PUBMED_TEST_SQL_USERNAME=pubmed_test
+export PUBMED_TEST_SQL_PASSWORD=pubmed_test
+
+# Directory containing the Stanford Core NLP jar files
+export CORE_NLP_HOME=${HOME}/Dropbox/CoreNLP/stanford-corenlp-4.0.0
