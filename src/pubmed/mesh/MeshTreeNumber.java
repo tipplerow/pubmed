@@ -26,7 +26,7 @@ public final class MeshTreeNumber extends KeyedObject<String> {
 
     private static final char DELIM_CHAR = '.';
     private static final Pattern DELIM_PATTERN = RegexUtil.DOT;
-    private static final IntRange LEVEL_CODE_RANGE = new IntRange(1, 999);
+    private static final IntRange LEVEL_CODE_RANGE = IntRange.instance(1, 999);
 
     private MeshTreeNumber(String key) {
         super(key);
