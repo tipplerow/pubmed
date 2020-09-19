@@ -1,4 +1,6 @@
 ########################################################################
 # Shell aliases for PUBMED project development.
 ########################################################################
-alias pms="cd ${PUBMED_HOME}/src/pubmed"
+alias pm="cd ${PUBMED_HOME}"
+alias pms="cd ${PUBMED_LIB_HOME}/src/main/java/pubmed"
+alias pmt="cd ${PUBMED_LIB_HOME}/src/test/java/pubmed"

@@ -10,6 +10,7 @@ fi
 
 # GitHub project directory
 export PUBMED_HOME=${GITHUB_ROOT}/pubmed
+export PUBMED_LIB_HOME=${GITHUB_ROOT}/pubmed/pubmed-lib
 
 # Paths to the Medical Subject Headings data files
 export MESH_HOME=${HOME}/Dropbox/MeSH
