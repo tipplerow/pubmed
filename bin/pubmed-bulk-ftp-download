@@ -1,0 +1,13 @@
+#!/bin/sh
+########################################################################
+# Downloads from the NIH server all bulk PubMed files that are not
+# already present in the directory ${PUBMED_LOCAL_DIR}/updatefiles.
+#
+# Usage: pubmed-bulk-ftp-download
+########################################################################
+
+cd `dirname $0`
+cd ..
+
+echo $PWD
+./gradlew :pubmed-bulk-ftp-download:run

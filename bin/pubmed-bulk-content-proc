@@ -1,0 +1,19 @@
+#!/bin/sh
+########################################################################
+# Generates content files from PubMed bulk XML files.
+#
+# Usage: pubmed-bulk-content-proc DIR1 [DIR2 ...]
+########################################################################
+
+if [ $# -lt 1 ]
+then
+    echo "Usage:" `basename $0` "DIR1 [DIR2 ...]"
+    exit 1
+fi
+
+cd `dirname $0`
+cd ..
+
+echo $PWD
+./gradlew :pubmed-bulk-content-proc:run --args="$@"
+
